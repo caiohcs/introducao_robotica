@@ -8,8 +8,8 @@ struct servo
 	int pulsomin;
 	int pulsomax;
 	int angmax;
-	float angunit;
-	float angoffset;
+	float angunit;		//Resolução do servo, em °/pulso.
+	float angoffset;	//Correção no ângulo do servo necessária devido ao desgaste do braço.
 };
 
 struct servo base;
@@ -19,7 +19,7 @@ struct servo punho;
 struct servo garra;
 
 void define_servos()
-{
+{	
 	// SERVO DA BASE
 //	struct servo base;
 	base.num = 0;
