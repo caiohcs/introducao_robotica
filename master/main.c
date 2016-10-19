@@ -73,10 +73,10 @@ void enviar_comandoX(Display *disp)	// dá um flush e espera um pouco
 	usleep(10000);
 }
 
-void desenhar_eixos(Display *display, Window main_win, unsigned int larg_main_win, unsigned int alt_main_win, GC gc_main)
+void desenhar_eixos(Display *display, Window main_win, unsigned int larg_main_win, unsigned int alt_main_win, GC gc)
 {
-	XDrawLine(display, main_win, gc_main, 0, alt_main_win/2, larg_main_win, alt_main_win/2);	// desenha eixo horizontal
-	XDrawLine(display, main_win, gc_main, larg_main_win/2, 0, larg_main_win/2, alt_main_win);	// desenha eixo vertical
+	XDrawLine(display, main_win, gc, 0, alt_main_win/2, larg_main_win, alt_main_win/2);	// desenha eixo horizontal
+	XDrawLine(display, main_win, gc, larg_main_win/2, 0, larg_main_win/2, alt_main_win);	// desenha eixo vertical
 }
 
 int main()
@@ -105,8 +105,15 @@ int main()
 	calc_ang_deg(&punho);
 	calc_ang_deg(&garra);
 
+	char pontos[25][25];
+	int numpontos = 0, i = 0;
+
 	float Xuser=0,Yuser=0,Zuser=0,PHIuser=0;	//valores fornecidos pelo usuário para fazer a cinemática inversa
 	
+	float cxpontos=0,cypontos=0;	//valores pra desenhar os pontos ao apertar espaço
+
+
+
 	float CX = coor_x(base.ang,ombro.ang,cotovelo.ang,punho.ang);	// coordenadas X e Y da ponta da garra
 	float CY = (-1)*coor_y(base.ang,ombro.ang,cotovelo.ang,punho.ang);
 	float CZ = coor_z(base.ang,ombro.ang,cotovelo.ang,punho.ang);
@@ -138,40 +145,27 @@ int main()
 	XMapWindow(display,main_win);		//desenha a janela principal
 	enviar_comandoX(display);
 	
-	
 	XEvent evento;
 	KeySym key_symbol;
 	XSelectInput(display,main_win,ExposureMask | KeyPressMask | KeyReleaseMask);	//recebe eventos do tipo exposure, keypress e keyrelease
 	int loopvar = 1;
-
-	GC gc_main;
 	XGCValues values;
 	unsigned long valuemask = 0;
-	gc_main = XCreateGC(display, main_win, valuemask, &values);
-	XSetForeground(display, gc_main, black);
-	XSetBackground(display, gc_main, white);
-	XSetFillStyle(display, gc_main, FillSolid);
-	XSetLineAttributes(display, gc_main, 2, LineSolid, CapRound, JoinRound);
 
-
-	GC estilo_braco_apagar;		// pinta de branco (mesma cor do fundo) pra apagar
-	estilo_braco_apagar = XCreateGC(display, main_win, valuemask, &values);
-	XSetForeground(display, estilo_braco_apagar, white);
-	XSetBackground(display, estilo_braco_apagar, white);
-	XSetFillStyle(display, estilo_braco_apagar, FillSolid);
-
+	GC gc_branco;		// pinta de branco (mesma cor do fundo) pra apagar
+	gc_branco = XCreateGC(display, main_win, valuemask, &values);
+	XSetForeground(display, gc_branco, white);
+	XSetBackground(display, gc_branco, white);
 	
-	GC estilo_braco_desenhar;	// pinta de preto pra desenhar
-	estilo_braco_desenhar = XCreateGC(display, main_win, valuemask, &values);
-	XSetForeground(display, estilo_braco_desenhar, black);
-	XSetBackground(display, estilo_braco_desenhar, white);
-	XSetFillStyle(display, estilo_braco_desenhar, FillSolid);
+	GC gc_preto;	// pinta de preto pra desenhar
+	gc_preto = XCreateGC(display, main_win, valuemask, &values);
+	XSetForeground(display, gc_preto, black);
+	XSetBackground(display, gc_preto, white);
 
-	XDrawArc(display,main_win,estilo_braco_desenhar,coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
-	desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_main);
+	XDrawArc(display,main_win,gc_preto,coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
+	desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_preto);
 	desenha_escala(display, screen_num, main_win, alt_main_win, larg_main_win);
 	enviar_comandoX(display);
-
 
 	char comando[20];
 	float *P;
@@ -181,68 +175,79 @@ int main()
 		switch(evento.type)
 		{
 			case Expose:
-				desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_main);
+				desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_preto);
 				desenha_escala(display, screen_num, main_win, alt_main_win, larg_main_win);
-				XDrawArc(display,main_win,estilo_braco_desenhar, coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
+				XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
+				
+				for(i = 0; i < numpontos; i++)
+				{	
+					sscanf(pontos[i],"%f %f", &cxpontos, &cypontos);			
+					XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(cypontos*7,larg_main_win)-2,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-2,4,4,0,360*64);
+				}
 				enviar_comandoX(display);
 			break;
 
 			case KeyPress:
 				key_symbol = XkbKeycodeToKeysym (display, evento.xkey.keycode, 0, 1);
 				
-				XDrawArc(display,main_win,estilo_braco_apagar,coord_real_X_to_pixels(CY*7,larg_main_win)-5,
+				XDrawArc(display,main_win,gc_branco,coord_real_X_to_pixels(CY*7,larg_main_win)-5,
 				coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);		// apaga uma esfera de raio 5 onde na ultima posição da garra
-				// enviar_comandoX(display);
 				
 				switch(key_symbol)
 				{
 					case XK_D:					//aumenta e diminui o angulo da base
-						printf("apertou D\n");
 						change_servo(serial_fd,&base,base.pulso+10);
 						base.ang = calc_ang_deg(&base);
 					break;
 					case XK_L:
-						printf("apertou L\n");
 						change_servo(serial_fd,&base,base.pulso-10);
 						base.ang = calc_ang_deg(&base);
 					break;
 
 					
 					case XK_S:						//aumenta e diminui o angulo do ombro
-						printf("apertou S\n");
 						change_servo(serial_fd,&ombro,ombro.pulso+10);
 						ombro.ang = calc_ang_deg(&ombro);
 					break;
 					case XK_K:
-						printf("apertou K\n");
 						change_servo(serial_fd,&ombro,ombro.pulso-10);
 						ombro.ang = calc_ang_deg(&ombro);
 					break;
 
 					
 					case XK_A:						//aumenta e diminui o angulo do cotovelo
-						printf("apertou A\n");
 						change_servo(serial_fd,&cotovelo,cotovelo.pulso+10);
 						cotovelo.ang = calc_ang_deg(&cotovelo);
 					break;
 					case XK_J:
-						printf("apertou J\n");
 						change_servo(serial_fd,&cotovelo,cotovelo.pulso-10);
 						cotovelo.ang = calc_ang_deg(&cotovelo);
 					break;
 
 					 
 					case XK_W:						//aumenta e diminui o angulo do punho
-						printf("apertou W\n");
 						change_servo(serial_fd,&punho,punho.pulso+10);
 						punho.ang = calc_ang_deg(&punho);
 					break;
 					case XK_I:
-						printf("apertou I\n");
 						change_servo(serial_fd,&punho,punho.pulso-10);
 						punho.ang = calc_ang_deg(&punho);
 					break;
-					
+
+
+					case XK_Page_Up:					//abre e fecha a garra
+						change_servo(serial_fd,&garra,garra.pulso+10);
+					break;
+					case XK_Page_Down:
+						change_servo(serial_fd,&garra,garra.pulso-10);
+					break;
+
+
+					case XK_space:
+						sprintf(pontos[numpontos],"%.2f %.2f %.2f",CX,CY,CZ);
+						numpontos=numpontos+1;
+					break;
+
 
 					case XK_C:
 						printf("Digite o comando:\n");
@@ -310,12 +315,19 @@ int main()
 				printf("\nCOORD PX: %d\n",coord_real_X_to_pixels(CY*7,larg_main_win));
 				printf("\nCOORD PY:%d\n",coord_real_Y_to_pixels(CX*(-7),alt_main_win));
 
-				XDrawArc(display,main_win,estilo_braco_desenhar, coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
+				XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
 				
 				desenha_escala(display, screen_num, main_win, alt_main_win, larg_main_win);
-				desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_main);
-				enviar_comandoX(display);	
-				//printf("desenhei\n");
+				desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_preto);
+				
+				for(i = 0; i < numpontos; i++)
+				{	
+					sscanf(pontos[i],"%f %f", &cxpontos, &cypontos);			
+					XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(cypontos*7,larg_main_win)-2,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-2,4,4,0,360*64);
+				}
+
+
+				enviar_comandoX(display);
 			break;
 
 			default:
@@ -324,6 +336,14 @@ int main()
 		}
 	}
 
+	FILE *fp;
+	fp = fopen("coordenadas.txt","w");
+	for (i = 0; i < numpontos; i++)
+	{
+		printf("%s\n",pontos[i]);
+		fprintf(fp,"%s\n",pontos[i]);
+	}
+	fclose(fp);
 	
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
