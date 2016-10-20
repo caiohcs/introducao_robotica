@@ -73,10 +73,12 @@ void enviar_comandoX(Display *disp)	// dá um flush e espera um pouco
 	usleep(10000);
 }
 
-void desenhar_eixos(Display *display, Window main_win, unsigned int larg_main_win, unsigned int alt_main_win, GC gc)
+
+/*Função para desenhar os eixos horizontal e vertical, respectivamente*/
+void desenhar_eixos(Display *display, Window main_win, unsigned int larg_main_win, unsigned int alt_main_win, GC gc_main)
 {
-	XDrawLine(display, main_win, gc, 0, alt_main_win/2, larg_main_win, alt_main_win/2);	// desenha eixo horizontal
-	XDrawLine(display, main_win, gc, larg_main_win/2, 0, larg_main_win/2, alt_main_win);	// desenha eixo vertical
+	XDrawLine(display, main_win, gc_main, 0, alt_main_win/2, larg_main_win, alt_main_win/2);
+	XDrawLine(display, main_win, gc_main, larg_main_win/2, 0, larg_main_win/2, alt_main_win);
 }
 
 int main()
@@ -334,7 +336,7 @@ int main()
 
 			break;
 		}
-	}
+}	
 
 	FILE *fp;
 	fp = fopen("coordenadas.txt","w");
@@ -349,3 +351,4 @@ int main()
 	XCloseDisplay(display);
 	return 0;
 }
+

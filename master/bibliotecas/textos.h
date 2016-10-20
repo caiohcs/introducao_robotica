@@ -6,19 +6,21 @@ void enviar_comandoX(Display *disp);
 
 int rgb_to_xrgb(int cor) {return cor*(65535/255);}
 
+XFontStruct* fonte;
+
 XFontStruct *carregar_fonte(Display *disp)
 {
 
-	int i = 0;
+	int i = 11;
 	int num_fontes_carregadas;
 	int max_fontes = 100;
 	char **nomefontes = XListFonts(disp, "*", max_fontes, &num_fontes_carregadas);
 
-	XFontStruct* fonte = malloc(sizeof(XFontStruct));	// lembrar de desalocar
 	fonte = NULL;
 	
- 
-	while((fonte==NULL) && (i < num_fontes_carregadas)){
+ 	/*Esse laço busca carregar a primeira fonte encontrada em nomefontes na variável fonte. Note que o índice "i" começa em 11 para pular as fontes que causam problemas de visualização. */
+
+	while((fonte==NULL)  &&  (i < num_fontes_carregadas)){
 		fonte = XLoadQueryFont(disp,nomefontes[i]);
 		i=i+1;
 	}
