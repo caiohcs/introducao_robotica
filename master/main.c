@@ -9,6 +9,7 @@
 #include "./bibliotecas/calculos_angulos.h"
 #include "./bibliotecas/cinematica.h"
 #include "./bibliotecas/textos.h"
+#include "./bibliotecas/GC.h"
 #include <math.h>
 #include <string.h>
 
@@ -154,15 +155,10 @@ int main()
 	XGCValues values;
 	unsigned long valuemask = 0;
 
-	GC gc_branco;		// pinta de branco (mesma cor do fundo) pra apagar
-	gc_branco = XCreateGC(display, main_win, valuemask, &values);
-	XSetForeground(display, gc_branco, white);
-	XSetBackground(display, gc_branco, white);
-	
-	GC gc_preto;	// pinta de preto pra desenhar
-	gc_preto = XCreateGC(display, main_win, valuemask, &values);
-	XSetForeground(display, gc_preto, black);
-	XSetBackground(display, gc_preto, white);
+	/*Configuração dos GCs para pintar a apagar na janela do programa */
+	GC gc_branco, gc_preto;
+	gc_preto = gc_pintar(display, main_win, valuemask, &values);
+	gc_branco = gc_apagar(display, main_win, valuemask, &values);
 
 	XDrawArc(display,main_win,gc_preto,coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
 	desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_preto);
