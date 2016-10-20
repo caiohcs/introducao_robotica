@@ -25,9 +25,6 @@ XFontStruct *carregar_fonte(Display *disp)
 		i=i+1;
 	}
 
-	
-//	fonte = XLoadQueryFont(disp,"-misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso8859-15");
-
 	if(fonte==NULL){
 		printf("Não foi possível carregar uma fonte\n");
 	}
@@ -37,7 +34,7 @@ XFontStruct *carregar_fonte(Display *disp)
 void desenha_texto(Display *disp, int tela, Window janela, char *texto, int verm, int verd, int azul, unsigned int x, unsigned int y)
 {
 	GC gc = XCreateGC(disp, janela, 0, NULL);
-	XFontStruct *fonte = carregar_fonte(disp);
+	fonte = carregar_fonte(disp);
 	XSetFont(disp, gc, fonte->fid);
 	int largtexto = XTextWidth(fonte, texto, strlen(texto));
 	int alttexto = fonte->ascent + fonte->descent;

@@ -85,7 +85,7 @@ int main()
 {
 	int serial_fd = -1;
 	define_servos();
-
+	calc_all_ang();
 	/*
 	if ( (serial_fd=Inicializar_Portas()) == -1) return 1; // Chama a função que abre e configura as portas
 	
@@ -100,12 +100,6 @@ int main()
 	memset(posinicial, 0, 100);
 	free (posinicial);
 	*/
-
-	calc_ang_deg(&base);
-	calc_ang_deg(&ombro);
-	calc_ang_deg(&cotovelo);
-	calc_ang_deg(&punho);
-	calc_ang_deg(&garra);
 
 	char pontos[25][25];
 	int numpontos = 0, i = 0;
@@ -129,14 +123,20 @@ int main()
 	int screen_num = DefaultScreen(display);        // Pega a ID da screen
 	Window root_win = RootWindow(display,screen_num); // Abre a janela root
 	
+	/* black e white armazenam as cores preto e branco da janela*/
+	unsigned long black = BlackPixel(display,screen_num), white = WhitePixel(display,screen_num);
 
-	unsigned long black = BlackPixel(display,screen_num), white = WhitePixel(display,screen_num); // pega a cor preta e branca
-	unsigned int alt_main_win= 600, larg_main_win = 1000, larg_bord_main_win = 1;	// define a altura e larg da janela principal e também a larg da borda
-	unsigned long col_bord_main_win = black, backg_main_win = white;	// define a cor da borda e do fundo da janela principal
-	int coord_x_main_win = 0, coord_y_main_win = 0;	// define as coordenadas da extremidade superior esquerda da janela principal
+	/*Definição da altura e da largura da janela, assim como a espessura da borda*/
+	unsigned int alt_main_win= 600, larg_main_win = 1000, larg_bord_main_win = 1;
+
+	/*Define a cor da borda e do fundo da janela principal*/
+	unsigned long col_bord_main_win = black, backg_main_win = white;	
+
+	/*Coordenadas da extremidade superior esquerda da janela principal*/
+	int coord_x_main_win = 0, coord_y_main_win = 0;	
 	
-
-	Window main_win;					//cria a janela principal
+	/*Criação e configuração da janela principal do programa*/
+	Window main_win;					
 	main_win = XCreateSimpleWindow(display,root_win,
 					coord_x_main_win, coord_y_main_win,
 					larg_main_win, alt_main_win,
