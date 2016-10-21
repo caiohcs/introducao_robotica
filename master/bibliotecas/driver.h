@@ -5,8 +5,8 @@
 #include "./servo.h"
 #include <unistd.h>
 
-#ifndef HACK_H
-#define HACK_H
+#ifndef DRIVER_H
+#define DRIVER_H
 
 int enviar_comando(char *P, int fd)
 {
