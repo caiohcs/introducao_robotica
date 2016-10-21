@@ -89,7 +89,7 @@ int main()
 	int serial_fd = -1;
 	define_servos();
 	calc_all_ang();
-	/*
+
 	if ( (serial_fd=Inicializar_Portas()) == -1) return 1; // Chama a função que abre e configura as portas
 	
 
@@ -102,7 +102,7 @@ int main()
 	}
 	memset(posinicial, 0, 100);
 	free (posinicial);
-	*/
+	
 
 	char pontos[25][25];
 	int numpontos = 0, i = 0;
@@ -158,9 +158,10 @@ int main()
 	unsigned long valuemask = 0;
 
 	/*Configuração dos GCs para pintar a apagar na janela do programa */
-	GC gc_branco, gc_preto;
+	GC gc_branco, gc_preto, gc_red;
 	gc_preto = gc_pintar(display, main_win, valuemask, &values);
 	gc_branco = gc_apagar(display, main_win, valuemask, &values);
+	gc_red = gc_vermelho(display, main_win, valuemask, &values);
 
 	XDrawArc(display,main_win,gc_preto,coord_real_X_to_pixels(CY*7,larg_main_win)-5,coord_real_Y_to_pixels((-7)*CX,alt_main_win)-5,10,10,0,360*64);
 	desenhar_eixos(display, main_win, larg_main_win, alt_main_win, gc_preto);
@@ -182,7 +183,7 @@ int main()
 				for(i = 0; i < numpontos; i++)
 				{	
 					sscanf(pontos[i],"%f %f", &cxpontos, &cypontos);			
-					XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(cypontos*7,larg_main_win)-2,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-2,4,4,0,360*64);
+					XFillArc(display,main_win,gc_red, coord_real_X_to_pixels(cypontos*7,larg_main_win)-4,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-4,8,8,0,360*64);
 				}
 				enviar_comandoX(display);
 			break;
@@ -323,7 +324,7 @@ int main()
 				for(i = 0; i < numpontos; i++)
 				{	
 					sscanf(pontos[i],"%f %f", &cxpontos, &cypontos);			
-					XDrawArc(display,main_win,gc_preto, coord_real_X_to_pixels(cypontos*7,larg_main_win)-2,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-2,4,4,0,360*64);
+					XFillArc(display,main_win,gc_red, coord_real_X_to_pixels(cypontos*7,larg_main_win)-4,coord_real_Y_to_pixels((-7)*cxpontos,alt_main_win)-4,8,8,0,360*64);
 				}
 
 
