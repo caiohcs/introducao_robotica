@@ -1,4 +1,5 @@
 #include <X11/Xlib.h>
+#include "textos.h"
 
 #ifndef GC_H
 #define GC_H
@@ -19,4 +20,18 @@ GC gc_apagar (Display *disp, Window win, unsigned long valuesmask, XGCValues *va
  return gc_branco;
 }
 
+GC gc_vermelho (Display *disp, Window win, unsigned long valuesmask, XGCValues *values)
+{
+   	GC gc_vermelho = XCreateGC(disp, win, valuesmask, values);
+        Colormap colormaptela = XDefaultColormap(disp, XDefaultScreen(disp));
+        XColor cor;
+        cor.red = rgb_to_xrgb(255);
+        cor.green = rgb_to_xrgb(0);
+        cor.blue = rgb_to_xrgb(0);
+        XAllocColor(disp, colormaptela, &cor);
+        XSetBackground(disp, gc_vermelho, cor.pixel);
+        XSetForeground(disp, gc_vermelho, cor.pixel);
+
+	return gc_vermelho;
+}
 #endif
