@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <X11/Xlib.h>
 #include <string.h>
+
+#ifndef TEXTOS_H
+#define TEXTOS_H
 void enviar_comandoX(Display *disp);
 
 int rgb_to_xrgb(int cor) {return cor*(65535/255);}
@@ -54,3 +57,4 @@ void desenha_texto(Display *disp, int tela, Window janela, char *texto, int verm
 	free (fonte);
 }
 
+#endif
