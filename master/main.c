@@ -50,16 +50,14 @@ int Inicializar_Portas()		//Abre e configura as portas
 
 	printf("Programa iniciado\n");
 
-	if ( (serial_fd = abrir_porta() ) == -1)
-	{
+	if ( (serial_fd = abrir_porta() ) == -1){
 		printf("A porta nao foi aberta\n");
 		return -1;
 	}
 
 	printf("Porta aberta\n");
 
-	if ( configurar_porta(serial_fd) == -1)
-	{
+	if ( configurar_porta(serial_fd) == -1){
 		printf("A porta nao foi configurada\n");
 		close(serial_fd); 
 		return -1;
@@ -89,20 +87,19 @@ int main()
 	int serial_fd = -1;
 	define_servos();
 	calc_all_ang();
-
+/*
 	if ( (serial_fd=Inicializar_Portas()) == -1) return 1; // Chama a função que abre e configura as portas
 	
 
 	char *posinicial = malloc(sizeof(char)*100);
 	sprintf(posinicial,"%s",HOME_POS);
-	if(enviar_comando(posinicial,serial_fd)==-1)
-	{
+	if(enviar_comando(posinicial,serial_fd)==-1){
 		printf("Problema no posicionamento inicial\n");
 		return 1;
 	}
 	memset(posinicial, 0, 100);
 	free (posinicial);
-	
+*/	
 
 	char pontos[25][25];
 	int numpontos = 0, i = 0;
@@ -118,8 +115,7 @@ int main()
 	float CZ = coor_z(base.ang,ombro.ang,cotovelo.ang,punho.ang);
 
 	Display *display;				// Abre o display
-	if ( (display = XOpenDisplay(NULL)) == NULL)
-	{
+	if ((display = XOpenDisplay(NULL)) == NULL){
 		printf("O display nao foi aberto\n");
 		return 1;
 	}
@@ -275,20 +271,19 @@ int main()
 							
 
 							printf("%f %f %f %f\n",Xuser,Yuser,Zuser,PHIuser);
-							P = ptr_angles(Xuser,Yuser,Zuser,PHIuser);
+							P = ptr_angles(Xuser,(-1)*Yuser,Zuser,PHIuser);
 							printf("Angulos: %f %f %f %f\n", P[0], P[1], P[2], P[3]);
-						
-							/*
-							change_servo(serial_fd,&base,calc_ang_pul(rad_to_deg(P[0]),ang_max_base,BAS_SERVO));
-							change_servo(serial_fd,SHL_SERVO,&ang_omb,calc_ang_pul(rad_to_deg(P[1]),ang_max_omb,SHL_SERVO));
-							change_servo(serial_fd,ELB_SERVO,&ang_cot,calc_ang_pul(rad_to_deg(P[2]),ang_max_cot,ELB_SERVO));
-							change_servo(serial_fd,WRI_SERVO,&ang_pun,calc_ang_pul(rad_to_deg(P[3]),ang_max_pun,WRI_SERVO));
 
-							ang_base_deg = calc_ang_deg(ang_base,ang_max_base,BAS_SERVO);
-							ang_omb_deg = calc_ang_deg(ang_omb,ang_max_omb,SHL_SERVO);
-							ang_cot_deg = calc_ang_deg(ang_cot,ang_max_cot,ELB_SERVO);
-							ang_pun_deg = calc_ang_deg(ang_pun,ang_max_pun,WRI_SERVO);
-							*/
+							base.ang = rad_to_deg(P[0]);
+							ombro.ang = rad_to_deg(P[1]);
+							cotovelo.ang = rad_to_deg(P[2]);
+							punho.ang = rad_to_deg(P[3]);
+						
+							
+							change_servo(serial_fd, &base, calc_ang_pul(&base));
+							change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
+							change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
+							change_servo(serial_fd, &punho, calc_ang_pul(&punho));
 
 							free(P);
 						}
@@ -338,10 +333,14 @@ int main()
 }	
 
 	FILE *fp;
-	fp = fopen("coordenadas.txt","w");
-	for (i = 0; i < numpontos; i++)
-	{
-		printf("%s\n",pontos[i]);
+	char nome[100];
+	printf("Digite o nome do arquivo para salvar as coordenadas:\n");
+	if (fgets(nome,sizeof(nome),stdin)==NULL)
+		printf("Erro ao ler nome\n");
+	nome[strlen(nome)-1]='\0';	//tira a newline do fgets
+	fp = fopen(strcat(nome,".txt\0"),"w");	//cria um arquivo com o nome inserido+.txt
+	for (i = 0; i < numpontos; i++){	//escreve todos os pontos
+		printf("%s\n",pontos[i]);	
 		fprintf(fp,"%s\n",pontos[i]);
 	}
 	fclose(fp);
