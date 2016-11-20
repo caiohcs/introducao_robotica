@@ -1,9 +1,9 @@
 #include "./servo.h"
 #include <math.h>
 
-float deg_to_rad(float ang) {return ((ang/180)*M_PI);}  // converte grau pra radiano
+//float deg_to_rad(float ang) {return ((ang/180)*M_PI);}  // converte grau pra radiano
 
-float rad_to_deg(float ang) {return ((ang/M_PI)*180);}  // converte radiano pra grau
+//float rad_to_deg(float ang) {return ((ang/M_PI)*180);}  // converte radiano pra grau
 
 float calc_ang_pul(struct servo *Servo){return (1500 + Servo->ang/Servo->angunit);}  // usa o angulo pra calcular o pulso (cinematica inversa)
 

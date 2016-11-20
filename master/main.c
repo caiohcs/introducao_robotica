@@ -86,7 +86,10 @@ int main()
 {
 	int serial_fd = -1;
 	define_servos();
-	calc_all_ang();
+	
+	// calc_all_ang();
+	// Essa função não faz nada!
+	
 /*
 	if ( (serial_fd=Inicializar_Portas()) == -1) return 1; // Chama a função que abre e configura as portas
 	
@@ -272,18 +275,25 @@ int main()
 
 							printf("%f %f %f %f\n",Xuser,Yuser,Zuser,PHIuser);
 							P = ptr_angles(Xuser,(-1)*Yuser,Zuser,PHIuser);
-							printf("Angulos: %f %f %f %f\n", P[0], P[1], P[2], P[3]);
-
-							base.ang = rad_to_deg(P[0]);
-							ombro.ang = rad_to_deg(P[1]);
-							cotovelo.ang = rad_to_deg(P[2]);
-							punho.ang = rad_to_deg(P[3]);
-						
+							printf("Angulos sem offset: %f %f %f %f\n", P[0], P[1], P[2], P[3]);
 							
-							change_servo(serial_fd, &base, calc_ang_pul(&base));
-							change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
-							change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
-							change_servo(serial_fd, &punho, calc_ang_pul(&punho));
+							if(P[0] != 1000){
+								base.ang = rad_to_deg(P[0]);
+								ombro.ang = rad_to_deg(P[1]);
+								cotovelo.ang = rad_to_deg(P[2]);
+								punho.ang = rad_to_deg(P[3]);
+
+
+								change_servo(serial_fd, &base, calc_ang_pul(&base));
+								change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
+								change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
+								change_servo(serial_fd, &punho, calc_ang_pul(&punho));
+
+							} else {
+								printf("Posição invalida!\n");
+							}
+
+							printf("Servos: %f %f %f %f", base.ang, ombro.ang, cotovelo.ang, punho.ang);
 
 							free(P);
 						}
@@ -331,6 +341,11 @@ int main()
 			break;
 		}
 }	
+
+	printf("base: %f %f\n", base.angmin, base.angmax);
+	printf("ombro: %f %f\n", ombro.angmin, ombro.angmax);
+	printf("cotovelo: %f %f\n", cotovelo.angmin, cotovelo.angmax);
+	printf("punho: %f %f\n", punho.angmin, punho.angmax);
 
 	FILE *fp;
 	char nome[100];
