@@ -288,12 +288,13 @@ int main()
 								change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
 								change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
 								change_servo(serial_fd, &punho, calc_ang_pul(&punho));
-
+								printf("posicao valida\n");
 							} else {
 								printf("Posição invalida!\n");
 							}
 
-							printf("Servos: %f %f %f %f", base.ang, ombro.ang, cotovelo.ang, punho.ang);
+							printf("Servos: %f %f %f %f\n", base.ang, ombro.ang, cotovelo.ang, punho.ang);
+							printf("Servos: %d %d %d %d\n", base.pulso, ombro.pulso, cotovelo.pulso, punho.pulso);
 
 							free(P);
 						}

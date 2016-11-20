@@ -68,6 +68,7 @@ float *ptr_angles(float Xuser,float Yuser,float Zuser,float PHIuser)	// calcula 
 	
 	P[1] = asin(C/sqrt(pow(A,2)+pow(B,2))) - atan2(A,B);
 	if (P[1] < ombro.angmin || P[1] > ombro.angmax || isnan(P[1])){
+		printf("Ang omb invalido: %f\n", P[1]);
 		P[1] = M_PI - asin(C/sqrt(pow(A,2)+pow(B,2))) - atan2(A,B);
 		if (P[1] < ombro.angmin || P[1] > ombro.angmax || isnan(P[1])){
 			printf("Ang omb invalido: %f\n", P[1]);

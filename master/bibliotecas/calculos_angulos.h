@@ -5,7 +5,7 @@
 
 //float rad_to_deg(float ang) {return ((ang/M_PI)*180);}  // converte radiano pra grau
 
-float calc_ang_pul(struct servo *Servo){return (1500 + Servo->ang/Servo->angunit);}  // usa o angulo pra calcular o pulso (cinematica inversa)
+int calc_ang_pul(struct servo *Servo){return (int) roundf((1500 + (Servo->ang - Servo->angoffset)/Servo->angunit));}  // usa o angulo pra calcular o pulso (cinematica inversa)
 
 float calc_ang_deg(struct servo *Servo){return ( (Servo->pulso-1500)*Servo->angunit + Servo->angoffset);}  // usa o pulso pra calcular o angulo (cinematica direta)
 
