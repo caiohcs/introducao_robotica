@@ -284,10 +284,33 @@ int main()
 								punho.ang = rad_to_deg(P[3]);
 
 
+								char *comando = malloc(sizeof(char)*150);
+								memset(comando,0,sizeof(char)*150);
+
+								base.pulso = trava(&base, calc_ang_pul(&base));
+								ombro.pulso = trava(&ombro, calc_ang_pul(&ombro));
+								cotovelo.pulso = trava(&cotovelo, calc_ang_pul(&cotovelo));
+								punho.pulso = trava(&punho, calc_ang_pul(&punho));
+
+								sprintf(comando,"#%dP%d#%dP%d#%dP%d#%dP%dT4000\r",
+								base.num, base.pulso,
+								ombro.num, ombro.pulso,
+								cotovelo.num, cotovelo.pulso,
+								punho.num, punho.pulso);
+
+								//printf("%s\n",comando);
+								
+								enviar_comando(comando,serial_fd);
+								free(comando);
+
+
+								/*
 								change_servo(serial_fd, &base, calc_ang_pul(&base));
 								change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
 								change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
 								change_servo(serial_fd, &punho, calc_ang_pul(&punho));
+								*/
+
 								printf("posicao valida\n");
 							} else {
 								printf("Posição invalida!\n");
