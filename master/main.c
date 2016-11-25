@@ -14,6 +14,7 @@
 #include <string.h>
 
 #define HOME_POS "#0P1500#1P1500#2P1500#3P1500#4P1500T2000\r"
+#define LINESIZE 30
 
 #define alt 6.731
 #define L1 14.605
@@ -167,7 +168,7 @@ int main()
 	desenha_escala(display, screen_num, main_win, alt_main_win, larg_main_win);
 	enviar_comandoX(display);
 
-	char comando[20];
+	char buffer[20];
 	float *P;
 	while(loopvar)		//loop principal do programa que reage a eventos
 	{
@@ -251,27 +252,27 @@ int main()
 
 					case XK_C:
 						printf("Digite o comando:\n");
-						if (fgets(comando,sizeof(comando),stdin)!=NULL)
-							printf("\n%s\n",comando);
-						if( (strcmp(comando,"coordenadas\n")==0) )
+						if (fgets(buffer,sizeof(buffer),stdin)!=NULL)
+							printf("\n%s\n",buffer);
+						if( (strcmp(buffer,"coordenadas\n")==0) )
 						{
 							printf("Digite a coordenada X:\n");
-							if (fgets(comando,sizeof(comando),stdin)!=NULL)
-								Xuser = atof(comando);
+							if (fgets(buffer,sizeof(buffer),stdin)!=NULL)
+								Xuser = atof(buffer);
 						
 							printf("Digite a coordenada Y:\n");
-							if (fgets(comando,sizeof(comando),stdin)!=NULL)
-								Yuser = atof(comando);
+							if (fgets(buffer,sizeof(buffer),stdin)!=NULL)
+								Yuser = atof(buffer);
 						
 							printf("Digite a coordenada Z:\n");
-							if (fgets(comando,sizeof(comando),stdin)!=NULL)
-								Zuser = atof(comando);
+							if (fgets(buffer,sizeof(buffer),stdin)!=NULL)
+								Zuser = atof(buffer);
 
 
 							printf("Digite o angulo PHI:\n");
-							if (fgets(comando,sizeof(comando),stdin)!=NULL)
-								PHIuser = deg_to_rad(atof(comando));
-							
+							if (fgets(buffer,sizeof(buffer),stdin)!=NULL)
+								PHIuser = deg_to_rad(atof(buffer));
+							OBFUSCACAO:
 
 							printf("%f %f %f %f\n",Xuser,Yuser,Zuser,PHIuser);
 							P = ptr_angles(Xuser,(-1)*Yuser,Zuser,PHIuser);
@@ -304,12 +305,6 @@ int main()
 								free(comando);
 
 
-								/*
-								change_servo(serial_fd, &base, calc_ang_pul(&base));
-								change_servo(serial_fd, &ombro, calc_ang_pul(&ombro));
-								change_servo(serial_fd, &cotovelo, calc_ang_pul(&cotovelo));
-								change_servo(serial_fd, &punho, calc_ang_pul(&punho));
-								*/
 
 								printf("posicao valida\n");
 							} else {
@@ -320,7 +315,84 @@ int main()
 							printf("Servos: %d %d %d %d\n", base.pulso, ombro.pulso, cotovelo.pulso, punho.pulso);
 
 							free(P);
-						}
+						} else if( (strcmp(buffer,"arquivo\n")==0) ) {
+							FILE *fp;
+        						char comando_arquivo[LINESIZE], str[12], nome_arquivo[100];
+        						printf("Digite o nome do arquivo que contém os comandos:\n");
+						        if (fgets(nome_arquivo,sizeof(nome_arquivo),stdin)==NULL)
+					                printf("Erro ao ler nome\n");
+						        nome_arquivo[strlen(nome_arquivo)-1]='\0';      //tira a newline do fgets
+						        fp = fopen(nome_arquivo,"r");  //cria um arquivo com o nome inserido+.txt
+						        while (fgets (comando_arquivo,LINESIZE,fp) ){
+							printf("%c",comando_arquivo[2]);
+							/* Testa a primeira letra de cada linha para facilitar a comparação. Em seguida verifica se a palavra realmente é um comando, e não SABÃO, por exemplo. */
+
+							switch(comando_arquivo[2]){
+							
+							case 'P':
+								sscanf(comando_arquivo,"%*d)%s", str);
+								printf("%s\n",str);
+								if (strcmp(str,"PEGA;")==0){
+								printf("Detectei a palavra PEGA\n");
+								change_servo(serial_fd,&garra,2400);
+								}
+			
+							break;
+							
+							case 'S':
+								sscanf(comando_arquivo,"%*d)%s", str);							
+								if (strcmp(str,"SOLTA;")==0){
+								change_servo(serial_fd,&garra,1300);
+								}
+							break;
+
+							case 'R':
+								sscanf(comando_arquivo,"%*d)%s", str);
+                                                                if (strcmp(str,"REPOUSO;")==0){
+									/* Envia posição de repouso para todos os servos */
+						       
+									char *comando = malloc(sizeof(char)*150);
+									memset(comando,0,sizeof(char)*150);
+
+									base.pulso = trava(&base, 1500);
+									ombro.pulso = trava(&ombro, 1500);
+									cotovelo.pulso = trava(&cotovelo, 1500);
+									punho.pulso = trava(&punho, 1500);
+
+									base.ang = base.angoffset;
+									ombro.ang = ombro.angoffset;
+									cotovelo.ang = cotovelo.angoffset;
+									punho.ang = punho.angoffset;
+
+									sprintf(comando,"#%dP%d#%dP%d#%dP%d#%dP%dT4000\r",
+									base.num, base.pulso,
+									ombro.num, ombro.pulso,
+									cotovelo.num, cotovelo.pulso,
+									punho.num, punho.pulso);
+
+									//printf("%s\n",comando);
+
+									enviar_comando(comando,serial_fd);
+									free(comando);
+								}
+					              	break;	
+							
+							case 'M':
+								sscanf(comando_arquivo,"%*d)%s(%*d,%*d,%*d,%*d);", str);												printf("%s\n",str);
+								if (strncmp(str,"MOVE",4)==0){
+									printf("Detectei a palavra MOVE\n");
+									sscanf(comando_arquivo,"%*d)MOVE(%f,%f,%f,%f);", &Xuser, &Yuser, &Zuser, &PHIuser);
+									PHIuser = deg_to_rad(PHIuser);
+									goto OBFUSCACAO;							
+								}
+							break;
+							} //fecha o swith local
+							usleep(1500000);
+						} //fecha o while
+						       
+							 fclose(fp);
+							
+					}	 //fecha o else if
 
 					break;
 
