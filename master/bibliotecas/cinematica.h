@@ -44,12 +44,17 @@ float coor_z(float tet1, float tet2, float tet3, float tet4)    // usa a matrix 
  *	P[3] = theta4
  *
  */
-float *ptr_angles(float Xuser,float Yuser,float Zuser,float PHIuser)	// calcula os angulos usando x,y,z e inclinacao da garra
+float *ptr_angles(struct servo *ptrservo[5], float Xuser, float Yuser, float Zuser, float PHIuser)	// calcula os angulos usando x,y,z e inclinacao da garra
 {
-	float *P=malloc(sizeof(float)*4);
-	float A,B,C;
+	struct servo *base = ptrservo[0],
+		*ombro = ptrservo[1],
+		*cotovelo = ptrservo[2],
+		*punho = ptrservo[3];
+
+	float *P = malloc(sizeof(float)*4);
+	float A, B, C;
 	P[0] = atan2(Yuser,Xuser);
-	if (P[0] < base.angmin || P[0] > base.angmax || isnan(P[0])){
+	if (P[0] < base->angmin || P[0] > base->angmax || isnan(P[0])){
 		printf("Ang base invalido: %f\n", P[0]);
 		P[0] = 1000;
 		return P;
@@ -62,7 +67,7 @@ float *ptr_angles(float Xuser,float Yuser,float Zuser,float PHIuser)	// calcula 
 	 * é o negativo desse, ou seja, no intervalo (0, -pi).
 	 */
 	P[2] = (-1)*acos( (pow(A,2) + pow(B,2) - pow(L1,2) - pow(L2,2))/(2*L1*L2) ); 	
-	if (P[2] < cotovelo.angmin || P[2] > cotovelo.angmax || isnan(P[2])){
+	if (P[2] < cotovelo->angmin || P[2] > cotovelo->angmax || isnan(P[2])){
 		printf("Ang cot invalido: %f\n", P[2]);
 		P[0] = 1000;
 		return P;
@@ -75,7 +80,7 @@ float *ptr_angles(float Xuser,float Yuser,float Zuser,float PHIuser)	// calcula 
 	 * O intervalo total então é (-3pi/2,3pi/2).
 	 */
 	P[1] = asin(C/sqrt(pow(A,2)+pow(B,2))) - atan2(A,B);
-	if (P[1] < ombro.angmin || P[1] > ombro.angmax || isnan(P[1])){
+	if (P[1] < ombro->angmin || P[1] > ombro->angmax || isnan(P[1])){
 		printf("Ang omb invalido: %f\n", P[1]);
 		/*
 		 * Já essa outra resposta pro ombro, pegando o angulo secundário do sin (fazendo pi - asin), funcionou para algumas posições.
@@ -85,14 +90,14 @@ float *ptr_angles(float Xuser,float Yuser,float Zuser,float PHIuser)	// calcula 
 		 * Creio que analisando o intervalo total das duas respostas e a da limitação física do ombro seja possível provar que essa é a única possível
 		 */
 		P[1] = M_PI - asin(C/sqrt(pow(A,2)+pow(B,2))) - atan2(A,B);
-		if (P[1] < ombro.angmin || P[1] > ombro.angmax || isnan(P[1])){
+		if (P[1] < ombro->angmin || P[1] > ombro->angmax || isnan(P[1])){
 			printf("Ang omb invalido: %f\n", P[1]);
 			P[0] = 1000;
 			return P;
 		}
 	}
 	P[3] = PHIuser - P[2] - P[1];
-	if (P[3] < punho.angmin || P[3] > punho.angmax || isnan(P[3])){
+	if (P[3] < punho->angmin || P[3] > punho->angmax || isnan(P[3])){
 		printf("Ang punho invalido: %f\n", P[3]);
 		P[0] = 1000;
 		return P;

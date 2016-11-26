@@ -34,9 +34,9 @@ XFontStruct *carregar_fonte(Display *disp)
 	return fonte;
 }
 
-void desenha_texto(Display *disp, int tela, Window janela, char *texto, int verm, int verd, int azul, unsigned int x, unsigned int y)
+void desenha_texto(Display *disp, int tela, Window *janela, char *texto, int verm, int verd, int azul, unsigned int x, unsigned int y)
 {
-	GC gc = XCreateGC(disp, janela, 0, NULL);
+	GC gc = XCreateGC(disp, *janela, 0, NULL);
 	fonte = carregar_fonte(disp);
 	XSetFont(disp, gc, fonte->fid);
 	int largtexto = XTextWidth(fonte, texto, strlen(texto));
@@ -53,7 +53,7 @@ void desenha_texto(Display *disp, int tela, Window janela, char *texto, int verm
 	XSetBackground(disp, gc, cor.pixel);
 	XSetForeground(disp, gc, cor.pixel);
 
-	XDrawString(disp, janela, gc, x, y, texto, strlen(texto)); 
+	XDrawString(disp, *janela, gc, x, y, texto, strlen(texto)); 
 	free (fonte);
 }
 
