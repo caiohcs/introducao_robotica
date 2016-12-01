@@ -1,0 +1,13 @@
+Dois programas:
+
+Processamento.c -> compilar normal
+/* Roda fazendo ./pro nome_do_arquivo_de_imagem nome_do_arquivo_de_saida */
+ele abre a imagem do linux (linux.yuv) e deixa mais clara (gerando editado.yuv)
+para transformar o editado.yuv em jpg e poder visualizar, use:
+ffmpeg -s 626x626 -pix_fmt yuyv422 -i editado.yuv saida.jpg
+
+
+camera1.c -> compilar usando a biblioteca v4l2 (gcc -lv4l2 camera1.c -o camera1)
+ele abre a webcam, tira uma foto e salva como myimage.yuv
+para transformar em jpg, use:
+ffmpeg -s 640x480 -pix_fmt yuyv422 -i editado.yuv saida.jpg

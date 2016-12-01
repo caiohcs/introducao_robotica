@@ -1,0 +1,12 @@
+#!/bin/bash
+# My first script
+
+gcc processamento.c pixel.c escrita.c -lm -o couillon
+./couillon myimage.yuv x.yuv
+
+for i in `seq 0 9`;
+do
+	j=$(($i*10+10)) #O formato para fazer conta é $(())
+	echo $i
+	ffmpeg -s 640x480 -pix_fmt yuyv422 -i $i.yuv $j.jpg
+done

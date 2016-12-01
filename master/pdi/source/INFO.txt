@@ -1,0 +1,1 @@
+para rodar o codigo, basta mudar o limiar em estrica.c para o valor desejado e dps fazer ./script

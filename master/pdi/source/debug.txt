@@ -1,0 +1,4 @@
+Verifiquei o mapa e o jeito que esperávamos que o mapeamento fosse feito está correto.
+Y' cb Y' cr Y' cb Y' cr ...
+
+SOLUÇÃO: EU TINHA TROCA A LARGURA PELA ALTURA.
