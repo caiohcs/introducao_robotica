@@ -49,6 +49,7 @@ void learquivo(struct Mainwin_var *mainwin, int numpontos, char pontos[25][25], 
 {
 	
 	float Xuser = 0, Yuser = 0, Zuser = 0, PHIuser = 0;
+	float X, Y;
 	struct servo *base = ptrservo[0],
                 *ombro = ptrservo[1],
                 *cotovelo = ptrservo[2],
@@ -113,11 +114,14 @@ void learquivo(struct Mainwin_var *mainwin, int numpontos, char pontos[25][25], 
 				printf("%s\n", movebuffer);
 				if (strncmp(movebuffer, "MOVE", 4) == 0){
 					printf("Detectei a palavra MOVE\n");
-					sscanf(buffer, "%*d)MOVE(%f,%f,%f,%f);", &Xuser, &Yuser, &Zuser, &PHIuser);	
-					apagagarra(mainwin, Xuser, Yuser);
-					enviar_comandoX(mainwin->display);
+					X = coor_x(base->ang, ombro->ang, cotovelo->ang, punho->ang);
+					Y = (-1)*coor_y(base->ang, ombro->ang, cotovelo->ang, punho->ang);
+					apagagarra(mainwin, X, Y);
+					sscanf(buffer, "%*d)MOVE(%f,%f,%f,%f);", &Xuser, &Yuser, &Zuser, &PHIuser);
 					cinversa(serial_fd, ptrservo, Xuser, Yuser, Zuser, PHIuser);	
-					drawEixoEscalaGarraPontos(mainwin, Xuser, Yuser, pontos, numpontos);
+					X = coor_x(base->ang, ombro->ang, cotovelo->ang, punho->ang);
+					Y = (-1)*coor_y(base->ang, ombro->ang, cotovelo->ang, punho->ang);
+					drawEixoEscalaGarraPontos(mainwin, X, Y, pontos, numpontos);
 					enviar_comandoX(mainwin->display);
 					usleep(4000000);
 				}
