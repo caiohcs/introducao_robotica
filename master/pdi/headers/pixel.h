@@ -20,6 +20,7 @@ struct bloco create_block(struct pixel matriz[altura][largura], int k, int p);
 void alocate(struct pixel matriz[altura][largura], unsigned char *mmap);
 struct pixel edge_detection(struct bloco block);
 void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura*largura]);
+void generate_prox(struct pixel matriz[altura][largura]);
 void dealocate(struct pixel gradiente[altura][largura], unsigned char *mmap);
 /*Função de faz os calculos do apocalipse e retorn 255 se o valor estiver acima do limiar, e 0 se estiver abaixo.*/
 

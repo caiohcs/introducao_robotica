@@ -38,6 +38,28 @@ void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura
 }
 
 
+/*
+ *	Para cada pixel i,j; olha os oito pixels ao redor (i-1 j-1, i-1 j, etc)
+ *	e diz quantos fazem parte da borda (grad == 1). Não devemos olhar o x=0,y=0.
+ */
+
+void generate_prox(struct pixel matriz[altura][largura]){
+	for (int i = 0;i < altura; i++) {
+		for (int j = 0; j < largura; j++) {
+			matriz[i][j].prox = 0;
+			for (int x = -1; x <= 1; x++) {
+				for (int y = -1; y <= 1; y++) {
+					if (x != 0 || y != 0) {
+						if (matriz[i+x][j+y].grad == 1) matriz[i][j].prox++;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
 struct bloco create_block(struct pixel matriz[altura][largura], int k, int p){
 	struct bloco block;
 	
