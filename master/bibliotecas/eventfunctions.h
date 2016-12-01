@@ -45,8 +45,9 @@ void cinversa(int serial_fd, struct servo *ptrservo[5], float Xuser, float Yuser
 	free(P);
 }
 
-void learquivo(struct servo *ptrservo[5], int serial_fd)
+void learquivo(struct Mainwin_var *mainwin, int numpontos, char pontos[25][25], struct servo *ptrservo[5], int serial_fd)
 {
+	
 	float Xuser = 0, Yuser = 0, Zuser = 0, PHIuser = 0;
 	struct servo *base = ptrservo[0],
                 *ombro = ptrservo[1],
@@ -107,13 +108,18 @@ void learquivo(struct servo *ptrservo[5], int serial_fd)
 				}
 			break;
 
-			case 'M':
+			case 'M':	
 				sscanf(buffer, "%*d)%s(%*d,%*d,%*d,%*d);", movebuffer);
 				printf("%s\n", movebuffer);
 				if (strncmp(movebuffer, "MOVE", 4) == 0){
 					printf("Detectei a palavra MOVE\n");
-					sscanf(buffer, "%*d)MOVE(%f,%f,%f,%f);", &Xuser, &Yuser, &Zuser, &PHIuser);
-					cinversa(serial_fd, ptrservo, Xuser, Yuser, Zuser, PHIuser);
+					sscanf(buffer, "%*d)MOVE(%f,%f,%f,%f);", &Xuser, &Yuser, &Zuser, &PHIuser);	
+					apagagarra(mainwin, Xuser, Yuser);
+					enviar_comandoX(mainwin->display);
+					cinversa(serial_fd, ptrservo, Xuser, Yuser, Zuser, PHIuser);	
+					drawEixoEscalaGarraPontos(mainwin, Xuser, Yuser, pontos, numpontos);
+					enviar_comandoX(mainwin->display);
+					usleep(4000000);
 				}
 			break;
 		} 
@@ -134,11 +140,8 @@ int evento_keypress(int serial_fd, struct Mainwin_var *mainwin, struct servo *pt
                 *punho = ptrservo[3],
                 *garra = ptrservo[4];
 
-	XDrawArc(mainwin->display, *(mainwin->mainwin), *(mainwin->gc_branco), 
-		coordX_pixels((*CY)*7, mainwin->larg)-5,
-		coordY_pixels((-7)*(*CX), mainwin->altw)-5,
-		10, 10 , 0, 360*64);					// Apaga a última posicao da garra        
-	
+	apagagarra(mainwin, *CX, *CY);
+
 	switch(*key_symbol)
 	{
 		case XK_D:                                             //aumenta e diminui o angulo da base
@@ -212,7 +215,7 @@ int evento_keypress(int serial_fd, struct Mainwin_var *mainwin, struct servo *pt
 				
 				cinversa(serial_fd, ptrservo, Xuser, Yuser, Zuser, PHIuser);
 			} else if (strcmp(buffer, "arquivo\n") == 0) {
-				learquivo(ptrservo, serial_fd);
+				learquivo(mainwin, *numpontos, pontos, ptrservo, serial_fd);
 			}       
 		break;
 

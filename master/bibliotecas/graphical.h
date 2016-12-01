@@ -46,6 +46,14 @@ void desenha_escala(Display *disp, int tela, Window *janela, unsigned int altjan
 	}
 }
 
+void apagagarra(struct Mainwin_var *mainwin, float CX, float CY)
+{
+	XDrawArc(mainwin->display, *(mainwin->mainwin), *(mainwin->gc_branco),
+        	coordX_pixels((CY)*7, mainwin->larg)-5,
+                coordY_pixels((-7)*(CX), mainwin->altw)-5,
+                10, 10 , 0, 360*64);
+}
+
 
 void drawEixoEscalaGarraPontos(struct Mainwin_var *main_win, float CX, float CY, char pontos[25][25], int numpontos)
 {
