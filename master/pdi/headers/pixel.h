@@ -4,6 +4,7 @@
 
 struct pixel{
 	unsigned char luma, cb, cr;
+	unsigned char grad, prox;
 };
 
 /*O bloco é uma estrutura que contém o luma de

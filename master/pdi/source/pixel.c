@@ -17,7 +17,9 @@ unsigned char gradient_check(struct bloco block){
 
 struct pixel edge_detection(struct bloco block){
 	struct pixel gradiente;		
-	gradiente.luma=gradient_check(block);
+	if ((gradiente.luma=gradient_check(block))==255){
+		gradiente.grad = 1;
+	}
 	gradiente.cb=128;
 	gradiente.cr=128;   	
 	
