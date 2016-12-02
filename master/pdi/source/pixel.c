@@ -65,8 +65,8 @@ void generate_prox(struct pixel matriz[altura][largura]){
 		}
 	   }
 	}
-
 }
+
 
 
 struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, int R){

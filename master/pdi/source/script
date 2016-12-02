@@ -1,7 +1,7 @@
 #!/bin/bash
 # My first script
 
-gcc -std=c11 processamento.c pixel.c escrita.c -lm -o couillon
+gcc -std=c11 deteccao.c processamento.c pixel.c escrita.c -lm -o couillon
 ./couillon myimage.yuv x.yuv
 
 for i in `seq 0 0`;

@@ -10,6 +10,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	generate_prox(matriz);
 	shrink(matriz, 4);
 	swell(matriz, 6);
+	detect_circle(matriz);
 	dealocate(matriz, prototipo);
 	arquivo[0]='0' + 0; //Cheat de converter o inteiro para char
 	escrita(arquivo, prototipo);
