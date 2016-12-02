@@ -12,6 +12,7 @@
 #include "pixel.h" 
 #include <math.h>
 #include "escrita.h"
+#include "deteccao.h"
 #endif
 
 #ifndef PARAMETROS

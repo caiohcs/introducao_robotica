@@ -8,10 +8,13 @@ struct pixel gradient_check(struct bloco block){
  	struct pixel pixel_temp;	
 	pixel_temp.cb=128;
 	pixel_temp.cr=128;
-	float grad_luma;
-	grad_luma = (float)(pow((block.i1j1-block.ij),2) + pow((block.ij1-block.i1j),2))/2.0*delta_x;
-	
-	if (grad_luma>=limiar) {
+	float grad_luma, grad_cb, grad_cr;
+	grad_luma = (float)(pow((block.i1j1_luma-block.ij_luma),2) + pow((block.ij1_luma-block.i1j_luma),2))/2.0*delta_x;
+	grad_cb = (float)(pow((block.i1j1_cb-block.ij_cb),2) + pow((block.ij1_cb-block.i1j_cb),2))/2.0*delta_x;
+	grad_cr = (float)(pow((block.i1j1_cr-block.ij_cr),2) + pow((block.ij1_cr-block.i1j_cr),2))/2.0*delta_x;
+
+		
+	if (grad_luma>=limiar) {// || grad_cb>=limiar || grad_cr>=limiar) {
 	   pixel_temp.luma=255;
 	   pixel_temp.grad=1;
 	}  else {
@@ -55,7 +58,7 @@ void generate_prox(struct pixel matriz[altura][largura]){
 		      if ((i+x<0 || j+y <0) || (i+x >= altura || j+y >= largura)) continue;
 			if (x != 0 || y != 0) {
 			  if (matriz[i+x][j+y].grad == 1) {
-			  matriz[i][j].prox++;
+			    matriz[i][j].prox++;
 			}
 		      }
 	           }
@@ -96,7 +99,7 @@ struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, 
  * esse pixel parte do grad.
  */
 void swell(struct pixel matriz[altura][largura], int nprox) {
-	for (int i=0;i < altura;i++) {
+        for (int i=0;i < altura;i++) {
 	  for (int j=0;j < largura; j++) {
 	    if(matriz[i][j].prox>=nprox) {
 	      matriz[i][j].grad=1;
@@ -105,7 +108,6 @@ void swell(struct pixel matriz[altura][largura], int nprox) {
 	  }
 	}
 }
-
 
 /*
  * Operador de erosão. Fecha buracos.
@@ -126,10 +128,21 @@ void shrink(struct pixel matriz[altura][largura], int nprox) {
 struct bloco create_block(struct pixel matriz[altura][largura], int k, int p){
 	struct bloco block;
 	
-	block.ij=matriz[k][p].luma;
-	block.ij1=matriz[k][p+1].luma;
-	block.i1j=matriz[k+1][p].luma;
-	block.i1j1=matriz[k+1][p+1].luma;
+	block.ij_luma=matriz[k][p].luma;
+	block.ij_cb=matriz[k][p].cb;
+	block.ij_cr=matriz[k][p].cr;
+
+	block.ij1_luma=matriz[k][p+1].luma;
+	block.ij1_cb=matriz[k][p+1].cb;
+	block.ij1_cr=matriz[k][p+1].cr;
+
+	block.i1j_luma=matriz[k+1][p].luma;
+	block.i1j_cb=matriz[k+1][p].cb;
+	block.i1j_cr=matriz[k+1][p].cr;
+
+	block.i1j1_luma=matriz[k+1][p+1].luma;
+	block.i1j1_cb=matriz[k+1][p+1].cb;
+	block.i1j1_cr=matriz[k+1][p+1].cr;
 
 	return block;
 }
