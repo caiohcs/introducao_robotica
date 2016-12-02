@@ -4,25 +4,26 @@
 /*Verifica se um pixel gerador do bloco block tem 
 valor de gradiente acima do limiar estabelecido.*/
 
-unsigned char gradient_check(struct bloco block){
+struct pixel gradient_check(struct bloco block){
+ 	struct pixel pixel_temp;	
+	pixel_temp.cb=128;
+	pixel_temp.cr=128;
 	float grad_luma;
 	grad_luma = (float)(pow((block.i1j1-block.ij),2) + pow((block.ij1-block.i1j),2))/2.0*delta_x;
 	
-	if (grad_luma>=limiar) return 255;
-	
-	return 0;
+	if (grad_luma>=limiar) {
+	   pixel_temp.luma=255;
+	}  else {
+	   pixel_temp.luma=0;
+           }
+	return pixel_temp;
 }
 
 /*Ler gradiente_check*/
 
 struct pixel edge_detection(struct bloco block){
 	struct pixel gradiente;		
-	if ((gradiente.luma=gradient_check(block))==255){
-		gradiente.grad = 1;
-	}
-	gradiente.cb=128;
-	gradiente.cr=128;   	
-	
+	gradiente=gradient_check(block);	
 	return gradiente;
 }
 

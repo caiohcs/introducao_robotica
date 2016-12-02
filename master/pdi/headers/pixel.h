@@ -3,7 +3,7 @@
 #include "cabecalho.h"
 
 struct pixel{
-	unsigned char luma, cb, cr;
+	unsigned char luma,cb, cr;
 	unsigned char grad, prox;
 };
 
@@ -24,5 +24,5 @@ void generate_prox(struct pixel matriz[altura][largura]);
 void dealocate(struct pixel gradiente[altura][largura], unsigned char *mmap);
 /*Função de faz os calculos do apocalipse e retorn 255 se o valor estiver acima do limiar, e 0 se estiver abaixo.*/
 
-unsigned char gradient_check(struct bloco block);	
+struct pixel gradient_check(struct bloco block);	
 #endif
