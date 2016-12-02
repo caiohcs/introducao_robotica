@@ -2,6 +2,7 @@
 
 void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struct bloco block[altura*largura], unsigned char *arquivo) {
 	limiar=10;
+	raio=8;
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
 	alocate(matriz,mapa);
@@ -10,6 +11,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	generate_prox(matriz);
 	shrink(matriz, 4);
 	swell(matriz, 6);
+	find_surround(matriz,raio);
 	dealocate(matriz, prototipo);
 	arquivo[0]='0' + 0; //Cheat de converter o inteiro para char
 	escrita(arquivo, prototipo);

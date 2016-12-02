@@ -38,16 +38,10 @@ void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura
 void generate_prox(struct pixel matriz[altura][largura]);
 void AI(struct pixel grad[altura][largura]);
 void dealocate(struct pixel gradiente[altura][largura], unsigned char *mmap);
-<<<<<<< Updated upstream
 void swell(struct pixel matriz[altura][largura], int nprox);
 void shrink(struct pixel matriz[altura][largura], int nprox);
 int pix_erro(struct pixel original, struct pixel compare); 
 struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, int R);
 /*Função de faz os calculos do apocalipse e retorn 255 se o valor estiver acima do limiar, e 0 se estiver abaixo.*/
-
-=======
-void shrink(struct pixel matriz[altura][largura]);
-void swell(struct pixel matriz[altura][largura]);
->>>>>>> Stashed changes
 struct pixel gradient_check(struct bloco block);	
 #endif

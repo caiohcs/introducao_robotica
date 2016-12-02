@@ -33,4 +33,5 @@
 #define delta_x 1
 #define delta_y 1
 int extern limiar;
+int extern raio;
 #endif

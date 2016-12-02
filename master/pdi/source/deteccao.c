@@ -1,30 +1,64 @@
-#include "cabecalho.h"
+#include "../headers/cabecalho.h"
 
-
-void find_round(struct pixel matriz[altura][largura]) {
-	int check=0;
-	int count=1;
-	for (int i=0;i<altura;i++) {
-	  for (int j=0;j<largura;j++) {
-	     if (matriz[i][j].prox==8) {
-	       check=(int)matriz[i][j].prox;
-	       while (count <=2) {
-	            if (count == 1) {
-		      for (int y=-2;y<=2;y++) {
-		       	 if ((i-2<0 || j+y <0) || (i+2 >= altura || j+y >= largura)) continue;
-		         if (matriz[i-2][j+y].grad==1) check++;
-			 if (matriz[i+2][j+y].grad==1) check++;
-		      }
-		    }else {
-		       for (int x=-2;x<=2;x++) {
-		       	  if ((i+x<0 || j-2 <0) || (i+x >= altura || j+2 >= largura)) continue;
-		          if (matriz[i+x][j-2].grad==1) check++;
-			  if (matriz[i+x][j+2].grad==1) check++;    
+void paint_surround(struct pixel matriz[altura][largura]){
+	int gray_count=0;
+	raio=3;
+	for (int i=110;i<350;i++) {
+	    for (int j=340;j<510;j++) { 
+            if (matriz[i][j].prox==8) {
+	       for (int x=i-raio;x<=i+raio;x++) {
+		  for (int y=j-raio;y<=j+raio;y++) {
+ 			if ((x<0 || y <0) || (x >= altura || y >= largura)) continue;
+		          if ((pow(i-x,2) + pow(j-y,2)) <= pow(raio,2)) {
+			  if (matriz[x][y].luma==128 && matriz[x][y].grad==1) gray_count++;  
+		  	  } 
+		  }	
+	       }   
+	  	 if (gray_count>=10) {
+		 /*for (int x=i-raio;x<=i+raio;x++) {
+	       	   for (int y=j-raio;y<=j+raio;y++) { 
+		      if ((x<0 || y <0) || (x >= altura || y >= largura)) continue;
+		       if ((pow(i-x,2) + pow(j-y,2)) <= pow(raio,2)) {
+		  	matriz[x][y].luma=128;	
 		       } 
-		     }
-	        count++;	
-		} 
-	     }
+		   } 
+                 }*/matriz[i][j].luma=128;	
+	         } else matriz[i][j].luma=255;
+	    } 
+	   gray_count=0;
+	 }  
+        }
+
+	/*for (int i=0; i<altura; i++) {
+	   for (int j=0;j<largura; j++) {
+		if (matriz[i][j].luma!=128) matriz[i][j].luma=0;  
 	   }
-	 }
+	}*/
 }
+
+
+void find_surround(struct pixel matriz[altura][largura],int raio) {
+	int black_count=0;
+	int white_count=0;
+	for (int i=110;i<350;i++) {
+	    for (int j=340;j<510;j++) { 
+            if (matriz[i][j].prox==8) {
+	       for (int x=i-raio;x<=i+raio;x++) {
+		  for (int y=j-raio;y<=j+raio;y++) {
+ 			if ((x<0 || y <0) || (x >= altura || y >= largura)) continue;
+		          if ((pow(i-x,2) + pow(j-y,2)) <= pow(raio,2)) {
+			  if (matriz[x][y].grad==1) white_count++;
+			  if (matriz[x][y].grad==0) black_count++;    
+		  } 
+		}	
+	     } 
+	   }  
+	  /*12 e 15 são os valores da metade do intervalo de aceitação do branco e preto*/
+	  if ( abs(white_count-50) < 12 && abs(black_count - 150) < 15 ) matriz[i][j].luma=128;
+	  black_count=0;
+	  white_count=0;
+	  }
+	 }
+	paint_surround(matriz);
+}
+

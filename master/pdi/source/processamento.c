@@ -1,7 +1,7 @@
 #include "../headers/cabecalho.h"
 
 int limiar = 0;
-
+int raio =0;
 int main(int argc, char *argv[]){
 	
 	/*O primeiro argumento é o nome do próprio programa. O segundo é o nome da imagem.
