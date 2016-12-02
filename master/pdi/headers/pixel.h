@@ -25,7 +25,9 @@ um pixel e os outros três ao seu redor necessários
 para os cálculos do gradiente. */
 
 struct bloco{
-	unsigned char ij, ij1, i1j, i1j1;
+	unsigned char ij_luma, ij1_luma, i1j_luma, i1j1_luma;
+	unsigned char ij_cb, ij1_cb, i1j_cb, i1j1_cb;
+	unsigned char ij_cr, ij1_cr, i1j_cr, i1j1_cr;
 };
 
 void array_bloco(struct bloco block[altura*largura], struct pixel matriz[altura][largura]);

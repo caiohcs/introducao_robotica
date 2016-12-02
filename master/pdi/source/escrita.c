@@ -4,21 +4,14 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
 
-	    alocate(matriz,mapa);
-	   // array_bloco(block, matriz);
-	   // generate_grad(matriz, block);	
-	   // generate_prox(matriz);
-	   // shrink(matriz, 4);
-	   // swell(matriz, 6);
-	   //
-	    struct pixel pixblue = lumcbcr_medium(matriz, 168, 473, 9);
-	    printf("Azul: %d %d %d\n", (unsigned int) pixblue.luma, (unsigned int) pixblue.cb, (unsigned int) pixblue.cr);
-	    
-	    AI(matriz);
+	 alocate(matriz,mapa);
+	 array_bloco(block, matriz);
+	 generate_grad(matriz, block);	
+	 generate_prox(matriz);
+	 shrink(matriz, 4);
+	 swell(matriz, 6);
 	    dealocate(matriz, prototipo);
-	    printf("nome do arquivo: %s\n",arquivo);
 	    arquivo[0]='0' + 0; //Cheat de converter o inteiro para char
-	    printf("Nome do arquivo modificado: %s\n", arquivo);
 	    escrita(arquivo, prototipo);
 	    printf("Valor do limiar: %d\n", limiar);
 
