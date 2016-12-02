@@ -13,9 +13,11 @@ struct pixel gradient_check(struct bloco block){
 	
 	if (grad_luma>=limiar) {
 	   pixel_temp.luma=255;
+	   pixel_temp.grad=1;
 	}  else {
 	   pixel_temp.luma=0;
-           }
+           pixel_temp.grad=0;
+	   }
 	return pixel_temp;
 }
 
@@ -46,20 +48,37 @@ void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura
 
 void generate_prox(struct pixel matriz[altura][largura]){
 	for (int i = 0;i < altura; i++) {
-		for (int j = 0; j < largura; j++) {
-			matriz[i][j].prox = 0;
-			for (int x = -1; x <= 1; x++) {
-				for (int y = -1; y <= 1; y++) {
-					if (x != 0 || y != 0) {
-						if (matriz[i+x][j+y].grad == 1) matriz[i][j].prox++;
-					}
-				}
+	   for (int j = 0; j < largura; j++) {
+	      matriz[i][j].prox = 0;
+		for (int x = -1; x <= 1; x++) {
+		   for (int y = -1; y <= 1; y++) {
+		      if ((i+x<0 || j+y <0) || (i+x >= altura || j+y >= largura)) continue;
+			if (x != 0 || y != 0) {
+			  if (matriz[i+x][j+y].grad == 1) {
+			  matriz[i][j].prox++;
 			}
+		      }
+	           }
 		}
+	   }
 	}
 
 }
 
+
+void swell(struct pixel matriz[altura][largura]) {
+	for (int i=0;i < altura;i++) {
+	  for (int j=0;j < largura; j++) {
+	    if(matriz[i][j].prox<=4) {
+	      matriz[i][j].grad=0;
+	      matriz[i][j].luma=0;
+	    }
+	  }
+	
+	}
+
+
+}
 
 struct bloco create_block(struct pixel matriz[altura][largura], int k, int p){
 	struct bloco block;

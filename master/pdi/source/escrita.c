@@ -10,6 +10,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	    array_bloco(block, matriz);
 	    generate_grad(matriz, block);	
 	    generate_prox(matriz);
+	    swell(matriz);
 	    dealocate(matriz, prototipo);
 	    printf("nome do arquivo: %s\n",arquivo);
 	    arquivo[0]='0' + i; //Cheat de converter o inteiro para char
