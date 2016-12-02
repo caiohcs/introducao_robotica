@@ -4,6 +4,7 @@
 void detect_circle(struct pixel matriz[altura][largura]){
         for (int i = 110; i < 350; i++) {
                 for (int j = 340; j < 510; j++) {
+			matriz[i][j].circle = 0;
 			calc_circle(matriz, i, j);
                 }
         }
@@ -26,8 +27,59 @@ void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
                 matriz[X][Y].luma = 116;
                 matriz[X][Y].cb = 191;
                 matriz[X][Y].cr = 80;
+		matriz[X][Y].circle = 1;
 	}
 }
+
+
+
+void generate_proxcircle(struct pixel matriz[altura][largura]){
+        for (int i = 110; i < 350; i++) {
+           for (int j = 340; j < 510; j++) {
+              matriz[i][j].proxcircle = 0;
+                for (int x = -1; x <= 1; x++) {
+                   for (int y = -1; y <= 1; y++) {
+                        if (x != 0 || y != 0) {
+			  if (matriz[i+x][j+y].circle == 1) {
+                            matriz[i][j].proxcircle++;
+			}
+                      }
+                   }
+                }
+           }
+        }
+}
+
+void swell_circle(struct pixel matriz[altura][largura], int nprox) {
+        for (int i = 110; i < 350; i++) {
+           for (int j = 340; j < 510; j++) {
+            if(matriz[i][j].proxcircle>=nprox) {
+              	matriz[i][j].circle=1;
+                matriz[i][j].luma = 116;
+                matriz[i][j].cb = 191;
+                matriz[i][j].cr = 80;
+            }
+          }
+        }
+}
+
+void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
+        for (int i = 110; i < 350; i++) {
+           for (int j = 340; j < 510; j++) {
+            if(matriz[i][j].proxcircle<=nprox) {
+              matriz[i][j].circle=0;
+              matriz[i][j].luma=0;
+              matriz[i][j].cb=128;
+              matriz[i][j].cr=128;
+	    }
+          }
+        }
+}
+
+
+
+
+
 
 
 
