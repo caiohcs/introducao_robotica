@@ -1,10 +1,10 @@
 #!/bin/bash
 # My first script
 
-gcc processamento.c pixel.c escrita.c -lm -o couillon
+gcc -std=c11 processamento.c pixel.c escrita.c -lm -o couillon
 ./couillon myimage.yuv x.yuv
 
-for i in `seq 0 9`;
+for i in `seq 0 0`;
 do
 	j=$(($i*10+10)) #O formato para fazer conta é $(())
 	echo $i

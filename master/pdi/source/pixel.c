@@ -66,18 +66,61 @@ void generate_prox(struct pixel matriz[altura][largura]){
 }
 
 
-void swell(struct pixel matriz[altura][largura]) {
+struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, int R){
+	struct pixel pixeltmp;
+	int luma = 0;
+	int cb = 0;
+	int cr = 0;
+	int npixels = 0;
+	for (int i=0; i < altura;i++) {
+		for (int j=0; j < largura; j++) {
+			if (pow(i-X,2) + pow(j-Y,2) <= pow(R,2)) {
+				luma += matriz[i][j].luma;
+				cb += matriz[i][j].cb;
+				cr += matriz[i][j].cr;
+				npixels++;
+			}
+		}
+	}
+	pixeltmp.cb = cb/npixels;
+	pixeltmp.cr = cr/npixels;
+	pixeltmp.luma = luma/npixels;
+	return pixeltmp;
+}
+
+
+
+/*
+ * Operador de dilatação. Fecha buracos.
+ * Se mais do que nprox forem parte do grad, faça
+ * esse pixel parte do grad.
+ */
+void swell(struct pixel matriz[altura][largura], int nprox) {
 	for (int i=0;i < altura;i++) {
 	  for (int j=0;j < largura; j++) {
-	    if(matriz[i][j].prox<=4) {
+	    if(matriz[i][j].prox>=nprox) {
+	      matriz[i][j].grad=1;
+	      matriz[i][j].luma=255;
+	    }
+	  }
+	}
+}
+
+
+/*
+ * Operador de erosão. Fecha buracos.
+ * Se menos do que nprox forem parte do grad, faça
+ * esse pixel não ser parte do grad.
+ */
+void shrink(struct pixel matriz[altura][largura], int nprox) {
+	for (int i=0;i < altura;i++) {
+	  for (int j=0;j < largura; j++) {
+	    if(matriz[i][j].prox<=nprox) {
 	      matriz[i][j].grad=0;
 	      matriz[i][j].luma=0;
 	    }
 	  }
-	
 	}
-
-
 }
 
 struct bloco create_block(struct pixel matriz[altura][largura], int k, int p){
