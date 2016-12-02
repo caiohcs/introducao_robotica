@@ -13,6 +13,7 @@
 #include <math.h>
 #include "escrita.h"
 #include "deteccao.h"
+#include "regiao.h"
 #endif
 
 #ifndef PARAMETROS
