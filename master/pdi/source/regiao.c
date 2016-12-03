@@ -62,7 +62,7 @@ void detect_regiao(struct pixel matriz[altura][largura])
 
 
 	for (int j = 0; j < nregs; j++){
-		printf("Regiao: %d CentroX : %d Centro Y: %d\n", j+1, centros[j].X, centros[j].Y);
+		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros[j].X, centros[j].Y);
 	}
 }
 

@@ -33,8 +33,8 @@ struct pixel edge_detection(struct bloco block){
 }
 
 void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura*largura]){
-	for (int i=0;i<altura;i++){
-	    for (int j=0; j<largura; j++){
+	for (int i = altmin; i < altmax;i++){
+	    for (int j = largmin; j < largmax; j++){
 	        grad[i][j] = edge_detection(block[i*largura + j]);
 		
             }
@@ -50,12 +50,12 @@ void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura
  */
 
 void generate_prox(struct pixel matriz[altura][largura]){
-	for (int i = 0;i < altura; i++) {
-	   for (int j = 0; j < largura; j++) {
+	for (int i = altmin; i < altmax; i++) {
+	   for (int j = largmin; j < largmax; j++) {
 	      matriz[i][j].prox = 0;
 		for (int x = -1; x <= 1; x++) {
 		   for (int y = -1; y <= 1; y++) {
-		      if ((i+x<0 || j+y <0) || (i+x >= altura || j+y >= largura)) continue;
+	// if ((i+x<0 || j+y <0) || (i+x >= altura || j+y >= largura)) continue; esse if não é mais necessário já que não começa de 00 e nao vai ate maxmax
 			if (x != 0 || y != 0) {
 			  if (matriz[i+x][j+y].grad == 1) {
 			    matriz[i][j].prox++;
@@ -75,8 +75,8 @@ struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, 
 	int cb = 0;
 	int cr = 0;
 	int npixels = 0;
-	for (int i=0; i < altura;i++) {
-		for (int j=0; j < largura; j++) {
+	for (int i = X-R-1; i < X+R+1; i++) {
+		for (int j = Y-R-1; j < Y+R+1; j++) {
 			if (pow(i-X,2) + pow(j-Y,2) <= pow(R,2)) {
 				luma += matriz[i][j].luma;
 				cb += matriz[i][j].cb;
@@ -99,8 +99,8 @@ struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, 
  * esse pixel parte do grad.
  */
 void swell(struct pixel matriz[altura][largura], int nprox) {
-        for (int i=0;i < altura;i++) {
-	  for (int j=0;j < largura; j++) {
+        for (int i = altmin; i < altmax;i++) {
+	  for (int j = largmin; j < largmax; j++) {
 	    if(matriz[i][j].prox>=nprox) {
 	      matriz[i][j].grad=1;
 	      matriz[i][j].luma=255;
@@ -115,8 +115,8 @@ void swell(struct pixel matriz[altura][largura], int nprox) {
  * esse pixel não ser parte do grad.
  */
 void shrink(struct pixel matriz[altura][largura], int nprox) {
-	for (int i=0;i < altura;i++) {
-	  for (int j=0;j < largura; j++) {
+	for (int i = altmin; i < altmax; i++) {
+	  for (int j= largmin; j < largmax; j++) {
 	    if(matriz[i][j].prox<=nprox) {
 	      matriz[i][j].grad=0;
 	      matriz[i][j].luma=0;
@@ -153,8 +153,8 @@ visto que a função de detecção apenas aceita um bloco por vez */
 
 
 void array_bloco(struct bloco block[altura*largura], struct pixel matriz[altura][largura]){
-	for (int i=0; i<altura;i++){
-	    for(int j=0;j<largura;j++){
+	for (int i = altmin; i < altmax; i++){
+	    for(int j = largmin; j < largmax; j++){
 	       block[i*largura+j]=create_block(matriz, i,j);
             }
 	}

@@ -2,8 +2,8 @@
 
 
 void detect_circle(struct pixel matriz[altura][largura]){
-        for (int i = 110; i < 350; i++) {
-                for (int j = 340; j < 510; j++) {
+        for (int i = altmin; i < altmax; i++) {
+                for (int j = largmin; j < largmax; j++) {
 			matriz[i][j].circle = 0;
 			calc_circle(matriz, i, j);
                 }
@@ -14,7 +14,7 @@ void detect_circle(struct pixel matriz[altura][largura]){
 void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
         int nbranco = 0;
         int npreto = 0;
-        for (int i = X-12; i < X+12; i++) {
+        for (int i = X-9; i < X+9; i++) {
                 for (int j = Y-12; j < Y+12; j++) {
                         if (pow(i-X, 2) + pow(j-Y, 2) <= pow(8, 2)) {
                                 if (matriz[i][j].grad == 1) nbranco++;
@@ -34,8 +34,8 @@ void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
 
 
 void generate_proxcircle(struct pixel matriz[altura][largura]){
-        for (int i = 110; i < 350; i++) {
-           for (int j = 340; j < 510; j++) {
+        for (int i = altmin; i < altmax; i++) {
+           for (int j = largmin; j < largmax; j++) {
               matriz[i][j].proxcircle = 0;
                 for (int x = -1; x <= 1; x++) {
                    for (int y = -1; y <= 1; y++) {
@@ -51,8 +51,8 @@ void generate_proxcircle(struct pixel matriz[altura][largura]){
 }
 
 void swell_circle(struct pixel matriz[altura][largura], int nprox) {
-        for (int i = 110; i < 350; i++) {
-           for (int j = 340; j < 510; j++) {
+        for (int i = altmin; i < altmax; i++) {
+           for (int j = largmin; j < largmax; j++) {
             if(matriz[i][j].proxcircle>=nprox) {
               	matriz[i][j].circle=1;
                 matriz[i][j].luma = 116;
@@ -64,8 +64,8 @@ void swell_circle(struct pixel matriz[altura][largura], int nprox) {
 }
 
 void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
-        for (int i = 110; i < 350; i++) {
-           for (int j = 340; j < 510; j++) {
+        for (int i = altmin; i < altmax; i++) {
+           for (int j = largmin; j < largmax; j++) {
             if(matriz[i][j].proxcircle<=nprox) {
               matriz[i][j].circle=0;
               matriz[i][j].luma=0;
