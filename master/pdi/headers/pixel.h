@@ -4,7 +4,7 @@
 
 struct pixel{
 	unsigned char luma,cb, cr;
-	unsigned char grad, prox, circle, proxcircle;
+	unsigned char grad, prox, circle, proxcircle, team;
 };
 
 

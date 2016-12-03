@@ -5,6 +5,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
 	alocate(matriz,mapa);
+	/*
 	array_bloco(block, matriz);
 	generate_grad(matriz, block);	
 	generate_prox(matriz);
@@ -17,6 +18,9 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	shrink_circle(matriz, 5);
 	generate_proxcircle(matriz);
 	detect_regiao(matriz);
+	*/
+
+	AI(matriz);
 	
 	dealocate(matriz, prototipo);
 	arquivo[0]='0' + 0; //Cheat de converter o inteiro para char
@@ -28,86 +32,49 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 void AI(struct pixel matriz[altura][largura])
 {
 	    
-	/*
-	*	Valores médios dos lumas, cbs, crs
-	*	de peças amarelas e azuis e posições vazias.
-	*	Para calibrar, tire uma foto, determine
-	*	o centro das peças e use a função  lumcbcr_medium.
-	*
-	*/
-	struct pixel pixyellow;
-	pixyellow.luma = 230;
-	pixyellow.cb = 65;
-	pixyellow.cr = 144;
-	struct pixel pixblue;
-	pixblue.luma = 116;
-	pixblue.cb = 191;
-	pixblue.cr = 80;
-	struct pixel pixA;
-	pixA.luma = 241;
-	pixA.cb = 134;
-	pixA.cr = 128;
-	struct pixel pixRH;
-	pixRH.luma = 253;
-	pixRH.cb = 128;
-	pixRH.cr = 127;
+	struct pixel pixteam1; //verde
+	pixteam1.luma = 182;
+	pixteam1.cb = 104;
+	pixteam1.cr = 115;
+	struct pixel pixteam2; //vermelho
+	pixteam2.luma = 144;
+	pixteam2.cb = 122;
+	pixteam2.cr = 159;
 
+	generate_teams(matriz, pixteam1, pixteam2);
+	detect_regiaoteam(matriz);
+}
 
-	struct posicao A[3][3];
-	struct posicao R[6];
-	struct posicao H[6];
-	A[0][0].X = 196;
-	A[0][0].Y = 460;
-	A[0][1].X = 193;
-	A[0][1].Y = 424;
-	A[0][2].X = 190;
-	A[0][2].Y = 387;
+void generate_teams(struct pixel matriz[altura][largura], struct pixel team1, struct pixel team2)
+{
+	struct pixel tmp;
 
-	A[1][0].X = 233;
-	A[1][0].Y = 458;
-	A[1][1].X = 230;
-	A[1][1].Y = 422;
-	A[1][2].X = 228;
-	A[1][2].Y = 385;
-
-	A[2][0].X = 267;
-	A[2][0].Y = 455;
-	A[2][1].X = 265;
-	A[2][1].Y = 419;
-	A[2][2].X = 263;
-	A[2][2].Y = 383;
-	
-	for (int i = 0; i < 3; i++){
-		for (int j = 0; j < 3; j++){
-			A[i][j].pix = lumcbcr_medium(matriz, A[i][j].X, A[i][j].Y, 13);
+	for (int i = altmin; i < altmax; i++) {
+		for (int j = largmin; j < largmax; j++) {
+			tmp = lumcbcr_medium(matriz, i, j, 8);
+			matriz[i][j].team = 0;
+			if (pix_erro(tmp, team1) < 20) matriz[i][j].team = 1;
+			if (pix_erro(tmp, team2) < 20) matriz[i][j].team = 2;
 		}
 	}
 
-	int erro = 0, errovazio = 0, erroamarelo = 0, erroazul = 0;
-	
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			errovazio = pix_erro(A[i][j].pix, pixA);
-			erroamarelo = pix_erro(A[i][j].pix, pixyellow);
-			erroazul = pix_erro(A[i][j].pix, pixblue);
-			erro = min(errovazio, min(erroamarelo, erroazul));		
-			if (erro == errovazio) {
-				A[i][j].status = 0;
-				printf("A %d%d vazio, erro %d\n", i, j, erro); 
-			} else if (erro == erroamarelo) {
-				A[i][j].status = 1;
-				printf("A %d%d amarelo, erro %d\n", i, j, erro); 
-			} else if (erro == erroazul) {
-				A[i][j].status = 2;
-				printf("A %d%d azul, erro %d\n", i, j, erro); 
+	for (int i = altmin; i < altmax; i++) {
+		for (int j = largmin; j < largmax; j++) {
+			matriz[i][j].luma = 0;
+			matriz[i][j].cb = 128;
+			matriz[i][j].cr = 128;
+			if (matriz[i][j].team == 1) {
+				matriz[i][j].luma = team1.luma;
+				matriz[i][j].cb = team1.cb;
+				matriz[i][j].cr = team1.cr;
+			} else if (matriz[i][j].team == 2) {
+				matriz[i][j].luma = team2.luma;
+				matriz[i][j].cb = team2.cb;
+				matriz[i][j].cr = team2.cr;
 			}
-				
 		}
 	}
 }
-
-
-
 
 int pix_erro(struct pixel original, struct pixel compare){
 	int erro = 0;

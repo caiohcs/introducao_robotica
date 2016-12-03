@@ -34,9 +34,9 @@
 #define delta_x 1
 #define delta_y 1
 #define altmin 110
-#define altmax 350
+#define altmax 384
 #define largmin 340
-#define largmax 510
+#define largmax 545
 
 int extern limiar;
 #endif
