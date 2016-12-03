@@ -5,6 +5,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
 	alocate(matriz,mapa);
+	
 	/*
 	array_bloco(block, matriz);
 	generate_grad(matriz, block);	
@@ -17,6 +18,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 	generate_proxcircle(matriz);
 	shrink_circle(matriz, 5);
 	generate_proxcircle(matriz);
+	
 	detect_regiao(matriz);
 	*/
 

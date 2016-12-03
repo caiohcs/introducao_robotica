@@ -44,6 +44,7 @@ void detect_regiao(struct pixel matriz[altura][largura])
 
 	int x = 0, y = 0, n = 0;
 	struct coordenadas *centros = malloc(sizeof(struct coordenadas)*nregs);
+	struct coordenadas *hashtag = malloc(sizeof(struct coordenadas)*9);
 
 	for (int j = 0; j < nregs; j++){
 		x = 0;
@@ -64,7 +65,96 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	for (int j = 0; j < nregs; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros[j].X, centros[j].Y);
 	}
+
+	/*
+	 *	Calcula o centro do hashtag (hashtag 4)
+	 *	0|1|2
+	 *	3|4|5
+	 *	6|7|8
+	 */
+	float y2, y1, x2, x1, a1, a2, b1, b2, teta, teta1, d;
+	x1 = centros[0].X;
+	y1 = centros[0].Y;
+	x2 = centros[9].X;
+	y2 = centros[9].Y;
+	a1 = (y2 - y1)/(x2 - x1);
+	b1 = (y2*x1 - y1*x2)/(x1 - x2);
+
+	x1 = centros[4].X;
+	y1 = centros[4].Y;
+	x2 = centros[5].X;
+	y2 = centros[5].Y;
+	a2 = (y2 - y1)/(x2 - x1);
+	b2 = (y2*x1 - y1*x2)/(x1 - x2);
+
+	hashtag[4].X = (int) round((b2 - b1)/(a1 - a2));
+	hashtag[4].Y = (int) round((b1*a2 - b2*a1)/(a2 - a1));
+	
+	/*
+	 *	Calcula o 1 e 7 do hashtag
+	 *
+	 */
+	x1 = centros[2].X;
+	y1 = centros[2].Y;
+	x2 = centros[7].X;
+	y2 = centros[7].Y;
+	
+	a1 = (y2 - y1)/(x2 - x1);
+	teta = atan(a1); 
+	teta1 = teta;
+	d = 0.2101*pow(pow(x2 - x1, 2) + pow(y2 - y1, 2), 0.5); // d = sqrt(x²+y²)
+	
+	hashtag[1].X = round(hashtag[4].X - fabs(d*cos(teta)));
+	hashtag[1].Y = round(hashtag[4].Y + fabs(d*sin(teta)));
+
+	hashtag[7].X = round(hashtag[4].X + fabs(d*cos(teta)));
+	hashtag[7].Y = round(hashtag[4].Y - fabs(d*sin(teta)));
+	
+	/*
+	 * Calcula o 3 e o 5 do hashtag
+	 * 
+	 */
+	x1 = centros[0].X;
+	y1 = centros[0].Y;
+	x2 = centros[4].X;
+	y2 = centros[4].Y;
+
+	a1 = (y2 - y1)/(x2 - x1);
+	teta = atan(a1);
+	hashtag[5].X = round(hashtag[4].X + fabs(d*cos(teta)));
+	hashtag[5].Y = round(hashtag[4].Y + fabs(d*sin(teta)));
+
+	hashtag[3].X = round(hashtag[4].X - fabs(d*cos(teta)));
+	hashtag[3].Y = round(hashtag[4].Y - fabs(d*sin(teta)));
+
+	/*
+	 * Calcula o 0 e 6 e 2 e 8 do hashtag
+	 *
+	 */
+
+	hashtag[0].X = round(hashtag[3].X - fabs(d*cos(teta1)));
+	hashtag[0].Y = round(hashtag[3].Y + fabs(d*sin(teta1)));
+
+	hashtag[6].X = round(hashtag[3].X + fabs(d*cos(teta1)));
+	hashtag[6].Y = round(hashtag[3].Y - fabs(d*sin(teta1)));
+	
+	hashtag[2].X = round(hashtag[5].X - fabs(d*cos(teta1)));
+	hashtag[2].Y = round(hashtag[5].Y + fabs(d*sin(teta1)));
+
+	hashtag[8].X = round(hashtag[5].X + fabs(d*cos(teta1)));
+	hashtag[8].Y = round(hashtag[5].Y - fabs(d*sin(teta1)));
+
+	for (int i = 0; i < 9; i++) printf("%d) X: %d Y: %d\n", i, hashtag[i].X, hashtag[i].Y); 
+	
+
+	for (int i = 0; i < 9; i++) {
+		matriz[hashtag[i].X][hashtag[i].Y].luma = 255;
+		matriz[hashtag[i].X][hashtag[i].Y].cb = 127;
+		matriz[hashtag[i].X][hashtag[i].Y].cr = 127;
+	}
+
 	free(centros);
+	free(hashtag);
 }
 
 
@@ -166,6 +256,9 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 	for (int j = 0; j < nregsteam2; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros2[j].X, centros2[j].Y);
 	}
+
+
+
 	free(centros1);
 	free(centros2);
 }
