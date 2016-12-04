@@ -16,7 +16,8 @@ int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x,
 	return 0;
 }
 
-void detect_regiao(struct pixel matriz[altura][largura])
+
+struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 {
 	struct coordenadas pixcircle[300];
 	int npixcircle = 0;
@@ -43,9 +44,8 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	}
 
 	int x = 0, y = 0, n = 0;
-	struct coordenadas *centros = malloc(sizeof(struct coordenadas)*nregs);
-	struct coordenadas *hashtag = malloc(sizeof(struct coordenadas)*9);
-
+	struct coordenadas *bolinhas = malloc(sizeof(struct coordenadas)*nregs);
+	
 	for (int j = 0; j < nregs; j++){
 		x = 0;
 		y = 0;
@@ -57,15 +57,22 @@ void detect_regiao(struct pixel matriz[altura][largura])
 				n++;
 			}
 		}
-		centros[j].X = x/n;
-		centros[j].Y = y/n;
+		bolinhas[j].X = x/n;
+		bolinhas[j].Y = y/n;
 	}
 
 
-	for (int j = 0; j < nregs; j++){
-		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros[j].X, centros[j].Y);
-	}
 
+	struct coordenadas_size aux;
+	aux.coord = bolinhas;
+	aux.size = nregs;
+	return aux;
+}
+
+struct coordenadas *generate_hashtag(struct coordenadas *bolinhas, int size)
+{
+	struct coordenadas *hashtag = malloc(sizeof(struct coordenadas)*9);
+	
 	/*
 	 *	Calcula o centro do hashtag (hashtag 4)
 	 *	0|1|2
@@ -73,17 +80,17 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	 *	6|7|8
 	 */
 	float y2, y1, x2, x1, a1, a2, b1, b2, teta, teta1, d;
-	x1 = centros[0].X;
-	y1 = centros[0].Y;
-	x2 = centros[9].X;
-	y2 = centros[9].Y;
+	x1 = bolinhas[0].X;
+	y1 = bolinhas[0].Y;
+	x2 = bolinhas[9].X;
+	y2 = bolinhas[9].Y;
 	a1 = (y2 - y1)/(x2 - x1);
 	b1 = (y2*x1 - y1*x2)/(x1 - x2);
 
-	x1 = centros[4].X;
-	y1 = centros[4].Y;
-	x2 = centros[5].X;
-	y2 = centros[5].Y;
+	x1 = bolinhas[4].X;
+	y1 = bolinhas[4].Y;
+	x2 = bolinhas[5].X;
+	y2 = bolinhas[5].Y;
 	a2 = (y2 - y1)/(x2 - x1);
 	b2 = (y2*x1 - y1*x2)/(x1 - x2);
 
@@ -94,10 +101,10 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	 *	Calcula o 1 e 7 do hashtag
 	 *
 	 */
-	x1 = centros[2].X;
-	y1 = centros[2].Y;
-	x2 = centros[7].X;
-	y2 = centros[7].Y;
+	x1 = bolinhas[2].X;
+	y1 = bolinhas[2].Y;
+	x2 = bolinhas[7].X;
+	y2 = bolinhas[7].Y;
 	
 	a1 = (y2 - y1)/(x2 - x1);
 	teta = atan(a1); 
@@ -114,10 +121,10 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	 * Calcula o 3 e o 5 do hashtag
 	 * 
 	 */
-	x1 = centros[0].X;
-	y1 = centros[0].Y;
-	x2 = centros[4].X;
-	y2 = centros[4].Y;
+	x1 = bolinhas[0].X;
+	y1 = bolinhas[0].Y;
+	x2 = bolinhas[4].X;
+	y2 = bolinhas[4].Y;
 
 	a1 = (y2 - y1)/(x2 - x1);
 	teta = atan(a1);
@@ -144,18 +151,11 @@ void detect_regiao(struct pixel matriz[altura][largura])
 	hashtag[8].X = round(hashtag[5].X + fabs(d*cos(teta1)));
 	hashtag[8].Y = round(hashtag[5].Y - fabs(d*sin(teta1)));
 
-	for (int i = 0; i < 9; i++) printf("%d) X: %d Y: %d\n", i, hashtag[i].X, hashtag[i].Y); 
-	
 
-	for (int i = 0; i < 9; i++) {
-		matriz[hashtag[i].X][hashtag[i].Y].luma = 255;
-		matriz[hashtag[i].X][hashtag[i].Y].cb = 127;
-		matriz[hashtag[i].X][hashtag[i].Y].cr = 127;
-	}
+	return hashtag;
+};
 
-	free(centros);
-	free(hashtag);
-}
+
 
 
 
