@@ -129,8 +129,7 @@ int main()
 	for (i = 0; i < numpontos; i++) 
 		fprintf(fp, "%s\n", pontos[i]);
 	fclose(fp);
-	cdcamera();
-	cdworld();
+	calibra();
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
 	free(buffer);
