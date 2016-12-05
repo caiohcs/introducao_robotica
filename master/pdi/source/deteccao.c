@@ -12,6 +12,9 @@ void detect_circle(struct pixel matriz[altura][largura]){
 }
 
 
+/*Essa função "calc_circle" pinta o píxel se ele
+fizer parte das bolinhas de posição inicial*/
+
 void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
         int i, j;
 	int nbranco = 0;
@@ -34,6 +37,8 @@ void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
 }
 
 
+/* Função que diz quantos píxeis bolinha estão ao redor
+ do pixel analisado.*/
 
 void generate_proxcircle(struct pixel matriz[altura][largura]){
         int i, j, x, y;

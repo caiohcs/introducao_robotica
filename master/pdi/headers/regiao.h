@@ -6,8 +6,10 @@ struct coordenadas{
 	int X, Y, regiao;
 };
 
-struct coordenadas_size{        // Usa-se essa estrutura para poder retornar na função detect_regiao tanto a região quanto o tamanho
-        struct coordenadas *coord;
+/* Usa-se essa estrutura para poder retornar na função detect_regiao tanto a região quanto o tamanho */
+
+struct coordenadas_size{                
+	struct coordenadas *coord;
         int size;
 };
 

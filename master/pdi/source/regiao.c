@@ -4,8 +4,7 @@
 int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x, int y)
 {
 	int i;
-	for (i = 0; i < size; i++)
-	{
+	for (i = 0; i < size; i++) {
 		if (pixcircle[i].regiao == -1 &&
 				(pixcircle[i].X == x || pixcircle[i].X == x+1 || pixcircle[i].X == x-1) && 
 				(pixcircle[i].Y == y || pixcircle[i].Y == y+1 || pixcircle[i].Y == y-1)) {

@@ -9,6 +9,7 @@ struct CD{
 	float X, Y;
 };
 
+/* Coordenadas no referencial I, em pixels */
 
 struct CD *cdcamera()
 {
