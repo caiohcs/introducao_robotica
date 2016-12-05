@@ -7,10 +7,6 @@
 
 int limiar=10;
 
-struct CD{
-	float X, Y;
-};
-
 /* Coordenadas no referencial I, em pixels */
 
 struct CD *cdcamera()
@@ -124,7 +120,11 @@ struct CD *cdworld()
 	return cds; 
 }
 
-void calibra()
+
+/* Função que serve para calcular H. É esperado que Homografia
+seja uma matrix 3x3 */
+
+void calibra(gsl_matrix *Homografia)
 {
 	int i, j;
 	struct CD *ccd = cdcamera();
@@ -191,9 +191,16 @@ void calibra()
 	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
 			1.0, tmp, b, 0.0, x);
 	
-	for (i = 0; i < 8; i++) {
-		printf("Valor de h %d\t %g\n", i+1, gsl_matrix_get(iAtA, i, 0));
+	/* Criação da matriz de Homografia a partir do vetor x*/
+
+	for (i = 0; i < 3; i++) {
+		for (j = 0; j < 3; j++) {
+			if (i!=2 && j!=2) {
+			gsl_matrix_set(Homografia, i, j, gsl_matrix_get(iAtA, i*3 + j, 0));
+			} else gsl_matrix_set(Homografia, 2, 2, 1); 
+		}
 	}
+	
 
 
 	gsl_permutation_free(p);
@@ -208,6 +215,7 @@ void calibra()
 	free(ccd);
 	free(signal);;
 	free(wcd);
+
 }
 
 #endif

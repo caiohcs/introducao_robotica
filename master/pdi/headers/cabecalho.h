@@ -14,6 +14,13 @@
 #include "escrita.h"
 #include "deteccao.h"
 #include "regiao.h"
+
+
+
+struct CD{
+        float X, Y;
+};
+
 #endif
 
 #ifndef PARAMETROS

@@ -42,6 +42,8 @@ int main()
 {
 	buffer = malloc(sizeof(char)*150);
 	
+	gsl_matrix *Homografia = gsl_matrix_alloc(3,3);	
+
 	struct servo base, ombro, cotovelo, punho, garra;			//define servos
 	struct servo *ptrservo[5] = {&base, &ombro, &cotovelo, &punho, &garra};
 	define_servos(ptrservo);
@@ -129,10 +131,11 @@ int main()
 	for (i = 0; i < numpontos; i++) 
 		fprintf(fp, "%s\n", pontos[i]);
 	fclose(fp);
-	calibra();
+	calibra(Homografia);
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
 	free(buffer);
+	gsl_matrix_free(Homografia);
 	return 0;
 }
 
