@@ -1,6 +1,8 @@
 #ifndef CALIBRACAO
 #define CALIBRACAO
 #include "../pdi/headers/cabecalho.h"
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_linalg.h>
 
 
 int limiar=10;
@@ -121,5 +123,90 @@ struct CD *cdworld()
 	return cds; 
 }
 
+void calibra()
+{
+	int i, j;
+	struct CD *ccd = cdcamera();
+	struct CD *wcd = cdworld();
+	gsl_matrix *A = gsl_matrix_alloc(38, 8);
+	gsl_matrix *x = gsl_matrix_alloc(8, 1);
+	gsl_matrix *tmpAtA = gsl_matrix_alloc(8, 8);
+	gsl_matrix *tmp = gsl_matrix_alloc(8, 38);
+	gsl_matrix *At = gsl_matrix_alloc(8, 38);
+	gsl_matrix *AtA = gsl_matrix_alloc(8, 8);
+	gsl_matrix *iAtA = gsl_matrix_alloc(8, 8);
+	gsl_matrix *b = gsl_matrix_alloc(38, 1);
+	gsl_permutation *p = gsl_permutation_alloc(8);
+	int *signal = malloc(8*sizeof(int));
+
+	gsl_matrix_set_zero(A);
+	
+	for (i = 0; i < 38; i+=2) {
+		int f=(i/2);
+		gsl_matrix_set(A, i, 0, wcd[f].X);
+		gsl_matrix_set(A, i, 1, wcd[f].Y);
+		gsl_matrix_set(A, i, 2, 1);
+		gsl_matrix_set(A, i, 6, (-1)*ccd[f].X*wcd[f].X);
+		gsl_matrix_set(A, i, 7, (-1)*ccd[f].X*wcd[f].Y);
+	
+		gsl_matrix_set(A, i+1, 3, wcd[f].X);
+		gsl_matrix_set(A, i+1, 4, wcd[f].Y);
+		gsl_matrix_set(A, i+1, 5, 1);
+		gsl_matrix_set(A, i+1, 6, (-1)*ccd[f].Y*wcd[f].X);
+		gsl_matrix_set(A, i+1, 7, (-1)*ccd[f].Y*wcd[f].Y);
+	}
+	
+	
+	for (i = 0; i < 38; i+=2) {
+		int f=(i/2);
+		gsl_matrix_set(b, i, 0, ccd[f].X);
+		gsl_matrix_set(b, i+1, 0, ccd[f].Y);
+	}
+
+	/*
+	for (i = 0; i < 38; i++) {
+		printf("\nNúmero da linha %d\t",i);
+		for (j = 0; j < 8; j++) {
+			printf("%g\t", gsl_matrix_get(A, i, j));
+		}
+	}
+
+	for (i = 0; i < 18; i++) {
+		printf("\nValor de U%d: %g\t Valor de V%d: %g\t", i, gsl_matrix_get(b, i*2, 0), i, gsl_matrix_get(b, i*2+1, 0));
+	}
+	*/
+
+	gsl_matrix_transpose_memcpy(At, A);
+	gsl_matrix_memcpy(tmp, At);
+	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
+			1.0, At, A, 0.0, tmpAtA);
+	
+	gsl_linalg_LU_decomp(tmpAtA, p, signal);
+	gsl_linalg_LU_invert(tmpAtA, p, iAtA);
+	
+	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
+			1.0, iAtA, At, 0.0, tmp);
+	
+	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
+			1.0, tmp, b, 0.0, x);
+	
+	for (i = 0; i < 8; i++) {
+		printf("Valor de h %d\t %g\n", i+1, gsl_matrix_get(iAtA, i, 0));
+	}
+
+
+	gsl_permutation_free(p);
+	gsl_matrix_free(A);
+	gsl_matrix_free(x);
+	gsl_matrix_free(tmp);
+	gsl_matrix_free(AtA);
+	gsl_matrix_free(tmpAtA);
+	gsl_matrix_free(iAtA);
+	gsl_matrix_free(At);
+	gsl_matrix_free(b);
+	free(ccd);
+	free(signal);;
+	free(wcd);
+}
 
 #endif
