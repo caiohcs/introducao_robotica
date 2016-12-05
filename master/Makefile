@@ -1,6 +1,6 @@
 EXEC	= main
 CXX	= gcc
-MAIN	= main.c
+MAIN	= main.c ./pdi/source/regiao.c ./pdi/source/deteccao.c ./pdi/source/pixel.c
 OPTIONS	= -O3 -Wall -ggdb
 LIBS	= -lX11 -lm
 

@@ -28,7 +28,6 @@
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \
      _a < _b ? _a : _b; })
-
 #define altura 480
 #define largura 640
 #define delta_x 1
@@ -39,5 +38,5 @@
 #define largmin 340
 #define largmax 545
 
-int extern limiar;
+extern int limiar;
 #endif

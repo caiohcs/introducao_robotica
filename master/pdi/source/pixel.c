@@ -8,10 +8,11 @@ struct pixel gradient_check(struct bloco block){
  	struct pixel pixel_temp;	
 	pixel_temp.cb=128;
 	pixel_temp.cr=128;
-	float grad_luma, grad_cb, grad_cr;
+	//float grad_luma, grad_cb, grad_cr;
+	float grad_luma;
 	grad_luma = (float)(pow((block.i1j1_luma-block.ij_luma),2) + pow((block.ij1_luma-block.i1j_luma),2))/2.0*delta_x;
-	grad_cb = (float)(pow((block.i1j1_cb-block.ij_cb),2) + pow((block.ij1_cb-block.i1j_cb),2))/2.0*delta_x;
-	grad_cr = (float)(pow((block.i1j1_cr-block.ij_cr),2) + pow((block.ij1_cr-block.i1j_cr),2))/2.0*delta_x;
+	//grad_cb = (float)(pow((block.i1j1_cb-block.ij_cb),2) + pow((block.ij1_cb-block.i1j_cb),2))/2.0*delta_x;
+	//grad_cr = (float)(pow((block.i1j1_cr-block.ij_cr),2) + pow((block.ij1_cr-block.i1j_cr),2))/2.0*delta_x;
 
 		
 	if (grad_luma>=limiar) {// || grad_cb>=limiar || grad_cr>=limiar) {
@@ -33,8 +34,9 @@ struct pixel edge_detection(struct bloco block){
 }
 
 void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura*largura]){
-	for (int i = altmin; i < altmax;i++){
-	    for (int j = largmin; j < largmax; j++){
+	int i, j;
+	for (i = altmin; i < altmax;i++){
+	    for (j = largmin; j < largmax; j++){
 	        grad[i][j] = edge_detection(block[i*largura + j]);
 		
             }
@@ -50,11 +52,12 @@ void generate_grad(struct pixel grad[altura][largura], struct bloco block[altura
  */
 
 void generate_prox(struct pixel matriz[altura][largura]){
-	for (int i = altmin; i < altmax; i++) {
-	   for (int j = largmin; j < largmax; j++) {
+	int i, j, x ,y;
+	for (i = altmin; i < altmax; i++) {
+	   for (j = largmin; j < largmax; j++) {
 	      matriz[i][j].prox = 0;
-		for (int x = -1; x <= 1; x++) {
-		   for (int y = -1; y <= 1; y++) {
+		for (x = -1; x <= 1; x++) {
+		   for (y = -1; y <= 1; y++) {
 	// if ((i+x<0 || j+y <0) || (i+x >= altura || j+y >= largura)) continue; esse if não é mais necessário já que não começa de 00 e nao vai ate maxmax
 			if (x != 0 || y != 0) {
 			  if (matriz[i+x][j+y].grad == 1) {
@@ -75,8 +78,9 @@ struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, 
 	int cb = 0;
 	int cr = 0;
 	int npixels = 0;
-	for (int i = X-R-1; i < X+R+1; i++) {
-		for (int j = Y-R-1; j < Y+R+1; j++) {
+	int i, j;
+	for (i = X-R-1; i < X+R+1; i++) {
+		for (j = Y-R-1; j < Y+R+1; j++) {
 			if (pow(i-X,2) + pow(j-Y,2) <= pow(R,2)) {
 				luma += matriz[i][j].luma;
 				cb += matriz[i][j].cb;
@@ -99,8 +103,9 @@ struct pixel lumcbcr_medium(struct pixel matriz[altura][largura], int X, int Y, 
  * esse pixel parte do grad.
  */
 void swell(struct pixel matriz[altura][largura], int nprox) {
-        for (int i = altmin; i < altmax;i++) {
-	  for (int j = largmin; j < largmax; j++) {
+        int i, j;
+	for (i = altmin; i < altmax;i++) {
+	  for (j = largmin; j < largmax; j++) {
 	    if(matriz[i][j].prox>=nprox) {
 	      matriz[i][j].grad=1;
 	      matriz[i][j].luma=255;
@@ -115,8 +120,9 @@ void swell(struct pixel matriz[altura][largura], int nprox) {
  * esse pixel não ser parte do grad.
  */
 void shrink(struct pixel matriz[altura][largura], int nprox) {
-	for (int i = altmin; i < altmax; i++) {
-	  for (int j= largmin; j < largmax; j++) {
+	int i, j;
+	for (i = altmin; i < altmax; i++) {
+	  for (j= largmin; j < largmax; j++) {
 	    if(matriz[i][j].prox<=nprox) {
 	      matriz[i][j].grad=0;
 	      matriz[i][j].luma=0;
@@ -153,16 +159,18 @@ visto que a função de detecção apenas aceita um bloco por vez */
 
 
 void array_bloco(struct bloco block[altura*largura], struct pixel matriz[altura][largura]){
-	for (int i = altmin; i < altmax; i++){
-	    for(int j = largmin; j < largmax; j++){
+	int i, j;
+	for (i = altmin; i < altmax; i++){
+	    for(j = largmin; j < largmax; j++){
 	       block[i*largura+j]=create_block(matriz, i,j);
             }
 	}
 }
 
 void alocate(struct pixel matriz[altura][largura], unsigned char *mmap){
-	for (int i=0;i<altura;i=i+1){
-		for (int j=0;j<largura;j=j+1){
+	int i, j;
+	for (i=0;i<altura;i=i+1){
+		for (j=0;j<largura;j=j+1){
 		    matriz[i][j].luma = mmap[largura*2*i + 2*j];
 			if (j%2 == 0){
 		            matriz[i][j].cb = mmap[(largura*2)*i + (2*j +1)];
@@ -178,8 +186,9 @@ void alocate(struct pixel matriz[altura][largura], unsigned char *mmap){
 
 
 void dealocate(struct pixel gradiente[altura][largura], unsigned char *mmap){
-	for (int i=0;i<altura;i=i+1) {
-             for (int j=0;j<largura;j=j+1) {
+	int i, j;
+	for (i=0;i<altura;i=i+1) {
+             for (j=0;j<largura;j=j+1) {
                      mmap[largura*2*i + 2*j] = gradiente[i][j].luma;
                         if (j%2 == 0) {
                             mmap[largura*2*i + (2*j +1)] = gradiente[i][j].cb;

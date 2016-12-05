@@ -3,7 +3,8 @@
 
 int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x, int y)
 {
-	for (int i = 0; i < size; i++)
+	int i;
+	for (i = 0; i < size; i++)
 	{
 		if (pixcircle[i].regiao == -1 &&
 				(pixcircle[i].X == x || pixcircle[i].X == x+1 || pixcircle[i].X == x-1) && 
@@ -21,9 +22,9 @@ struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 {
 	struct coordenadas pixcircle[300];
 	int npixcircle = 0;
-       
-	for (int i = altmin; i < altmax; i++) {
-       		for (int j = largmin; j < largmax; j++) {
+      	int i, j;
+	for (i = altmin; i < altmax; i++) {
+       		for (j = largmin; j < largmax; j++) {
 			if (matriz[i][j].circle == 1) {
 				pixcircle[npixcircle].X = i;
 				pixcircle[npixcircle].Y = j;
@@ -34,7 +35,7 @@ struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 	}
 
 	int nregs = 0;
-	for (int i = 0; i < npixcircle; i++)
+	for (i = 0; i < npixcircle; i++)
 	{
 		if (pixcircle[i].regiao == -1) {
 			nregs++;
@@ -46,11 +47,11 @@ struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 	int x = 0, y = 0, n = 0;
 	struct coordenadas *bolinhas = malloc(sizeof(struct coordenadas)*nregs);
 	
-	for (int j = 0; j < nregs; j++){
+	for (j = 0; j < nregs; j++){
 		x = 0;
 		y = 0;
 		n = 0;
-		for (int i = 0; i < npixcircle; i++) {
+		for (i = 0; i < npixcircle; i++) {
 			if (pixcircle[i].regiao == j+1) {
 				x += pixcircle[i].X;
 				y += pixcircle[i].Y;
@@ -162,7 +163,8 @@ struct coordenadas *generate_hashtag(struct coordenadas *bolinhas, int size)
 
 int percorre_tudoteam(struct coordenadas pixteam[2000], int size, int nregs, int x, int y)
 {
-	for (int i = 0; i < size; i++)
+	int i;
+	for (i = 0; i < size; i++)
 	{
 		if (pixteam[i].regiao == -1 &&
 				(pixteam[i].X == x || pixteam[i].X == x+1 || pixteam[i].X == x-1) && 
@@ -177,12 +179,13 @@ int percorre_tudoteam(struct coordenadas pixteam[2000], int size, int nregs, int
 
 void detect_regiaoteam(struct pixel matriz[altura][largura])
 {
+	int i, j;
 	struct coordenadas pixteam1[2000];
 	struct coordenadas pixteam2[2000];
 	int npixteam1 = 0, npixteam2 = 0;
        
-	for (int i = altmin; i < altmax; i++) {
-       		for (int j = largmin; j < largmax; j++) {
+	for (i = altmin; i < altmax; i++) {
+       		for (j = largmin; j < largmax; j++) {
 			if (matriz[i][j].team == 1) {
 				pixteam1[npixteam1].X = i;
 				pixteam1[npixteam1].Y = j;
@@ -199,7 +202,7 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 
 	printf("team1: %d team2: %d\n", npixteam1, npixteam2);
 	int nregsteam1 = 0, nregsteam2 = 0;
-	for (int i = 0; i < npixteam1; i++)
+	for (i = 0; i < npixteam1; i++)
 	{
 		if (pixteam1[i].regiao == -1) {
 			nregsteam1++;
@@ -207,7 +210,7 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 			percorre_tudoteam(pixteam1, npixteam1, nregsteam1, pixteam1[i].X, pixteam1[i].Y);
 		}
 	}
-	for (int i = 0; i < npixteam2; i++)
+	for (i = 0; i < npixteam2; i++)
 	{
 		if (pixteam2[i].regiao == -1) {
 			nregsteam2++;
@@ -219,11 +222,11 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 	int x = 0, y = 0, n = 0;
 	struct coordenadas *centros1 = malloc(sizeof(struct coordenadas)*nregsteam1);
 	struct coordenadas *centros2 = malloc(sizeof(struct coordenadas)*nregsteam2);
-	for (int j = 0; j < nregsteam1; j++){
+	for (j = 0; j < nregsteam1; j++){
 		x = 0;
 		y = 0;
 		n = 0;
-		for (int i = 0; i < npixteam1; i++) {
+		for (i = 0; i < npixteam1; i++) {
 			if (pixteam1[i].regiao == j+1) {
 				x += pixteam1[i].X;
 				y += pixteam1[i].Y;
@@ -234,11 +237,11 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 		centros1[j].Y = y/n;
 	}
 
-	for (int j = 0; j < nregsteam2; j++){
+	for (j = 0; j < nregsteam2; j++){
 		x = 0;
 		y = 0;
 		n = 0;
-		for (int i = 0; i < npixteam2; i++) {
+		for (i = 0; i < npixteam2; i++) {
 			if (pixteam2[i].regiao == j+1) {
 				x += pixteam2[i].X;
 				y += pixteam2[i].Y;
@@ -249,11 +252,11 @@ void detect_regiaoteam(struct pixel matriz[altura][largura])
 		centros2[j].Y = y/n;
 	}
 	printf("Team1:\n");
-	for (int j = 0; j < nregsteam1; j++){
+	for (j = 0; j < nregsteam1; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros1[j].X, centros1[j].Y);
 	}
 	printf("Team2:\n");
-	for (int j = 0; j < nregsteam2; j++){
+	for (j = 0; j < nregsteam2; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros2[j].X, centros2[j].Y);
 	}
 

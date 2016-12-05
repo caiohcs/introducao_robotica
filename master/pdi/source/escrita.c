@@ -6,7 +6,6 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
         prototipo = malloc(altura*largura*2);
 	alocate(matriz,mapa);
 	
-	
 	array_bloco(block, matriz);
 	generate_grad(matriz, block);	
 	generate_prox(matriz);

@@ -2,8 +2,9 @@
 
 
 void detect_circle(struct pixel matriz[altura][largura]){
-        for (int i = altmin; i < altmax; i++) {
-                for (int j = largmin; j < largmax; j++) {
+        int i, j;
+	for (i = altmin; i < altmax; i++) {
+                for (j = largmin; j < largmax; j++) {
 			matriz[i][j].circle = 0;
 			calc_circle(matriz, i, j);
                 }
@@ -12,10 +13,11 @@ void detect_circle(struct pixel matriz[altura][largura]){
 
 
 void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
-        int nbranco = 0;
+        int i, j;
+	int nbranco = 0;
         int npreto = 0;
-        for (int i = X-9; i < X+9; i++) {
-                for (int j = Y-12; j < Y+12; j++) {
+        for (i = X-9; i < X+9; i++) {
+                for (j = Y-12; j < Y+12; j++) {
                         if (pow(i-X, 2) + pow(j-Y, 2) <= pow(8, 2)) {
                                 if (matriz[i][j].grad == 1) nbranco++;
                                 if (matriz[i][j].grad == 0) npreto++;
@@ -34,11 +36,12 @@ void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
 
 
 void generate_proxcircle(struct pixel matriz[altura][largura]){
-        for (int i = altmin; i < altmax; i++) {
-           for (int j = largmin; j < largmax; j++) {
+        int i, j, x, y;
+	for (i = altmin; i < altmax; i++) {
+           for (j = largmin; j < largmax; j++) {
               matriz[i][j].proxcircle = 0;
-                for (int x = -1; x <= 1; x++) {
-                   for (int y = -1; y <= 1; y++) {
+                for (x = -1; x <= 1; x++) {
+                   for (y = -1; y <= 1; y++) {
                         if (x != 0 || y != 0) {
 			  if (matriz[i+x][j+y].circle == 1) {
                             matriz[i][j].proxcircle++;
@@ -51,8 +54,9 @@ void generate_proxcircle(struct pixel matriz[altura][largura]){
 }
 
 void swell_circle(struct pixel matriz[altura][largura], int nprox) {
-        for (int i = altmin; i < altmax; i++) {
-           for (int j = largmin; j < largmax; j++) {
+        int i, j;
+	for (i = altmin; i < altmax; i++) {
+           for (j = largmin; j < largmax; j++) {
             if(matriz[i][j].proxcircle>=nprox) {
               	matriz[i][j].circle=1;
                 matriz[i][j].luma = 116;
@@ -64,8 +68,9 @@ void swell_circle(struct pixel matriz[altura][largura], int nprox) {
 }
 
 void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
-        for (int i = altmin; i < altmax; i++) {
-           for (int j = largmin; j < largmax; j++) {
+        int i, j;
+	for (i = altmin; i < altmax; i++) {
+           for (j = largmin; j < largmax; j++) {
             if(matriz[i][j].proxcircle<=nprox) {
               matriz[i][j].circle=0;
               matriz[i][j].luma=0;
@@ -76,29 +81,23 @@ void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
         }
 }
 
-
-
-
-
-
-
-
 void find_round(struct pixel matriz[altura][largura]) {
 	int check=0;
 	int count=1;
-	for (int i=0;i<altura;i++) {
-	  for (int j=0;j<largura;j++) {
+	int i, j, x, y;
+	for (i=0;i<altura;i++) {
+	  for (j=0;j<largura;j++) {
 	     if (matriz[i][j].prox==8) {
 	       check=(int)matriz[i][j].prox;
 	       while (count <=2) {
 	            if (count == 1) {
-		      for (int y=-2;y<=2;y++) {
+		      for (y=-2;y<=2;y++) {
 		       	 if ((i-2<0 || j+y <0) || (i+2 >= altura || j+y >= largura)) continue;
 		         if (matriz[i-2][j+y].grad==1) check++;
 			 if (matriz[i+2][j+y].grad==1) check++;
 		      }
 		    }else {
-		       for (int x=-2;x<=2;x++) {
+		       for (x=-2;x<=2;x++) {
 		       	  if ((i+x<0 || j-2 <0) || (i+x >= altura || j+2 >= largura)) continue;
 		          if (matriz[i+x][j-2].grad==1) check++;
 			  if (matriz[i+x][j+2].grad==1) check++;    
