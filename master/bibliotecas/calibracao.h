@@ -82,21 +82,21 @@ void calibra(gsl_matrix *Homografia)
 		gsl_matrix_set(A, i, 0, wcd[f].X);
 		gsl_matrix_set(A, i, 1, wcd[f].Y);
 		gsl_matrix_set(A, i, 2, 1);
-		gsl_matrix_set(A, i, 6, (-1)*ccd[f].X*wcd[f].X);
-		gsl_matrix_set(A, i, 7, (-1)*ccd[f].X*wcd[f].Y);
+		gsl_matrix_set(A, i, 6, (-1)*ccd[f].Y*wcd[f].X);
+		gsl_matrix_set(A, i, 7, (-1)*ccd[f].Y*wcd[f].Y);
 	
 		gsl_matrix_set(A, i+1, 3, wcd[f].X);
 		gsl_matrix_set(A, i+1, 4, wcd[f].Y);
 		gsl_matrix_set(A, i+1, 5, 1);
-		gsl_matrix_set(A, i+1, 6, (-1)*ccd[f].Y*wcd[f].X);
-		gsl_matrix_set(A, i+1, 7, (-1)*ccd[f].Y*wcd[f].Y);
+		gsl_matrix_set(A, i+1, 6, (-1)*ccd[f].X*wcd[f].X);
+		gsl_matrix_set(A, i+1, 7, (-1)*ccd[f].X*wcd[f].Y);
 	}
 	
 	
 	for (i = 0; i < 38; i+=2) {
 		int f=(i/2);
-		gsl_matrix_set(b, i, 0, ccd[f].X);
-		gsl_matrix_set(b, i+1, 0, ccd[f].Y);
+		gsl_matrix_set(b, i, 0, ccd[f].Y);
+		gsl_matrix_set(b, i+1, 0, ccd[f].X);
 	}
 
 	/*

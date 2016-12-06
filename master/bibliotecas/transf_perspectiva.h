@@ -6,6 +6,7 @@
 
 
 
+/* O valor de u e v que essa função recebe é dado por Y e X de um struct CD */
 
 struct CD pixel_to_world(int u, int v, gsl_matrix *Homografia) {
 	struct CD coord_world;

@@ -61,9 +61,9 @@ void AI(struct pixel matriz[altura][largura])
 void generate_teams(struct pixel matriz[altura][largura], struct pixel team1, struct pixel team2)
 {
 	struct pixel tmp;
-
-	for (int i = altmin; i < altmax; i++) {
-		for (int j = largmin; j < largmax; j++) {
+	int i,j;
+	for (i = altmin; i < altmax; i++) {
+		for (j = largmin; j < largmax; j++) {
 			tmp = lumcbcr_medium(matriz, i, j, 8);
 			matriz[i][j].team = 0;
 			if (pix_erro(tmp, team1) < 20) matriz[i][j].team = 1;
@@ -71,8 +71,8 @@ void generate_teams(struct pixel matriz[altura][largura], struct pixel team1, st
 		}
 	}
 
-	for (int i = altmin; i < altmax; i++) {
-		for (int j = largmin; j < largmax; j++) {
+	for (i = altmin; i < altmax; i++) {
+		for (j = largmin; j < largmax; j++) {
 			matriz[i][j].luma = 0;
 			matriz[i][j].cb = 128;
 			matriz[i][j].cr = 128;
@@ -112,7 +112,7 @@ void escrita (unsigned char *arquivo, unsigned char* matriz_temp) {
 }
 
 struct CD * print_ballcoord(struct pixel matriz[altura][largura]) {
- 	
+	
 	struct CD *cds = malloc(sizeof(struct CD)*19);
 	struct coordenadas_size aux = detect_regiao(matriz);
         struct coordenadas *bolinhas = aux.coord;
@@ -145,7 +145,5 @@ struct CD * print_ballcoord(struct pixel matriz[altura][largura]) {
         free(bolinhas);
         free(hashtag);
 	return cds;
-	
-
 
 }

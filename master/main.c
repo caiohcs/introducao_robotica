@@ -14,6 +14,8 @@
 #include "./bibliotecas/eventfunctions.h"
 #include "./bibliotecas/graphical.h"
 #include "./bibliotecas/calibracao.h"
+#include "./bibliotecas/transf_perspectiva.h"
+
 
 #define alt 6.731
 #define L1 14.605
@@ -42,7 +44,10 @@ int main()
 {
 	buffer = malloc(sizeof(char)*150);
 	
+	struct CD ponto_teste;
 	gsl_matrix *Homografia = gsl_matrix_alloc(3,3);	
+	calibra(Homografia);
+	ponto_teste = pixel_to_world (400, 200, Homografia);
 
 	struct servo base, ombro, cotovelo, punho, garra;			//define servos
 	struct servo *ptrservo[5] = {&base, &ombro, &cotovelo, &punho, &garra};
@@ -130,8 +135,18 @@ int main()
 	fp = fopen(strcat(buffer,".txt\0"), "w");		
 	for (i = 0; i < numpontos; i++) 
 		fprintf(fp, "%s\n", pontos[i]);
+	
+	int x, k;
+	for (x = 0; x < 3; x++) {
+		printf("\n");
+		for (k = 0; k < 3; k++) {
+		printf("\t%g\t", gsl_matrix_get(Homografia, x, k));
+		}
+	}
+	
+	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
+	
 	fclose(fp);
-	calibra(Homografia);
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
 	free(buffer);
