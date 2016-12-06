@@ -1,6 +1,6 @@
 #include "../headers/cabecalho.h"
 
-void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struct bloco block[altura*largura], char *arquivo) {
+void threshold (struct pixel **matriz, unsigned char *mapa, struct bloco *block, char *arquivo) {
 	limiar=10;
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
@@ -42,7 +42,7 @@ void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struc
 }
 
 
-void AI(struct pixel matriz[altura][largura])
+void AI(struct pixel **matriz)
 {
 	    
 	struct pixel pixteam1; //verde
@@ -58,7 +58,7 @@ void AI(struct pixel matriz[altura][largura])
 	detect_regiaoteam(matriz);
 }
 
-void generate_teams(struct pixel matriz[altura][largura], struct pixel team1, struct pixel team2)
+void generate_teams(struct pixel **matriz, struct pixel team1, struct pixel team2)
 {
 	struct pixel tmp;
 	int i,j;
@@ -99,7 +99,7 @@ int pix_erro(struct pixel original, struct pixel compare){
 
 
 
-void escrita (char *arquivo, unsigned char* matriz_temp) {
+void escrita(char *arquivo, unsigned char* matriz_temp) {
 	int jpgfile;
         if((jpgfile = open(arquivo, O_WRONLY | O_CREAT, 0660)) < 0){
             perror("open");
@@ -112,7 +112,7 @@ void escrita (char *arquivo, unsigned char* matriz_temp) {
         close(jpgfile);
 }
 
-struct CD * print_ballcoord(struct pixel matriz[altura][largura]) {
+struct CD *print_ballcoord(struct pixel **matriz) {
 	
 	struct CD *cds = malloc(sizeof(struct CD)*19);
 	struct coordenadas_size aux = detect_regiao(matriz);
@@ -137,12 +137,12 @@ struct CD * print_ballcoord(struct pixel matriz[altura][largura]) {
                 cds[9 + i].X = bolinhas[i].X;
                 cds[9 + i].Y = bolinhas[i].Y;
         }
-
+/*
         printf("Camera\n");
         for (i = 0; i < 19; i++) {
                 printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
         }
-
+*/
         free(bolinhas);
         free(hashtag);
 	return cds;

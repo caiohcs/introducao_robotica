@@ -14,7 +14,7 @@ XFontStruct* fonte;
 XFontStruct *carregar_fonte(Display *disp)
 {
 
-	int i = 11;
+	int i = 0;
 	int num_fontes_carregadas;
 	int max_fontes = 100;
 	char **nomefontes = XListFonts(disp, "*", max_fontes, &num_fontes_carregadas);

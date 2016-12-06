@@ -11,49 +11,16 @@ int limiar=10;
 
 struct CD *cdcamera()
 {
-	printf("Entrei em cdcamera\n");
-	int i, j;
+	struct pixel matriz[altura][largura];
+        struct bloco tijolo[altura*largura];
 
-	struct pixel **matriz = malloc(altura*sizeof(struct pixel*));
-        for (i = 0; i < altura; i++);
-		matriz[i] = malloc(largura*sizeof(struct pixel));
-	struct bloco *tijolo = malloc(sizeof(struct bloco)*altura*largura);
-
-
-	unsigned char *mapa;    
-        int fd;
-        if((fd = open("myimage.yuv", O_RDWR)) == -1){
-                perror("open");
-                exit(1);
-        }
-
-        struct stat buf;
-        if(fstat(fd, &buf) == -1){
-                perror("fstat");
-                exit(1);
-        }
-
-        mapa = mmap(0, buf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-        if(mapa == MAP_FAILED){
-                perror("mmap");
-                exit(1);
-        }
-
-        alocate(matriz,mapa);
-        close(fd);
-        munmap(mapa, buf.st_size);
-
+	map_yuv(matriz);	//Ver em aquisition.c
 
         unsigned char *prototipo;        
 	prototipo = malloc(altura*largura*2);
 	image_processing(matriz, tijolo); //Ver em processing.c
 	dealocate(matriz, prototipo);
- 
-        for (i = 0; i < altura; i++);
-		free(matriz[i]);
-	free(matriz);
-	free(tijolo);
- 	return print_ballcoord(matriz); //Ver em escrita.c
+        return print_ballcoord(matriz); //Ver em escrita.c
 }
 
 struct CD *cdworld()
@@ -78,12 +45,12 @@ struct CD *cdworld()
 			break;
                 } 
         }
-/*
+
 	printf("Mundo\n");
 	for (i = 0; i < 19; i++) {
 		printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
 	}
-*/
+
 	//Não esquecer de desalocar
 	return cds; 
 }
@@ -97,20 +64,16 @@ void calibra(gsl_matrix *Homografia)
 	int i, j;
 	struct CD *ccd = cdcamera();
 	struct CD *wcd = cdworld();
-	gsl_matrix *A = gsl_matrix_alloc(38, 8);
+	gsl_matrix *A = gsl_matrix_alloc(8, 8);
+	gsl_matrix *iA = gsl_matrix_alloc(8, 8);
 	gsl_matrix *x = gsl_matrix_alloc(8, 1);
-	gsl_matrix *tmpAtA = gsl_matrix_alloc(8, 8);
-	gsl_matrix *tmp = gsl_matrix_alloc(8, 38);
-	gsl_matrix *At = gsl_matrix_alloc(8, 38);
-	gsl_matrix *AtA = gsl_matrix_alloc(8, 8);
-	gsl_matrix *iAtA = gsl_matrix_alloc(8, 8);
-	gsl_matrix *b = gsl_matrix_alloc(38, 1);
+	gsl_matrix *b = gsl_matrix_alloc(8, 1);
 	gsl_permutation *p = gsl_permutation_alloc(8);
 	int *signal = malloc(8*sizeof(int));
 
 	gsl_matrix_set_zero(A);
 	
-	for (i = 0; i < 38; i+=2) {
+	for (i = 0; i < 8; i+=2) {
 		int f=(i/2);
 		gsl_matrix_set(A, i, 0, wcd[f].X);
 		gsl_matrix_set(A, i, 1, wcd[f].Y);
@@ -126,7 +89,7 @@ void calibra(gsl_matrix *Homografia)
 	}
 	
 	
-	for (i = 0; i < 38; i+=2) {
+	for (i = 0; i < 8; i+=2) {
 		int f=(i/2);
 		gsl_matrix_set(b, i, 0, ccd[f].Y);
 		gsl_matrix_set(b, i+1, 0, ccd[f].X);
@@ -145,26 +108,21 @@ void calibra(gsl_matrix *Homografia)
 	}
 	*/
 
-	gsl_matrix_transpose_memcpy(At, A);
-	gsl_matrix_memcpy(tmp, At);
-	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
-			1.0, At, A, 0.0, tmpAtA);
 	
-	gsl_linalg_LU_decomp(tmpAtA, p, signal);
-	gsl_linalg_LU_invert(tmpAtA, p, iAtA);
+	gsl_linalg_LU_decomp(A, p, signal);
+	gsl_linalg_LU_invert(A, p, iA);
 	
+
 	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
-			1.0, iAtA, At, 0.0, tmp);
+			1.0, iA, b, 0.0, x);
 	
-	gsl_blas_dgemm(CblasNoTrans, CblasNoTrans,
-			1.0, tmp, b, 0.0, x);
 	
 	/* Criação da matriz de Homografia a partir do vetor x*/
 
 	for (i = 0; i < 3; i++) {
 		for (j = 0; j < 3; j++) {
 			if (i!=2 && j!=2) {
-			gsl_matrix_set(Homografia, i, j, gsl_matrix_get(iAtA, i*3 + j, 0));
+			gsl_matrix_set(Homografia, i, j, gsl_matrix_get(x, i*3 + j, 0));
 			} else gsl_matrix_set(Homografia, 2, 2, 1); 
 		}
 	}
@@ -174,11 +132,7 @@ void calibra(gsl_matrix *Homografia)
 	gsl_permutation_free(p);
 	gsl_matrix_free(A);
 	gsl_matrix_free(x);
-	gsl_matrix_free(tmp);
-	gsl_matrix_free(AtA);
-	gsl_matrix_free(tmpAtA);
-	gsl_matrix_free(iAtA);
-	gsl_matrix_free(At);
+	gsl_matrix_free(iA);
 	gsl_matrix_free(b);
 	free(ccd);
 	free(signal);;

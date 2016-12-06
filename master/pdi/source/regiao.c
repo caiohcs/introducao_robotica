@@ -22,7 +22,7 @@ int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x,
 com a informação de suas coordenadas em píxel, assim como
 o número de bolinhas detectadas*/
 
-struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
+struct coordenadas_size detect_regiao(struct pixel **matriz)
 {
 	struct coordenadas pixcircle[300];
 	int npixcircle = 0;
@@ -193,7 +193,7 @@ int percorre_tudoteam(struct coordenadas pixteam[2000], int size, int nregs, int
 	return 0;
 }
 
-void detect_regiaoteam(struct pixel matriz[altura][largura])
+void detect_regiaoteam(struct pixel **matriz)
 {
 	int i, j;
 	struct coordenadas pixteam1[2000];

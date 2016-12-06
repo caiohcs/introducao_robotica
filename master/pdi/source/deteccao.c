@@ -1,7 +1,7 @@
 #include "../headers/cabecalho.h"
 
 
-void detect_circle(struct pixel matriz[altura][largura]){
+void detect_circle(struct pixel **matriz){
         int i, j;
 	for (i = altmin; i < altmax; i++) {
                 for (j = largmin; j < largmax; j++) {
@@ -15,7 +15,7 @@ void detect_circle(struct pixel matriz[altura][largura]){
 /*Essa função "calc_circle" pinta o píxel se ele
 fizer parte das bolinhas de posição inicial*/
 
-void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
+void calc_circle(struct pixel **matriz, int X, int Y){
         int i, j;
 	int nbranco = 0;
         int npreto = 0;
@@ -40,7 +40,7 @@ void calc_circle(struct pixel matriz[altura][largura], int X, int Y){
 /* Função que diz quantos píxeis bolinha estão ao redor
  do pixel analisado.*/
 
-void generate_proxcircle(struct pixel matriz[altura][largura]){
+void generate_proxcircle(struct pixel **matriz){
         int i, j, x, y;
 	for (i = altmin; i < altmax; i++) {
            for (j = largmin; j < largmax; j++) {
@@ -58,7 +58,7 @@ void generate_proxcircle(struct pixel matriz[altura][largura]){
         }
 }
 
-void swell_circle(struct pixel matriz[altura][largura], int nprox) {
+void swell_circle(struct pixel **matriz, int nprox) {
         int i, j;
 	for (i = altmin; i < altmax; i++) {
            for (j = largmin; j < largmax; j++) {
@@ -72,7 +72,7 @@ void swell_circle(struct pixel matriz[altura][largura], int nprox) {
         }
 }
 
-void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
+void shrink_circle(struct pixel **matriz, int nprox) {
         int i, j;
 	for (i = altmin; i < altmax; i++) {
            for (j = largmin; j < largmax; j++) {
@@ -86,7 +86,7 @@ void shrink_circle(struct pixel matriz[altura][largura], int nprox) {
         }
 }
 
-void find_round(struct pixel matriz[altura][largura]) {
+void find_round(struct pixel **matriz) {
 	int check=0;
 	int count=1;
 	int i, j, x, y;

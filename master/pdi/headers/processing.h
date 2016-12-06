@@ -3,6 +3,6 @@
 #include "cabecalho.h"
 
 
-void image_processing(struct pixel matriz[altura][largura], struct bloco block[altura*largura]);
+void image_processing(struct pixel **matriz, struct bloco block[altura*largura]);
 
 #endif

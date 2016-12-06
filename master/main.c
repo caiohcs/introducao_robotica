@@ -15,6 +15,7 @@
 #include "./bibliotecas/graphical.h"
 #include "./bibliotecas/calibracao.h"
 #include "./bibliotecas/transf_perspectiva.h"
+#include "./bibliotecas/AI.h"
 
 
 #define alt 6.731
@@ -146,6 +147,7 @@ int main()
 	
 	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
 	
+	ia();
 	fclose(fp);
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
