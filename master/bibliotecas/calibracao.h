@@ -14,13 +14,13 @@ struct CD *cdcamera()
 	struct pixel matriz[altura][largura];
         struct bloco tijolo[altura*largura];
 
-	map_yuv(matriz);	//Ver em aquisition.h
+	map_yuv(matriz);	//Ver em aquisition.c
 
         unsigned char *prototipo;        
 	prototipo = malloc(altura*largura*2);
-	image_processing(matriz, tijolo); //Ver em processing.h
+	image_processing(matriz, tijolo); //Ver em processing.c
 	dealocate(matriz, prototipo);
-        return print_ballcoord(matriz);
+        return print_ballcoord(matriz); //Ver em escrita.c
 }
 
 struct CD *cdworld()
