@@ -58,13 +58,29 @@ void ia()
 	
 	struct CD team1[5];
         struct CD team2[5];
-	
+        struct CD *centros_posicoes_vazias;
+        struct CD centros_hashtag[9];
+        struct CD centros_bolinhas_team1[5];
+
+	centros_posicoes_vazias = cdcamera();
+
 	for (i = 0; i < 5; i++) {
 		team1[i].X = centros_teams[0][i].X;
 		team1[i].Y = centros_teams[0][i].Y;
 		team2[i].X = centros_teams[1][i].X;
 		team2[i].Y = centros_teams[1][i].Y;
 	}
+
+	for (i = 0; i < 9; i++) {
+		centros_hashtag[i].X = centros_posicoes_vazias[i].X;
+		centros_hashtag[i].Y = centros_posicoes_vazias[i].Y;
+	}
+
+	for (i = 0; i < 5; i++) {
+		centros_bolinhas_team1[i].X = centros_posicoes_vazias[i+9].X;
+		centros_bolinhas_team1[i].Y = centros_posicoes_vazias[i+9].Y;
+	}
+
 	free(centros_teams[0]);
 	free(centros_teams[1]);
 	free(centros_teams);
@@ -77,6 +93,14 @@ void ia()
 	for (i = 0; i < 5; i++) {
 		printf("%d %f %f\n", i, team2[i].X, team2[i].Y);
 	}
+	printf("\n\nCentros hashtag:\n");
+	for (i = 0; i < 9; i++) {
+		printf("%d %f %f\n", i, centros_hashtag[i].X, centros_hashtag[i].Y);
+	}
+	printf("\n\nCentros bolinhas team1:\n");
+	for (i = 0; i < 5; i++) {
+		printf("%d %f %f\n", i, centros_bolinhas_team1[i].X, centros_bolinhas_team1[i].Y);
+	}
 
 	
 
@@ -87,6 +111,7 @@ void ia()
 	for (i = 0; i < altura; i++)
 		free(matriz[i]);
 	free(matriz);
+	free(centros_posicoes_vazias);
 }
 
 

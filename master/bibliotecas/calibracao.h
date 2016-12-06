@@ -19,7 +19,7 @@ struct pixel **yuv_map()
 
 	unsigned char *mapa;    
         int fd;
-        if((fd = open("myimage.yuv", O_RDWR)) == -1){
+        if((fd = open("tabvazio.yuv", O_RDWR)) == -1){
                 perror("open");
                 exit(1);
         }

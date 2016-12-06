@@ -136,6 +136,7 @@ int main()
 	fp = fopen(strcat(buffer,".txt\0"), "w");		
 	for (i = 0; i < numpontos; i++) 
 		fprintf(fp, "%s\n", pontos[i]);
+	
 	/*
 	int x, k;
 	for (x = 0; x < 3; x++) {
@@ -144,9 +145,8 @@ int main()
 		printf("\t%g\t", gsl_matrix_get(Homografia, x, k));
 		}
 	}
-	
-
 	*/
+
 	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
 	printf("Chamando IA\n");
 	ia();
