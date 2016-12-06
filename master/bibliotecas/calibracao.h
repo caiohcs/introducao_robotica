@@ -9,15 +9,12 @@ int limiar=10;
 
 /* Calcula e imprime as coordenadas no referencial I, em pixels */
 
-struct CD *cdcamera()
+struct pixel **yuv_map()
 {
-	printf("Entrei em cdcamera\n");
-	int i, j;
-
+	int i;
 	struct pixel **matriz = malloc(altura*sizeof(struct pixel*));
-        for (i = 0; i < altura; i++);
+        for (i = 0; i < altura; i++)
 		matriz[i] = malloc(largura*sizeof(struct pixel));
-	struct bloco *tijolo = malloc(sizeof(struct bloco)*altura*largura);
 
 
 	unsigned char *mapa;    
@@ -42,16 +39,19 @@ struct CD *cdcamera()
         alocate(matriz,mapa);
         close(fd);
         munmap(mapa, buf.st_size);
+	return(matriz);
+} 
 
 
+struct CD *cdcamera()
+{
+	struct bloco *tijolo = malloc(sizeof(struct bloco)*altura*largura);
+	struct pixel **matriz = yuv_map();
         unsigned char *prototipo;        
 	prototipo = malloc(altura*largura*2);
 	image_processing(matriz, tijolo); //Ver em processing.c
 	dealocate(matriz, prototipo);
  
-        for (i = 0; i < altura; i++);
-		free(matriz[i]);
-	free(matriz);
 	free(tijolo);
  	return print_ballcoord(matriz); //Ver em escrita.c
 }
@@ -164,7 +164,7 @@ void calibra(gsl_matrix *Homografia)
 	for (i = 0; i < 3; i++) {
 		for (j = 0; j < 3; j++) {
 			if (i!=2 && j!=2) {
-			gsl_matrix_set(Homografia, i, j, gsl_matrix_get(iAtA, i*3 + j, 0));
+			gsl_matrix_set(Homografia, i, j, gsl_matrix_get(x, i*3 + j, 0));
 			} else gsl_matrix_set(Homografia, 2, 2, 1); 
 		}
 	}

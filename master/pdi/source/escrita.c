@@ -66,8 +66,8 @@ void generate_teams(struct pixel **matriz, struct pixel team1, struct pixel team
 		for (j = largmin; j < largmax; j++) {
 			tmp = lumcbcr_medium(matriz, i, j, 8);
 			matriz[i][j].team = 0;
-			if (pix_erro(tmp, team1) < 20) matriz[i][j].team = 1;
-			if (pix_erro(tmp, team2) < 20) matriz[i][j].team = 2;
+			if (pix_erro(tmp, team1) < 30) matriz[i][j].team = 1;
+			if (pix_erro(tmp, team2) < 30) matriz[i][j].team = 2;
 		}
 	}
 
@@ -89,6 +89,49 @@ void generate_teams(struct pixel **matriz, struct pixel team1, struct pixel team
 	}
 }
 
+
+void generate_prox_teams(struct pixel **matriz){
+        int i, j, x ,y;
+        for (i = altmin; i < altmax; i++) {
+           for (j = largmin; j < largmax; j++) {
+              matriz[i][j].prox_team = 0;
+                for (x = -1; x <= 1; x++) {
+                   for (y = -1; y <= 1; y++) {
+                        if (x != 0 || y != 0) {
+                          if (matriz[i+x][j+y].team != 0) {
+                            matriz[i][j].prox_team++;
+                        }
+                      }
+                   }
+                }
+           }
+        }
+}
+
+void shrink_teams(struct pixel **matriz, int nprox)
+{
+	int i, j;
+	for (i = altmin; i < altmax;i++) {
+	  for (j = largmin; j < largmax; j++) {
+	    if(matriz[i][j].prox_team<=nprox) {
+	      matriz[i][j].team = 0;
+	    }
+	  }
+	}
+}
+
+void swell_teams(struct pixel **matriz, int nprox)
+{
+	int i, j;
+	for (i = altmin; i < altmax;i++) {
+	  for (j = largmin; j < largmax; j++) {
+	    if(matriz[i][j].prox_team>=nprox) {
+	      matriz[i][j].team = 1;
+	    }
+	  }
+	}
+}
+
 int pix_erro(struct pixel original, struct pixel compare){
 	int erro = 0;
 	erro = abs(original.luma - compare.luma) + 
@@ -106,9 +149,8 @@ void escrita(char *arquivo, unsigned char* matriz_temp) {
             exit(1);
 
         }
-
         if(write(jpgfile, matriz_temp, altura*largura*2) < 0);
-		printf("Erro ao escrever\n");
+		perror("Erro ao escrever\n");
         close(jpgfile);
 }
 
@@ -143,6 +185,11 @@ struct CD *print_ballcoord(struct pixel **matriz) {
                 printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
         }
 */
+	
+	for (i = 0; i < altura; i++)
+		free(matriz[i]);
+	free(matriz);
+
         free(bolinhas);
         free(hashtag);
 	return cds;

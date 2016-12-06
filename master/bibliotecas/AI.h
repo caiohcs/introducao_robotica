@@ -6,7 +6,7 @@ void ia_map_yuv(struct pixel **matriz)
 {
 	unsigned char *mapa;
         int fd;
-        if((fd = open("myimage.yuv", O_RDWR)) == -1){
+        if((fd = open("tabuleiro_com_pecas.yuv", O_RDWR)) == -1){
                 perror("open");
                 exit(1);
         }
@@ -30,42 +30,6 @@ void ia_map_yuv(struct pixel **matriz)
 
 void ia()
 {
-	struct pixel **CROTE = malloc(altura*sizeof(struct pixel*));
-	int i;
-	for (i = 0; i < altura; i++);
-		CROTE[i] = malloc(largura*sizeof(struct pixel));
-
-	ia_map_yuv(CROTE);
-	
-        struct CD *A = malloc(sizeof(struct CD)*19);
-	A = cdcamera();
-        printf("Antes da alocação da matriz de coordenadas!");
-	free(A);
-	
-	/*
-	struct CD team1[5];
-        struct CD team2[5];
-	struct coordenadas **centros_teams = malloc(sizeof(struct coordenadas*)*2);
-	centros_teams = detect_regiaoteam(matriz);
-       
-	
-
-	for (i = 0; i < 5; i++) {
-		team1[i].X = centros_teams[0][i].X;
-		team1[i].Y = centros_teams[0][i].Y;
-		team2[i].X = centros_teams[1][i].X;
-		team2[i].Y = centros_teams[1][i].Y;
-	}
-	
-	printf("\n\nTeam1:\n");
-	for (j = 0; j < 5; j++) {
-		printf("%d %f %f\n", j, team1[j].X, team1[j].Y);
-	}
-	printf("\n\nTeam2:\n");
-	for (j = 0; j < 5; j++) {
-		printf("%d %f %f\n", j, team2[j].X, team2[j].Y);
-	}
-
 	struct pixel pixteam1; //verde
         pixteam1.luma = 182;
         pixteam1.cb = 104;
@@ -74,19 +38,55 @@ void ia()
         pixteam2.luma = 144;
         pixteam2.cb = 122;
         pixteam2.cr = 159;
+	unsigned char *prototipo = malloc(largura*altura*2);
 
+	struct pixel **matriz = malloc(altura*sizeof(struct pixel*));
+	struct coordenadas **centros_teams = malloc(sizeof(struct coordenadas*)*2);
+	int i;
+	for (i = 0; i < altura; i++)
+		matriz[i] = malloc(largura*sizeof(struct pixel));
+	
+	ia_map_yuv(matriz);
         generate_teams(matriz, pixteam1, pixteam2);
-        centros_teams = detect_regiaoteam(matriz);
+	generate_prox_teams(matriz);
+	shrink_teams(matriz, 5);	// caso detecte mais peças do que deveria, ajustar os valores dos filtros swell e shrink, nao esquecer de generate_prox_teams
+	//swell_teams(matriz, 4);
+	centros_teams = detect_regiaoteam(matriz);
+	dealocate(matriz, prototipo);
+	escrita("teams.jpg", prototipo);
+	free(prototipo);
+	
+	struct CD team1[5];
+        struct CD team2[5];
+	
+	for (i = 0; i < 5; i++) {
+		team1[i].X = centros_teams[0][i].X;
+		team1[i].Y = centros_teams[0][i].Y;
+		team2[i].X = centros_teams[1][i].X;
+		team2[i].Y = centros_teams[1][i].Y;
+	}
+	free(centros_teams[0]);
+	free(centros_teams[1]);
+	free(centros_teams);
+
+	printf("\n\nTeam1:\n");
+	for (i = 0; i < 5; i++) {
+		printf("%d %f %f\n", i, team1[i].X, team1[i].Y);
+	}
+	printf("\n\nTeam2:\n");
+	for (i = 0; i < 5; i++) {
+		printf("%d %f %f\n", i, team2[i].X, team2[i].Y);
+	}
+
+	
 
 
-        free(centros_teams[0]);
-        free(centros_teams[1]);
-        free(centros_teams);
-	*/
 
-	for (i = 0; i < altura; i++);
-		free(CROTE[i]);
-	free(CROTE);
+
+
+	for (i = 0; i < altura; i++)
+		free(matriz[i]);
+	free(matriz);
 }
 
 

@@ -193,7 +193,7 @@ int percorre_tudoteam(struct coordenadas pixteam[2000], int size, int nregs, int
 	return 0;
 }
 
-void detect_regiaoteam(struct pixel **matriz)
+struct coordenadas **detect_regiaoteam(struct pixel **matriz)
 {
 	int i, j;
 	struct coordenadas pixteam1[2000];
@@ -236,6 +236,7 @@ void detect_regiaoteam(struct pixel **matriz)
 	}
 
 	int x = 0, y = 0, n = 0;
+	struct coordenadas **return_centros = malloc(sizeof(struct coordenadas*)*2);
 	struct coordenadas *centros1 = malloc(sizeof(struct coordenadas)*nregsteam1);
 	struct coordenadas *centros2 = malloc(sizeof(struct coordenadas)*nregsteam2);
 	for (j = 0; j < nregsteam1; j++){
@@ -267,6 +268,7 @@ void detect_regiaoteam(struct pixel **matriz)
 		centros2[j].X = x/n;
 		centros2[j].Y = y/n;
 	}
+
 	printf("Team1:\n");
 	for (j = 0; j < nregsteam1; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros1[j].X, centros1[j].Y);
@@ -275,10 +277,11 @@ void detect_regiaoteam(struct pixel **matriz)
 	for (j = 0; j < nregsteam2; j++){
 		printf("Regiao: %d Centro X : %d Centro Y: %d\n", j+1, centros2[j].X, centros2[j].Y);
 	}
+	
+	return_centros[0] = centros1;
+	return_centros[1] = centros2;
 
 
-
-	free(centros1);
-	free(centros2);
+	return return_centros;
 }
 

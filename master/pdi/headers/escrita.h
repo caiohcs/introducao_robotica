@@ -7,6 +7,9 @@ void escrita (char *arquivo, unsigned char* matriz_temp);
 void AI (struct pixel **matriz);
 void generate_teams (struct pixel **matriz, struct pixel team1, struct pixel team2);
 struct CD * print_ballcoord(struct pixel **matriz);
+void shrink_teams(struct pixel **matriz, int nprox);
+void swell_teams(struct pixel **matriz, int nprox);
+void generate_prox_teams(struct pixel **matriz);
 
 
 #endif

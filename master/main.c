@@ -44,7 +44,7 @@ int Inicializar_Portas()
 int main()
 {
 	buffer = malloc(sizeof(char)*150);
-	
+
 	struct CD ponto_teste;
 	gsl_matrix *Homografia = gsl_matrix_alloc(3,3);	
 	calibra(Homografia);
@@ -136,7 +136,7 @@ int main()
 	fp = fopen(strcat(buffer,".txt\0"), "w");		
 	for (i = 0; i < numpontos; i++) 
 		fprintf(fp, "%s\n", pontos[i]);
-	
+	/*
 	int x, k;
 	for (x = 0; x < 3; x++) {
 		printf("\n");
@@ -145,9 +145,12 @@ int main()
 		}
 	}
 	
+
+	*/
 	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
-	
+	printf("Chamando IA\n");
 	ia();
+	
 	fclose(fp);
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);
