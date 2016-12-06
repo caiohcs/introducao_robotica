@@ -1,6 +1,6 @@
 #include "../headers/cabecalho.h"
 
-void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struct bloco block[altura*largura], unsigned char *arquivo) {
+void threshold (struct pixel matriz[altura][largura], unsigned char *mapa, struct bloco block[altura*largura], char *arquivo) {
 	limiar=10;
 	unsigned char *prototipo;
         prototipo = malloc(altura*largura*2);
@@ -99,7 +99,7 @@ int pix_erro(struct pixel original, struct pixel compare){
 
 
 
-void escrita (unsigned char *arquivo, unsigned char* matriz_temp) {
+void escrita (char *arquivo, unsigned char* matriz_temp) {
 	int jpgfile;
         if((jpgfile = open(arquivo, O_WRONLY | O_CREAT, 0660)) < 0){
             perror("open");
@@ -107,7 +107,8 @@ void escrita (unsigned char *arquivo, unsigned char* matriz_temp) {
 
         }
 
-        write(jpgfile, matriz_temp, altura*largura*2);
+        if(write(jpgfile, matriz_temp, altura*largura*2) < 0);
+		printf("Erro ao escrever\n");
         close(jpgfile);
 }
 
