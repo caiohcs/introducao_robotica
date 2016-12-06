@@ -1,8 +1,8 @@
 EXEC	= main
 CXX	= gcc
-MAIN	= main.c ./pdi/source/regiao.c ./pdi/source/deteccao.c ./pdi/source/pixel.c
+MAIN	= main.c ./pdi/source/regiao.c ./pdi/source/deteccao.c ./pdi/source/pixel.c ./pdi/source/aquisition.c ./pdi/source/processing.c ./pdi/source/escrita.c
 OPTIONS	= -O3 -Wall -ggdb
-LIBS	= -lX11 -lm
+LIBS	= -lX11 -lm -L/usr/local/lib -lgsl -lgslcblas
 
 main:	clean
 	$(CXX) $(OPTIONS) $(MAIN) $(LIBS) -o $(EXEC)

@@ -110,3 +110,42 @@ void escrita (unsigned char *arquivo, unsigned char* matriz_temp) {
         write(jpgfile, matriz_temp, altura*largura*2);
         close(jpgfile);
 }
+
+struct CD * print_ballcoord(struct pixel matriz[altura][largura]) {
+ 	
+	struct CD *cds = malloc(sizeof(struct CD)*19);
+	struct coordenadas_size aux = detect_regiao(matriz);
+        struct coordenadas *bolinhas = aux.coord;
+        aux.coord = NULL;
+        int nbolinhas = aux.size;
+        struct coordenadas *hashtag = generate_hashtag(bolinhas, nbolinhas);
+        int i;
+
+        for (i = 0; i < 3; i++) {
+                cds[0 + 3*i].X = hashtag[6 + i].X;
+                cds[0 + 3*i].Y = hashtag[6 + i].Y;
+
+                cds[1 + 3*i].X = hashtag[3 + i].X;
+                cds[1 + 3*i].Y = hashtag[3 + i].Y;
+
+                cds[2 + 3*i].X = hashtag[0 + i].X;
+                cds[2 + 3*i].Y = hashtag[0 + i].Y;
+        }
+
+        for (i = 0; i < 10; i++) {
+                cds[9 + i].X = bolinhas[i].X;
+                cds[9 + i].Y = bolinhas[i].Y;
+        }
+
+        printf("Camera\n");
+        for (i = 0; i < 19; i++) {
+                printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
+        }
+
+        free(bolinhas);
+        free(hashtag);
+	return cds;
+	
+
+
+}

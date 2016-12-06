@@ -11,11 +11,8 @@ struct pixel gradient_check(struct bloco block){
 	//float grad_luma, grad_cb, grad_cr;
 	float grad_luma;
 	grad_luma = (float)(pow((block.i1j1_luma-block.ij_luma),2) + pow((block.ij1_luma-block.i1j_luma),2))/2.0*delta_x;
-	//grad_cb = (float)(pow((block.i1j1_cb-block.ij_cb),2) + pow((block.ij1_cb-block.i1j_cb),2))/2.0*delta_x;
-	//grad_cr = (float)(pow((block.i1j1_cr-block.ij_cr),2) + pow((block.ij1_cr-block.i1j_cr),2))/2.0*delta_x;
-
 		
-	if (grad_luma>=limiar) {// || grad_cb>=limiar || grad_cr>=limiar) {
+	if (grad_luma>=limiar) {
 	   pixel_temp.luma=255;
 	   pixel_temp.grad=1;
 	}  else {

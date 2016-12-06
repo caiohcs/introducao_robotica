@@ -7,85 +7,20 @@
 
 int limiar=10;
 
-/* Coordenadas no referencial I, em pixels */
+/* Calcula e imprime as coordenadas no referencial I, em pixels */
 
 struct CD *cdcamera()
 {
-	struct CD *cds = malloc(sizeof(struct CD)*19);
-        struct pixel matriz[altura][largura];
+	struct pixel matriz[altura][largura];
         struct bloco tijolo[altura*largura];
 
-        unsigned char *mapa;
+	map_yuv(matriz);	//Ver em aquisition.h
 
-        int fd;
-        if((fd = open("myimage.yuv", O_RDWR)) == -1){
-                perror("open");
-                exit(1);
-        }
-
-        struct stat buf;
-        if(fstat(fd, &buf) == -1){
-                perror("fstat");
-                exit(1);
-        }
-        
-	mapa = mmap(0, buf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-        if(mapa == MAP_FAILED){
-                perror("mmap");
-                exit(1);
-        }
-
-        unsigned char *prototipo;
-        prototipo = malloc(altura*largura*2);
-        alocate(matriz,mapa);
-
-        array_bloco(tijolo, matriz);
-        generate_grad(matriz, tijolo);
-        generate_prox(matriz);
-        shrink(matriz, 4);
-        generate_prox(matriz);
-        swell(matriz, 6);
-
-        detect_circle(matriz);
-        generate_proxcircle(matriz);
-        shrink_circle(matriz, 5);
-        generate_proxcircle(matriz);
-
-        struct coordenadas_size aux = detect_regiao(matriz);
-        struct coordenadas *bolinhas = aux.coord;
-        aux.coord = NULL;
-        int nbolinhas = aux.size;
-        struct coordenadas *hashtag = generate_hashtag(bolinhas, nbolinhas);
-	int i;
-
-	for (i = 0; i < 3; i++) {
-		cds[0 + 3*i].X = hashtag[6 + i].X;
-		cds[0 + 3*i].Y = hashtag[6 + i].Y;
-		
-		cds[1 + 3*i].X = hashtag[3 + i].X;
-		cds[1 + 3*i].Y = hashtag[3 + i].Y;
-
-		cds[2 + 3*i].X = hashtag[0 + i].X;
-		cds[2 + 3*i].Y = hashtag[0 + i].Y;
-	}
-
-	for (i = 0; i < 10; i++) {
-		cds[9 + i].X = bolinhas[i].X;
-		cds[9 + i].Y = bolinhas[i].Y;
-	}
-
-	printf("Camera\n");
-	for (i = 0; i < 19; i++) {
-		printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
-	}
-
-        free(bolinhas);
-        free(hashtag);
-        dealocate(matriz, prototipo);
-        // nao esquecer de desalocar
-	munmap(mapa, buf.st_size);
-        close(fd);
-        return cds;
+        unsigned char *prototipo;        
+	prototipo = malloc(altura*largura*2);
+	image_processing(matriz, tijolo); //Ver em processing.h
+	dealocate(matriz, prototipo);
+        return print_ballcoord(matriz);
 }
 
 struct CD *cdworld()

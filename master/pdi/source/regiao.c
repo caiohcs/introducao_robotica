@@ -1,5 +1,6 @@
 #include "../headers/cabecalho.h"
 
+/* Função recursiva de rotula os círculos em regiões distintas */
 
 int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x, int y)
 {
@@ -10,18 +11,26 @@ int percorre_tudo(struct coordenadas pixcircle[300], int size, int nregs, int x,
 				(pixcircle[i].Y == y || pixcircle[i].Y == y+1 || pixcircle[i].Y == y-1)) {
 			pixcircle[i].regiao = nregs;
 			percorre_tudo(pixcircle, size, nregs, pixcircle[i].X, pixcircle[i].Y);
-		} else {
-		}
+		} else { continue;
+		  }
 	}
 	return 0;
 }
 
+
+/*Essa função retorna todas as bolinhas contidas na matriz,
+com a informação de suas coordenadas em píxel, assim como
+o número de bolinhas detectadas*/
 
 struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 {
 	struct coordenadas pixcircle[300];
 	int npixcircle = 0;
       	int i, j;
+	
+	/*Verificação, na região do tabuleiro, de quantos
+	são os píxeis que são círculos */
+	
 	for (i = altmin; i < altmax; i++) {
        		for (j = largmin; j < largmax; j++) {
 			if (matriz[i][j].circle == 1) {
@@ -33,7 +42,11 @@ struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 		}
 	}
 
-	int nregs = 0;
+	int nregs = 0; //Ah...Número de regiões = nregs; 
+
+	/*Aqui está o laço que irá classificar (ver percorre_tudo)
+	os círculos em diferentes regiões */
+
 	for (i = 0; i < npixcircle; i++)
 	{
 		if (pixcircle[i].regiao == -1) {
@@ -46,6 +59,10 @@ struct coordenadas_size detect_regiao(struct pixel matriz[altura][largura])
 	int x = 0, y = 0, n = 0;
 	struct coordenadas *bolinhas = malloc(sizeof(struct coordenadas)*nregs);
 	
+	/*Atribuição das coordenadas em píxel de cada uma das bolinhas
+	contidas no papel do tabuleiro. A divisão por n é para encontrar
+	o ponto médio, ou seja, o centro de cada região de bolinha. Genial*/
+
 	for (j = 0; j < nregs; j++){
 		x = 0;
 		y = 0;

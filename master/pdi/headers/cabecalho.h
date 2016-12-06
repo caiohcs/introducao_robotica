@@ -11,9 +11,11 @@
 #include <sys/stat.h>
 #include "pixel.h" 
 #include <math.h>
-#include "escrita.h"
+#include "processing.h"
+#include "aquisition.h"
 #include "deteccao.h"
 #include "regiao.h"
+#include "escrita.h"
 
 
 
