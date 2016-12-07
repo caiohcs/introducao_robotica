@@ -2,6 +2,9 @@
 #define FUNCOES
 #include "./graphical.h"
 
+
+void ia(struct Mainwin_var *mainwin, struct servo *ptrservo[5], int serialfd);	// precisa declarar esse crote aqui pra nao bugar
+
 void cinversa(int serial_fd, struct servo *ptrservo[5], float Xuser, float Yuser, float Zuser, float PHIuser)
 {
 
@@ -199,6 +202,11 @@ int evento_keypress(int serial_fd, struct Mainwin_var *mainwin, struct servo *pt
 		case XK_space:						//desenha um ponto vermelho
 			sprintf(pontos[*numpontos],"%.2f %.2f %.2f", *CX, *CY, *CZ);
 			*numpontos = *numpontos+1;
+		break;
+
+
+		case XK_M:						//chama AI
+			ia(mainwin, ptrservo, serial_fd);
 		break;
 
 

@@ -92,8 +92,8 @@ int main()
 	unsigned int alt_mainwin, larg_mainwin, largbord_mainwin;
 	unsigned int *uintptr[3] = {&alt_mainwin, &larg_mainwin, &largbord_mainwin};
 
-	GC gc_branco, gc_preto, gc_red;
-	GC *gcptr[3] = {&gc_branco, &gc_preto, &gc_red};
+	GC gc_branco, gc_preto, gc_red, gc_team1, gc_team2;
+	GC *gcptr[5] = {&gc_branco, &gc_preto, &gc_red, &gc_team1, &gc_team2};
 	
 	struct Mainwin_var mainwin_var;
 	
@@ -149,7 +149,6 @@ int main()
 
 	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
 	printf("Chamando IA\n");
-	ia();
 	
 	fclose(fp);
 	fechar_porta(serial_fd);

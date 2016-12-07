@@ -8,7 +8,7 @@ struct Mainwin_var
 {
 	Display *display;
 	Window *mainwin;
-	GC *gc_preto, *gc_branco, *gc_vermelho;
+	GC *gc_preto, *gc_branco, *gc_vermelho, *gc_team1, *gc_team2;
 	unsigned int altw, larg;
 	int screen_num;
 };
@@ -78,7 +78,7 @@ void drawEixoEscalaGarraPontos(struct Mainwin_var *main_win, float CX, float CY,
 
 
 int define_xthings(Display **displayptr, int *intptr[3], Window *winptr[2], unsigned long *ulongptr[4],
-		unsigned int *uintptr[3], GC *gcptr[3], struct Mainwin_var *mainwin_var)
+		unsigned int *uintptr[3], GC *gcptr[5], struct Mainwin_var *mainwin_var)
 {
         Display **display = displayptr;
 
@@ -100,7 +100,9 @@ int define_xthings(Display **displayptr, int *intptr[3], Window *winptr[2], unsi
 
         GC *gc_branco = gcptr[0], 
 		*gc_preto = gcptr[1], 
-		*gc_vermelho = gcptr[2];
+		*gc_vermelho = gcptr[2],
+		*gc_time1 = gcptr[3],
+		*gc_time2 = gcptr[4];
 
 
         if ((*display = XOpenDisplay(NULL)) == NULL){
@@ -152,11 +154,32 @@ int define_xthings(Display **displayptr, int *intptr[3], Window *winptr[2], unsi
 	XSetBackground(*display, *gc_vermelho, cor.pixel);
 	XSetForeground(*display, *gc_vermelho, cor.pixel);
 
+
+	*gc_time1 = XCreateGC(*display, *mainwin, valuesmask, &values);
+	colormaptela = XDefaultColormap(*display, *screen_num);
+	cor.red = rgb_to_xrgb(176);
+	cor.green = rgb_to_xrgb(216);
+	cor.blue = rgb_to_xrgb(145);
+	XAllocColor(*display, colormaptela, &cor);
+	XSetBackground(*display, *gc_time1, cor.pixel);
+	XSetForeground(*display, *gc_time1, cor.pixel);
+
+	*gc_time2 = XCreateGC(*display, *mainwin, valuesmask, &values);
+	colormaptela = XDefaultColormap(*display, *screen_num);
+	cor.red = rgb_to_xrgb(204);
+	cor.green = rgb_to_xrgb(126);
+	cor.blue = rgb_to_xrgb(139);
+	XAllocColor(*display, colormaptela, &cor);
+	XSetBackground(*display, *gc_time2, cor.pixel);
+	XSetForeground(*display, *gc_time2, cor.pixel);
+
 	mainwin_var->display = *display;
 	mainwin_var->mainwin = mainwin;
 	mainwin_var->gc_preto = gc_preto;
 	mainwin_var->gc_branco = gc_branco;
 	mainwin_var->gc_vermelho = gc_vermelho;
+	mainwin_var->gc_team1 = gc_time1;
+	mainwin_var->gc_team2 = gc_time2;
 	mainwin_var->altw = *alt_mainwin;
 	mainwin_var->larg = *larg_mainwin;
 	mainwin_var->screen_num = *screen_num;
