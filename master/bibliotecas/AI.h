@@ -86,18 +86,18 @@ void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_h
 	struct CD alvo;
 	int menor_distancia_atual = 100000;
 	int num_hashtag_disp = 0;	//Número de hashtags que podem receber uma peça
-	posicoes_auxiliares_centimetros = cdworld_auxiliares();
+	posicoes_auxiliares_centimetros = cdworld_auxiliares(); // onde está o free?
 
 	for (i =0; i < 16; i++) {
 		if (distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]) < menor_distancia_atual) {
-			posicao_atual_peca = posicoes_auxiliares_centimetros[i];
 			menor_distancia_atual = distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]);
+			posicao_atual_peca = posicoes_auxiliares_centimetros[i];
 		}	
 	}
 
 	/*Manda a peça para a posição auxiliar mais próxima da sua posição inicial */
 
-	usleep(2000000);
+	usleep(3000000);
 	cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
 	
 	/*Verificação de quantos são os hashtags que podem receber peças */
@@ -123,7 +123,8 @@ void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_h
 	menor_distancia_atual = 100000;
 	for (i = 0; i < num_hashtag_disp; i++) {
 				if (distancia_cds(posicao_atual_peca, hashtags_alvos[i]) < menor_distancia_atual ) {
-					alvo = hashtags_alvos[i];
+					menor_distancia_atual = distancia_cds(posicao_atual_peca, hashtags_alvos[i]);
+					alvo = hashtags_alvos[i];	// não devia ter mudado a menor_distancia_atual depois disso?
 				} 
 	}
 			
@@ -147,6 +148,7 @@ void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_h
 	usleep(2000000);
         cinversa(serial_fd, ptrservo, alvo.X, alvo.Y, 9, -70);
 	
+	free(posicoes_auxiliares_centimetros);
 	free(hashtags_alvos);
 }
 
