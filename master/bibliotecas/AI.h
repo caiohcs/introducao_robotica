@@ -78,7 +78,7 @@ struct CD verifica_vertices(struct CD posicao_atual, struct CD posicoes_auxiliar
 
 
 
-void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_hashtag_centimetros[9], int hashtag_status[9], struct servo *ptrservo[5], int serial_fd) {
+void decisao_trajetoria_jogada(struct Mainwin_var *main_win, struct CD posicao_atual_peca, struct CD centros_hashtag_centimetros[9], int hashtag_status[9], struct servo *ptrservo[5], int serial_fd) {
 
 	int i,j;
 	struct CD *posicoes_auxiliares_centimetros;
@@ -99,7 +99,12 @@ void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_h
 
 	usleep(3000000);
 	cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
-	
+	XDrawArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
+					coordX_pixels(posicao_atual_peca.Y*7, main_win->larg)-5,
+					coordY_pixels((-7)*posicao_atual_peca.X, main_win->altw)-5,
+					10, 10, 0, 360*64);
+	enviar_comandoX(main_win->display);
+
 	/*Verificação de quantos são os hashtags que podem receber peças */
 
 	for (i = 0; i < 9; i++) {
@@ -145,8 +150,18 @@ void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_h
 
 	usleep(2000000);
         cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
+	XDrawArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
+					coordX_pixels(posicao_atual_peca.Y*7, main_win->larg)-5,
+					coordY_pixels((-7)*posicao_atual_peca.X, main_win->altw)-5,
+					10, 10, 0, 360*64);
+	enviar_comandoX(main_win->display);
 	usleep(2000000);
+	XDrawArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
+					coordX_pixels(posicao_atual_peca.Y*7, main_win->larg)-5,
+					coordY_pixels((-7)*posicao_atual_peca.X, main_win->altw)-5,
+					10, 10, 0, 360*64);
         cinversa(serial_fd, ptrservo, alvo.X, alvo.Y, 9, -70);
+	enviar_comandoX(main_win->display);
 	
 	free(posicoes_auxiliares_centimetros);
 	free(hashtags_alvos);
@@ -398,15 +413,22 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 	
 	for (i = 0; i < 5; i++) {	// Esse laço vai ser o robô procurando uma peça disponível em bolinhas time 1 para pegar e jogar em algum canto
 		if (bolinhas_team1_status[i] == 1) {
-			usleep(2000000);
+			usleep(3000000);
 			cinversa(serial_fd, ptrservo, centros_bolinhas_team1_centimetros[i].X, centros_bolinhas_team1_centimetros[i].Y, 9, -70);			
 			change_servo(serial_fd, garra, 2000);	//Comando para fechar a garra;	
 			posicao_atual_peca=centros_bolinhas_team1_centimetros[i];
 			break;
 		}
 	}
+	
+	XDrawArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
+					coordX_pixels(posicao_atual_peca.Y*7, main_win->larg)-5,
+					coordY_pixels((-7)*posicao_atual_peca.X, main_win->altw)-5,
+					10, 10, 0, 360*64);
 
-	decisao_trajetoria_jogada(posicao_atual_peca, centros_hashtag_centimetros, hashtag_status, ptrservo, serial_fd);
+	enviar_comandoX(main_win->display);
+
+	decisao_trajetoria_jogada(main_win, posicao_atual_peca, centros_hashtag_centimetros, hashtag_status, ptrservo, serial_fd);
 	
 	/*Essas variaveis são usadas no calculo da trajetória simples */
 	/*Struct CD auxiliar para guardar a distância minima
