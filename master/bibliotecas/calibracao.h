@@ -89,6 +89,40 @@ struct CD *cdworld()
 }
 
 
+struct CD *cdworld_auxiliares()
+{      
+	struct CD *cds = malloc(sizeof(struct CD)*16);
+        FILE *fp;
+        static char movebuffer[100];
+        memset(movebuffer, 0, sizeof(char)*100);
+        buffer[strlen(buffer)-1] = '\0';        
+        fp = fopen("auxiliar", "r");                
+        int i = 0;
+	while (fgets(buffer, sizeof(char)*150, fp)) {
+                switch (buffer[2]) {  
+                        case 'M':       
+                                sscanf(buffer, "%*d)%s(%*d,%*d,%*d,%*d);", movebuffer);
+                                if (strncmp(movebuffer, "MOVE", 4) == 0){
+                                        sscanf(buffer, "%*d)MOVE(%f,%f,%*f,%*f);", &cds[i].X, &cds[i].Y);
+					i++;
+                                }
+                        break;
+			default:
+			break;
+                } 
+        }
+/*
+	printf("Mundo\n");
+	for (i = 0; i < 19; i++) {
+		printf("%d %f %f\n", i, cds[i].X, cds[i].Y);
+	}
+*/
+	//Não esquecer de desalocar
+	return cds; 
+}
+
+
+
 /* Função que serve para calcular H. É esperado que Homografia
 seja uma matrix 3x3 */
 

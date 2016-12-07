@@ -43,6 +43,22 @@ struct CD verifica_vertices(struct CD posicao_atual, struct CD posicoes_auxiliar
 	int menor_distancia = 100000;
 	struct CD posicao_proxima;
 	/*O for é doidão assim porque ele verifica apenas os vertices das posições auxiliares (3, 7, 11, 15);*/
+	/*
+		--- --- --- --- ---
+	      | 15 | 0 | 1 | 2 | 3 |		Posições auxiliares
+		--- ---	--- --- ---
+	      | 14 |	       | 4 |
+		---		---
+	      | 13 |	       | 5 |
+		---		---
+	      | 12 |	       | 6 |
+		--- --- --- ---	---
+	      | 11 | 10| 9 | 8 | 7 |
+		--- --- --- --- ---	
+		
+	*/
+
+
 	for (i = 3; i <16; i+=4) {
 		if ((distancia_cds(posicao_atual, posicoes_auxiliares[i]) + distancia_cds(alvo, posicoes_auxiliares[i])) < menor_distancia) {
 		menor_distancia = distancia_cds(posicao_atual, posicoes_auxiliares[i]);
@@ -65,11 +81,12 @@ struct CD verifica_vertices(struct CD posicao_atual, struct CD posicoes_auxiliar
 void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_hashtag_centimetros[9], int hashtag_status[9], struct servo *ptrservo[5], int serial_fd) {
 
 	int i,j;
-	struct CD posicoes_auxiliares_centimetros[16];
+	struct CD *posicoes_auxiliares_centimetros;
 	struct CD *hashtags_alvos;
 	struct CD alvo;
 	int menor_distancia_atual = 100000;
 	int num_hashtag_disp = 0;	//Número de hashtags que podem receber uma peça
+	posicoes_auxiliares_centimetros = cdworld_auxiliares();
 
 	for (i =0; i < 16; i++) {
 		if (distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]) < menor_distancia_atual) {
