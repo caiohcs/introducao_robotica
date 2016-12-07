@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccuviV50.s 			page 1
+GAS LISTING /tmp/cct0um32.s 			page 1
 
 
    1              		.file	"escrita.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
   10:./pdi/source/escrita.c **** 	array_bloco(block, matriz);
   11:./pdi/source/escrita.c **** 	generate_grad(matriz, block);	
   12:./pdi/source/escrita.c **** 	generate_prox(matriz);
-GAS LISTING /tmp/ccuviV50.s 			page 2
+GAS LISTING /tmp/cct0um32.s 			page 2
 
 
   13:./pdi/source/escrita.c **** 	shrink(matriz, 4);
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
   58 0082 89C6     		movl	%eax, %esi
   59 0084 BF000000 		movl	$.LC0, %edi
   59      00
-GAS LISTING /tmp/ccuviV50.s 			page 3
+GAS LISTING /tmp/cct0um32.s 			page 3
 
 
   60 0089 B8000000 		movl	$0, %eax
@@ -127,637 +127,640 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
   61      00
   42:./pdi/source/escrita.c **** }
   62              		.loc 1 42 0
-  63 0093 C9       		leave
-  64              		.cfi_def_cfa 7, 8
-  65 0094 C3       		ret
-  66              		.cfi_endproc
-  67              	.LFE2:
-  68              		.size	threshold, .-threshold
-  69              		.globl	AI
-  70              		.type	AI, @function
-  71              	AI:
-  72              	.LFB3:
+  63 0093 90       		nop
+  64 0094 C9       		leave
+  65              		.cfi_def_cfa 7, 8
+  66 0095 C3       		ret
+  67              		.cfi_endproc
+  68              	.LFE2:
+  69              		.size	threshold, .-threshold
+  70              		.globl	AI
+  71              		.type	AI, @function
+  72              	AI:
+  73              	.LFB3:
   43:./pdi/source/escrita.c **** 
   44:./pdi/source/escrita.c **** 
   45:./pdi/source/escrita.c **** void AI(struct pixel **matriz)
   46:./pdi/source/escrita.c **** {
-  73              		.loc 1 46 0
-  74              		.cfi_startproc
-  75 0095 55       		pushq	%rbp
-  76              		.cfi_def_cfa_offset 16
-  77              		.cfi_offset 6, -16
-  78 0096 4889E5   		movq	%rsp, %rbp
-  79              		.cfi_def_cfa_register 6
-  80 0099 4883EC30 		subq	$48, %rsp
-  81 009d 48897DD8 		movq	%rdi, -40(%rbp)
+  74              		.loc 1 46 0
+  75              		.cfi_startproc
+  76 0096 55       		pushq	%rbp
+  77              		.cfi_def_cfa_offset 16
+  78              		.cfi_offset 6, -16
+  79 0097 4889E5   		movq	%rsp, %rbp
+  80              		.cfi_def_cfa_register 6
+  81 009a 4883EC30 		subq	$48, %rsp
+  82 009e 48897DD8 		movq	%rdi, -40(%rbp)
   47:./pdi/source/escrita.c **** 	    
   48:./pdi/source/escrita.c **** 	struct pixel pixteam1; //verde
   49:./pdi/source/escrita.c **** 	pixteam1.luma = 182;
-  82              		.loc 1 49 0
-  83 00a1 C645E0B6 		movb	$-74, -32(%rbp)
+  83              		.loc 1 49 0
+  84 00a2 C645E0B6 		movb	$-74, -32(%rbp)
   50:./pdi/source/escrita.c **** 	pixteam1.cb = 104;
-  84              		.loc 1 50 0
-  85 00a5 C645E168 		movb	$104, -31(%rbp)
+  85              		.loc 1 50 0
+  86 00a6 C645E168 		movb	$104, -31(%rbp)
   51:./pdi/source/escrita.c **** 	pixteam1.cr = 115;
-  86              		.loc 1 51 0
-  87 00a9 C645E273 		movb	$115, -30(%rbp)
+  87              		.loc 1 51 0
+  88 00aa C645E273 		movb	$115, -30(%rbp)
   52:./pdi/source/escrita.c **** 	struct pixel pixteam2; //vermelho
   53:./pdi/source/escrita.c **** 	pixteam2.luma = 144;
-  88              		.loc 1 53 0
-  89 00ad C645F090 		movb	$-112, -16(%rbp)
+  89              		.loc 1 53 0
+  90 00ae C645F090 		movb	$-112, -16(%rbp)
   54:./pdi/source/escrita.c **** 	pixteam2.cb = 122;
-  90              		.loc 1 54 0
-  91 00b1 C645F17A 		movb	$122, -15(%rbp)
+  91              		.loc 1 54 0
+  92 00b2 C645F17A 		movb	$122, -15(%rbp)
   55:./pdi/source/escrita.c **** 	pixteam2.cr = 159;
-  92              		.loc 1 55 0
-  93 00b5 C645F29F 		movb	$-97, -14(%rbp)
+  93              		.loc 1 55 0
+  94 00b6 C645F29F 		movb	$-97, -14(%rbp)
   56:./pdi/source/escrita.c **** 
   57:./pdi/source/escrita.c **** 	generate_teams(matriz, pixteam1, pixteam2);
-  94              		.loc 1 57 0
-  95 00b9 488B4DF0 		movq	-16(%rbp), %rcx
-  96 00bd 0FB67DF8 		movzbl	-8(%rbp), %edi
-  97 00c1 488B75E0 		movq	-32(%rbp), %rsi
-  98 00c5 0FB655E8 		movzbl	-24(%rbp), %edx
-GAS LISTING /tmp/ccuviV50.s 			page 4
+  95              		.loc 1 57 0
+  96 00ba 488B4DF0 		movq	-16(%rbp), %rcx
+  97 00be 0FB67DF8 		movzbl	-8(%rbp), %edi
+  98 00c2 488B75E0 		movq	-32(%rbp), %rsi
+GAS LISTING /tmp/cct0um32.s 			page 4
 
 
-  99 00c9 488B45D8 		movq	-40(%rbp), %rax
- 100 00cd 4189F8   		movl	%edi, %r8d
- 101 00d0 4889C7   		movq	%rax, %rdi
- 102 00d3 E8000000 		call	generate_teams
- 102      00
+  99 00c6 0FB655E8 		movzbl	-24(%rbp), %edx
+ 100 00ca 488B45D8 		movq	-40(%rbp), %rax
+ 101 00ce 4189F8   		movl	%edi, %r8d
+ 102 00d1 4889C7   		movq	%rax, %rdi
+ 103 00d4 E8000000 		call	generate_teams
+ 103      00
   58:./pdi/source/escrita.c **** 	detect_regiaoteam(matriz);
- 103              		.loc 1 58 0
- 104 00d8 488B45D8 		movq	-40(%rbp), %rax
- 105 00dc 4889C7   		movq	%rax, %rdi
- 106 00df E8000000 		call	detect_regiaoteam
- 106      00
+ 104              		.loc 1 58 0
+ 105 00d9 488B45D8 		movq	-40(%rbp), %rax
+ 106 00dd 4889C7   		movq	%rax, %rdi
+ 107 00e0 E8000000 		call	detect_regiaoteam
+ 107      00
   59:./pdi/source/escrita.c **** }
- 107              		.loc 1 59 0
- 108 00e4 C9       		leave
- 109              		.cfi_def_cfa 7, 8
- 110 00e5 C3       		ret
- 111              		.cfi_endproc
- 112              	.LFE3:
- 113              		.size	AI, .-AI
- 114              		.globl	generate_teams
- 115              		.type	generate_teams, @function
- 116              	generate_teams:
- 117              	.LFB4:
+ 108              		.loc 1 59 0
+ 109 00e5 90       		nop
+ 110 00e6 C9       		leave
+ 111              		.cfi_def_cfa 7, 8
+ 112 00e7 C3       		ret
+ 113              		.cfi_endproc
+ 114              	.LFE3:
+ 115              		.size	AI, .-AI
+ 116              		.globl	generate_teams
+ 117              		.type	generate_teams, @function
+ 118              	generate_teams:
+ 119              	.LFB4:
   60:./pdi/source/escrita.c **** 
   61:./pdi/source/escrita.c **** void generate_teams(struct pixel **matriz, struct pixel team1, struct pixel team2)
   62:./pdi/source/escrita.c **** {
- 118              		.loc 1 62 0
- 119              		.cfi_startproc
- 120 00e6 55       		pushq	%rbp
- 121              		.cfi_def_cfa_offset 16
- 122              		.cfi_offset 6, -16
- 123 00e7 4889E5   		movq	%rsp, %rbp
- 124              		.cfi_def_cfa_register 6
- 125 00ea 4883EC50 		subq	$80, %rsp
- 126 00ee 48897DD8 		movq	%rdi, -40(%rbp)
- 127 00f2 4889C8   		movq	%rcx, %rax
- 128 00f5 4489C1   		movl	%r8d, %ecx
- 129 00f8 488975C8 		movq	%rsi, -56(%rbp)
- 130 00fc 8855D0   		movb	%dl, -48(%rbp)
- 131 00ff 488945B8 		movq	%rax, -72(%rbp)
- 132 0103 884DC0   		movb	%cl, -64(%rbp)
+ 120              		.loc 1 62 0
+ 121              		.cfi_startproc
+ 122 00e8 55       		pushq	%rbp
+ 123              		.cfi_def_cfa_offset 16
+ 124              		.cfi_offset 6, -16
+ 125 00e9 4889E5   		movq	%rsp, %rbp
+ 126              		.cfi_def_cfa_register 6
+ 127 00ec 4883EC50 		subq	$80, %rsp
+ 128 00f0 48897DD8 		movq	%rdi, -40(%rbp)
+ 129 00f4 4889C8   		movq	%rcx, %rax
+ 130 00f7 4489C1   		movl	%r8d, %ecx
+ 131 00fa 488975C8 		movq	%rsi, -56(%rbp)
+ 132 00fe 8855D0   		movb	%dl, -48(%rbp)
+ 133 0101 488945B8 		movq	%rax, -72(%rbp)
+ 134 0105 884DC0   		movb	%cl, -64(%rbp)
   63:./pdi/source/escrita.c **** 	struct pixel tmp;
   64:./pdi/source/escrita.c **** 	int i,j;
   65:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax; i++) {
- 133              		.loc 1 65 0
- 134 0106 C745E86E 		movl	$110, -24(%rbp)
- 134      000000
- 135 010d E90C0100 		jmp	.L4
- 135      00
- 136              	.L9:
+ 135              		.loc 1 65 0
+ 136 0108 C745E86E 		movl	$110, -24(%rbp)
+ 136      000000
+ 137 010f E90C0100 		jmp	.L4
+ 137      00
+ 138              	.L9:
   66:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 137              		.loc 1 66 0
- 138 0112 C745EC54 		movl	$340, -20(%rbp)
- 138      010000
- 139 0119 E9EF0000 		jmp	.L5
- 139      00
- 140              	.L8:
-GAS LISTING /tmp/ccuviV50.s 			page 5
+ 139              		.loc 1 66 0
+ 140 0114 C745EC54 		movl	$340, -20(%rbp)
+ 140      010000
+ 141 011b E9EF0000 		jmp	.L5
+GAS LISTING /tmp/cct0um32.s 			page 5
 
 
+ 141      00
+ 142              	.L8:
   67:./pdi/source/escrita.c **** 			tmp = lumcbcr_medium(matriz, i, j, 8);
- 141              		.loc 1 67 0
- 142 011e 8B55EC   		movl	-20(%rbp), %edx
- 143 0121 8B75E8   		movl	-24(%rbp), %esi
- 144 0124 488B45D8 		movq	-40(%rbp), %rax
- 145 0128 B9080000 		movl	$8, %ecx
- 145      00
- 146 012d 4889C7   		movq	%rax, %rdi
- 147 0130 E8000000 		call	lumcbcr_medium
+ 143              		.loc 1 67 0
+ 144 0120 8B55EC   		movl	-20(%rbp), %edx
+ 145 0123 8B75E8   		movl	-24(%rbp), %esi
+ 146 0126 488B45D8 		movq	-40(%rbp), %rax
+ 147 012a B9080000 		movl	$8, %ecx
  147      00
- 148 0135 4889C1   		movq	%rax, %rcx
- 149 0138 89D0     		movl	%edx, %eax
- 150 013a 48894DF0 		movq	%rcx, -16(%rbp)
- 151 013e 8845F8   		movb	%al, -8(%rbp)
+ 148 012f 4889C7   		movq	%rax, %rdi
+ 149 0132 E8000000 		call	lumcbcr_medium
+ 149      00
+ 150 0137 4889C1   		movq	%rax, %rcx
+ 151 013a 89D0     		movl	%edx, %eax
+ 152 013c 48894DF0 		movq	%rcx, -16(%rbp)
+ 153 0140 8845F8   		movb	%al, -8(%rbp)
   68:./pdi/source/escrita.c **** 			matriz[i][j].team = 0;
- 152              		.loc 1 68 0
- 153 0141 8B45E8   		movl	-24(%rbp), %eax
- 154 0144 4898     		cltq
- 155 0146 488D14C5 		leaq	0(,%rax,8), %rdx
- 155      00000000 
- 156 014e 488B45D8 		movq	-40(%rbp), %rax
- 157 0152 4801D0   		addq	%rdx, %rax
- 158 0155 488B08   		movq	(%rax), %rcx
- 159 0158 8B45EC   		movl	-20(%rbp), %eax
- 160 015b 4863D0   		movslq	%eax, %rdx
- 161 015e 4889D0   		movq	%rdx, %rax
- 162 0161 48C1E003 		salq	$3, %rax
- 163 0165 4801D0   		addq	%rdx, %rax
- 164 0168 4801C8   		addq	%rcx, %rax
- 165 016b C6400700 		movb	$0, 7(%rax)
+ 154              		.loc 1 68 0
+ 155 0143 8B45E8   		movl	-24(%rbp), %eax
+ 156 0146 4898     		cltq
+ 157 0148 488D14C5 		leaq	0(,%rax,8), %rdx
+ 157      00000000 
+ 158 0150 488B45D8 		movq	-40(%rbp), %rax
+ 159 0154 4801D0   		addq	%rdx, %rax
+ 160 0157 488B08   		movq	(%rax), %rcx
+ 161 015a 8B45EC   		movl	-20(%rbp), %eax
+ 162 015d 4863D0   		movslq	%eax, %rdx
+ 163 0160 4889D0   		movq	%rdx, %rax
+ 164 0163 48C1E003 		salq	$3, %rax
+ 165 0167 4801D0   		addq	%rdx, %rax
+ 166 016a 4801C8   		addq	%rcx, %rax
+ 167 016d C6400700 		movb	$0, 7(%rax)
   69:./pdi/source/escrita.c **** 			if (pix_erro(tmp, team1) < 30) matriz[i][j].team = 1;
- 166              		.loc 1 69 0
- 167 016f 488B55C8 		movq	-56(%rbp), %rdx
- 168 0173 0FB64DD0 		movzbl	-48(%rbp), %ecx
- 169 0177 488B75F0 		movq	-16(%rbp), %rsi
- 170 017b 0FB645F8 		movzbl	-8(%rbp), %eax
- 171 017f 4889F7   		movq	%rsi, %rdi
- 172 0182 89C6     		movl	%eax, %esi
- 173 0184 E8000000 		call	pix_erro
- 173      00
- 174 0189 83F81D   		cmpl	$29, %eax
- 175 018c 7F2E     		jg	.L6
- 176              		.loc 1 69 0 is_stmt 0 discriminator 1
- 177 018e 8B45E8   		movl	-24(%rbp), %eax
- 178 0191 4898     		cltq
- 179 0193 488D14C5 		leaq	0(,%rax,8), %rdx
- 179      00000000 
- 180 019b 488B45D8 		movq	-40(%rbp), %rax
- 181 019f 4801D0   		addq	%rdx, %rax
- 182 01a2 488B08   		movq	(%rax), %rcx
- 183 01a5 8B45EC   		movl	-20(%rbp), %eax
- 184 01a8 4863D0   		movslq	%eax, %rdx
- 185 01ab 4889D0   		movq	%rdx, %rax
- 186 01ae 48C1E003 		salq	$3, %rax
- 187 01b2 4801D0   		addq	%rdx, %rax
- 188 01b5 4801C8   		addq	%rcx, %rax
- 189 01b8 C6400701 		movb	$1, 7(%rax)
-GAS LISTING /tmp/ccuviV50.s 			page 6
+ 168              		.loc 1 69 0
+ 169 0171 488B55C8 		movq	-56(%rbp), %rdx
+ 170 0175 0FB64DD0 		movzbl	-48(%rbp), %ecx
+ 171 0179 488B75F0 		movq	-16(%rbp), %rsi
+ 172 017d 0FB645F8 		movzbl	-8(%rbp), %eax
+ 173 0181 4889F7   		movq	%rsi, %rdi
+ 174 0184 89C6     		movl	%eax, %esi
+ 175 0186 E8000000 		call	pix_erro
+ 175      00
+ 176 018b 83F81D   		cmpl	$29, %eax
+ 177 018e 7F2E     		jg	.L6
+ 178              		.loc 1 69 0 is_stmt 0 discriminator 1
+ 179 0190 8B45E8   		movl	-24(%rbp), %eax
+ 180 0193 4898     		cltq
+ 181 0195 488D14C5 		leaq	0(,%rax,8), %rdx
+ 181      00000000 
+ 182 019d 488B45D8 		movq	-40(%rbp), %rax
+ 183 01a1 4801D0   		addq	%rdx, %rax
+ 184 01a4 488B08   		movq	(%rax), %rcx
+ 185 01a7 8B45EC   		movl	-20(%rbp), %eax
+ 186 01aa 4863D0   		movslq	%eax, %rdx
+ 187 01ad 4889D0   		movq	%rdx, %rax
+ 188 01b0 48C1E003 		salq	$3, %rax
+ 189 01b4 4801D0   		addq	%rdx, %rax
+GAS LISTING /tmp/cct0um32.s 			page 6
 
 
- 190              	.L6:
+ 190 01b7 4801C8   		addq	%rcx, %rax
+ 191 01ba C6400701 		movb	$1, 7(%rax)
+ 192              	.L6:
   70:./pdi/source/escrita.c **** 			if (pix_erro(tmp, team2) < 30) matriz[i][j].team = 2;
- 191              		.loc 1 70 0 is_stmt 1
- 192 01bc 488B55B8 		movq	-72(%rbp), %rdx
- 193 01c0 0FB64DC0 		movzbl	-64(%rbp), %ecx
- 194 01c4 488B75F0 		movq	-16(%rbp), %rsi
- 195 01c8 0FB645F8 		movzbl	-8(%rbp), %eax
- 196 01cc 4889F7   		movq	%rsi, %rdi
- 197 01cf 89C6     		movl	%eax, %esi
- 198 01d1 E8000000 		call	pix_erro
- 198      00
- 199 01d6 83F81D   		cmpl	$29, %eax
- 200 01d9 7F2E     		jg	.L7
- 201              		.loc 1 70 0 is_stmt 0 discriminator 1
- 202 01db 8B45E8   		movl	-24(%rbp), %eax
- 203 01de 4898     		cltq
- 204 01e0 488D14C5 		leaq	0(,%rax,8), %rdx
- 204      00000000 
- 205 01e8 488B45D8 		movq	-40(%rbp), %rax
- 206 01ec 4801D0   		addq	%rdx, %rax
- 207 01ef 488B08   		movq	(%rax), %rcx
- 208 01f2 8B45EC   		movl	-20(%rbp), %eax
- 209 01f5 4863D0   		movslq	%eax, %rdx
- 210 01f8 4889D0   		movq	%rdx, %rax
- 211 01fb 48C1E003 		salq	$3, %rax
- 212 01ff 4801D0   		addq	%rdx, %rax
- 213 0202 4801C8   		addq	%rcx, %rax
- 214 0205 C6400702 		movb	$2, 7(%rax)
- 215              	.L7:
+ 193              		.loc 1 70 0 is_stmt 1
+ 194 01be 488B55B8 		movq	-72(%rbp), %rdx
+ 195 01c2 0FB64DC0 		movzbl	-64(%rbp), %ecx
+ 196 01c6 488B75F0 		movq	-16(%rbp), %rsi
+ 197 01ca 0FB645F8 		movzbl	-8(%rbp), %eax
+ 198 01ce 4889F7   		movq	%rsi, %rdi
+ 199 01d1 89C6     		movl	%eax, %esi
+ 200 01d3 E8000000 		call	pix_erro
+ 200      00
+ 201 01d8 83F81D   		cmpl	$29, %eax
+ 202 01db 7F2E     		jg	.L7
+ 203              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 204 01dd 8B45E8   		movl	-24(%rbp), %eax
+ 205 01e0 4898     		cltq
+ 206 01e2 488D14C5 		leaq	0(,%rax,8), %rdx
+ 206      00000000 
+ 207 01ea 488B45D8 		movq	-40(%rbp), %rax
+ 208 01ee 4801D0   		addq	%rdx, %rax
+ 209 01f1 488B08   		movq	(%rax), %rcx
+ 210 01f4 8B45EC   		movl	-20(%rbp), %eax
+ 211 01f7 4863D0   		movslq	%eax, %rdx
+ 212 01fa 4889D0   		movq	%rdx, %rax
+ 213 01fd 48C1E003 		salq	$3, %rax
+ 214 0201 4801D0   		addq	%rdx, %rax
+ 215 0204 4801C8   		addq	%rcx, %rax
+ 216 0207 C6400702 		movb	$2, 7(%rax)
+ 217              	.L7:
   66:./pdi/source/escrita.c **** 			tmp = lumcbcr_medium(matriz, i, j, 8);
- 216              		.loc 1 66 0 is_stmt 1 discriminator 2
- 217 0209 8345EC01 		addl	$1, -20(%rbp)
- 218              	.L5:
+ 218              		.loc 1 66 0 is_stmt 1 discriminator 2
+ 219 020b 8345EC01 		addl	$1, -20(%rbp)
+ 220              	.L5:
   66:./pdi/source/escrita.c **** 			tmp = lumcbcr_medium(matriz, i, j, 8);
- 219              		.loc 1 66 0 is_stmt 0 discriminator 1
- 220 020d 817DEC20 		cmpl	$544, -20(%rbp)
- 220      020000
- 221 0214 0F8E04FF 		jle	.L8
- 221      FFFF
+ 221              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 222 020f 817DEC20 		cmpl	$544, -20(%rbp)
+ 222      020000
+ 223 0216 0F8E04FF 		jle	.L8
+ 223      FFFF
   65:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 222              		.loc 1 65 0 is_stmt 1 discriminator 2
- 223 021a 8345E801 		addl	$1, -24(%rbp)
- 224              	.L4:
+ 224              		.loc 1 65 0 is_stmt 1 discriminator 2
+ 225 021c 8345E801 		addl	$1, -24(%rbp)
+ 226              	.L4:
   65:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 225              		.loc 1 65 0 is_stmt 0 discriminator 1
- 226 021e 817DE86B 		cmpl	$363, -24(%rbp)
- 226      010000
- 227 0225 0F8EE7FE 		jle	.L9
- 227      FFFF
+ 227              		.loc 1 65 0 is_stmt 0 discriminator 1
+ 228 0220 817DE86B 		cmpl	$363, -24(%rbp)
+ 228      010000
+ 229 0227 0F8EE7FE 		jle	.L9
+ 229      FFFF
   71:./pdi/source/escrita.c **** 		}
   72:./pdi/source/escrita.c **** 	}
   73:./pdi/source/escrita.c **** 
   74:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax; i++) {
- 228              		.loc 1 74 0 is_stmt 1
- 229 022b C745E86E 		movl	$110, -24(%rbp)
- 229      000000
- 230 0232 E9450200 		jmp	.L10
-GAS LISTING /tmp/ccuviV50.s 			page 7
+ 230              		.loc 1 74 0 is_stmt 1
+ 231 022d C745E86E 		movl	$110, -24(%rbp)
+GAS LISTING /tmp/cct0um32.s 			page 7
 
 
- 230      00
- 231              	.L15:
+ 231      000000
+ 232 0234 E9450200 		jmp	.L10
+ 232      00
+ 233              	.L15:
   75:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 232              		.loc 1 75 0
- 233 0237 C745EC54 		movl	$340, -20(%rbp)
- 233      010000
- 234 023e E9280200 		jmp	.L11
- 234      00
- 235              	.L14:
+ 234              		.loc 1 75 0
+ 235 0239 C745EC54 		movl	$340, -20(%rbp)
+ 235      010000
+ 236 0240 E9280200 		jmp	.L11
+ 236      00
+ 237              	.L14:
   76:./pdi/source/escrita.c **** 			matriz[i][j].luma = 0;
- 236              		.loc 1 76 0
- 237 0243 8B45E8   		movl	-24(%rbp), %eax
- 238 0246 4898     		cltq
- 239 0248 488D14C5 		leaq	0(,%rax,8), %rdx
- 239      00000000 
- 240 0250 488B45D8 		movq	-40(%rbp), %rax
- 241 0254 4801D0   		addq	%rdx, %rax
- 242 0257 488B08   		movq	(%rax), %rcx
- 243 025a 8B45EC   		movl	-20(%rbp), %eax
- 244 025d 4863D0   		movslq	%eax, %rdx
- 245 0260 4889D0   		movq	%rdx, %rax
- 246 0263 48C1E003 		salq	$3, %rax
- 247 0267 4801D0   		addq	%rdx, %rax
- 248 026a 4801C8   		addq	%rcx, %rax
- 249 026d C60000   		movb	$0, (%rax)
+ 238              		.loc 1 76 0
+ 239 0245 8B45E8   		movl	-24(%rbp), %eax
+ 240 0248 4898     		cltq
+ 241 024a 488D14C5 		leaq	0(,%rax,8), %rdx
+ 241      00000000 
+ 242 0252 488B45D8 		movq	-40(%rbp), %rax
+ 243 0256 4801D0   		addq	%rdx, %rax
+ 244 0259 488B08   		movq	(%rax), %rcx
+ 245 025c 8B45EC   		movl	-20(%rbp), %eax
+ 246 025f 4863D0   		movslq	%eax, %rdx
+ 247 0262 4889D0   		movq	%rdx, %rax
+ 248 0265 48C1E003 		salq	$3, %rax
+ 249 0269 4801D0   		addq	%rdx, %rax
+ 250 026c 4801C8   		addq	%rcx, %rax
+ 251 026f C60000   		movb	$0, (%rax)
   77:./pdi/source/escrita.c **** 			matriz[i][j].cb = 128;
- 250              		.loc 1 77 0
- 251 0270 8B45E8   		movl	-24(%rbp), %eax
- 252 0273 4898     		cltq
- 253 0275 488D14C5 		leaq	0(,%rax,8), %rdx
- 253      00000000 
- 254 027d 488B45D8 		movq	-40(%rbp), %rax
- 255 0281 4801D0   		addq	%rdx, %rax
- 256 0284 488B08   		movq	(%rax), %rcx
- 257 0287 8B45EC   		movl	-20(%rbp), %eax
- 258 028a 4863D0   		movslq	%eax, %rdx
- 259 028d 4889D0   		movq	%rdx, %rax
- 260 0290 48C1E003 		salq	$3, %rax
- 261 0294 4801D0   		addq	%rdx, %rax
- 262 0297 4801C8   		addq	%rcx, %rax
- 263 029a C6400180 		movb	$-128, 1(%rax)
+ 252              		.loc 1 77 0
+ 253 0272 8B45E8   		movl	-24(%rbp), %eax
+ 254 0275 4898     		cltq
+ 255 0277 488D14C5 		leaq	0(,%rax,8), %rdx
+ 255      00000000 
+ 256 027f 488B45D8 		movq	-40(%rbp), %rax
+ 257 0283 4801D0   		addq	%rdx, %rax
+ 258 0286 488B08   		movq	(%rax), %rcx
+ 259 0289 8B45EC   		movl	-20(%rbp), %eax
+ 260 028c 4863D0   		movslq	%eax, %rdx
+ 261 028f 4889D0   		movq	%rdx, %rax
+ 262 0292 48C1E003 		salq	$3, %rax
+ 263 0296 4801D0   		addq	%rdx, %rax
+ 264 0299 4801C8   		addq	%rcx, %rax
+ 265 029c C6400180 		movb	$-128, 1(%rax)
   78:./pdi/source/escrita.c **** 			matriz[i][j].cr = 128;
- 264              		.loc 1 78 0
- 265 029e 8B45E8   		movl	-24(%rbp), %eax
- 266 02a1 4898     		cltq
- 267 02a3 488D14C5 		leaq	0(,%rax,8), %rdx
- 267      00000000 
- 268 02ab 488B45D8 		movq	-40(%rbp), %rax
- 269 02af 4801D0   		addq	%rdx, %rax
- 270 02b2 488B08   		movq	(%rax), %rcx
- 271 02b5 8B45EC   		movl	-20(%rbp), %eax
- 272 02b8 4863D0   		movslq	%eax, %rdx
- 273 02bb 4889D0   		movq	%rdx, %rax
- 274 02be 48C1E003 		salq	$3, %rax
- 275 02c2 4801D0   		addq	%rdx, %rax
- 276 02c5 4801C8   		addq	%rcx, %rax
- 277 02c8 C6400280 		movb	$-128, 2(%rax)
-GAS LISTING /tmp/ccuviV50.s 			page 8
+ 266              		.loc 1 78 0
+ 267 02a0 8B45E8   		movl	-24(%rbp), %eax
+ 268 02a3 4898     		cltq
+ 269 02a5 488D14C5 		leaq	0(,%rax,8), %rdx
+ 269      00000000 
+ 270 02ad 488B45D8 		movq	-40(%rbp), %rax
+ 271 02b1 4801D0   		addq	%rdx, %rax
+ 272 02b4 488B08   		movq	(%rax), %rcx
+ 273 02b7 8B45EC   		movl	-20(%rbp), %eax
+ 274 02ba 4863D0   		movslq	%eax, %rdx
+ 275 02bd 4889D0   		movq	%rdx, %rax
+ 276 02c0 48C1E003 		salq	$3, %rax
+ 277 02c4 4801D0   		addq	%rdx, %rax
+GAS LISTING /tmp/cct0um32.s 			page 8
 
 
+ 278 02c7 4801C8   		addq	%rcx, %rax
+ 279 02ca C6400280 		movb	$-128, 2(%rax)
   79:./pdi/source/escrita.c **** 			if (matriz[i][j].team == 1) {
- 278              		.loc 1 79 0
- 279 02cc 8B45E8   		movl	-24(%rbp), %eax
- 280 02cf 4898     		cltq
- 281 02d1 488D14C5 		leaq	0(,%rax,8), %rdx
- 281      00000000 
- 282 02d9 488B45D8 		movq	-40(%rbp), %rax
- 283 02dd 4801D0   		addq	%rdx, %rax
- 284 02e0 488B08   		movq	(%rax), %rcx
- 285 02e3 8B45EC   		movl	-20(%rbp), %eax
- 286 02e6 4863D0   		movslq	%eax, %rdx
- 287 02e9 4889D0   		movq	%rdx, %rax
- 288 02ec 48C1E003 		salq	$3, %rax
- 289 02f0 4801D0   		addq	%rdx, %rax
- 290 02f3 4801C8   		addq	%rcx, %rax
- 291 02f6 0FB64007 		movzbl	7(%rax), %eax
- 292 02fa 3C01     		cmpb	$1, %al
- 293 02fc 0F859A00 		jne	.L12
- 293      0000
+ 280              		.loc 1 79 0
+ 281 02ce 8B45E8   		movl	-24(%rbp), %eax
+ 282 02d1 4898     		cltq
+ 283 02d3 488D14C5 		leaq	0(,%rax,8), %rdx
+ 283      00000000 
+ 284 02db 488B45D8 		movq	-40(%rbp), %rax
+ 285 02df 4801D0   		addq	%rdx, %rax
+ 286 02e2 488B08   		movq	(%rax), %rcx
+ 287 02e5 8B45EC   		movl	-20(%rbp), %eax
+ 288 02e8 4863D0   		movslq	%eax, %rdx
+ 289 02eb 4889D0   		movq	%rdx, %rax
+ 290 02ee 48C1E003 		salq	$3, %rax
+ 291 02f2 4801D0   		addq	%rdx, %rax
+ 292 02f5 4801C8   		addq	%rcx, %rax
+ 293 02f8 0FB64007 		movzbl	7(%rax), %eax
+ 294 02fc 3C01     		cmpb	$1, %al
+ 295 02fe 0F859A00 		jne	.L12
+ 295      0000
   80:./pdi/source/escrita.c **** 				matriz[i][j].luma = team1.luma;
- 294              		.loc 1 80 0
- 295 0302 8B45E8   		movl	-24(%rbp), %eax
- 296 0305 4898     		cltq
- 297 0307 488D14C5 		leaq	0(,%rax,8), %rdx
- 297      00000000 
- 298 030f 488B45D8 		movq	-40(%rbp), %rax
- 299 0313 4801D0   		addq	%rdx, %rax
- 300 0316 488B08   		movq	(%rax), %rcx
- 301 0319 8B45EC   		movl	-20(%rbp), %eax
- 302 031c 4863D0   		movslq	%eax, %rdx
- 303 031f 4889D0   		movq	%rdx, %rax
- 304 0322 48C1E003 		salq	$3, %rax
- 305 0326 4801D0   		addq	%rdx, %rax
- 306 0329 488D1401 		leaq	(%rcx,%rax), %rdx
- 307 032d 0FB645C8 		movzbl	-56(%rbp), %eax
- 308 0331 8802     		movb	%al, (%rdx)
+ 296              		.loc 1 80 0
+ 297 0304 8B45E8   		movl	-24(%rbp), %eax
+ 298 0307 4898     		cltq
+ 299 0309 488D14C5 		leaq	0(,%rax,8), %rdx
+ 299      00000000 
+ 300 0311 488B45D8 		movq	-40(%rbp), %rax
+ 301 0315 4801D0   		addq	%rdx, %rax
+ 302 0318 488B08   		movq	(%rax), %rcx
+ 303 031b 8B45EC   		movl	-20(%rbp), %eax
+ 304 031e 4863D0   		movslq	%eax, %rdx
+ 305 0321 4889D0   		movq	%rdx, %rax
+ 306 0324 48C1E003 		salq	$3, %rax
+ 307 0328 4801D0   		addq	%rdx, %rax
+ 308 032b 488D1401 		leaq	(%rcx,%rax), %rdx
+ 309 032f 0FB645C8 		movzbl	-56(%rbp), %eax
+ 310 0333 8802     		movb	%al, (%rdx)
   81:./pdi/source/escrita.c **** 				matriz[i][j].cb = team1.cb;
- 309              		.loc 1 81 0
- 310 0333 8B45E8   		movl	-24(%rbp), %eax
- 311 0336 4898     		cltq
- 312 0338 488D14C5 		leaq	0(,%rax,8), %rdx
- 312      00000000 
- 313 0340 488B45D8 		movq	-40(%rbp), %rax
- 314 0344 4801D0   		addq	%rdx, %rax
- 315 0347 488B08   		movq	(%rax), %rcx
- 316 034a 8B45EC   		movl	-20(%rbp), %eax
- 317 034d 4863D0   		movslq	%eax, %rdx
- 318 0350 4889D0   		movq	%rdx, %rax
- 319 0353 48C1E003 		salq	$3, %rax
- 320 0357 4801D0   		addq	%rdx, %rax
- 321 035a 488D1401 		leaq	(%rcx,%rax), %rdx
- 322 035e 0FB645C9 		movzbl	-55(%rbp), %eax
- 323 0362 884201   		movb	%al, 1(%rdx)
+ 311              		.loc 1 81 0
+ 312 0335 8B45E8   		movl	-24(%rbp), %eax
+ 313 0338 4898     		cltq
+ 314 033a 488D14C5 		leaq	0(,%rax,8), %rdx
+ 314      00000000 
+ 315 0342 488B45D8 		movq	-40(%rbp), %rax
+ 316 0346 4801D0   		addq	%rdx, %rax
+ 317 0349 488B08   		movq	(%rax), %rcx
+ 318 034c 8B45EC   		movl	-20(%rbp), %eax
+ 319 034f 4863D0   		movslq	%eax, %rdx
+ 320 0352 4889D0   		movq	%rdx, %rax
+ 321 0355 48C1E003 		salq	$3, %rax
+ 322 0359 4801D0   		addq	%rdx, %rax
+ 323 035c 488D1401 		leaq	(%rcx,%rax), %rdx
+ 324 0360 0FB645C9 		movzbl	-55(%rbp), %eax
+ 325 0364 884201   		movb	%al, 1(%rdx)
   82:./pdi/source/escrita.c **** 				matriz[i][j].cr = team1.cr;
- 324              		.loc 1 82 0
- 325 0365 8B45E8   		movl	-24(%rbp), %eax
- 326 0368 4898     		cltq
-GAS LISTING /tmp/ccuviV50.s 			page 9
+ 326              		.loc 1 82 0
+GAS LISTING /tmp/cct0um32.s 			page 9
 
 
- 327 036a 488D14C5 		leaq	0(,%rax,8), %rdx
- 327      00000000 
- 328 0372 488B45D8 		movq	-40(%rbp), %rax
- 329 0376 4801D0   		addq	%rdx, %rax
- 330 0379 488B08   		movq	(%rax), %rcx
- 331 037c 8B45EC   		movl	-20(%rbp), %eax
- 332 037f 4863D0   		movslq	%eax, %rdx
- 333 0382 4889D0   		movq	%rdx, %rax
- 334 0385 48C1E003 		salq	$3, %rax
- 335 0389 4801D0   		addq	%rdx, %rax
- 336 038c 488D1401 		leaq	(%rcx,%rax), %rdx
- 337 0390 0FB645CA 		movzbl	-54(%rbp), %eax
- 338 0394 884202   		movb	%al, 2(%rdx)
- 339 0397 E9CB0000 		jmp	.L13
- 339      00
- 340              	.L12:
+ 327 0367 8B45E8   		movl	-24(%rbp), %eax
+ 328 036a 4898     		cltq
+ 329 036c 488D14C5 		leaq	0(,%rax,8), %rdx
+ 329      00000000 
+ 330 0374 488B45D8 		movq	-40(%rbp), %rax
+ 331 0378 4801D0   		addq	%rdx, %rax
+ 332 037b 488B08   		movq	(%rax), %rcx
+ 333 037e 8B45EC   		movl	-20(%rbp), %eax
+ 334 0381 4863D0   		movslq	%eax, %rdx
+ 335 0384 4889D0   		movq	%rdx, %rax
+ 336 0387 48C1E003 		salq	$3, %rax
+ 337 038b 4801D0   		addq	%rdx, %rax
+ 338 038e 488D1401 		leaq	(%rcx,%rax), %rdx
+ 339 0392 0FB645CA 		movzbl	-54(%rbp), %eax
+ 340 0396 884202   		movb	%al, 2(%rdx)
+ 341 0399 E9CB0000 		jmp	.L13
+ 341      00
+ 342              	.L12:
   83:./pdi/source/escrita.c **** 			} else if (matriz[i][j].team == 2) {
- 341              		.loc 1 83 0
- 342 039c 8B45E8   		movl	-24(%rbp), %eax
- 343 039f 4898     		cltq
- 344 03a1 488D14C5 		leaq	0(,%rax,8), %rdx
- 344      00000000 
- 345 03a9 488B45D8 		movq	-40(%rbp), %rax
- 346 03ad 4801D0   		addq	%rdx, %rax
- 347 03b0 488B08   		movq	(%rax), %rcx
- 348 03b3 8B45EC   		movl	-20(%rbp), %eax
- 349 03b6 4863D0   		movslq	%eax, %rdx
- 350 03b9 4889D0   		movq	%rdx, %rax
- 351 03bc 48C1E003 		salq	$3, %rax
- 352 03c0 4801D0   		addq	%rdx, %rax
- 353 03c3 4801C8   		addq	%rcx, %rax
- 354 03c6 0FB64007 		movzbl	7(%rax), %eax
- 355 03ca 3C02     		cmpb	$2, %al
- 356 03cc 0F859500 		jne	.L13
- 356      0000
+ 343              		.loc 1 83 0
+ 344 039e 8B45E8   		movl	-24(%rbp), %eax
+ 345 03a1 4898     		cltq
+ 346 03a3 488D14C5 		leaq	0(,%rax,8), %rdx
+ 346      00000000 
+ 347 03ab 488B45D8 		movq	-40(%rbp), %rax
+ 348 03af 4801D0   		addq	%rdx, %rax
+ 349 03b2 488B08   		movq	(%rax), %rcx
+ 350 03b5 8B45EC   		movl	-20(%rbp), %eax
+ 351 03b8 4863D0   		movslq	%eax, %rdx
+ 352 03bb 4889D0   		movq	%rdx, %rax
+ 353 03be 48C1E003 		salq	$3, %rax
+ 354 03c2 4801D0   		addq	%rdx, %rax
+ 355 03c5 4801C8   		addq	%rcx, %rax
+ 356 03c8 0FB64007 		movzbl	7(%rax), %eax
+ 357 03cc 3C02     		cmpb	$2, %al
+ 358 03ce 0F859500 		jne	.L13
+ 358      0000
   84:./pdi/source/escrita.c **** 				matriz[i][j].luma = team2.luma;
- 357              		.loc 1 84 0
- 358 03d2 8B45E8   		movl	-24(%rbp), %eax
- 359 03d5 4898     		cltq
- 360 03d7 488D14C5 		leaq	0(,%rax,8), %rdx
- 360      00000000 
- 361 03df 488B45D8 		movq	-40(%rbp), %rax
- 362 03e3 4801D0   		addq	%rdx, %rax
- 363 03e6 488B08   		movq	(%rax), %rcx
- 364 03e9 8B45EC   		movl	-20(%rbp), %eax
- 365 03ec 4863D0   		movslq	%eax, %rdx
- 366 03ef 4889D0   		movq	%rdx, %rax
- 367 03f2 48C1E003 		salq	$3, %rax
- 368 03f6 4801D0   		addq	%rdx, %rax
- 369 03f9 488D1401 		leaq	(%rcx,%rax), %rdx
- 370 03fd 0FB645B8 		movzbl	-72(%rbp), %eax
- 371 0401 8802     		movb	%al, (%rdx)
+ 359              		.loc 1 84 0
+ 360 03d4 8B45E8   		movl	-24(%rbp), %eax
+ 361 03d7 4898     		cltq
+ 362 03d9 488D14C5 		leaq	0(,%rax,8), %rdx
+ 362      00000000 
+ 363 03e1 488B45D8 		movq	-40(%rbp), %rax
+ 364 03e5 4801D0   		addq	%rdx, %rax
+ 365 03e8 488B08   		movq	(%rax), %rcx
+ 366 03eb 8B45EC   		movl	-20(%rbp), %eax
+ 367 03ee 4863D0   		movslq	%eax, %rdx
+ 368 03f1 4889D0   		movq	%rdx, %rax
+ 369 03f4 48C1E003 		salq	$3, %rax
+ 370 03f8 4801D0   		addq	%rdx, %rax
+ 371 03fb 488D1401 		leaq	(%rcx,%rax), %rdx
+ 372 03ff 0FB645B8 		movzbl	-72(%rbp), %eax
+ 373 0403 8802     		movb	%al, (%rdx)
   85:./pdi/source/escrita.c **** 				matriz[i][j].cb = team2.cb;
- 372              		.loc 1 85 0
- 373 0403 8B45E8   		movl	-24(%rbp), %eax
- 374 0406 4898     		cltq
- 375 0408 488D14C5 		leaq	0(,%rax,8), %rdx
-GAS LISTING /tmp/ccuviV50.s 			page 10
+ 374              		.loc 1 85 0
+ 375 0405 8B45E8   		movl	-24(%rbp), %eax
+GAS LISTING /tmp/cct0um32.s 			page 10
 
 
- 375      00000000 
- 376 0410 488B45D8 		movq	-40(%rbp), %rax
- 377 0414 4801D0   		addq	%rdx, %rax
- 378 0417 488B08   		movq	(%rax), %rcx
- 379 041a 8B45EC   		movl	-20(%rbp), %eax
- 380 041d 4863D0   		movslq	%eax, %rdx
- 381 0420 4889D0   		movq	%rdx, %rax
- 382 0423 48C1E003 		salq	$3, %rax
- 383 0427 4801D0   		addq	%rdx, %rax
- 384 042a 488D1401 		leaq	(%rcx,%rax), %rdx
- 385 042e 0FB645B9 		movzbl	-71(%rbp), %eax
- 386 0432 884201   		movb	%al, 1(%rdx)
+ 376 0408 4898     		cltq
+ 377 040a 488D14C5 		leaq	0(,%rax,8), %rdx
+ 377      00000000 
+ 378 0412 488B45D8 		movq	-40(%rbp), %rax
+ 379 0416 4801D0   		addq	%rdx, %rax
+ 380 0419 488B08   		movq	(%rax), %rcx
+ 381 041c 8B45EC   		movl	-20(%rbp), %eax
+ 382 041f 4863D0   		movslq	%eax, %rdx
+ 383 0422 4889D0   		movq	%rdx, %rax
+ 384 0425 48C1E003 		salq	$3, %rax
+ 385 0429 4801D0   		addq	%rdx, %rax
+ 386 042c 488D1401 		leaq	(%rcx,%rax), %rdx
+ 387 0430 0FB645B9 		movzbl	-71(%rbp), %eax
+ 388 0434 884201   		movb	%al, 1(%rdx)
   86:./pdi/source/escrita.c **** 				matriz[i][j].cr = team2.cr;
- 387              		.loc 1 86 0
- 388 0435 8B45E8   		movl	-24(%rbp), %eax
- 389 0438 4898     		cltq
- 390 043a 488D14C5 		leaq	0(,%rax,8), %rdx
- 390      00000000 
- 391 0442 488B45D8 		movq	-40(%rbp), %rax
- 392 0446 4801D0   		addq	%rdx, %rax
- 393 0449 488B08   		movq	(%rax), %rcx
- 394 044c 8B45EC   		movl	-20(%rbp), %eax
- 395 044f 4863D0   		movslq	%eax, %rdx
- 396 0452 4889D0   		movq	%rdx, %rax
- 397 0455 48C1E003 		salq	$3, %rax
- 398 0459 4801D0   		addq	%rdx, %rax
- 399 045c 488D1401 		leaq	(%rcx,%rax), %rdx
- 400 0460 0FB645BA 		movzbl	-70(%rbp), %eax
- 401 0464 884202   		movb	%al, 2(%rdx)
- 402              	.L13:
+ 389              		.loc 1 86 0
+ 390 0437 8B45E8   		movl	-24(%rbp), %eax
+ 391 043a 4898     		cltq
+ 392 043c 488D14C5 		leaq	0(,%rax,8), %rdx
+ 392      00000000 
+ 393 0444 488B45D8 		movq	-40(%rbp), %rax
+ 394 0448 4801D0   		addq	%rdx, %rax
+ 395 044b 488B08   		movq	(%rax), %rcx
+ 396 044e 8B45EC   		movl	-20(%rbp), %eax
+ 397 0451 4863D0   		movslq	%eax, %rdx
+ 398 0454 4889D0   		movq	%rdx, %rax
+ 399 0457 48C1E003 		salq	$3, %rax
+ 400 045b 4801D0   		addq	%rdx, %rax
+ 401 045e 488D1401 		leaq	(%rcx,%rax), %rdx
+ 402 0462 0FB645BA 		movzbl	-70(%rbp), %eax
+ 403 0466 884202   		movb	%al, 2(%rdx)
+ 404              	.L13:
   75:./pdi/source/escrita.c **** 			matriz[i][j].luma = 0;
- 403              		.loc 1 75 0 discriminator 2
- 404 0467 8345EC01 		addl	$1, -20(%rbp)
- 405              	.L11:
+ 405              		.loc 1 75 0 discriminator 2
+ 406 0469 8345EC01 		addl	$1, -20(%rbp)
+ 407              	.L11:
   75:./pdi/source/escrita.c **** 			matriz[i][j].luma = 0;
- 406              		.loc 1 75 0 is_stmt 0 discriminator 1
- 407 046b 817DEC20 		cmpl	$544, -20(%rbp)
- 407      020000
- 408 0472 0F8ECBFD 		jle	.L14
- 408      FFFF
+ 408              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 409 046d 817DEC20 		cmpl	$544, -20(%rbp)
+ 409      020000
+ 410 0474 0F8ECBFD 		jle	.L14
+ 410      FFFF
   74:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 409              		.loc 1 74 0 is_stmt 1 discriminator 2
- 410 0478 8345E801 		addl	$1, -24(%rbp)
- 411              	.L10:
+ 411              		.loc 1 74 0 is_stmt 1 discriminator 2
+ 412 047a 8345E801 		addl	$1, -24(%rbp)
+ 413              	.L10:
   74:./pdi/source/escrita.c **** 		for (j = largmin; j < largmax; j++) {
- 412              		.loc 1 74 0 is_stmt 0 discriminator 1
- 413 047c 817DE86B 		cmpl	$363, -24(%rbp)
- 413      010000
- 414 0483 0F8EAEFD 		jle	.L15
- 414      FFFF
+ 414              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 415 047e 817DE86B 		cmpl	$363, -24(%rbp)
+ 415      010000
+ 416 0485 0F8EAEFD 		jle	.L15
+ 416      FFFF
   87:./pdi/source/escrita.c **** 			}
   88:./pdi/source/escrita.c **** 		}
   89:./pdi/source/escrita.c **** 	}
   90:./pdi/source/escrita.c **** }
- 415              		.loc 1 90 0 is_stmt 1
- 416 0489 C9       		leave
- 417              		.cfi_def_cfa 7, 8
-GAS LISTING /tmp/ccuviV50.s 			page 11
+ 417              		.loc 1 90 0 is_stmt 1
+GAS LISTING /tmp/cct0um32.s 			page 11
 
 
- 418 048a C3       		ret
- 419              		.cfi_endproc
- 420              	.LFE4:
- 421              		.size	generate_teams, .-generate_teams
- 422              		.globl	generate_prox_teams
- 423              		.type	generate_prox_teams, @function
- 424              	generate_prox_teams:
- 425              	.LFB5:
+ 418 048b 90       		nop
+ 419 048c C9       		leave
+ 420              		.cfi_def_cfa 7, 8
+ 421 048d C3       		ret
+ 422              		.cfi_endproc
+ 423              	.LFE4:
+ 424              		.size	generate_teams, .-generate_teams
+ 425              		.globl	generate_prox_teams
+ 426              		.type	generate_prox_teams, @function
+ 427              	generate_prox_teams:
+ 428              	.LFB5:
   91:./pdi/source/escrita.c **** 
   92:./pdi/source/escrita.c **** 
   93:./pdi/source/escrita.c **** void generate_prox_teams(struct pixel **matriz){
- 426              		.loc 1 93 0
- 427              		.cfi_startproc
- 428 048b 55       		pushq	%rbp
- 429              		.cfi_def_cfa_offset 16
- 430              		.cfi_offset 6, -16
- 431 048c 4889E5   		movq	%rsp, %rbp
- 432              		.cfi_def_cfa_register 6
- 433 048f 48897DE8 		movq	%rdi, -24(%rbp)
+ 429              		.loc 1 93 0
+ 430              		.cfi_startproc
+ 431 048e 55       		pushq	%rbp
+ 432              		.cfi_def_cfa_offset 16
+ 433              		.cfi_offset 6, -16
+ 434 048f 4889E5   		movq	%rsp, %rbp
+ 435              		.cfi_def_cfa_register 6
+ 436 0492 48897DE8 		movq	%rdi, -24(%rbp)
   94:./pdi/source/escrita.c ****         int i, j, x ,y;
   95:./pdi/source/escrita.c ****         for (i = altmin; i < altmax; i++) {
- 434              		.loc 1 95 0
- 435 0493 C745F06E 		movl	$110, -16(%rbp)
- 435      000000
- 436 049a E9FF0000 		jmp	.L17
- 436      00
- 437              	.L26:
+ 437              		.loc 1 95 0
+ 438 0496 C745F06E 		movl	$110, -16(%rbp)
+ 438      000000
+ 439 049d E9FF0000 		jmp	.L17
+ 439      00
+ 440              	.L26:
   96:./pdi/source/escrita.c ****            for (j = largmin; j < largmax; j++) {
- 438              		.loc 1 96 0
- 439 049f C745F454 		movl	$340, -12(%rbp)
- 439      010000
- 440 04a6 E9E20000 		jmp	.L18
- 440      00
- 441              	.L25:
+ 441              		.loc 1 96 0
+ 442 04a2 C745F454 		movl	$340, -12(%rbp)
+ 442      010000
+ 443 04a9 E9E20000 		jmp	.L18
+ 443      00
+ 444              	.L25:
   97:./pdi/source/escrita.c ****               matriz[i][j].prox_team = 0;
- 442              		.loc 1 97 0
- 443 04ab 8B45F0   		movl	-16(%rbp), %eax
- 444 04ae 4898     		cltq
- 445 04b0 488D14C5 		leaq	0(,%rax,8), %rdx
- 445      00000000 
- 446 04b8 488B45E8 		movq	-24(%rbp), %rax
- 447 04bc 4801D0   		addq	%rdx, %rax
- 448 04bf 488B08   		movq	(%rax), %rcx
- 449 04c2 8B45F4   		movl	-12(%rbp), %eax
- 450 04c5 4863D0   		movslq	%eax, %rdx
- 451 04c8 4889D0   		movq	%rdx, %rax
- 452 04cb 48C1E003 		salq	$3, %rax
- 453 04cf 4801D0   		addq	%rdx, %rax
- 454 04d2 4801C8   		addq	%rcx, %rax
- 455 04d5 C6400800 		movb	$0, 8(%rax)
+ 445              		.loc 1 97 0
+ 446 04ae 8B45F0   		movl	-16(%rbp), %eax
+ 447 04b1 4898     		cltq
+ 448 04b3 488D14C5 		leaq	0(,%rax,8), %rdx
+ 448      00000000 
+ 449 04bb 488B45E8 		movq	-24(%rbp), %rax
+ 450 04bf 4801D0   		addq	%rdx, %rax
+ 451 04c2 488B08   		movq	(%rax), %rcx
+ 452 04c5 8B45F4   		movl	-12(%rbp), %eax
+ 453 04c8 4863D0   		movslq	%eax, %rdx
+ 454 04cb 4889D0   		movq	%rdx, %rax
+ 455 04ce 48C1E003 		salq	$3, %rax
+ 456 04d2 4801D0   		addq	%rdx, %rax
+ 457 04d5 4801C8   		addq	%rcx, %rax
+ 458 04d8 C6400800 		movb	$0, 8(%rax)
   98:./pdi/source/escrita.c ****                 for (x = -1; x <= 1; x++) {
- 456              		.loc 1 98 0
- 457 04d9 C745F8FF 		movl	$-1, -8(%rbp)
- 457      FFFFFF
- 458 04e0 E99A0000 		jmp	.L19
- 458      00
- 459              	.L24:
-GAS LISTING /tmp/ccuviV50.s 			page 12
+ 459              		.loc 1 98 0
+ 460 04dc C745F8FF 		movl	$-1, -8(%rbp)
+ 460      FFFFFF
+GAS LISTING /tmp/cct0um32.s 			page 12
 
 
+ 461 04e3 E99A0000 		jmp	.L19
+ 461      00
+ 462              	.L24:
   99:./pdi/source/escrita.c ****                    for (y = -1; y <= 1; y++) {
- 460              		.loc 1 99 0
- 461 04e5 C745FCFF 		movl	$-1, -4(%rbp)
- 461      FFFFFF
- 462 04ec E9800000 		jmp	.L20
- 462      00
- 463              	.L23:
+ 463              		.loc 1 99 0
+ 464 04e8 C745FCFF 		movl	$-1, -4(%rbp)
+ 464      FFFFFF
+ 465 04ef E9800000 		jmp	.L20
+ 465      00
+ 466              	.L23:
  100:./pdi/source/escrita.c ****                         if (x != 0 || y != 0) {
- 464              		.loc 1 100 0
- 465 04f1 837DF800 		cmpl	$0, -8(%rbp)
- 466 04f5 7506     		jne	.L21
- 467              		.loc 1 100 0 is_stmt 0 discriminator 1
- 468 04f7 837DFC00 		cmpl	$0, -4(%rbp)
- 469 04fb 7470     		je	.L22
- 470              	.L21:
+ 467              		.loc 1 100 0
+ 468 04f4 837DF800 		cmpl	$0, -8(%rbp)
+ 469 04f8 7506     		jne	.L21
+ 470              		.loc 1 100 0 is_stmt 0 discriminator 1
+ 471 04fa 837DFC00 		cmpl	$0, -4(%rbp)
+ 472 04fe 7470     		je	.L22
+ 473              	.L21:
  101:./pdi/source/escrita.c ****                           if (matriz[i+x][j+y].team != 0) {
- 471              		.loc 1 101 0 is_stmt 1
- 472 04fd 8B55F0   		movl	-16(%rbp), %edx
- 473 0500 8B45F8   		movl	-8(%rbp), %eax
- 474 0503 01D0     		addl	%edx, %eax
- 475 0505 4898     		cltq
- 476 0507 488D14C5 		leaq	0(,%rax,8), %rdx
- 476      00000000 
- 477 050f 488B45E8 		movq	-24(%rbp), %rax
- 478 0513 4801D0   		addq	%rdx, %rax
- 479 0516 488B08   		movq	(%rax), %rcx
- 480 0519 8B55F4   		movl	-12(%rbp), %edx
- 481 051c 8B45FC   		movl	-4(%rbp), %eax
- 482 051f 01D0     		addl	%edx, %eax
- 483 0521 4863D0   		movslq	%eax, %rdx
- 484 0524 4889D0   		movq	%rdx, %rax
- 485 0527 48C1E003 		salq	$3, %rax
- 486 052b 4801D0   		addq	%rdx, %rax
- 487 052e 4801C8   		addq	%rcx, %rax
- 488 0531 0FB64007 		movzbl	7(%rax), %eax
- 489 0535 84C0     		testb	%al, %al
- 490 0537 7434     		je	.L22
+ 474              		.loc 1 101 0 is_stmt 1
+ 475 0500 8B55F0   		movl	-16(%rbp), %edx
+ 476 0503 8B45F8   		movl	-8(%rbp), %eax
+ 477 0506 01D0     		addl	%edx, %eax
+ 478 0508 4898     		cltq
+ 479 050a 488D14C5 		leaq	0(,%rax,8), %rdx
+ 479      00000000 
+ 480 0512 488B45E8 		movq	-24(%rbp), %rax
+ 481 0516 4801D0   		addq	%rdx, %rax
+ 482 0519 488B08   		movq	(%rax), %rcx
+ 483 051c 8B55F4   		movl	-12(%rbp), %edx
+ 484 051f 8B45FC   		movl	-4(%rbp), %eax
+ 485 0522 01D0     		addl	%edx, %eax
+ 486 0524 4863D0   		movslq	%eax, %rdx
+ 487 0527 4889D0   		movq	%rdx, %rax
+ 488 052a 48C1E003 		salq	$3, %rax
+ 489 052e 4801D0   		addq	%rdx, %rax
+ 490 0531 4801C8   		addq	%rcx, %rax
+ 491 0534 0FB64007 		movzbl	7(%rax), %eax
+ 492 0538 84C0     		testb	%al, %al
+ 493 053a 7434     		je	.L22
  102:./pdi/source/escrita.c ****                             matriz[i][j].prox_team++;
- 491              		.loc 1 102 0
- 492 0539 8B45F0   		movl	-16(%rbp), %eax
- 493 053c 4898     		cltq
- 494 053e 488D14C5 		leaq	0(,%rax,8), %rdx
- 494      00000000 
- 495 0546 488B45E8 		movq	-24(%rbp), %rax
- 496 054a 4801D0   		addq	%rdx, %rax
- 497 054d 488B08   		movq	(%rax), %rcx
- 498 0550 8B45F4   		movl	-12(%rbp), %eax
- 499 0553 4863D0   		movslq	%eax, %rdx
- 500 0556 4889D0   		movq	%rdx, %rax
- 501 0559 48C1E003 		salq	$3, %rax
- 502 055d 4801D0   		addq	%rdx, %rax
- 503 0560 4801C8   		addq	%rcx, %rax
- 504 0563 0FB65008 		movzbl	8(%rax), %edx
- 505 0567 83C201   		addl	$1, %edx
- 506 056a 885008   		movb	%dl, 8(%rax)
- 507              	.L22:
-  99:./pdi/source/escrita.c ****                         if (x != 0 || y != 0) {
-GAS LISTING /tmp/ccuviV50.s 			page 13
+ 494              		.loc 1 102 0
+ 495 053c 8B45F0   		movl	-16(%rbp), %eax
+ 496 053f 4898     		cltq
+ 497 0541 488D14C5 		leaq	0(,%rax,8), %rdx
+ 497      00000000 
+ 498 0549 488B45E8 		movq	-24(%rbp), %rax
+ 499 054d 4801D0   		addq	%rdx, %rax
+ 500 0550 488B08   		movq	(%rax), %rcx
+ 501 0553 8B45F4   		movl	-12(%rbp), %eax
+ 502 0556 4863D0   		movslq	%eax, %rdx
+ 503 0559 4889D0   		movq	%rdx, %rax
+ 504 055c 48C1E003 		salq	$3, %rax
+ 505 0560 4801D0   		addq	%rdx, %rax
+ 506 0563 4801C8   		addq	%rcx, %rax
+ 507 0566 0FB65008 		movzbl	8(%rax), %edx
+ 508 056a 83C201   		addl	$1, %edx
+GAS LISTING /tmp/cct0um32.s 			page 13
 
 
- 508              		.loc 1 99 0 discriminator 2
- 509 056d 8345FC01 		addl	$1, -4(%rbp)
- 510              	.L20:
+ 509 056d 885008   		movb	%dl, 8(%rax)
+ 510              	.L22:
   99:./pdi/source/escrita.c ****                         if (x != 0 || y != 0) {
- 511              		.loc 1 99 0 is_stmt 0 discriminator 1
- 512 0571 837DFC01 		cmpl	$1, -4(%rbp)
- 513 0575 0F8E76FF 		jle	.L23
- 513      FFFF
+ 511              		.loc 1 99 0 discriminator 2
+ 512 0570 8345FC01 		addl	$1, -4(%rbp)
+ 513              	.L20:
+  99:./pdi/source/escrita.c ****                         if (x != 0 || y != 0) {
+ 514              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 515 0574 837DFC01 		cmpl	$1, -4(%rbp)
+ 516 0578 0F8E76FF 		jle	.L23
+ 516      FFFF
   98:./pdi/source/escrita.c ****                    for (y = -1; y <= 1; y++) {
- 514              		.loc 1 98 0 is_stmt 1 discriminator 2
- 515 057b 8345F801 		addl	$1, -8(%rbp)
- 516              	.L19:
+ 517              		.loc 1 98 0 is_stmt 1 discriminator 2
+ 518 057e 8345F801 		addl	$1, -8(%rbp)
+ 519              	.L19:
   98:./pdi/source/escrita.c ****                    for (y = -1; y <= 1; y++) {
- 517              		.loc 1 98 0 is_stmt 0 discriminator 1
- 518 057f 837DF801 		cmpl	$1, -8(%rbp)
- 519 0583 0F8E5CFF 		jle	.L24
- 519      FFFF
+ 520              		.loc 1 98 0 is_stmt 0 discriminator 1
+ 521 0582 837DF801 		cmpl	$1, -8(%rbp)
+ 522 0586 0F8E5CFF 		jle	.L24
+ 522      FFFF
   96:./pdi/source/escrita.c ****               matriz[i][j].prox_team = 0;
- 520              		.loc 1 96 0 is_stmt 1 discriminator 2
- 521 0589 8345F401 		addl	$1, -12(%rbp)
- 522              	.L18:
+ 523              		.loc 1 96 0 is_stmt 1 discriminator 2
+ 524 058c 8345F401 		addl	$1, -12(%rbp)
+ 525              	.L18:
   96:./pdi/source/escrita.c ****               matriz[i][j].prox_team = 0;
- 523              		.loc 1 96 0 is_stmt 0 discriminator 1
- 524 058d 817DF420 		cmpl	$544, -12(%rbp)
- 524      020000
- 525 0594 0F8E11FF 		jle	.L25
- 525      FFFF
+ 526              		.loc 1 96 0 is_stmt 0 discriminator 1
+ 527 0590 817DF420 		cmpl	$544, -12(%rbp)
+ 527      020000
+ 528 0597 0F8E11FF 		jle	.L25
+ 528      FFFF
   95:./pdi/source/escrita.c ****            for (j = largmin; j < largmax; j++) {
- 526              		.loc 1 95 0 is_stmt 1 discriminator 2
- 527 059a 8345F001 		addl	$1, -16(%rbp)
- 528              	.L17:
+ 529              		.loc 1 95 0 is_stmt 1 discriminator 2
+ 530 059d 8345F001 		addl	$1, -16(%rbp)
+ 531              	.L17:
   95:./pdi/source/escrita.c ****            for (j = largmin; j < largmax; j++) {
- 529              		.loc 1 95 0 is_stmt 0 discriminator 1
- 530 059e 817DF06B 		cmpl	$363, -16(%rbp)
- 530      010000
- 531 05a5 0F8EF4FE 		jle	.L26
- 531      FFFF
+ 532              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 533 05a1 817DF06B 		cmpl	$363, -16(%rbp)
+ 533      010000
+ 534 05a8 0F8EF4FE 		jle	.L26
+ 534      FFFF
  103:./pdi/source/escrita.c ****                         }
  104:./pdi/source/escrita.c ****                       }
  105:./pdi/source/escrita.c ****                    }
@@ -765,693 +768,693 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
  107:./pdi/source/escrita.c ****            }
  108:./pdi/source/escrita.c ****         }
  109:./pdi/source/escrita.c **** }
- 532              		.loc 1 109 0 is_stmt 1
- 533 05ab 5D       		popq	%rbp
- 534              		.cfi_def_cfa 7, 8
- 535 05ac C3       		ret
- 536              		.cfi_endproc
- 537              	.LFE5:
- 538              		.size	generate_prox_teams, .-generate_prox_teams
- 539              		.globl	shrink_teams
- 540              		.type	shrink_teams, @function
- 541              	shrink_teams:
- 542              	.LFB6:
+ 535              		.loc 1 109 0 is_stmt 1
+ 536 05ae 90       		nop
+ 537 05af 5D       		popq	%rbp
+ 538              		.cfi_def_cfa 7, 8
+ 539 05b0 C3       		ret
+ 540              		.cfi_endproc
+ 541              	.LFE5:
+ 542              		.size	generate_prox_teams, .-generate_prox_teams
+ 543              		.globl	shrink_teams
+ 544              		.type	shrink_teams, @function
+GAS LISTING /tmp/cct0um32.s 			page 14
+
+
+ 545              	shrink_teams:
+ 546              	.LFB6:
  110:./pdi/source/escrita.c **** 
  111:./pdi/source/escrita.c **** void shrink_teams(struct pixel **matriz, int nprox)
-GAS LISTING /tmp/ccuviV50.s 			page 14
-
-
  112:./pdi/source/escrita.c **** {
- 543              		.loc 1 112 0
- 544              		.cfi_startproc
- 545 05ad 55       		pushq	%rbp
- 546              		.cfi_def_cfa_offset 16
- 547              		.cfi_offset 6, -16
- 548 05ae 4889E5   		movq	%rsp, %rbp
- 549              		.cfi_def_cfa_register 6
- 550 05b1 48897DE8 		movq	%rdi, -24(%rbp)
- 551 05b5 8975E4   		movl	%esi, -28(%rbp)
+ 547              		.loc 1 112 0
+ 548              		.cfi_startproc
+ 549 05b1 55       		pushq	%rbp
+ 550              		.cfi_def_cfa_offset 16
+ 551              		.cfi_offset 6, -16
+ 552 05b2 4889E5   		movq	%rsp, %rbp
+ 553              		.cfi_def_cfa_register 6
+ 554 05b5 48897DE8 		movq	%rdi, -24(%rbp)
+ 555 05b9 8975E4   		movl	%esi, -28(%rbp)
  113:./pdi/source/escrita.c **** 	int i, j;
  114:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax;i++) {
- 552              		.loc 1 114 0
- 553 05b8 C745F86E 		movl	$110, -8(%rbp)
- 553      000000
- 554 05bf EB7E     		jmp	.L28
- 555              	.L32:
+ 556              		.loc 1 114 0
+ 557 05bc C745F86E 		movl	$110, -8(%rbp)
+ 557      000000
+ 558 05c3 EB7E     		jmp	.L28
+ 559              	.L32:
  115:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 556              		.loc 1 115 0
- 557 05c1 C745FC54 		movl	$340, -4(%rbp)
- 557      010000
- 558 05c8 EB68     		jmp	.L29
- 559              	.L31:
+ 560              		.loc 1 115 0
+ 561 05c5 C745FC54 		movl	$340, -4(%rbp)
+ 561      010000
+ 562 05cc EB68     		jmp	.L29
+ 563              	.L31:
  116:./pdi/source/escrita.c **** 	    if(matriz[i][j].prox_team<=nprox) {
- 560              		.loc 1 116 0
- 561 05ca 8B45F8   		movl	-8(%rbp), %eax
- 562 05cd 4898     		cltq
- 563 05cf 488D14C5 		leaq	0(,%rax,8), %rdx
- 563      00000000 
- 564 05d7 488B45E8 		movq	-24(%rbp), %rax
- 565 05db 4801D0   		addq	%rdx, %rax
- 566 05de 488B08   		movq	(%rax), %rcx
- 567 05e1 8B45FC   		movl	-4(%rbp), %eax
- 568 05e4 4863D0   		movslq	%eax, %rdx
- 569 05e7 4889D0   		movq	%rdx, %rax
- 570 05ea 48C1E003 		salq	$3, %rax
- 571 05ee 4801D0   		addq	%rdx, %rax
- 572 05f1 4801C8   		addq	%rcx, %rax
- 573 05f4 0FB64008 		movzbl	8(%rax), %eax
- 574 05f8 0FB6C0   		movzbl	%al, %eax
- 575 05fb 3B45E4   		cmpl	-28(%rbp), %eax
- 576 05fe 7F2E     		jg	.L30
+ 564              		.loc 1 116 0
+ 565 05ce 8B45F8   		movl	-8(%rbp), %eax
+ 566 05d1 4898     		cltq
+ 567 05d3 488D14C5 		leaq	0(,%rax,8), %rdx
+ 567      00000000 
+ 568 05db 488B45E8 		movq	-24(%rbp), %rax
+ 569 05df 4801D0   		addq	%rdx, %rax
+ 570 05e2 488B08   		movq	(%rax), %rcx
+ 571 05e5 8B45FC   		movl	-4(%rbp), %eax
+ 572 05e8 4863D0   		movslq	%eax, %rdx
+ 573 05eb 4889D0   		movq	%rdx, %rax
+ 574 05ee 48C1E003 		salq	$3, %rax
+ 575 05f2 4801D0   		addq	%rdx, %rax
+ 576 05f5 4801C8   		addq	%rcx, %rax
+ 577 05f8 0FB64008 		movzbl	8(%rax), %eax
+ 578 05fc 0FB6C0   		movzbl	%al, %eax
+ 579 05ff 3B45E4   		cmpl	-28(%rbp), %eax
+ 580 0602 7F2E     		jg	.L30
  117:./pdi/source/escrita.c **** 	      matriz[i][j].team = 0;
- 577              		.loc 1 117 0
- 578 0600 8B45F8   		movl	-8(%rbp), %eax
- 579 0603 4898     		cltq
- 580 0605 488D14C5 		leaq	0(,%rax,8), %rdx
- 580      00000000 
- 581 060d 488B45E8 		movq	-24(%rbp), %rax
- 582 0611 4801D0   		addq	%rdx, %rax
- 583 0614 488B08   		movq	(%rax), %rcx
- 584 0617 8B45FC   		movl	-4(%rbp), %eax
- 585 061a 4863D0   		movslq	%eax, %rdx
- 586 061d 4889D0   		movq	%rdx, %rax
- 587 0620 48C1E003 		salq	$3, %rax
- 588 0624 4801D0   		addq	%rdx, %rax
- 589 0627 4801C8   		addq	%rcx, %rax
-GAS LISTING /tmp/ccuviV50.s 			page 15
+ 581              		.loc 1 117 0
+ 582 0604 8B45F8   		movl	-8(%rbp), %eax
+ 583 0607 4898     		cltq
+ 584 0609 488D14C5 		leaq	0(,%rax,8), %rdx
+ 584      00000000 
+ 585 0611 488B45E8 		movq	-24(%rbp), %rax
+ 586 0615 4801D0   		addq	%rdx, %rax
+ 587 0618 488B08   		movq	(%rax), %rcx
+ 588 061b 8B45FC   		movl	-4(%rbp), %eax
+ 589 061e 4863D0   		movslq	%eax, %rdx
+GAS LISTING /tmp/cct0um32.s 			page 15
 
 
- 590 062a C6400700 		movb	$0, 7(%rax)
- 591              	.L30:
+ 590 0621 4889D0   		movq	%rdx, %rax
+ 591 0624 48C1E003 		salq	$3, %rax
+ 592 0628 4801D0   		addq	%rdx, %rax
+ 593 062b 4801C8   		addq	%rcx, %rax
+ 594 062e C6400700 		movb	$0, 7(%rax)
+ 595              	.L30:
  115:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 592              		.loc 1 115 0 discriminator 2
- 593 062e 8345FC01 		addl	$1, -4(%rbp)
- 594              	.L29:
+ 596              		.loc 1 115 0 discriminator 2
+ 597 0632 8345FC01 		addl	$1, -4(%rbp)
+ 598              	.L29:
  115:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 595              		.loc 1 115 0 is_stmt 0 discriminator 1
- 596 0632 817DFC20 		cmpl	$544, -4(%rbp)
- 596      020000
- 597 0639 7E8F     		jle	.L31
+ 599              		.loc 1 115 0 is_stmt 0 discriminator 1
+ 600 0636 817DFC20 		cmpl	$544, -4(%rbp)
+ 600      020000
+ 601 063d 7E8F     		jle	.L31
  114:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 598              		.loc 1 114 0 is_stmt 1 discriminator 2
- 599 063b 8345F801 		addl	$1, -8(%rbp)
- 600              	.L28:
+ 602              		.loc 1 114 0 is_stmt 1 discriminator 2
+ 603 063f 8345F801 		addl	$1, -8(%rbp)
+ 604              	.L28:
  114:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 601              		.loc 1 114 0 is_stmt 0 discriminator 1
- 602 063f 817DF86B 		cmpl	$363, -8(%rbp)
- 602      010000
- 603 0646 0F8E75FF 		jle	.L32
- 603      FFFF
+ 605              		.loc 1 114 0 is_stmt 0 discriminator 1
+ 606 0643 817DF86B 		cmpl	$363, -8(%rbp)
+ 606      010000
+ 607 064a 0F8E75FF 		jle	.L32
+ 607      FFFF
  118:./pdi/source/escrita.c **** 	    }
  119:./pdi/source/escrita.c **** 	  }
  120:./pdi/source/escrita.c **** 	}
  121:./pdi/source/escrita.c **** }
- 604              		.loc 1 121 0 is_stmt 1
- 605 064c 5D       		popq	%rbp
- 606              		.cfi_def_cfa 7, 8
- 607 064d C3       		ret
- 608              		.cfi_endproc
- 609              	.LFE6:
- 610              		.size	shrink_teams, .-shrink_teams
- 611              		.globl	swell_teams
- 612              		.type	swell_teams, @function
- 613              	swell_teams:
- 614              	.LFB7:
+ 608              		.loc 1 121 0 is_stmt 1
+ 609 0650 90       		nop
+ 610 0651 5D       		popq	%rbp
+ 611              		.cfi_def_cfa 7, 8
+ 612 0652 C3       		ret
+ 613              		.cfi_endproc
+ 614              	.LFE6:
+ 615              		.size	shrink_teams, .-shrink_teams
+ 616              		.globl	swell_teams
+ 617              		.type	swell_teams, @function
+ 618              	swell_teams:
+ 619              	.LFB7:
  122:./pdi/source/escrita.c **** 
  123:./pdi/source/escrita.c **** void swell_teams(struct pixel **matriz, int nprox)
  124:./pdi/source/escrita.c **** {
- 615              		.loc 1 124 0
- 616              		.cfi_startproc
- 617 064e 55       		pushq	%rbp
- 618              		.cfi_def_cfa_offset 16
- 619              		.cfi_offset 6, -16
- 620 064f 4889E5   		movq	%rsp, %rbp
- 621              		.cfi_def_cfa_register 6
- 622 0652 48897DE8 		movq	%rdi, -24(%rbp)
- 623 0656 8975E4   		movl	%esi, -28(%rbp)
+ 620              		.loc 1 124 0
+ 621              		.cfi_startproc
+ 622 0653 55       		pushq	%rbp
+ 623              		.cfi_def_cfa_offset 16
+ 624              		.cfi_offset 6, -16
+ 625 0654 4889E5   		movq	%rsp, %rbp
+ 626              		.cfi_def_cfa_register 6
+ 627 0657 48897DE8 		movq	%rdi, -24(%rbp)
+ 628 065b 8975E4   		movl	%esi, -28(%rbp)
  125:./pdi/source/escrita.c **** 	int i, j;
  126:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax;i++) {
- 624              		.loc 1 126 0
- 625 0659 C745F86E 		movl	$110, -8(%rbp)
- 625      000000
- 626 0660 EB7E     		jmp	.L34
- 627              	.L38:
+ 629              		.loc 1 126 0
+ 630 065e C745F86E 		movl	$110, -8(%rbp)
+GAS LISTING /tmp/cct0um32.s 			page 16
+
+
+ 630      000000
+ 631 0665 EB7E     		jmp	.L34
+ 632              	.L38:
  127:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 628              		.loc 1 127 0
-GAS LISTING /tmp/ccuviV50.s 			page 16
-
-
- 629 0662 C745FC54 		movl	$340, -4(%rbp)
- 629      010000
- 630 0669 EB68     		jmp	.L35
- 631              	.L37:
+ 633              		.loc 1 127 0
+ 634 0667 C745FC54 		movl	$340, -4(%rbp)
+ 634      010000
+ 635 066e EB68     		jmp	.L35
+ 636              	.L37:
  128:./pdi/source/escrita.c **** 	    if(matriz[i][j].prox_team>=nprox) {
- 632              		.loc 1 128 0
- 633 066b 8B45F8   		movl	-8(%rbp), %eax
- 634 066e 4898     		cltq
- 635 0670 488D14C5 		leaq	0(,%rax,8), %rdx
- 635      00000000 
- 636 0678 488B45E8 		movq	-24(%rbp), %rax
- 637 067c 4801D0   		addq	%rdx, %rax
- 638 067f 488B08   		movq	(%rax), %rcx
- 639 0682 8B45FC   		movl	-4(%rbp), %eax
- 640 0685 4863D0   		movslq	%eax, %rdx
- 641 0688 4889D0   		movq	%rdx, %rax
- 642 068b 48C1E003 		salq	$3, %rax
- 643 068f 4801D0   		addq	%rdx, %rax
- 644 0692 4801C8   		addq	%rcx, %rax
- 645 0695 0FB64008 		movzbl	8(%rax), %eax
- 646 0699 0FB6C0   		movzbl	%al, %eax
- 647 069c 3B45E4   		cmpl	-28(%rbp), %eax
- 648 069f 7C2E     		jl	.L36
+ 637              		.loc 1 128 0
+ 638 0670 8B45F8   		movl	-8(%rbp), %eax
+ 639 0673 4898     		cltq
+ 640 0675 488D14C5 		leaq	0(,%rax,8), %rdx
+ 640      00000000 
+ 641 067d 488B45E8 		movq	-24(%rbp), %rax
+ 642 0681 4801D0   		addq	%rdx, %rax
+ 643 0684 488B08   		movq	(%rax), %rcx
+ 644 0687 8B45FC   		movl	-4(%rbp), %eax
+ 645 068a 4863D0   		movslq	%eax, %rdx
+ 646 068d 4889D0   		movq	%rdx, %rax
+ 647 0690 48C1E003 		salq	$3, %rax
+ 648 0694 4801D0   		addq	%rdx, %rax
+ 649 0697 4801C8   		addq	%rcx, %rax
+ 650 069a 0FB64008 		movzbl	8(%rax), %eax
+ 651 069e 0FB6C0   		movzbl	%al, %eax
+ 652 06a1 3B45E4   		cmpl	-28(%rbp), %eax
+ 653 06a4 7C2E     		jl	.L36
  129:./pdi/source/escrita.c **** 	      matriz[i][j].team = 1;
- 649              		.loc 1 129 0
- 650 06a1 8B45F8   		movl	-8(%rbp), %eax
- 651 06a4 4898     		cltq
- 652 06a6 488D14C5 		leaq	0(,%rax,8), %rdx
- 652      00000000 
- 653 06ae 488B45E8 		movq	-24(%rbp), %rax
- 654 06b2 4801D0   		addq	%rdx, %rax
- 655 06b5 488B08   		movq	(%rax), %rcx
- 656 06b8 8B45FC   		movl	-4(%rbp), %eax
- 657 06bb 4863D0   		movslq	%eax, %rdx
- 658 06be 4889D0   		movq	%rdx, %rax
- 659 06c1 48C1E003 		salq	$3, %rax
- 660 06c5 4801D0   		addq	%rdx, %rax
- 661 06c8 4801C8   		addq	%rcx, %rax
- 662 06cb C6400701 		movb	$1, 7(%rax)
- 663              	.L36:
+ 654              		.loc 1 129 0
+ 655 06a6 8B45F8   		movl	-8(%rbp), %eax
+ 656 06a9 4898     		cltq
+ 657 06ab 488D14C5 		leaq	0(,%rax,8), %rdx
+ 657      00000000 
+ 658 06b3 488B45E8 		movq	-24(%rbp), %rax
+ 659 06b7 4801D0   		addq	%rdx, %rax
+ 660 06ba 488B08   		movq	(%rax), %rcx
+ 661 06bd 8B45FC   		movl	-4(%rbp), %eax
+ 662 06c0 4863D0   		movslq	%eax, %rdx
+ 663 06c3 4889D0   		movq	%rdx, %rax
+ 664 06c6 48C1E003 		salq	$3, %rax
+ 665 06ca 4801D0   		addq	%rdx, %rax
+ 666 06cd 4801C8   		addq	%rcx, %rax
+ 667 06d0 C6400701 		movb	$1, 7(%rax)
+ 668              	.L36:
  127:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 664              		.loc 1 127 0 discriminator 2
- 665 06cf 8345FC01 		addl	$1, -4(%rbp)
- 666              	.L35:
+ 669              		.loc 1 127 0 discriminator 2
+ 670 06d4 8345FC01 		addl	$1, -4(%rbp)
+ 671              	.L35:
  127:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 667              		.loc 1 127 0 is_stmt 0 discriminator 1
- 668 06d3 817DFC20 		cmpl	$544, -4(%rbp)
- 668      020000
- 669 06da 7E8F     		jle	.L37
+ 672              		.loc 1 127 0 is_stmt 0 discriminator 1
+ 673 06d8 817DFC20 		cmpl	$544, -4(%rbp)
+ 673      020000
+ 674 06df 7E8F     		jle	.L37
  126:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 670              		.loc 1 126 0 is_stmt 1 discriminator 2
- 671 06dc 8345F801 		addl	$1, -8(%rbp)
- 672              	.L34:
- 126:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
- 673              		.loc 1 126 0 is_stmt 0 discriminator 1
- 674 06e0 817DF86B 		cmpl	$363, -8(%rbp)
- 674      010000
-GAS LISTING /tmp/ccuviV50.s 			page 17
+ 675              		.loc 1 126 0 is_stmt 1 discriminator 2
+ 676 06e1 8345F801 		addl	$1, -8(%rbp)
+GAS LISTING /tmp/cct0um32.s 			page 17
 
 
- 675 06e7 0F8E75FF 		jle	.L38
- 675      FFFF
+ 677              	.L34:
+ 126:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
+ 678              		.loc 1 126 0 is_stmt 0 discriminator 1
+ 679 06e5 817DF86B 		cmpl	$363, -8(%rbp)
+ 679      010000
+ 680 06ec 0F8E75FF 		jle	.L38
+ 680      FFFF
  130:./pdi/source/escrita.c **** 	    }
  131:./pdi/source/escrita.c **** 	  }
  132:./pdi/source/escrita.c **** 	}
  133:./pdi/source/escrita.c **** }
- 676              		.loc 1 133 0 is_stmt 1
- 677 06ed 5D       		popq	%rbp
- 678              		.cfi_def_cfa 7, 8
- 679 06ee C3       		ret
- 680              		.cfi_endproc
- 681              	.LFE7:
- 682              		.size	swell_teams, .-swell_teams
- 683              		.globl	pix_erro
- 684              		.type	pix_erro, @function
- 685              	pix_erro:
- 686              	.LFB8:
+ 681              		.loc 1 133 0 is_stmt 1
+ 682 06f2 90       		nop
+ 683 06f3 5D       		popq	%rbp
+ 684              		.cfi_def_cfa 7, 8
+ 685 06f4 C3       		ret
+ 686              		.cfi_endproc
+ 687              	.LFE7:
+ 688              		.size	swell_teams, .-swell_teams
+ 689              		.globl	pix_erro
+ 690              		.type	pix_erro, @function
+ 691              	pix_erro:
+ 692              	.LFB8:
  134:./pdi/source/escrita.c **** 
  135:./pdi/source/escrita.c **** int pix_erro(struct pixel original, struct pixel compare){
- 687              		.loc 1 135 0
- 688              		.cfi_startproc
- 689 06ef 55       		pushq	%rbp
- 690              		.cfi_def_cfa_offset 16
- 691              		.cfi_offset 6, -16
- 692 06f0 4889E5   		movq	%rsp, %rbp
- 693              		.cfi_def_cfa_register 6
- 694 06f3 89C8     		movl	%ecx, %eax
- 695 06f5 48897DE0 		movq	%rdi, -32(%rbp)
- 696 06f9 408875E8 		movb	%sil, -24(%rbp)
- 697 06fd 488955D0 		movq	%rdx, -48(%rbp)
- 698 0701 8845D8   		movb	%al, -40(%rbp)
+ 693              		.loc 1 135 0
+ 694              		.cfi_startproc
+ 695 06f5 55       		pushq	%rbp
+ 696              		.cfi_def_cfa_offset 16
+ 697              		.cfi_offset 6, -16
+ 698 06f6 4889E5   		movq	%rsp, %rbp
+ 699              		.cfi_def_cfa_register 6
+ 700 06f9 89C8     		movl	%ecx, %eax
+ 701 06fb 48897DE0 		movq	%rdi, -32(%rbp)
+ 702 06ff 408875E8 		movb	%sil, -24(%rbp)
+ 703 0703 488955D0 		movq	%rdx, -48(%rbp)
+ 704 0707 8845D8   		movb	%al, -40(%rbp)
  136:./pdi/source/escrita.c **** 	int erro = 0;
- 699              		.loc 1 136 0
- 700 0704 C745FC00 		movl	$0, -4(%rbp)
- 700      000000
+ 705              		.loc 1 136 0
+ 706 070a C745FC00 		movl	$0, -4(%rbp)
+ 706      000000
  137:./pdi/source/escrita.c **** 	erro = abs(original.luma - compare.luma) + 
- 701              		.loc 1 137 0
- 702 070b 0FB645E0 		movzbl	-32(%rbp), %eax
- 703 070f 0FB6D0   		movzbl	%al, %edx
- 704 0712 0FB645D0 		movzbl	-48(%rbp), %eax
- 705 0716 0FB6C0   		movzbl	%al, %eax
- 706 0719 29C2     		subl	%eax, %edx
- 707 071b 89D0     		movl	%edx, %eax
- 708 071d C1F81F   		sarl	$31, %eax
- 709 0720 31C2     		xorl	%eax, %edx
- 710 0722 29C2     		subl	%eax, %edx
+ 707              		.loc 1 137 0
+ 708 0711 0FB645E0 		movzbl	-32(%rbp), %eax
+ 709 0715 0FB6D0   		movzbl	%al, %edx
+ 710 0718 0FB645D0 		movzbl	-48(%rbp), %eax
+ 711 071c 0FB6C0   		movzbl	%al, %eax
+ 712 071f 29C2     		subl	%eax, %edx
+ 713 0721 89D0     		movl	%edx, %eax
+ 714 0723 C1F81F   		sarl	$31, %eax
+ 715 0726 31C2     		xorl	%eax, %edx
+ 716 0728 29C2     		subl	%eax, %edx
  138:./pdi/source/escrita.c **** 		abs(original.cb - compare.cb) +
- 711              		.loc 1 138 0
- 712 0724 0FB645E1 		movzbl	-31(%rbp), %eax
- 713 0728 0FB6C8   		movzbl	%al, %ecx
- 714 072b 0FB645D1 		movzbl	-47(%rbp), %eax
- 715 072f 0FB6C0   		movzbl	%al, %eax
- 716 0732 29C1     		subl	%eax, %ecx
- 717 0734 89C8     		movl	%ecx, %eax
- 718 0736 89C1     		movl	%eax, %ecx
- 719 0738 C1F91F   		sarl	$31, %ecx
- 720 073b 31C8     		xorl	%ecx, %eax
-GAS LISTING /tmp/ccuviV50.s 			page 18
+ 717              		.loc 1 138 0
+ 718 072a 0FB645E1 		movzbl	-31(%rbp), %eax
+ 719 072e 0FB6C8   		movzbl	%al, %ecx
+ 720 0731 0FB645D1 		movzbl	-47(%rbp), %eax
+GAS LISTING /tmp/cct0um32.s 			page 18
 
 
- 721 073d 29C8     		subl	%ecx, %eax
+ 721 0735 0FB6C0   		movzbl	%al, %eax
+ 722 0738 29C1     		subl	%eax, %ecx
+ 723 073a 89C8     		movl	%ecx, %eax
+ 724 073c 89C1     		movl	%eax, %ecx
+ 725 073e C1F91F   		sarl	$31, %ecx
+ 726 0741 31C8     		xorl	%ecx, %eax
+ 727 0743 29C8     		subl	%ecx, %eax
  137:./pdi/source/escrita.c **** 	erro = abs(original.luma - compare.luma) + 
- 722              		.loc 1 137 0
- 723 073f 8D0C02   		leal	(%rdx,%rax), %ecx
+ 728              		.loc 1 137 0
+ 729 0745 8D0C02   		leal	(%rdx,%rax), %ecx
  139:./pdi/source/escrita.c **** 		abs(original.cr - compare.cr);
- 724              		.loc 1 139 0
- 725 0742 0FB645E2 		movzbl	-30(%rbp), %eax
- 726 0746 0FB6D0   		movzbl	%al, %edx
- 727 0749 0FB645D2 		movzbl	-46(%rbp), %eax
- 728 074d 0FB6C0   		movzbl	%al, %eax
- 729 0750 29C2     		subl	%eax, %edx
- 730 0752 89D0     		movl	%edx, %eax
- 731 0754 99       		cltd
- 732 0755 31D0     		xorl	%edx, %eax
- 733 0757 29D0     		subl	%edx, %eax
+ 730              		.loc 1 139 0
+ 731 0748 0FB645E2 		movzbl	-30(%rbp), %eax
+ 732 074c 0FB6D0   		movzbl	%al, %edx
+ 733 074f 0FB645D2 		movzbl	-46(%rbp), %eax
+ 734 0753 0FB6C0   		movzbl	%al, %eax
+ 735 0756 29C2     		subl	%eax, %edx
+ 736 0758 89D0     		movl	%edx, %eax
+ 737 075a 99       		cltd
+ 738 075b 31D0     		xorl	%edx, %eax
+ 739 075d 29D0     		subl	%edx, %eax
  137:./pdi/source/escrita.c **** 	erro = abs(original.luma - compare.luma) + 
- 734              		.loc 1 137 0
- 735 0759 01C8     		addl	%ecx, %eax
- 736 075b 8945FC   		movl	%eax, -4(%rbp)
+ 740              		.loc 1 137 0
+ 741 075f 01C8     		addl	%ecx, %eax
+ 742 0761 8945FC   		movl	%eax, -4(%rbp)
  140:./pdi/source/escrita.c **** 	return erro;
- 737              		.loc 1 140 0
- 738 075e 8B45FC   		movl	-4(%rbp), %eax
+ 743              		.loc 1 140 0
+ 744 0764 8B45FC   		movl	-4(%rbp), %eax
  141:./pdi/source/escrita.c **** }
- 739              		.loc 1 141 0
- 740 0761 5D       		popq	%rbp
- 741              		.cfi_def_cfa 7, 8
- 742 0762 C3       		ret
- 743              		.cfi_endproc
- 744              	.LFE8:
- 745              		.size	pix_erro, .-pix_erro
- 746              		.section	.rodata
- 747              	.LC1:
- 748 0015 6F70656E 		.string	"open"
- 748      00
- 749              	.LC2:
- 750 001a 4572726F 		.string	"Erro ao escrever\n"
- 750      20616F20 
- 750      65736372 
- 750      65766572 
- 750      0A00
- 751              		.text
- 752              		.globl	escrita
- 753              		.type	escrita, @function
- 754              	escrita:
- 755              	.LFB9:
+ 745              		.loc 1 141 0
+ 746 0767 5D       		popq	%rbp
+ 747              		.cfi_def_cfa 7, 8
+ 748 0768 C3       		ret
+ 749              		.cfi_endproc
+ 750              	.LFE8:
+ 751              		.size	pix_erro, .-pix_erro
+ 752              		.section	.rodata
+ 753              	.LC1:
+ 754 0015 6F70656E 		.string	"open"
+ 754      00
+ 755              	.LC2:
+ 756 001a 4572726F 		.string	"Erro ao escrever\n"
+ 756      20616F20 
+ 756      65736372 
+ 756      65766572 
+ 756      0A00
+ 757              		.text
+ 758              		.globl	escrita
+ 759              		.type	escrita, @function
+ 760              	escrita:
+ 761              	.LFB9:
  142:./pdi/source/escrita.c **** 
  143:./pdi/source/escrita.c **** 
  144:./pdi/source/escrita.c **** 
  145:./pdi/source/escrita.c **** void escrita(char *arquivo, unsigned char* matriz_temp) {
- 756              		.loc 1 145 0
- 757              		.cfi_startproc
- 758 0763 55       		pushq	%rbp
- 759              		.cfi_def_cfa_offset 16
- 760              		.cfi_offset 6, -16
- 761 0764 4889E5   		movq	%rsp, %rbp
- 762              		.cfi_def_cfa_register 6
- 763 0767 4883EC20 		subq	$32, %rsp
-GAS LISTING /tmp/ccuviV50.s 			page 19
+ 762              		.loc 1 145 0
+ 763              		.cfi_startproc
+GAS LISTING /tmp/cct0um32.s 			page 19
 
 
- 764 076b 48897DE8 		movq	%rdi, -24(%rbp)
- 765 076f 488975E0 		movq	%rsi, -32(%rbp)
+ 764 0769 55       		pushq	%rbp
+ 765              		.cfi_def_cfa_offset 16
+ 766              		.cfi_offset 6, -16
+ 767 076a 4889E5   		movq	%rsp, %rbp
+ 768              		.cfi_def_cfa_register 6
+ 769 076d 4883EC20 		subq	$32, %rsp
+ 770 0771 48897DE8 		movq	%rdi, -24(%rbp)
+ 771 0775 488975E0 		movq	%rsi, -32(%rbp)
  146:./pdi/source/escrita.c **** 	int jpgfile;
  147:./pdi/source/escrita.c ****         if((jpgfile = open(arquivo, O_WRONLY | O_CREAT, 0660)) < 0){
- 766              		.loc 1 147 0
- 767 0773 488B45E8 		movq	-24(%rbp), %rax
- 768 0777 BAB00100 		movl	$432, %edx
- 768      00
- 769 077c BE410000 		movl	$65, %esi
- 769      00
- 770 0781 4889C7   		movq	%rax, %rdi
- 771 0784 B8000000 		movl	$0, %eax
- 771      00
- 772 0789 E8000000 		call	open
- 772      00
- 773 078e 8945FC   		movl	%eax, -4(%rbp)
- 774 0791 837DFC00 		cmpl	$0, -4(%rbp)
- 775 0795 7914     		jns	.L42
- 148:./pdi/source/escrita.c ****             perror("open");
- 776              		.loc 1 148 0
- 777 0797 BF000000 		movl	$.LC1, %edi
+ 772              		.loc 1 147 0
+ 773 0779 488B45E8 		movq	-24(%rbp), %rax
+ 774 077d BAB00100 		movl	$432, %edx
+ 774      00
+ 775 0782 BE410000 		movl	$65, %esi
+ 775      00
+ 776 0787 4889C7   		movq	%rax, %rdi
+ 777 078a B8000000 		movl	$0, %eax
  777      00
- 778 079c E8000000 		call	perror
+ 778 078f E8000000 		call	open
  778      00
+ 779 0794 8945FC   		movl	%eax, -4(%rbp)
+ 780 0797 837DFC00 		cmpl	$0, -4(%rbp)
+ 781 079b 7914     		jns	.L42
+ 148:./pdi/source/escrita.c ****             perror("open");
+ 782              		.loc 1 148 0
+ 783 079d BF000000 		movl	$.LC1, %edi
+ 783      00
+ 784 07a2 E8000000 		call	perror
+ 784      00
  149:./pdi/source/escrita.c ****             exit(1);
- 779              		.loc 1 149 0
- 780 07a1 BF010000 		movl	$1, %edi
- 780      00
- 781 07a6 E8000000 		call	exit
- 781      00
- 782              	.L42:
+ 785              		.loc 1 149 0
+ 786 07a7 BF010000 		movl	$1, %edi
+ 786      00
+ 787 07ac E8000000 		call	exit
+ 787      00
+ 788              	.L42:
  150:./pdi/source/escrita.c **** 
  151:./pdi/source/escrita.c ****         }
  152:./pdi/source/escrita.c ****         if(write(jpgfile, matriz_temp, altura*largura*2) < 0);
- 783              		.loc 1 152 0
- 784 07ab 488B4DE0 		movq	-32(%rbp), %rcx
- 785 07af 8B45FC   		movl	-4(%rbp), %eax
- 786 07b2 BA006009 		movl	$614400, %edx
- 786      00
- 787 07b7 4889CE   		movq	%rcx, %rsi
- 788 07ba 89C7     		movl	%eax, %edi
- 789 07bc E8000000 		call	write
- 789      00
- 153:./pdi/source/escrita.c **** 		perror("Erro ao escrever\n");
- 790              		.loc 1 153 0
- 791 07c1 BF000000 		movl	$.LC2, %edi
- 791      00
- 792 07c6 E8000000 		call	perror
+ 789              		.loc 1 152 0
+ 790 07b1 488B4DE0 		movq	-32(%rbp), %rcx
+ 791 07b5 8B45FC   		movl	-4(%rbp), %eax
+ 792 07b8 BA006009 		movl	$614400, %edx
  792      00
+ 793 07bd 4889CE   		movq	%rcx, %rsi
+ 794 07c0 89C7     		movl	%eax, %edi
+ 795 07c2 E8000000 		call	write
+ 795      00
+ 153:./pdi/source/escrita.c **** 		perror("Erro ao escrever\n");
+ 796              		.loc 1 153 0
+ 797 07c7 BF000000 		movl	$.LC2, %edi
+ 797      00
+ 798 07cc E8000000 		call	perror
+ 798      00
  154:./pdi/source/escrita.c ****         close(jpgfile);
- 793              		.loc 1 154 0
- 794 07cb 8B45FC   		movl	-4(%rbp), %eax
- 795 07ce 89C7     		movl	%eax, %edi
- 796 07d0 E8000000 		call	close
- 796      00
+ 799              		.loc 1 154 0
+GAS LISTING /tmp/cct0um32.s 			page 20
+
+
+ 800 07d1 8B45FC   		movl	-4(%rbp), %eax
+ 801 07d4 89C7     		movl	%eax, %edi
+ 802 07d6 E8000000 		call	close
+ 802      00
  155:./pdi/source/escrita.c **** }
- 797              		.loc 1 155 0
-GAS LISTING /tmp/ccuviV50.s 			page 20
-
-
- 798 07d5 C9       		leave
- 799              		.cfi_def_cfa 7, 8
- 800 07d6 C3       		ret
- 801              		.cfi_endproc
- 802              	.LFE9:
- 803              		.size	escrita, .-escrita
- 804              		.globl	print_ballcoord
- 805              		.type	print_ballcoord, @function
- 806              	print_ballcoord:
- 807              	.LFB10:
+ 803              		.loc 1 155 0
+ 804 07db 90       		nop
+ 805 07dc C9       		leave
+ 806              		.cfi_def_cfa 7, 8
+ 807 07dd C3       		ret
+ 808              		.cfi_endproc
+ 809              	.LFE9:
+ 810              		.size	escrita, .-escrita
+ 811              		.globl	print_ballcoord
+ 812              		.type	print_ballcoord, @function
+ 813              	print_ballcoord:
+ 814              	.LFB10:
  156:./pdi/source/escrita.c **** 
  157:./pdi/source/escrita.c **** struct CD *print_ballcoord(struct pixel **matriz) {
- 808              		.loc 1 157 0
- 809              		.cfi_startproc
- 810 07d7 55       		pushq	%rbp
- 811              		.cfi_def_cfa_offset 16
- 812              		.cfi_offset 6, -16
- 813 07d8 4889E5   		movq	%rsp, %rbp
- 814              		.cfi_def_cfa_register 6
- 815 07db 4883EC40 		subq	$64, %rsp
- 816 07df 48897DC8 		movq	%rdi, -56(%rbp)
+ 815              		.loc 1 157 0
+ 816              		.cfi_startproc
+ 817 07de 55       		pushq	%rbp
+ 818              		.cfi_def_cfa_offset 16
+ 819              		.cfi_offset 6, -16
+ 820 07df 4889E5   		movq	%rsp, %rbp
+ 821              		.cfi_def_cfa_register 6
+ 822 07e2 4883EC40 		subq	$64, %rsp
+ 823 07e6 48897DC8 		movq	%rdi, -56(%rbp)
  158:./pdi/source/escrita.c **** 	
  159:./pdi/source/escrita.c **** 	struct CD *cds = malloc(sizeof(struct CD)*19);
- 817              		.loc 1 159 0
- 818 07e3 BF980000 		movl	$152, %edi
- 818      00
- 819 07e8 E8000000 		call	malloc
- 819      00
- 820 07ed 488945D8 		movq	%rax, -40(%rbp)
+ 824              		.loc 1 159 0
+ 825 07ea BF980000 		movl	$152, %edi
+ 825      00
+ 826 07ef E8000000 		call	malloc
+ 826      00
+ 827 07f4 488945D8 		movq	%rax, -40(%rbp)
  160:./pdi/source/escrita.c **** 	struct coordenadas_size aux = detect_regiao(matriz);
- 821              		.loc 1 160 0
- 822 07f1 488B45C8 		movq	-56(%rbp), %rax
- 823 07f5 4889C7   		movq	%rax, %rdi
- 824 07f8 E8000000 		call	detect_regiao
- 824      00
- 825 07fd 488945F0 		movq	%rax, -16(%rbp)
- 826 0801 488955F8 		movq	%rdx, -8(%rbp)
+ 828              		.loc 1 160 0
+ 829 07f8 488B45C8 		movq	-56(%rbp), %rax
+ 830 07fc 4889C7   		movq	%rax, %rdi
+ 831 07ff E8000000 		call	detect_regiao
+ 831      00
+ 832 0804 488945F0 		movq	%rax, -16(%rbp)
+ 833 0808 488955F8 		movq	%rdx, -8(%rbp)
  161:./pdi/source/escrita.c ****         struct coordenadas *bolinhas = aux.coord;
- 827              		.loc 1 161 0
- 828 0805 488B45F0 		movq	-16(%rbp), %rax
- 829 0809 488945E0 		movq	%rax, -32(%rbp)
+ 834              		.loc 1 161 0
+ 835 080c 488B45F0 		movq	-16(%rbp), %rax
+ 836 0810 488945E0 		movq	%rax, -32(%rbp)
  162:./pdi/source/escrita.c ****         aux.coord = NULL;
- 830              		.loc 1 162 0
- 831 080d 48C745F0 		movq	$0, -16(%rbp)
- 831      00000000 
+ 837              		.loc 1 162 0
+ 838 0814 48C745F0 		movq	$0, -16(%rbp)
+ 838      00000000 
  163:./pdi/source/escrita.c ****         int nbolinhas = aux.size;
- 832              		.loc 1 163 0
- 833 0815 8B45F8   		movl	-8(%rbp), %eax
- 834 0818 8945D4   		movl	%eax, -44(%rbp)
+ 839              		.loc 1 163 0
+ 840 081c 8B45F8   		movl	-8(%rbp), %eax
+ 841 081f 8945D4   		movl	%eax, -44(%rbp)
  164:./pdi/source/escrita.c ****         struct coordenadas *hashtag = generate_hashtag(bolinhas, nbolinhas);
- 835              		.loc 1 164 0
- 836 081b 8B55D4   		movl	-44(%rbp), %edx
- 837 081e 488B45E0 		movq	-32(%rbp), %rax
- 838 0822 89D6     		movl	%edx, %esi
- 839 0824 4889C7   		movq	%rax, %rdi
- 840 0827 E8000000 		call	generate_hashtag
- 840      00
-GAS LISTING /tmp/ccuviV50.s 			page 21
+GAS LISTING /tmp/cct0um32.s 			page 21
 
 
- 841 082c 488945E8 		movq	%rax, -24(%rbp)
+ 842              		.loc 1 164 0
+ 843 0822 8B55D4   		movl	-44(%rbp), %edx
+ 844 0825 488B45E0 		movq	-32(%rbp), %rax
+ 845 0829 89D6     		movl	%edx, %esi
+ 846 082b 4889C7   		movq	%rax, %rdi
+ 847 082e E8000000 		call	generate_hashtag
+ 847      00
+ 848 0833 488945E8 		movq	%rax, -24(%rbp)
  165:./pdi/source/escrita.c ****         int i;
  166:./pdi/source/escrita.c **** 
  167:./pdi/source/escrita.c ****         for (i = 0; i < 3; i++) {
- 842              		.loc 1 167 0
- 843 0830 C745D000 		movl	$0, -48(%rbp)
- 843      000000
- 844 0837 E9DC0100 		jmp	.L44
- 844      00
- 845              	.L45:
+ 849              		.loc 1 167 0
+ 850 0837 C745D000 		movl	$0, -48(%rbp)
+ 850      000000
+ 851 083e E9D00100 		jmp	.L44
+ 851      00
+ 852              	.L45:
  168:./pdi/source/escrita.c ****                 cds[0 + 3*i].X = hashtag[6 + i].X;
- 846              		.loc 1 168 0 discriminator 3
- 847 083c 8B45D0   		movl	-48(%rbp), %eax
- 848 083f 4863D0   		movslq	%eax, %rdx
- 849 0842 4889D0   		movq	%rdx, %rax
- 850 0845 4801C0   		addq	%rax, %rax
- 851 0848 4801D0   		addq	%rdx, %rax
- 852 084b 48C1E003 		salq	$3, %rax
- 853 084f 4889C2   		movq	%rax, %rdx
- 854 0852 488B45D8 		movq	-40(%rbp), %rax
- 855 0856 488D0C02 		leaq	(%rdx,%rax), %rcx
- 856 085a 8B45D0   		movl	-48(%rbp), %eax
- 857 085d 83C006   		addl	$6, %eax
- 858 0860 4863D0   		movslq	%eax, %rdx
- 859 0863 4889D0   		movq	%rdx, %rax
- 860 0866 4801C0   		addq	%rax, %rax
- 861 0869 4801D0   		addq	%rdx, %rax
- 862 086c 48C1E002 		salq	$2, %rax
- 863 0870 4889C2   		movq	%rax, %rdx
- 864 0873 488B45E8 		movq	-24(%rbp), %rax
- 865 0877 4801D0   		addq	%rdx, %rax
- 866 087a 8B00     		movl	(%rax), %eax
- 867 087c 660FEFC0 		pxor	%xmm0, %xmm0
- 868 0880 F30F2AC0 		cvtsi2ss	%eax, %xmm0
- 869 0884 660F7EC0 		movd	%xmm0, %eax
- 870 0888 8901     		movl	%eax, (%rcx)
+ 853              		.loc 1 168 0 discriminator 3
+ 854 0843 8B45D0   		movl	-48(%rbp), %eax
+ 855 0846 4863D0   		movslq	%eax, %rdx
+ 856 0849 4889D0   		movq	%rdx, %rax
+ 857 084c 4801C0   		addq	%rax, %rax
+ 858 084f 4801D0   		addq	%rdx, %rax
+ 859 0852 48C1E003 		salq	$3, %rax
+ 860 0856 4889C2   		movq	%rax, %rdx
+ 861 0859 488B45D8 		movq	-40(%rbp), %rax
+ 862 085d 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 863 0861 8B45D0   		movl	-48(%rbp), %eax
+ 864 0864 83C006   		addl	$6, %eax
+ 865 0867 4863D0   		movslq	%eax, %rdx
+ 866 086a 4889D0   		movq	%rdx, %rax
+ 867 086d 4801C0   		addq	%rax, %rax
+ 868 0870 4801D0   		addq	%rdx, %rax
+ 869 0873 48C1E002 		salq	$2, %rax
+ 870 0877 4889C2   		movq	%rax, %rdx
+ 871 087a 488B45E8 		movq	-24(%rbp), %rax
+ 872 087e 4801D0   		addq	%rdx, %rax
+ 873 0881 8B00     		movl	(%rax), %eax
+ 874 0883 660FEFC0 		pxor	%xmm0, %xmm0
+ 875 0887 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 876 088b F30F1101 		movss	%xmm0, (%rcx)
  169:./pdi/source/escrita.c ****                 cds[0 + 3*i].Y = hashtag[6 + i].Y;
- 871              		.loc 1 169 0 discriminator 3
- 872 088a 8B45D0   		movl	-48(%rbp), %eax
- 873 088d 4863D0   		movslq	%eax, %rdx
- 874 0890 4889D0   		movq	%rdx, %rax
- 875 0893 4801C0   		addq	%rax, %rax
- 876 0896 4801D0   		addq	%rdx, %rax
- 877 0899 48C1E003 		salq	$3, %rax
- 878 089d 4889C2   		movq	%rax, %rdx
- 879 08a0 488B45D8 		movq	-40(%rbp), %rax
- 880 08a4 488D0C02 		leaq	(%rdx,%rax), %rcx
- 881 08a8 8B45D0   		movl	-48(%rbp), %eax
- 882 08ab 83C006   		addl	$6, %eax
- 883 08ae 4863D0   		movslq	%eax, %rdx
- 884 08b1 4889D0   		movq	%rdx, %rax
- 885 08b4 4801C0   		addq	%rax, %rax
- 886 08b7 4801D0   		addq	%rdx, %rax
- 887 08ba 48C1E002 		salq	$2, %rax
- 888 08be 4889C2   		movq	%rax, %rdx
- 889 08c1 488B45E8 		movq	-24(%rbp), %rax
- 890 08c5 4801D0   		addq	%rdx, %rax
-GAS LISTING /tmp/ccuviV50.s 			page 22
+ 877              		.loc 1 169 0 discriminator 3
+ 878 088f 8B45D0   		movl	-48(%rbp), %eax
+ 879 0892 4863D0   		movslq	%eax, %rdx
+ 880 0895 4889D0   		movq	%rdx, %rax
+ 881 0898 4801C0   		addq	%rax, %rax
+ 882 089b 4801D0   		addq	%rdx, %rax
+ 883 089e 48C1E003 		salq	$3, %rax
+ 884 08a2 4889C2   		movq	%rax, %rdx
+ 885 08a5 488B45D8 		movq	-40(%rbp), %rax
+ 886 08a9 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 887 08ad 8B45D0   		movl	-48(%rbp), %eax
+ 888 08b0 83C006   		addl	$6, %eax
+ 889 08b3 4863D0   		movslq	%eax, %rdx
+ 890 08b6 4889D0   		movq	%rdx, %rax
+GAS LISTING /tmp/cct0um32.s 			page 22
 
 
- 891 08c8 8B4004   		movl	4(%rax), %eax
- 892 08cb 660FEFC9 		pxor	%xmm1, %xmm1
- 893 08cf F30F2AC8 		cvtsi2ss	%eax, %xmm1
- 894 08d3 660F7EC8 		movd	%xmm1, %eax
- 895 08d7 894104   		movl	%eax, 4(%rcx)
+ 891 08b9 4801C0   		addq	%rax, %rax
+ 892 08bc 4801D0   		addq	%rdx, %rax
+ 893 08bf 48C1E002 		salq	$2, %rax
+ 894 08c3 4889C2   		movq	%rax, %rdx
+ 895 08c6 488B45E8 		movq	-24(%rbp), %rax
+ 896 08ca 4801D0   		addq	%rdx, %rax
+ 897 08cd 8B4004   		movl	4(%rax), %eax
+ 898 08d0 660FEFC0 		pxor	%xmm0, %xmm0
+ 899 08d4 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 900 08d8 F30F1141 		movss	%xmm0, 4(%rcx)
+ 900      04
  170:./pdi/source/escrita.c **** 
  171:./pdi/source/escrita.c ****                 cds[1 + 3*i].X = hashtag[3 + i].X;
- 896              		.loc 1 171 0 discriminator 3
- 897 08da 8B45D0   		movl	-48(%rbp), %eax
- 898 08dd 4863D0   		movslq	%eax, %rdx
- 899 08e0 4889D0   		movq	%rdx, %rax
- 900 08e3 4801C0   		addq	%rax, %rax
- 901 08e6 4801D0   		addq	%rdx, %rax
- 902 08e9 48C1E003 		salq	$3, %rax
- 903 08ed 488D5008 		leaq	8(%rax), %rdx
- 904 08f1 488B45D8 		movq	-40(%rbp), %rax
- 905 08f5 488D0C02 		leaq	(%rdx,%rax), %rcx
- 906 08f9 8B45D0   		movl	-48(%rbp), %eax
- 907 08fc 83C003   		addl	$3, %eax
- 908 08ff 4863D0   		movslq	%eax, %rdx
- 909 0902 4889D0   		movq	%rdx, %rax
- 910 0905 4801C0   		addq	%rax, %rax
- 911 0908 4801D0   		addq	%rdx, %rax
- 912 090b 48C1E002 		salq	$2, %rax
- 913 090f 4889C2   		movq	%rax, %rdx
- 914 0912 488B45E8 		movq	-24(%rbp), %rax
- 915 0916 4801D0   		addq	%rdx, %rax
- 916 0919 8B00     		movl	(%rax), %eax
- 917 091b 660FEFD2 		pxor	%xmm2, %xmm2
- 918 091f F30F2AD0 		cvtsi2ss	%eax, %xmm2
- 919 0923 660F7ED0 		movd	%xmm2, %eax
- 920 0927 8901     		movl	%eax, (%rcx)
+ 901              		.loc 1 171 0 discriminator 3
+ 902 08dd 8B45D0   		movl	-48(%rbp), %eax
+ 903 08e0 4863D0   		movslq	%eax, %rdx
+ 904 08e3 4889D0   		movq	%rdx, %rax
+ 905 08e6 4801C0   		addq	%rax, %rax
+ 906 08e9 4801D0   		addq	%rdx, %rax
+ 907 08ec 48C1E003 		salq	$3, %rax
+ 908 08f0 488D5008 		leaq	8(%rax), %rdx
+ 909 08f4 488B45D8 		movq	-40(%rbp), %rax
+ 910 08f8 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 911 08fc 8B45D0   		movl	-48(%rbp), %eax
+ 912 08ff 83C003   		addl	$3, %eax
+ 913 0902 4863D0   		movslq	%eax, %rdx
+ 914 0905 4889D0   		movq	%rdx, %rax
+ 915 0908 4801C0   		addq	%rax, %rax
+ 916 090b 4801D0   		addq	%rdx, %rax
+ 917 090e 48C1E002 		salq	$2, %rax
+ 918 0912 4889C2   		movq	%rax, %rdx
+ 919 0915 488B45E8 		movq	-24(%rbp), %rax
+ 920 0919 4801D0   		addq	%rdx, %rax
+ 921 091c 8B00     		movl	(%rax), %eax
+ 922 091e 660FEFC0 		pxor	%xmm0, %xmm0
+ 923 0922 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 924 0926 F30F1101 		movss	%xmm0, (%rcx)
  172:./pdi/source/escrita.c ****                 cds[1 + 3*i].Y = hashtag[3 + i].Y;
- 921              		.loc 1 172 0 discriminator 3
- 922 0929 8B45D0   		movl	-48(%rbp), %eax
- 923 092c 4863D0   		movslq	%eax, %rdx
- 924 092f 4889D0   		movq	%rdx, %rax
- 925 0932 4801C0   		addq	%rax, %rax
- 926 0935 4801D0   		addq	%rdx, %rax
- 927 0938 48C1E003 		salq	$3, %rax
- 928 093c 488D5008 		leaq	8(%rax), %rdx
- 929 0940 488B45D8 		movq	-40(%rbp), %rax
- 930 0944 488D0C02 		leaq	(%rdx,%rax), %rcx
- 931 0948 8B45D0   		movl	-48(%rbp), %eax
- 932 094b 83C003   		addl	$3, %eax
- 933 094e 4863D0   		movslq	%eax, %rdx
- 934 0951 4889D0   		movq	%rdx, %rax
- 935 0954 4801C0   		addq	%rax, %rax
- 936 0957 4801D0   		addq	%rdx, %rax
- 937 095a 48C1E002 		salq	$2, %rax
- 938 095e 4889C2   		movq	%rax, %rdx
- 939 0961 488B45E8 		movq	-24(%rbp), %rax
- 940 0965 4801D0   		addq	%rdx, %rax
- 941 0968 8B4004   		movl	4(%rax), %eax
- 942 096b 660FEFDB 		pxor	%xmm3, %xmm3
- 943 096f F30F2AD8 		cvtsi2ss	%eax, %xmm3
- 944 0973 660F7ED8 		movd	%xmm3, %eax
-GAS LISTING /tmp/ccuviV50.s 			page 23
+ 925              		.loc 1 172 0 discriminator 3
+ 926 092a 8B45D0   		movl	-48(%rbp), %eax
+ 927 092d 4863D0   		movslq	%eax, %rdx
+ 928 0930 4889D0   		movq	%rdx, %rax
+ 929 0933 4801C0   		addq	%rax, %rax
+ 930 0936 4801D0   		addq	%rdx, %rax
+ 931 0939 48C1E003 		salq	$3, %rax
+ 932 093d 488D5008 		leaq	8(%rax), %rdx
+ 933 0941 488B45D8 		movq	-40(%rbp), %rax
+ 934 0945 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 935 0949 8B45D0   		movl	-48(%rbp), %eax
+ 936 094c 83C003   		addl	$3, %eax
+ 937 094f 4863D0   		movslq	%eax, %rdx
+ 938 0952 4889D0   		movq	%rdx, %rax
+ 939 0955 4801C0   		addq	%rax, %rax
+ 940 0958 4801D0   		addq	%rdx, %rax
+ 941 095b 48C1E002 		salq	$2, %rax
+ 942 095f 4889C2   		movq	%rax, %rdx
+ 943 0962 488B45E8 		movq	-24(%rbp), %rax
+GAS LISTING /tmp/cct0um32.s 			page 23
 
 
- 945 0977 894104   		movl	%eax, 4(%rcx)
+ 944 0966 4801D0   		addq	%rdx, %rax
+ 945 0969 8B4004   		movl	4(%rax), %eax
+ 946 096c 660FEFC0 		pxor	%xmm0, %xmm0
+ 947 0970 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 948 0974 F30F1141 		movss	%xmm0, 4(%rcx)
+ 948      04
  173:./pdi/source/escrita.c **** 
  174:./pdi/source/escrita.c ****                 cds[2 + 3*i].X = hashtag[0 + i].X;
- 946              		.loc 1 174 0 discriminator 3
- 947 097a 8B45D0   		movl	-48(%rbp), %eax
- 948 097d 4863D0   		movslq	%eax, %rdx
- 949 0980 4889D0   		movq	%rdx, %rax
- 950 0983 4801C0   		addq	%rax, %rax
- 951 0986 4801D0   		addq	%rdx, %rax
- 952 0989 48C1E003 		salq	$3, %rax
- 953 098d 488D5010 		leaq	16(%rax), %rdx
- 954 0991 488B45D8 		movq	-40(%rbp), %rax
- 955 0995 488D0C02 		leaq	(%rdx,%rax), %rcx
- 956 0999 8B45D0   		movl	-48(%rbp), %eax
- 957 099c 4863D0   		movslq	%eax, %rdx
- 958 099f 4889D0   		movq	%rdx, %rax
- 959 09a2 4801C0   		addq	%rax, %rax
- 960 09a5 4801D0   		addq	%rdx, %rax
- 961 09a8 48C1E002 		salq	$2, %rax
- 962 09ac 4889C2   		movq	%rax, %rdx
- 963 09af 488B45E8 		movq	-24(%rbp), %rax
- 964 09b3 4801D0   		addq	%rdx, %rax
- 965 09b6 8B00     		movl	(%rax), %eax
- 966 09b8 660FEFE4 		pxor	%xmm4, %xmm4
- 967 09bc F30F2AE0 		cvtsi2ss	%eax, %xmm4
- 968 09c0 660F7EE0 		movd	%xmm4, %eax
- 969 09c4 8901     		movl	%eax, (%rcx)
+ 949              		.loc 1 174 0 discriminator 3
+ 950 0979 8B45D0   		movl	-48(%rbp), %eax
+ 951 097c 4863D0   		movslq	%eax, %rdx
+ 952 097f 4889D0   		movq	%rdx, %rax
+ 953 0982 4801C0   		addq	%rax, %rax
+ 954 0985 4801D0   		addq	%rdx, %rax
+ 955 0988 48C1E003 		salq	$3, %rax
+ 956 098c 488D5010 		leaq	16(%rax), %rdx
+ 957 0990 488B45D8 		movq	-40(%rbp), %rax
+ 958 0994 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 959 0998 8B45D0   		movl	-48(%rbp), %eax
+ 960 099b 4863D0   		movslq	%eax, %rdx
+ 961 099e 4889D0   		movq	%rdx, %rax
+ 962 09a1 4801C0   		addq	%rax, %rax
+ 963 09a4 4801D0   		addq	%rdx, %rax
+ 964 09a7 48C1E002 		salq	$2, %rax
+ 965 09ab 4889C2   		movq	%rax, %rdx
+ 966 09ae 488B45E8 		movq	-24(%rbp), %rax
+ 967 09b2 4801D0   		addq	%rdx, %rax
+ 968 09b5 8B00     		movl	(%rax), %eax
+ 969 09b7 660FEFC0 		pxor	%xmm0, %xmm0
+ 970 09bb F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 971 09bf F30F1101 		movss	%xmm0, (%rcx)
  175:./pdi/source/escrita.c ****                 cds[2 + 3*i].Y = hashtag[0 + i].Y;
- 970              		.loc 1 175 0 discriminator 3
- 971 09c6 8B45D0   		movl	-48(%rbp), %eax
- 972 09c9 4863D0   		movslq	%eax, %rdx
- 973 09cc 4889D0   		movq	%rdx, %rax
- 974 09cf 4801C0   		addq	%rax, %rax
- 975 09d2 4801D0   		addq	%rdx, %rax
- 976 09d5 48C1E003 		salq	$3, %rax
- 977 09d9 488D5010 		leaq	16(%rax), %rdx
- 978 09dd 488B45D8 		movq	-40(%rbp), %rax
- 979 09e1 488D0C02 		leaq	(%rdx,%rax), %rcx
- 980 09e5 8B45D0   		movl	-48(%rbp), %eax
- 981 09e8 4863D0   		movslq	%eax, %rdx
- 982 09eb 4889D0   		movq	%rdx, %rax
- 983 09ee 4801C0   		addq	%rax, %rax
- 984 09f1 4801D0   		addq	%rdx, %rax
- 985 09f4 48C1E002 		salq	$2, %rax
- 986 09f8 4889C2   		movq	%rax, %rdx
- 987 09fb 488B45E8 		movq	-24(%rbp), %rax
- 988 09ff 4801D0   		addq	%rdx, %rax
- 989 0a02 8B4004   		movl	4(%rax), %eax
- 990 0a05 660FEFED 		pxor	%xmm5, %xmm5
- 991 0a09 F30F2AE8 		cvtsi2ss	%eax, %xmm5
- 992 0a0d 660F7EE8 		movd	%xmm5, %eax
- 993 0a11 894104   		movl	%eax, 4(%rcx)
+ 972              		.loc 1 175 0 discriminator 3
+ 973 09c3 8B45D0   		movl	-48(%rbp), %eax
+ 974 09c6 4863D0   		movslq	%eax, %rdx
+ 975 09c9 4889D0   		movq	%rdx, %rax
+ 976 09cc 4801C0   		addq	%rax, %rax
+ 977 09cf 4801D0   		addq	%rdx, %rax
+ 978 09d2 48C1E003 		salq	$3, %rax
+ 979 09d6 488D5010 		leaq	16(%rax), %rdx
+ 980 09da 488B45D8 		movq	-40(%rbp), %rax
+ 981 09de 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 982 09e2 8B45D0   		movl	-48(%rbp), %eax
+ 983 09e5 4863D0   		movslq	%eax, %rdx
+ 984 09e8 4889D0   		movq	%rdx, %rax
+ 985 09eb 4801C0   		addq	%rax, %rax
+ 986 09ee 4801D0   		addq	%rdx, %rax
+ 987 09f1 48C1E002 		salq	$2, %rax
+ 988 09f5 4889C2   		movq	%rax, %rdx
+ 989 09f8 488B45E8 		movq	-24(%rbp), %rax
+ 990 09fc 4801D0   		addq	%rdx, %rax
+ 991 09ff 8B4004   		movl	4(%rax), %eax
+ 992 0a02 660FEFC0 		pxor	%xmm0, %xmm0
+ 993 0a06 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 994 0a0a F30F1141 		movss	%xmm0, 4(%rcx)
+ 994      04
  167:./pdi/source/escrita.c ****                 cds[0 + 3*i].X = hashtag[6 + i].X;
- 994              		.loc 1 167 0 discriminator 3
- 995 0a14 8345D001 		addl	$1, -48(%rbp)
- 996              	.L44:
- 167:./pdi/source/escrita.c ****                 cds[0 + 3*i].X = hashtag[6 + i].X;
-GAS LISTING /tmp/ccuviV50.s 			page 24
+GAS LISTING /tmp/cct0um32.s 			page 24
 
 
- 997              		.loc 1 167 0 is_stmt 0 discriminator 1
- 998 0a18 837DD002 		cmpl	$2, -48(%rbp)
- 999 0a1c 0F8E1AFE 		jle	.L45
- 999      FFFF
+ 995              		.loc 1 167 0 discriminator 3
+ 996 0a0f 8345D001 		addl	$1, -48(%rbp)
+ 997              	.L44:
+ 167:./pdi/source/escrita.c ****                 cds[0 + 3*i].X = hashtag[6 + i].X;
+ 998              		.loc 1 167 0 is_stmt 0 discriminator 1
+ 999 0a13 837DD002 		cmpl	$2, -48(%rbp)
+ 1000 0a17 0F8E26FE 		jle	.L45
+ 1000      FFFF
  176:./pdi/source/escrita.c ****         }
  177:./pdi/source/escrita.c **** 
  178:./pdi/source/escrita.c ****         for (i = 0; i < 10; i++) {
- 1000              		.loc 1 178 0 is_stmt 1
- 1001 0a22 C745D000 		movl	$0, -48(%rbp)
- 1001      000000
- 1002 0a29 E9900000 		jmp	.L46
- 1002      00
- 1003              	.L47:
+ 1001              		.loc 1 178 0 is_stmt 1
+ 1002 0a1d C745D000 		movl	$0, -48(%rbp)
+ 1002      000000
+ 1003 0a24 E98C0000 		jmp	.L46
+ 1003      00
+ 1004              	.L47:
  179:./pdi/source/escrita.c ****                 cds[9 + i].X = bolinhas[i].X;
- 1004              		.loc 1 179 0 discriminator 3
- 1005 0a2e 8B45D0   		movl	-48(%rbp), %eax
- 1006 0a31 83C009   		addl	$9, %eax
- 1007 0a34 4898     		cltq
- 1008 0a36 488D14C5 		leaq	0(,%rax,8), %rdx
- 1008      00000000 
- 1009 0a3e 488B45D8 		movq	-40(%rbp), %rax
- 1010 0a42 488D0C02 		leaq	(%rdx,%rax), %rcx
- 1011 0a46 8B45D0   		movl	-48(%rbp), %eax
- 1012 0a49 4863D0   		movslq	%eax, %rdx
- 1013 0a4c 4889D0   		movq	%rdx, %rax
- 1014 0a4f 4801C0   		addq	%rax, %rax
- 1015 0a52 4801D0   		addq	%rdx, %rax
- 1016 0a55 48C1E002 		salq	$2, %rax
- 1017 0a59 4889C2   		movq	%rax, %rdx
- 1018 0a5c 488B45E0 		movq	-32(%rbp), %rax
- 1019 0a60 4801D0   		addq	%rdx, %rax
- 1020 0a63 8B00     		movl	(%rax), %eax
- 1021 0a65 660FEFF6 		pxor	%xmm6, %xmm6
- 1022 0a69 F30F2AF0 		cvtsi2ss	%eax, %xmm6
- 1023 0a6d 660F7EF0 		movd	%xmm6, %eax
- 1024 0a71 8901     		movl	%eax, (%rcx)
+ 1005              		.loc 1 179 0 discriminator 3
+ 1006 0a29 8B45D0   		movl	-48(%rbp), %eax
+ 1007 0a2c 83C009   		addl	$9, %eax
+ 1008 0a2f 4898     		cltq
+ 1009 0a31 488D14C5 		leaq	0(,%rax,8), %rdx
+ 1009      00000000 
+ 1010 0a39 488B45D8 		movq	-40(%rbp), %rax
+ 1011 0a3d 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 1012 0a41 8B45D0   		movl	-48(%rbp), %eax
+ 1013 0a44 4863D0   		movslq	%eax, %rdx
+ 1014 0a47 4889D0   		movq	%rdx, %rax
+ 1015 0a4a 4801C0   		addq	%rax, %rax
+ 1016 0a4d 4801D0   		addq	%rdx, %rax
+ 1017 0a50 48C1E002 		salq	$2, %rax
+ 1018 0a54 4889C2   		movq	%rax, %rdx
+ 1019 0a57 488B45E0 		movq	-32(%rbp), %rax
+ 1020 0a5b 4801D0   		addq	%rdx, %rax
+ 1021 0a5e 8B00     		movl	(%rax), %eax
+ 1022 0a60 660FEFC0 		pxor	%xmm0, %xmm0
+ 1023 0a64 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 1024 0a68 F30F1101 		movss	%xmm0, (%rcx)
  180:./pdi/source/escrita.c ****                 cds[9 + i].Y = bolinhas[i].Y;
  1025              		.loc 1 180 0 discriminator 3
- 1026 0a73 8B45D0   		movl	-48(%rbp), %eax
- 1027 0a76 83C009   		addl	$9, %eax
- 1028 0a79 4898     		cltq
- 1029 0a7b 488D14C5 		leaq	0(,%rax,8), %rdx
+ 1026 0a6c 8B45D0   		movl	-48(%rbp), %eax
+ 1027 0a6f 83C009   		addl	$9, %eax
+ 1028 0a72 4898     		cltq
+ 1029 0a74 488D14C5 		leaq	0(,%rax,8), %rdx
  1029      00000000 
- 1030 0a83 488B45D8 		movq	-40(%rbp), %rax
- 1031 0a87 488D0C02 		leaq	(%rdx,%rax), %rcx
- 1032 0a8b 8B45D0   		movl	-48(%rbp), %eax
- 1033 0a8e 4863D0   		movslq	%eax, %rdx
- 1034 0a91 4889D0   		movq	%rdx, %rax
- 1035 0a94 4801C0   		addq	%rax, %rax
- 1036 0a97 4801D0   		addq	%rdx, %rax
- 1037 0a9a 48C1E002 		salq	$2, %rax
- 1038 0a9e 4889C2   		movq	%rax, %rdx
- 1039 0aa1 488B45E0 		movq	-32(%rbp), %rax
- 1040 0aa5 4801D0   		addq	%rdx, %rax
- 1041 0aa8 8B4004   		movl	4(%rax), %eax
- 1042 0aab 660FEFFF 		pxor	%xmm7, %xmm7
- 1043 0aaf F30F2AF8 		cvtsi2ss	%eax, %xmm7
-GAS LISTING /tmp/ccuviV50.s 			page 25
+ 1030 0a7c 488B45D8 		movq	-40(%rbp), %rax
+ 1031 0a80 488D0C02 		leaq	(%rdx,%rax), %rcx
+ 1032 0a84 8B45D0   		movl	-48(%rbp), %eax
+ 1033 0a87 4863D0   		movslq	%eax, %rdx
+ 1034 0a8a 4889D0   		movq	%rdx, %rax
+ 1035 0a8d 4801C0   		addq	%rax, %rax
+ 1036 0a90 4801D0   		addq	%rdx, %rax
+ 1037 0a93 48C1E002 		salq	$2, %rax
+ 1038 0a97 4889C2   		movq	%rax, %rdx
+ 1039 0a9a 488B45E0 		movq	-32(%rbp), %rax
+ 1040 0a9e 4801D0   		addq	%rdx, %rax
+GAS LISTING /tmp/cct0um32.s 			page 25
 
 
- 1044 0ab3 660F7EF8 		movd	%xmm7, %eax
- 1045 0ab7 894104   		movl	%eax, 4(%rcx)
+ 1041 0aa1 8B4004   		movl	4(%rax), %eax
+ 1042 0aa4 660FEFC0 		pxor	%xmm0, %xmm0
+ 1043 0aa8 F30F2AC0 		cvtsi2ss	%eax, %xmm0
+ 1044 0aac F30F1141 		movss	%xmm0, 4(%rcx)
+ 1044      04
  178:./pdi/source/escrita.c ****                 cds[9 + i].X = bolinhas[i].X;
- 1046              		.loc 1 178 0 discriminator 3
- 1047 0aba 8345D001 		addl	$1, -48(%rbp)
- 1048              	.L46:
+ 1045              		.loc 1 178 0 discriminator 3
+ 1046 0ab1 8345D001 		addl	$1, -48(%rbp)
+ 1047              	.L46:
  178:./pdi/source/escrita.c ****                 cds[9 + i].X = bolinhas[i].X;
- 1049              		.loc 1 178 0 is_stmt 0 discriminator 1
- 1050 0abe 837DD009 		cmpl	$9, -48(%rbp)
- 1051 0ac2 0F8E66FF 		jle	.L47
- 1051      FFFF
+ 1048              		.loc 1 178 0 is_stmt 0 discriminator 1
+ 1049 0ab5 837DD009 		cmpl	$9, -48(%rbp)
+ 1050 0ab9 0F8E6AFF 		jle	.L47
+ 1050      FFFF
  181:./pdi/source/escrita.c ****         }
  182:./pdi/source/escrita.c **** /*
  183:./pdi/source/escrita.c ****         printf("Camera\n");
@@ -1461,84 +1464,85 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
  187:./pdi/source/escrita.c **** */
  188:./pdi/source/escrita.c **** 	
  189:./pdi/source/escrita.c **** 	for (i = 0; i < altura; i++)
- 1052              		.loc 1 189 0 is_stmt 1
- 1053 0ac8 C745D000 		movl	$0, -48(%rbp)
- 1053      000000
- 1054 0acf EB23     		jmp	.L48
- 1055              	.L49:
+ 1051              		.loc 1 189 0 is_stmt 1
+ 1052 0abf C745D000 		movl	$0, -48(%rbp)
+ 1052      000000
+ 1053 0ac6 EB23     		jmp	.L48
+ 1054              	.L49:
  190:./pdi/source/escrita.c **** 		free(matriz[i]);
- 1056              		.loc 1 190 0 discriminator 3
- 1057 0ad1 8B45D0   		movl	-48(%rbp), %eax
- 1058 0ad4 4898     		cltq
- 1059 0ad6 488D14C5 		leaq	0(,%rax,8), %rdx
- 1059      00000000 
- 1060 0ade 488B45C8 		movq	-56(%rbp), %rax
- 1061 0ae2 4801D0   		addq	%rdx, %rax
- 1062 0ae5 488B00   		movq	(%rax), %rax
- 1063 0ae8 4889C7   		movq	%rax, %rdi
- 1064 0aeb E8000000 		call	free
- 1064      00
+ 1055              		.loc 1 190 0 discriminator 3
+ 1056 0ac8 8B45D0   		movl	-48(%rbp), %eax
+ 1057 0acb 4898     		cltq
+ 1058 0acd 488D14C5 		leaq	0(,%rax,8), %rdx
+ 1058      00000000 
+ 1059 0ad5 488B45C8 		movq	-56(%rbp), %rax
+ 1060 0ad9 4801D0   		addq	%rdx, %rax
+ 1061 0adc 488B00   		movq	(%rax), %rax
+ 1062 0adf 4889C7   		movq	%rax, %rdi
+ 1063 0ae2 E8000000 		call	free
+ 1063      00
  189:./pdi/source/escrita.c **** 		free(matriz[i]);
- 1065              		.loc 1 189 0 discriminator 3
- 1066 0af0 8345D001 		addl	$1, -48(%rbp)
- 1067              	.L48:
+ 1064              		.loc 1 189 0 discriminator 3
+ 1065 0ae7 8345D001 		addl	$1, -48(%rbp)
+ 1066              	.L48:
  189:./pdi/source/escrita.c **** 		free(matriz[i]);
- 1068              		.loc 1 189 0 is_stmt 0 discriminator 1
- 1069 0af4 817DD0DF 		cmpl	$479, -48(%rbp)
- 1069      010000
- 1070 0afb 7ED4     		jle	.L49
+ 1067              		.loc 1 189 0 is_stmt 0 discriminator 1
+ 1068 0aeb 817DD0DF 		cmpl	$479, -48(%rbp)
+ 1068      010000
+ 1069 0af2 7ED4     		jle	.L49
  191:./pdi/source/escrita.c **** 	free(matriz);
- 1071              		.loc 1 191 0 is_stmt 1
- 1072 0afd 488B45C8 		movq	-56(%rbp), %rax
- 1073 0b01 4889C7   		movq	%rax, %rdi
- 1074 0b04 E8000000 		call	free
- 1074      00
+ 1070              		.loc 1 191 0 is_stmt 1
+ 1071 0af4 488B45C8 		movq	-56(%rbp), %rax
+ 1072 0af8 4889C7   		movq	%rax, %rdi
+ 1073 0afb E8000000 		call	free
+ 1073      00
  192:./pdi/source/escrita.c **** 
  193:./pdi/source/escrita.c ****         free(bolinhas);
- 1075              		.loc 1 193 0
- 1076 0b09 488B45E0 		movq	-32(%rbp), %rax
- 1077 0b0d 4889C7   		movq	%rax, %rdi
-GAS LISTING /tmp/ccuviV50.s 			page 26
+GAS LISTING /tmp/cct0um32.s 			page 26
 
 
- 1078 0b10 E8000000 		call	free
- 1078      00
+ 1074              		.loc 1 193 0
+ 1075 0b00 488B45E0 		movq	-32(%rbp), %rax
+ 1076 0b04 4889C7   		movq	%rax, %rdi
+ 1077 0b07 E8000000 		call	free
+ 1077      00
  194:./pdi/source/escrita.c ****         free(hashtag);
- 1079              		.loc 1 194 0
- 1080 0b15 488B45E8 		movq	-24(%rbp), %rax
- 1081 0b19 4889C7   		movq	%rax, %rdi
- 1082 0b1c E8000000 		call	free
- 1082      00
+ 1078              		.loc 1 194 0
+ 1079 0b0c 488B45E8 		movq	-24(%rbp), %rax
+ 1080 0b10 4889C7   		movq	%rax, %rdi
+ 1081 0b13 E8000000 		call	free
+ 1081      00
  195:./pdi/source/escrita.c **** 	return cds;
- 1083              		.loc 1 195 0
- 1084 0b21 488B45D8 		movq	-40(%rbp), %rax
+ 1082              		.loc 1 195 0
+ 1083 0b18 488B45D8 		movq	-40(%rbp), %rax
  196:./pdi/source/escrita.c **** 
  197:./pdi/source/escrita.c **** }
- 1085              		.loc 1 197 0
- 1086 0b25 C9       		leave
- 1087              		.cfi_def_cfa 7, 8
- 1088 0b26 C3       		ret
- 1089              		.cfi_endproc
- 1090              	.LFE10:
- 1091              		.size	print_ballcoord, .-print_ballcoord
- 1092              	.Letext0:
- 1093              		.file 2 "./pdi/source/../headers/pixel.h"
- 1094              		.file 3 "./pdi/source/../headers/regiao.h"
- 1095              		.file 4 "./pdi/source/../headers/cabecalho.h"
+ 1084              		.loc 1 197 0
+ 1085 0b1c C9       		leave
+ 1086              		.cfi_def_cfa 7, 8
+ 1087 0b1d C3       		ret
+ 1088              		.cfi_endproc
+ 1089              	.LFE10:
+ 1090              		.size	print_ballcoord, .-print_ballcoord
+ 1091              	.Letext0:
+ 1092              		.file 2 "/usr/include/x86_64-linux-gnu/sys/time.h"
+ 1093              		.file 3 "./pdi/source/../headers/pixel.h"
+ 1094              		.file 4 "./pdi/source/../headers/regiao.h"
+ 1095              		.file 5 "./pdi/source/../headers/cabecalho.h"
  1096              		.section	.debug_info,"",@progbits
  1097              	.Ldebug_info0:
- 1098 0000 79050000 		.long	0x579
+ 1098 0000 A9050000 		.long	0x5a9
  1099 0004 0400     		.value	0x4
  1100 0006 00000000 		.long	.Ldebug_abbrev0
  1101 000a 08       		.byte	0x8
  1102 000b 01       		.uleb128 0x1
- 1103 000c 00000000 		.long	.LASF65
- 1104 0010 01       		.byte	0x1
- 1105 0011 00000000 		.long	.LASF66
- 1106 0015 00000000 		.long	.LASF67
+ 1103 000c 00000000 		.long	.LASF68
+ 1104 0010 0C       		.byte	0xc
+ 1105 0011 00000000 		.long	.LASF69
+ 1106 0015 00000000 		.long	.LASF70
  1107 0019 00000000 		.quad	.Ltext0
  1107      00000000 
- 1108 0021 270B0000 		.quad	.Letext0-.Ltext0
+ 1108 0021 1E0B0000 		.quad	.Letext0-.Ltext0
  1108      00000000 
  1109 0029 00000000 		.long	.Ldebug_line0
  1110 002d 02       		.uleb128 0x2
@@ -1554,13 +1558,13 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
  1120 003d 07       		.byte	0x7
  1121 003e 00000000 		.long	.LASF2
  1122 0042 02       		.uleb128 0x2
+GAS LISTING /tmp/cct0um32.s 			page 27
+
+
  1123 0043 04       		.byte	0x4
  1124 0044 07       		.byte	0x7
  1125 0045 00000000 		.long	.LASF3
  1126 0049 02       		.uleb128 0x2
-GAS LISTING /tmp/ccuviV50.s 			page 27
-
-
  1127 004a 01       		.byte	0x1
  1128 004b 06       		.byte	0x6
  1129 004c 00000000 		.long	.LASF4
@@ -1596,1342 +1600,1389 @@ GAS LISTING /tmp/ccuviV50.s 			page 1
  1159 0082 07       		.byte	0x7
  1160 0083 00000000 		.long	.LASF10
  1161 0087 05       		.uleb128 0x5
- 1162 0088 00000000 		.long	.LASF18
- 1163 008c 09       		.byte	0x9
+ 1162 0088 00000000 		.long	.LASF13
+ 1163 008c 08       		.byte	0x8
  1164 008d 02       		.byte	0x2
- 1165 008e 05       		.byte	0x5
- 1166 008f FE000000 		.long	0xfe
+ 1165 008e 37       		.byte	0x37
+ 1166 008f AC000000 		.long	0xac
  1167 0093 06       		.uleb128 0x6
  1168 0094 00000000 		.long	.LASF11
  1169 0098 02       		.byte	0x2
- 1170 0099 06       		.byte	0x6
- 1171 009a 34000000 		.long	0x34
+ 1170 0099 39       		.byte	0x39
+ 1171 009a 57000000 		.long	0x57
  1172 009e 00       		.byte	0
- 1173 009f 07       		.uleb128 0x7
- 1174 00a0 636200   		.string	"cb"
- 1175 00a3 02       		.byte	0x2
- 1176 00a4 06       		.byte	0x6
- 1177 00a5 34000000 		.long	0x34
- 1178 00a9 01       		.byte	0x1
- 1179 00aa 07       		.uleb128 0x7
- 1180 00ab 637200   		.string	"cr"
- 1181 00ae 02       		.byte	0x2
- 1182 00af 06       		.byte	0x6
- 1183 00b0 34000000 		.long	0x34
-GAS LISTING /tmp/ccuviV50.s 			page 28
+ 1173 009f 06       		.uleb128 0x6
+ 1174 00a0 00000000 		.long	.LASF12
+ 1175 00a4 02       		.byte	0x2
+ 1176 00a5 3A       		.byte	0x3a
+ 1177 00a6 57000000 		.long	0x57
+ 1178 00aa 04       		.byte	0x4
+ 1179 00ab 00       		.byte	0
+GAS LISTING /tmp/cct0um32.s 			page 28
 
 
- 1184 00b4 02       		.byte	0x2
- 1185 00b5 06       		.uleb128 0x6
- 1186 00b6 00000000 		.long	.LASF12
- 1187 00ba 02       		.byte	0x2
- 1188 00bb 07       		.byte	0x7
- 1189 00bc 34000000 		.long	0x34
- 1190 00c0 03       		.byte	0x3
- 1191 00c1 06       		.uleb128 0x6
- 1192 00c2 00000000 		.long	.LASF13
- 1193 00c6 02       		.byte	0x2
- 1194 00c7 07       		.byte	0x7
- 1195 00c8 34000000 		.long	0x34
- 1196 00cc 04       		.byte	0x4
- 1197 00cd 06       		.uleb128 0x6
- 1198 00ce 00000000 		.long	.LASF14
- 1199 00d2 02       		.byte	0x2
- 1200 00d3 07       		.byte	0x7
- 1201 00d4 34000000 		.long	0x34
- 1202 00d8 05       		.byte	0x5
- 1203 00d9 06       		.uleb128 0x6
- 1204 00da 00000000 		.long	.LASF15
- 1205 00de 02       		.byte	0x2
- 1206 00df 07       		.byte	0x7
+ 1180 00ac 04       		.uleb128 0x4
+ 1181 00ad 08       		.byte	0x8
+ 1182 00ae 87000000 		.long	0x87
+ 1183 00b2 07       		.uleb128 0x7
+ 1184 00b3 AC000000 		.long	0xac
+ 1185 00b7 05       		.uleb128 0x5
+ 1186 00b8 00000000 		.long	.LASF14
+ 1187 00bc 09       		.byte	0x9
+ 1188 00bd 03       		.byte	0x3
+ 1189 00be 05       		.byte	0x5
+ 1190 00bf 2E010000 		.long	0x12e
+ 1191 00c3 06       		.uleb128 0x6
+ 1192 00c4 00000000 		.long	.LASF15
+ 1193 00c8 03       		.byte	0x3
+ 1194 00c9 06       		.byte	0x6
+ 1195 00ca 34000000 		.long	0x34
+ 1196 00ce 00       		.byte	0
+ 1197 00cf 08       		.uleb128 0x8
+ 1198 00d0 636200   		.string	"cb"
+ 1199 00d3 03       		.byte	0x3
+ 1200 00d4 06       		.byte	0x6
+ 1201 00d5 34000000 		.long	0x34
+ 1202 00d9 01       		.byte	0x1
+ 1203 00da 08       		.uleb128 0x8
+ 1204 00db 637200   		.string	"cr"
+ 1205 00de 03       		.byte	0x3
+ 1206 00df 06       		.byte	0x6
  1207 00e0 34000000 		.long	0x34
- 1208 00e4 06       		.byte	0x6
+ 1208 00e4 02       		.byte	0x2
  1209 00e5 06       		.uleb128 0x6
  1210 00e6 00000000 		.long	.LASF16
- 1211 00ea 02       		.byte	0x2
+ 1211 00ea 03       		.byte	0x3
  1212 00eb 07       		.byte	0x7
  1213 00ec 34000000 		.long	0x34
- 1214 00f0 07       		.byte	0x7
+ 1214 00f0 03       		.byte	0x3
  1215 00f1 06       		.uleb128 0x6
  1216 00f2 00000000 		.long	.LASF17
- 1217 00f6 02       		.byte	0x2
+ 1217 00f6 03       		.byte	0x3
  1218 00f7 07       		.byte	0x7
  1219 00f8 34000000 		.long	0x34
- 1220 00fc 08       		.byte	0x8
- 1221 00fd 00       		.byte	0
- 1222 00fe 05       		.uleb128 0x5
- 1223 00ff 00000000 		.long	.LASF19
- 1224 0103 0C       		.byte	0xc
- 1225 0104 02       		.byte	0x2
- 1226 0105 1B       		.byte	0x1b
- 1227 0106 9B010000 		.long	0x19b
- 1228 010a 06       		.uleb128 0x6
- 1229 010b 00000000 		.long	.LASF20
- 1230 010f 02       		.byte	0x2
- 1231 0110 1C       		.byte	0x1c
- 1232 0111 34000000 		.long	0x34
- 1233 0115 00       		.byte	0
- 1234 0116 06       		.uleb128 0x6
- 1235 0117 00000000 		.long	.LASF21
- 1236 011b 02       		.byte	0x2
- 1237 011c 1C       		.byte	0x1c
- 1238 011d 34000000 		.long	0x34
- 1239 0121 01       		.byte	0x1
- 1240 0122 06       		.uleb128 0x6
-GAS LISTING /tmp/ccuviV50.s 			page 29
+ 1220 00fc 04       		.byte	0x4
+ 1221 00fd 06       		.uleb128 0x6
+ 1222 00fe 00000000 		.long	.LASF18
+ 1223 0102 03       		.byte	0x3
+ 1224 0103 07       		.byte	0x7
+ 1225 0104 34000000 		.long	0x34
+ 1226 0108 05       		.byte	0x5
+ 1227 0109 06       		.uleb128 0x6
+ 1228 010a 00000000 		.long	.LASF19
+ 1229 010e 03       		.byte	0x3
+ 1230 010f 07       		.byte	0x7
+ 1231 0110 34000000 		.long	0x34
+ 1232 0114 06       		.byte	0x6
+ 1233 0115 06       		.uleb128 0x6
+ 1234 0116 00000000 		.long	.LASF20
+ 1235 011a 03       		.byte	0x3
+ 1236 011b 07       		.byte	0x7
+GAS LISTING /tmp/cct0um32.s 			page 29
 
 
- 1241 0123 00000000 		.long	.LASF22
- 1242 0127 02       		.byte	0x2
- 1243 0128 1C       		.byte	0x1c
- 1244 0129 34000000 		.long	0x34
- 1245 012d 02       		.byte	0x2
- 1246 012e 06       		.uleb128 0x6
- 1247 012f 00000000 		.long	.LASF23
- 1248 0133 02       		.byte	0x2
- 1249 0134 1C       		.byte	0x1c
- 1250 0135 34000000 		.long	0x34
- 1251 0139 03       		.byte	0x3
+ 1237 011c 34000000 		.long	0x34
+ 1238 0120 07       		.byte	0x7
+ 1239 0121 06       		.uleb128 0x6
+ 1240 0122 00000000 		.long	.LASF21
+ 1241 0126 03       		.byte	0x3
+ 1242 0127 07       		.byte	0x7
+ 1243 0128 34000000 		.long	0x34
+ 1244 012c 08       		.byte	0x8
+ 1245 012d 00       		.byte	0
+ 1246 012e 05       		.uleb128 0x5
+ 1247 012f 00000000 		.long	.LASF22
+ 1248 0133 0C       		.byte	0xc
+ 1249 0134 03       		.byte	0x3
+ 1250 0135 1B       		.byte	0x1b
+ 1251 0136 CB010000 		.long	0x1cb
  1252 013a 06       		.uleb128 0x6
- 1253 013b 00000000 		.long	.LASF24
- 1254 013f 02       		.byte	0x2
- 1255 0140 1D       		.byte	0x1d
+ 1253 013b 00000000 		.long	.LASF23
+ 1254 013f 03       		.byte	0x3
+ 1255 0140 1C       		.byte	0x1c
  1256 0141 34000000 		.long	0x34
- 1257 0145 04       		.byte	0x4
+ 1257 0145 00       		.byte	0
  1258 0146 06       		.uleb128 0x6
- 1259 0147 00000000 		.long	.LASF25
- 1260 014b 02       		.byte	0x2
- 1261 014c 1D       		.byte	0x1d
+ 1259 0147 00000000 		.long	.LASF24
+ 1260 014b 03       		.byte	0x3
+ 1261 014c 1C       		.byte	0x1c
  1262 014d 34000000 		.long	0x34
- 1263 0151 05       		.byte	0x5
+ 1263 0151 01       		.byte	0x1
  1264 0152 06       		.uleb128 0x6
- 1265 0153 00000000 		.long	.LASF26
- 1266 0157 02       		.byte	0x2
- 1267 0158 1D       		.byte	0x1d
+ 1265 0153 00000000 		.long	.LASF25
+ 1266 0157 03       		.byte	0x3
+ 1267 0158 1C       		.byte	0x1c
  1268 0159 34000000 		.long	0x34
- 1269 015d 06       		.byte	0x6
+ 1269 015d 02       		.byte	0x2
  1270 015e 06       		.uleb128 0x6
- 1271 015f 00000000 		.long	.LASF27
- 1272 0163 02       		.byte	0x2
- 1273 0164 1D       		.byte	0x1d
+ 1271 015f 00000000 		.long	.LASF26
+ 1272 0163 03       		.byte	0x3
+ 1273 0164 1C       		.byte	0x1c
  1274 0165 34000000 		.long	0x34
- 1275 0169 07       		.byte	0x7
+ 1275 0169 03       		.byte	0x3
  1276 016a 06       		.uleb128 0x6
- 1277 016b 00000000 		.long	.LASF28
- 1278 016f 02       		.byte	0x2
- 1279 0170 1E       		.byte	0x1e
+ 1277 016b 00000000 		.long	.LASF27
+ 1278 016f 03       		.byte	0x3
+ 1279 0170 1D       		.byte	0x1d
  1280 0171 34000000 		.long	0x34
- 1281 0175 08       		.byte	0x8
+ 1281 0175 04       		.byte	0x4
  1282 0176 06       		.uleb128 0x6
- 1283 0177 00000000 		.long	.LASF29
- 1284 017b 02       		.byte	0x2
- 1285 017c 1E       		.byte	0x1e
+ 1283 0177 00000000 		.long	.LASF28
+ 1284 017b 03       		.byte	0x3
+ 1285 017c 1D       		.byte	0x1d
  1286 017d 34000000 		.long	0x34
- 1287 0181 09       		.byte	0x9
+ 1287 0181 05       		.byte	0x5
  1288 0182 06       		.uleb128 0x6
- 1289 0183 00000000 		.long	.LASF30
- 1290 0187 02       		.byte	0x2
- 1291 0188 1E       		.byte	0x1e
+ 1289 0183 00000000 		.long	.LASF29
+ 1290 0187 03       		.byte	0x3
+ 1291 0188 1D       		.byte	0x1d
  1292 0189 34000000 		.long	0x34
- 1293 018d 0A       		.byte	0xa
+ 1293 018d 06       		.byte	0x6
+GAS LISTING /tmp/cct0um32.s 			page 30
+
+
  1294 018e 06       		.uleb128 0x6
- 1295 018f 00000000 		.long	.LASF31
- 1296 0193 02       		.byte	0x2
- 1297 0194 1E       		.byte	0x1e
-GAS LISTING /tmp/ccuviV50.s 			page 30
-
-
+ 1295 018f 00000000 		.long	.LASF30
+ 1296 0193 03       		.byte	0x3
+ 1297 0194 1D       		.byte	0x1d
  1298 0195 34000000 		.long	0x34
- 1299 0199 0B       		.byte	0xb
- 1300 019a 00       		.byte	0
- 1301 019b 02       		.uleb128 0x2
- 1302 019c 04       		.byte	0x4
- 1303 019d 04       		.byte	0x4
- 1304 019e 00000000 		.long	.LASF32
- 1305 01a2 02       		.uleb128 0x2
- 1306 01a3 08       		.byte	0x8
- 1307 01a4 04       		.byte	0x4
- 1308 01a5 00000000 		.long	.LASF33
- 1309 01a9 05       		.uleb128 0x5
- 1310 01aa 00000000 		.long	.LASF34
- 1311 01ae 0C       		.byte	0xc
- 1312 01af 03       		.byte	0x3
- 1313 01b0 05       		.byte	0x5
- 1314 01b1 D6010000 		.long	0x1d6
- 1315 01b5 07       		.uleb128 0x7
- 1316 01b6 5800     		.string	"X"
- 1317 01b8 03       		.byte	0x3
- 1318 01b9 06       		.byte	0x6
- 1319 01ba 57000000 		.long	0x57
- 1320 01be 00       		.byte	0
- 1321 01bf 07       		.uleb128 0x7
- 1322 01c0 5900     		.string	"Y"
- 1323 01c2 03       		.byte	0x3
- 1324 01c3 06       		.byte	0x6
- 1325 01c4 57000000 		.long	0x57
- 1326 01c8 04       		.byte	0x4
- 1327 01c9 06       		.uleb128 0x6
- 1328 01ca 00000000 		.long	.LASF35
- 1329 01ce 03       		.byte	0x3
- 1330 01cf 06       		.byte	0x6
- 1331 01d0 57000000 		.long	0x57
- 1332 01d4 08       		.byte	0x8
- 1333 01d5 00       		.byte	0
- 1334 01d6 05       		.uleb128 0x5
- 1335 01d7 00000000 		.long	.LASF36
- 1336 01db 10       		.byte	0x10
- 1337 01dc 03       		.byte	0x3
- 1338 01dd 0B       		.byte	0xb
- 1339 01de FB010000 		.long	0x1fb
- 1340 01e2 06       		.uleb128 0x6
- 1341 01e3 00000000 		.long	.LASF37
- 1342 01e7 03       		.byte	0x3
- 1343 01e8 0C       		.byte	0xc
- 1344 01e9 FB010000 		.long	0x1fb
- 1345 01ed 00       		.byte	0
- 1346 01ee 06       		.uleb128 0x6
- 1347 01ef 00000000 		.long	.LASF38
- 1348 01f3 03       		.byte	0x3
- 1349 01f4 0D       		.byte	0xd
- 1350 01f5 57000000 		.long	0x57
- 1351 01f9 08       		.byte	0x8
- 1352 01fa 00       		.byte	0
- 1353 01fb 04       		.uleb128 0x4
- 1354 01fc 08       		.byte	0x8
-GAS LISTING /tmp/ccuviV50.s 			page 31
+ 1299 0199 07       		.byte	0x7
+ 1300 019a 06       		.uleb128 0x6
+ 1301 019b 00000000 		.long	.LASF31
+ 1302 019f 03       		.byte	0x3
+ 1303 01a0 1E       		.byte	0x1e
+ 1304 01a1 34000000 		.long	0x34
+ 1305 01a5 08       		.byte	0x8
+ 1306 01a6 06       		.uleb128 0x6
+ 1307 01a7 00000000 		.long	.LASF32
+ 1308 01ab 03       		.byte	0x3
+ 1309 01ac 1E       		.byte	0x1e
+ 1310 01ad 34000000 		.long	0x34
+ 1311 01b1 09       		.byte	0x9
+ 1312 01b2 06       		.uleb128 0x6
+ 1313 01b3 00000000 		.long	.LASF33
+ 1314 01b7 03       		.byte	0x3
+ 1315 01b8 1E       		.byte	0x1e
+ 1316 01b9 34000000 		.long	0x34
+ 1317 01bd 0A       		.byte	0xa
+ 1318 01be 06       		.uleb128 0x6
+ 1319 01bf 00000000 		.long	.LASF34
+ 1320 01c3 03       		.byte	0x3
+ 1321 01c4 1E       		.byte	0x1e
+ 1322 01c5 34000000 		.long	0x34
+ 1323 01c9 0B       		.byte	0xb
+ 1324 01ca 00       		.byte	0
+ 1325 01cb 02       		.uleb128 0x2
+ 1326 01cc 04       		.byte	0x4
+ 1327 01cd 04       		.byte	0x4
+ 1328 01ce 00000000 		.long	.LASF35
+ 1329 01d2 02       		.uleb128 0x2
+ 1330 01d3 08       		.byte	0x8
+ 1331 01d4 04       		.byte	0x4
+ 1332 01d5 00000000 		.long	.LASF36
+ 1333 01d9 05       		.uleb128 0x5
+ 1334 01da 00000000 		.long	.LASF37
+ 1335 01de 0C       		.byte	0xc
+ 1336 01df 04       		.byte	0x4
+ 1337 01e0 05       		.byte	0x5
+ 1338 01e1 06020000 		.long	0x206
+ 1339 01e5 08       		.uleb128 0x8
+ 1340 01e6 5800     		.string	"X"
+ 1341 01e8 04       		.byte	0x4
+ 1342 01e9 06       		.byte	0x6
+ 1343 01ea 57000000 		.long	0x57
+ 1344 01ee 00       		.byte	0
+ 1345 01ef 08       		.uleb128 0x8
+ 1346 01f0 5900     		.string	"Y"
+ 1347 01f2 04       		.byte	0x4
+ 1348 01f3 06       		.byte	0x6
+ 1349 01f4 57000000 		.long	0x57
+ 1350 01f8 04       		.byte	0x4
+GAS LISTING /tmp/cct0um32.s 			page 31
 
 
- 1355 01fd A9010000 		.long	0x1a9
- 1356 0201 08       		.uleb128 0x8
- 1357 0202 434400   		.string	"CD"
- 1358 0205 08       		.byte	0x8
- 1359 0206 04       		.byte	0x4
- 1360 0207 16       		.byte	0x16
- 1361 0208 21020000 		.long	0x221
- 1362 020c 07       		.uleb128 0x7
- 1363 020d 5800     		.string	"X"
- 1364 020f 04       		.byte	0x4
- 1365 0210 17       		.byte	0x17
- 1366 0211 9B010000 		.long	0x19b
- 1367 0215 00       		.byte	0
- 1368 0216 07       		.uleb128 0x7
- 1369 0217 5900     		.string	"Y"
- 1370 0219 04       		.byte	0x4
- 1371 021a 17       		.byte	0x17
- 1372 021b 9B010000 		.long	0x19b
- 1373 021f 04       		.byte	0x4
- 1374 0220 00       		.byte	0
- 1375 0221 09       		.uleb128 0x9
- 1376 0222 00000000 		.long	.LASF43
- 1377 0226 01       		.byte	0x1
- 1378 0227 03       		.byte	0x3
- 1379 0228 00000000 		.quad	.LFB2
- 1379      00000000 
- 1380 0230 95000000 		.quad	.LFE2-.LFB2
- 1380      00000000 
- 1381 0238 01       		.uleb128 0x1
- 1382 0239 9C       		.byte	0x9c
- 1383 023a 85020000 		.long	0x285
- 1384 023e 0A       		.uleb128 0xa
- 1385 023f 00000000 		.long	.LASF39
- 1386 0243 01       		.byte	0x1
- 1387 0244 03       		.byte	0x3
- 1388 0245 85020000 		.long	0x285
- 1389 0249 02       		.uleb128 0x2
- 1390 024a 91       		.byte	0x91
- 1391 024b 58       		.sleb128 -40
- 1392 024c 0A       		.uleb128 0xa
- 1393 024d 00000000 		.long	.LASF40
- 1394 0251 01       		.byte	0x1
- 1395 0252 03       		.byte	0x3
- 1396 0253 91020000 		.long	0x291
- 1397 0257 02       		.uleb128 0x2
- 1398 0258 91       		.byte	0x91
- 1399 0259 50       		.sleb128 -48
- 1400 025a 0A       		.uleb128 0xa
- 1401 025b 00000000 		.long	.LASF41
- 1402 025f 01       		.byte	0x1
- 1403 0260 03       		.byte	0x3
- 1404 0261 97020000 		.long	0x297
- 1405 0265 02       		.uleb128 0x2
- 1406 0266 91       		.byte	0x91
- 1407 0267 48       		.sleb128 -56
- 1408 0268 0A       		.uleb128 0xa
- 1409 0269 00000000 		.long	.LASF42
-GAS LISTING /tmp/ccuviV50.s 			page 32
+ 1351 01f9 06       		.uleb128 0x6
+ 1352 01fa 00000000 		.long	.LASF38
+ 1353 01fe 04       		.byte	0x4
+ 1354 01ff 06       		.byte	0x6
+ 1355 0200 57000000 		.long	0x57
+ 1356 0204 08       		.byte	0x8
+ 1357 0205 00       		.byte	0
+ 1358 0206 05       		.uleb128 0x5
+ 1359 0207 00000000 		.long	.LASF39
+ 1360 020b 10       		.byte	0x10
+ 1361 020c 04       		.byte	0x4
+ 1362 020d 0B       		.byte	0xb
+ 1363 020e 2B020000 		.long	0x22b
+ 1364 0212 06       		.uleb128 0x6
+ 1365 0213 00000000 		.long	.LASF40
+ 1366 0217 04       		.byte	0x4
+ 1367 0218 0C       		.byte	0xc
+ 1368 0219 2B020000 		.long	0x22b
+ 1369 021d 00       		.byte	0
+ 1370 021e 06       		.uleb128 0x6
+ 1371 021f 00000000 		.long	.LASF41
+ 1372 0223 04       		.byte	0x4
+ 1373 0224 0D       		.byte	0xd
+ 1374 0225 57000000 		.long	0x57
+ 1375 0229 08       		.byte	0x8
+ 1376 022a 00       		.byte	0
+ 1377 022b 04       		.uleb128 0x4
+ 1378 022c 08       		.byte	0x8
+ 1379 022d D9010000 		.long	0x1d9
+ 1380 0231 09       		.uleb128 0x9
+ 1381 0232 434400   		.string	"CD"
+ 1382 0235 08       		.byte	0x8
+ 1383 0236 05       		.byte	0x5
+ 1384 0237 16       		.byte	0x16
+ 1385 0238 51020000 		.long	0x251
+ 1386 023c 08       		.uleb128 0x8
+ 1387 023d 5800     		.string	"X"
+ 1388 023f 05       		.byte	0x5
+ 1389 0240 17       		.byte	0x17
+ 1390 0241 CB010000 		.long	0x1cb
+ 1391 0245 00       		.byte	0
+ 1392 0246 08       		.uleb128 0x8
+ 1393 0247 5900     		.string	"Y"
+ 1394 0249 05       		.byte	0x5
+ 1395 024a 17       		.byte	0x17
+ 1396 024b CB010000 		.long	0x1cb
+ 1397 024f 04       		.byte	0x4
+ 1398 0250 00       		.byte	0
+ 1399 0251 0A       		.uleb128 0xa
+ 1400 0252 00000000 		.long	.LASF46
+ 1401 0256 01       		.byte	0x1
+ 1402 0257 03       		.byte	0x3
+ 1403 0258 00000000 		.quad	.LFB2
+ 1403      00000000 
+ 1404 0260 96000000 		.quad	.LFE2-.LFB2
+ 1404      00000000 
+ 1405 0268 01       		.uleb128 0x1
+GAS LISTING /tmp/cct0um32.s 			page 32
 
 
- 1410 026d 01       		.byte	0x1
- 1411 026e 03       		.byte	0x3
- 1412 026f 6C000000 		.long	0x6c
- 1413 0273 02       		.uleb128 0x2
- 1414 0274 91       		.byte	0x91
- 1415 0275 40       		.sleb128 -64
- 1416 0276 0B       		.uleb128 0xb
- 1417 0277 00000000 		.long	.LASF44
- 1418 027b 01       		.byte	0x1
- 1419 027c 05       		.byte	0x5
- 1420 027d 91020000 		.long	0x291
- 1421 0281 02       		.uleb128 0x2
- 1422 0282 91       		.byte	0x91
- 1423 0283 68       		.sleb128 -24
- 1424 0284 00       		.byte	0
- 1425 0285 04       		.uleb128 0x4
- 1426 0286 08       		.byte	0x8
- 1427 0287 8B020000 		.long	0x28b
- 1428 028b 04       		.uleb128 0x4
- 1429 028c 08       		.byte	0x8
- 1430 028d 87000000 		.long	0x87
- 1431 0291 04       		.uleb128 0x4
- 1432 0292 08       		.byte	0x8
- 1433 0293 34000000 		.long	0x34
- 1434 0297 04       		.uleb128 0x4
- 1435 0298 08       		.byte	0x8
- 1436 0299 FE000000 		.long	0xfe
- 1437 029d 0C       		.uleb128 0xc
- 1438 029e 414900   		.string	"AI"
- 1439 02a1 01       		.byte	0x1
- 1440 02a2 2D       		.byte	0x2d
- 1441 02a3 00000000 		.quad	.LFB3
- 1441      00000000 
- 1442 02ab 51000000 		.quad	.LFE3-.LFB3
- 1442      00000000 
- 1443 02b3 01       		.uleb128 0x1
- 1444 02b4 9C       		.byte	0x9c
- 1445 02b5 E4020000 		.long	0x2e4
- 1446 02b9 0A       		.uleb128 0xa
- 1447 02ba 00000000 		.long	.LASF39
- 1448 02be 01       		.byte	0x1
- 1449 02bf 2D       		.byte	0x2d
- 1450 02c0 85020000 		.long	0x285
- 1451 02c4 02       		.uleb128 0x2
- 1452 02c5 91       		.byte	0x91
- 1453 02c6 48       		.sleb128 -56
- 1454 02c7 0B       		.uleb128 0xb
- 1455 02c8 00000000 		.long	.LASF45
- 1456 02cc 01       		.byte	0x1
- 1457 02cd 30       		.byte	0x30
- 1458 02ce 87000000 		.long	0x87
- 1459 02d2 02       		.uleb128 0x2
- 1460 02d3 91       		.byte	0x91
- 1461 02d4 50       		.sleb128 -48
- 1462 02d5 0B       		.uleb128 0xb
- 1463 02d6 00000000 		.long	.LASF46
- 1464 02da 01       		.byte	0x1
-GAS LISTING /tmp/ccuviV50.s 			page 33
+ 1406 0269 9C       		.byte	0x9c
+ 1407 026a B5020000 		.long	0x2b5
+ 1408 026e 0B       		.uleb128 0xb
+ 1409 026f 00000000 		.long	.LASF42
+ 1410 0273 01       		.byte	0x1
+ 1411 0274 03       		.byte	0x3
+ 1412 0275 B5020000 		.long	0x2b5
+ 1413 0279 02       		.uleb128 0x2
+ 1414 027a 91       		.byte	0x91
+ 1415 027b 58       		.sleb128 -40
+ 1416 027c 0B       		.uleb128 0xb
+ 1417 027d 00000000 		.long	.LASF43
+ 1418 0281 01       		.byte	0x1
+ 1419 0282 03       		.byte	0x3
+ 1420 0283 C1020000 		.long	0x2c1
+ 1421 0287 02       		.uleb128 0x2
+ 1422 0288 91       		.byte	0x91
+ 1423 0289 50       		.sleb128 -48
+ 1424 028a 0B       		.uleb128 0xb
+ 1425 028b 00000000 		.long	.LASF44
+ 1426 028f 01       		.byte	0x1
+ 1427 0290 03       		.byte	0x3
+ 1428 0291 C7020000 		.long	0x2c7
+ 1429 0295 02       		.uleb128 0x2
+ 1430 0296 91       		.byte	0x91
+ 1431 0297 48       		.sleb128 -56
+ 1432 0298 0B       		.uleb128 0xb
+ 1433 0299 00000000 		.long	.LASF45
+ 1434 029d 01       		.byte	0x1
+ 1435 029e 03       		.byte	0x3
+ 1436 029f 6C000000 		.long	0x6c
+ 1437 02a3 02       		.uleb128 0x2
+ 1438 02a4 91       		.byte	0x91
+ 1439 02a5 40       		.sleb128 -64
+ 1440 02a6 0C       		.uleb128 0xc
+ 1441 02a7 00000000 		.long	.LASF47
+ 1442 02ab 01       		.byte	0x1
+ 1443 02ac 05       		.byte	0x5
+ 1444 02ad C1020000 		.long	0x2c1
+ 1445 02b1 02       		.uleb128 0x2
+ 1446 02b2 91       		.byte	0x91
+ 1447 02b3 68       		.sleb128 -24
+ 1448 02b4 00       		.byte	0
+ 1449 02b5 04       		.uleb128 0x4
+ 1450 02b6 08       		.byte	0x8
+ 1451 02b7 BB020000 		.long	0x2bb
+ 1452 02bb 04       		.uleb128 0x4
+ 1453 02bc 08       		.byte	0x8
+ 1454 02bd B7000000 		.long	0xb7
+ 1455 02c1 04       		.uleb128 0x4
+ 1456 02c2 08       		.byte	0x8
+ 1457 02c3 34000000 		.long	0x34
+ 1458 02c7 04       		.uleb128 0x4
+ 1459 02c8 08       		.byte	0x8
+ 1460 02c9 2E010000 		.long	0x12e
+ 1461 02cd 0D       		.uleb128 0xd
+ 1462 02ce 414900   		.string	"AI"
+GAS LISTING /tmp/cct0um32.s 			page 33
 
 
- 1465 02db 34       		.byte	0x34
- 1466 02dc 87000000 		.long	0x87
- 1467 02e0 02       		.uleb128 0x2
- 1468 02e1 91       		.byte	0x91
- 1469 02e2 60       		.sleb128 -32
- 1470 02e3 00       		.byte	0
- 1471 02e4 09       		.uleb128 0x9
- 1472 02e5 00000000 		.long	.LASF47
- 1473 02e9 01       		.byte	0x1
- 1474 02ea 3D       		.byte	0x3d
- 1475 02eb 00000000 		.quad	.LFB4
- 1475      00000000 
- 1476 02f3 A5030000 		.quad	.LFE4-.LFB4
- 1476      00000000 
- 1477 02fb 01       		.uleb128 0x1
- 1478 02fc 9C       		.byte	0x9c
- 1479 02fd 54030000 		.long	0x354
- 1480 0301 0A       		.uleb128 0xa
- 1481 0302 00000000 		.long	.LASF39
- 1482 0306 01       		.byte	0x1
- 1483 0307 3D       		.byte	0x3d
- 1484 0308 85020000 		.long	0x285
- 1485 030c 02       		.uleb128 0x2
- 1486 030d 91       		.byte	0x91
- 1487 030e 48       		.sleb128 -56
- 1488 030f 0A       		.uleb128 0xa
- 1489 0310 00000000 		.long	.LASF48
- 1490 0314 01       		.byte	0x1
- 1491 0315 3D       		.byte	0x3d
- 1492 0316 87000000 		.long	0x87
- 1493 031a 03       		.uleb128 0x3
- 1494 031b 91       		.byte	0x91
- 1495 031c B87F     		.sleb128 -72
- 1496 031e 0A       		.uleb128 0xa
- 1497 031f 00000000 		.long	.LASF49
- 1498 0323 01       		.byte	0x1
- 1499 0324 3D       		.byte	0x3d
- 1500 0325 87000000 		.long	0x87
- 1501 0329 03       		.uleb128 0x3
- 1502 032a 91       		.byte	0x91
- 1503 032b A87F     		.sleb128 -88
- 1504 032d 0D       		.uleb128 0xd
- 1505 032e 746D7000 		.string	"tmp"
- 1506 0332 01       		.byte	0x1
- 1507 0333 3F       		.byte	0x3f
- 1508 0334 87000000 		.long	0x87
- 1509 0338 02       		.uleb128 0x2
- 1510 0339 91       		.byte	0x91
- 1511 033a 60       		.sleb128 -32
- 1512 033b 0D       		.uleb128 0xd
- 1513 033c 6900     		.string	"i"
- 1514 033e 01       		.byte	0x1
- 1515 033f 40       		.byte	0x40
- 1516 0340 57000000 		.long	0x57
- 1517 0344 02       		.uleb128 0x2
- 1518 0345 91       		.byte	0x91
- 1519 0346 58       		.sleb128 -40
-GAS LISTING /tmp/ccuviV50.s 			page 34
+ 1463 02d1 01       		.byte	0x1
+ 1464 02d2 2D       		.byte	0x2d
+ 1465 02d3 00000000 		.quad	.LFB3
+ 1465      00000000 
+ 1466 02db 52000000 		.quad	.LFE3-.LFB3
+ 1466      00000000 
+ 1467 02e3 01       		.uleb128 0x1
+ 1468 02e4 9C       		.byte	0x9c
+ 1469 02e5 14030000 		.long	0x314
+ 1470 02e9 0B       		.uleb128 0xb
+ 1471 02ea 00000000 		.long	.LASF42
+ 1472 02ee 01       		.byte	0x1
+ 1473 02ef 2D       		.byte	0x2d
+ 1474 02f0 B5020000 		.long	0x2b5
+ 1475 02f4 02       		.uleb128 0x2
+ 1476 02f5 91       		.byte	0x91
+ 1477 02f6 48       		.sleb128 -56
+ 1478 02f7 0C       		.uleb128 0xc
+ 1479 02f8 00000000 		.long	.LASF48
+ 1480 02fc 01       		.byte	0x1
+ 1481 02fd 30       		.byte	0x30
+ 1482 02fe B7000000 		.long	0xb7
+ 1483 0302 02       		.uleb128 0x2
+ 1484 0303 91       		.byte	0x91
+ 1485 0304 50       		.sleb128 -48
+ 1486 0305 0C       		.uleb128 0xc
+ 1487 0306 00000000 		.long	.LASF49
+ 1488 030a 01       		.byte	0x1
+ 1489 030b 34       		.byte	0x34
+ 1490 030c B7000000 		.long	0xb7
+ 1491 0310 02       		.uleb128 0x2
+ 1492 0311 91       		.byte	0x91
+ 1493 0312 60       		.sleb128 -32
+ 1494 0313 00       		.byte	0
+ 1495 0314 0A       		.uleb128 0xa
+ 1496 0315 00000000 		.long	.LASF50
+ 1497 0319 01       		.byte	0x1
+ 1498 031a 3D       		.byte	0x3d
+ 1499 031b 00000000 		.quad	.LFB4
+ 1499      00000000 
+ 1500 0323 A6030000 		.quad	.LFE4-.LFB4
+ 1500      00000000 
+ 1501 032b 01       		.uleb128 0x1
+ 1502 032c 9C       		.byte	0x9c
+ 1503 032d 84030000 		.long	0x384
+ 1504 0331 0B       		.uleb128 0xb
+ 1505 0332 00000000 		.long	.LASF42
+ 1506 0336 01       		.byte	0x1
+ 1507 0337 3D       		.byte	0x3d
+ 1508 0338 B5020000 		.long	0x2b5
+ 1509 033c 02       		.uleb128 0x2
+ 1510 033d 91       		.byte	0x91
+ 1511 033e 48       		.sleb128 -56
+ 1512 033f 0B       		.uleb128 0xb
+ 1513 0340 00000000 		.long	.LASF51
+ 1514 0344 01       		.byte	0x1
+ 1515 0345 3D       		.byte	0x3d
+GAS LISTING /tmp/cct0um32.s 			page 34
 
 
- 1520 0347 0D       		.uleb128 0xd
- 1521 0348 6A00     		.string	"j"
- 1522 034a 01       		.byte	0x1
- 1523 034b 40       		.byte	0x40
- 1524 034c 57000000 		.long	0x57
- 1525 0350 02       		.uleb128 0x2
- 1526 0351 91       		.byte	0x91
- 1527 0352 5C       		.sleb128 -36
- 1528 0353 00       		.byte	0
- 1529 0354 0E       		.uleb128 0xe
- 1530 0355 00000000 		.long	.LASF50
- 1531 0359 01       		.byte	0x1
- 1532 035a 5D       		.byte	0x5d
- 1533 035b 00000000 		.quad	.LFB5
- 1533      00000000 
- 1534 0363 22010000 		.quad	.LFE5-.LFB5
- 1534      00000000 
- 1535 036b 01       		.uleb128 0x1
- 1536 036c 9C       		.byte	0x9c
- 1537 036d B0030000 		.long	0x3b0
- 1538 0371 0A       		.uleb128 0xa
- 1539 0372 00000000 		.long	.LASF39
- 1540 0376 01       		.byte	0x1
- 1541 0377 5D       		.byte	0x5d
- 1542 0378 85020000 		.long	0x285
- 1543 037c 02       		.uleb128 0x2
- 1544 037d 91       		.byte	0x91
- 1545 037e 58       		.sleb128 -40
- 1546 037f 0D       		.uleb128 0xd
- 1547 0380 6900     		.string	"i"
- 1548 0382 01       		.byte	0x1
- 1549 0383 5E       		.byte	0x5e
- 1550 0384 57000000 		.long	0x57
- 1551 0388 02       		.uleb128 0x2
- 1552 0389 91       		.byte	0x91
- 1553 038a 60       		.sleb128 -32
- 1554 038b 0D       		.uleb128 0xd
- 1555 038c 6A00     		.string	"j"
- 1556 038e 01       		.byte	0x1
- 1557 038f 5E       		.byte	0x5e
- 1558 0390 57000000 		.long	0x57
- 1559 0394 02       		.uleb128 0x2
- 1560 0395 91       		.byte	0x91
- 1561 0396 64       		.sleb128 -28
- 1562 0397 0D       		.uleb128 0xd
- 1563 0398 7800     		.string	"x"
- 1564 039a 01       		.byte	0x1
- 1565 039b 5E       		.byte	0x5e
- 1566 039c 57000000 		.long	0x57
- 1567 03a0 02       		.uleb128 0x2
- 1568 03a1 91       		.byte	0x91
- 1569 03a2 68       		.sleb128 -24
- 1570 03a3 0D       		.uleb128 0xd
- 1571 03a4 7900     		.string	"y"
- 1572 03a6 01       		.byte	0x1
- 1573 03a7 5E       		.byte	0x5e
- 1574 03a8 57000000 		.long	0x57
-GAS LISTING /tmp/ccuviV50.s 			page 35
+ 1516 0346 B7000000 		.long	0xb7
+ 1517 034a 03       		.uleb128 0x3
+ 1518 034b 91       		.byte	0x91
+ 1519 034c B87F     		.sleb128 -72
+ 1520 034e 0B       		.uleb128 0xb
+ 1521 034f 00000000 		.long	.LASF52
+ 1522 0353 01       		.byte	0x1
+ 1523 0354 3D       		.byte	0x3d
+ 1524 0355 B7000000 		.long	0xb7
+ 1525 0359 03       		.uleb128 0x3
+ 1526 035a 91       		.byte	0x91
+ 1527 035b A87F     		.sleb128 -88
+ 1528 035d 0E       		.uleb128 0xe
+ 1529 035e 746D7000 		.string	"tmp"
+ 1530 0362 01       		.byte	0x1
+ 1531 0363 3F       		.byte	0x3f
+ 1532 0364 B7000000 		.long	0xb7
+ 1533 0368 02       		.uleb128 0x2
+ 1534 0369 91       		.byte	0x91
+ 1535 036a 60       		.sleb128 -32
+ 1536 036b 0E       		.uleb128 0xe
+ 1537 036c 6900     		.string	"i"
+ 1538 036e 01       		.byte	0x1
+ 1539 036f 40       		.byte	0x40
+ 1540 0370 57000000 		.long	0x57
+ 1541 0374 02       		.uleb128 0x2
+ 1542 0375 91       		.byte	0x91
+ 1543 0376 58       		.sleb128 -40
+ 1544 0377 0E       		.uleb128 0xe
+ 1545 0378 6A00     		.string	"j"
+ 1546 037a 01       		.byte	0x1
+ 1547 037b 40       		.byte	0x40
+ 1548 037c 57000000 		.long	0x57
+ 1549 0380 02       		.uleb128 0x2
+ 1550 0381 91       		.byte	0x91
+ 1551 0382 5C       		.sleb128 -36
+ 1552 0383 00       		.byte	0
+ 1553 0384 0F       		.uleb128 0xf
+ 1554 0385 00000000 		.long	.LASF53
+ 1555 0389 01       		.byte	0x1
+ 1556 038a 5D       		.byte	0x5d
+ 1557 038b 00000000 		.quad	.LFB5
+ 1557      00000000 
+ 1558 0393 23010000 		.quad	.LFE5-.LFB5
+ 1558      00000000 
+ 1559 039b 01       		.uleb128 0x1
+ 1560 039c 9C       		.byte	0x9c
+ 1561 039d E0030000 		.long	0x3e0
+ 1562 03a1 0B       		.uleb128 0xb
+ 1563 03a2 00000000 		.long	.LASF42
+ 1564 03a6 01       		.byte	0x1
+ 1565 03a7 5D       		.byte	0x5d
+ 1566 03a8 B5020000 		.long	0x2b5
+ 1567 03ac 02       		.uleb128 0x2
+ 1568 03ad 91       		.byte	0x91
+ 1569 03ae 58       		.sleb128 -40
+ 1570 03af 0E       		.uleb128 0xe
+GAS LISTING /tmp/cct0um32.s 			page 35
 
 
- 1575 03ac 02       		.uleb128 0x2
- 1576 03ad 91       		.byte	0x91
- 1577 03ae 6C       		.sleb128 -20
- 1578 03af 00       		.byte	0
- 1579 03b0 0E       		.uleb128 0xe
- 1580 03b1 00000000 		.long	.LASF51
- 1581 03b5 01       		.byte	0x1
- 1582 03b6 6F       		.byte	0x6f
- 1583 03b7 00000000 		.quad	.LFB6
- 1583      00000000 
- 1584 03bf A1000000 		.quad	.LFE6-.LFB6
- 1584      00000000 
- 1585 03c7 01       		.uleb128 0x1
- 1586 03c8 9C       		.byte	0x9c
- 1587 03c9 02040000 		.long	0x402
- 1588 03cd 0A       		.uleb128 0xa
- 1589 03ce 00000000 		.long	.LASF39
- 1590 03d2 01       		.byte	0x1
- 1591 03d3 6F       		.byte	0x6f
- 1592 03d4 85020000 		.long	0x285
- 1593 03d8 02       		.uleb128 0x2
- 1594 03d9 91       		.byte	0x91
- 1595 03da 58       		.sleb128 -40
- 1596 03db 0A       		.uleb128 0xa
- 1597 03dc 00000000 		.long	.LASF52
- 1598 03e0 01       		.byte	0x1
- 1599 03e1 6F       		.byte	0x6f
- 1600 03e2 57000000 		.long	0x57
- 1601 03e6 02       		.uleb128 0x2
- 1602 03e7 91       		.byte	0x91
- 1603 03e8 54       		.sleb128 -44
- 1604 03e9 0D       		.uleb128 0xd
- 1605 03ea 6900     		.string	"i"
- 1606 03ec 01       		.byte	0x1
- 1607 03ed 71       		.byte	0x71
- 1608 03ee 57000000 		.long	0x57
- 1609 03f2 02       		.uleb128 0x2
- 1610 03f3 91       		.byte	0x91
- 1611 03f4 68       		.sleb128 -24
- 1612 03f5 0D       		.uleb128 0xd
- 1613 03f6 6A00     		.string	"j"
- 1614 03f8 01       		.byte	0x1
- 1615 03f9 71       		.byte	0x71
- 1616 03fa 57000000 		.long	0x57
- 1617 03fe 02       		.uleb128 0x2
- 1618 03ff 91       		.byte	0x91
- 1619 0400 6C       		.sleb128 -20
- 1620 0401 00       		.byte	0
- 1621 0402 0E       		.uleb128 0xe
- 1622 0403 00000000 		.long	.LASF53
- 1623 0407 01       		.byte	0x1
- 1624 0408 7B       		.byte	0x7b
- 1625 0409 00000000 		.quad	.LFB7
- 1625      00000000 
- 1626 0411 A1000000 		.quad	.LFE7-.LFB7
- 1626      00000000 
- 1627 0419 01       		.uleb128 0x1
-GAS LISTING /tmp/ccuviV50.s 			page 36
+ 1571 03b0 6900     		.string	"i"
+ 1572 03b2 01       		.byte	0x1
+ 1573 03b3 5E       		.byte	0x5e
+ 1574 03b4 57000000 		.long	0x57
+ 1575 03b8 02       		.uleb128 0x2
+ 1576 03b9 91       		.byte	0x91
+ 1577 03ba 60       		.sleb128 -32
+ 1578 03bb 0E       		.uleb128 0xe
+ 1579 03bc 6A00     		.string	"j"
+ 1580 03be 01       		.byte	0x1
+ 1581 03bf 5E       		.byte	0x5e
+ 1582 03c0 57000000 		.long	0x57
+ 1583 03c4 02       		.uleb128 0x2
+ 1584 03c5 91       		.byte	0x91
+ 1585 03c6 64       		.sleb128 -28
+ 1586 03c7 0E       		.uleb128 0xe
+ 1587 03c8 7800     		.string	"x"
+ 1588 03ca 01       		.byte	0x1
+ 1589 03cb 5E       		.byte	0x5e
+ 1590 03cc 57000000 		.long	0x57
+ 1591 03d0 02       		.uleb128 0x2
+ 1592 03d1 91       		.byte	0x91
+ 1593 03d2 68       		.sleb128 -24
+ 1594 03d3 0E       		.uleb128 0xe
+ 1595 03d4 7900     		.string	"y"
+ 1596 03d6 01       		.byte	0x1
+ 1597 03d7 5E       		.byte	0x5e
+ 1598 03d8 57000000 		.long	0x57
+ 1599 03dc 02       		.uleb128 0x2
+ 1600 03dd 91       		.byte	0x91
+ 1601 03de 6C       		.sleb128 -20
+ 1602 03df 00       		.byte	0
+ 1603 03e0 0F       		.uleb128 0xf
+ 1604 03e1 00000000 		.long	.LASF54
+ 1605 03e5 01       		.byte	0x1
+ 1606 03e6 6F       		.byte	0x6f
+ 1607 03e7 00000000 		.quad	.LFB6
+ 1607      00000000 
+ 1608 03ef A2000000 		.quad	.LFE6-.LFB6
+ 1608      00000000 
+ 1609 03f7 01       		.uleb128 0x1
+ 1610 03f8 9C       		.byte	0x9c
+ 1611 03f9 32040000 		.long	0x432
+ 1612 03fd 0B       		.uleb128 0xb
+ 1613 03fe 00000000 		.long	.LASF42
+ 1614 0402 01       		.byte	0x1
+ 1615 0403 6F       		.byte	0x6f
+ 1616 0404 B5020000 		.long	0x2b5
+ 1617 0408 02       		.uleb128 0x2
+ 1618 0409 91       		.byte	0x91
+ 1619 040a 58       		.sleb128 -40
+ 1620 040b 0B       		.uleb128 0xb
+ 1621 040c 00000000 		.long	.LASF55
+ 1622 0410 01       		.byte	0x1
+ 1623 0411 6F       		.byte	0x6f
+ 1624 0412 57000000 		.long	0x57
+ 1625 0416 02       		.uleb128 0x2
+GAS LISTING /tmp/cct0um32.s 			page 36
 
 
- 1628 041a 9C       		.byte	0x9c
- 1629 041b 54040000 		.long	0x454
- 1630 041f 0A       		.uleb128 0xa
- 1631 0420 00000000 		.long	.LASF39
- 1632 0424 01       		.byte	0x1
- 1633 0425 7B       		.byte	0x7b
- 1634 0426 85020000 		.long	0x285
- 1635 042a 02       		.uleb128 0x2
- 1636 042b 91       		.byte	0x91
- 1637 042c 58       		.sleb128 -40
- 1638 042d 0A       		.uleb128 0xa
- 1639 042e 00000000 		.long	.LASF52
- 1640 0432 01       		.byte	0x1
- 1641 0433 7B       		.byte	0x7b
- 1642 0434 57000000 		.long	0x57
- 1643 0438 02       		.uleb128 0x2
- 1644 0439 91       		.byte	0x91
- 1645 043a 54       		.sleb128 -44
- 1646 043b 0D       		.uleb128 0xd
- 1647 043c 6900     		.string	"i"
- 1648 043e 01       		.byte	0x1
- 1649 043f 7D       		.byte	0x7d
- 1650 0440 57000000 		.long	0x57
- 1651 0444 02       		.uleb128 0x2
- 1652 0445 91       		.byte	0x91
- 1653 0446 68       		.sleb128 -24
- 1654 0447 0D       		.uleb128 0xd
- 1655 0448 6A00     		.string	"j"
- 1656 044a 01       		.byte	0x1
- 1657 044b 7D       		.byte	0x7d
- 1658 044c 57000000 		.long	0x57
- 1659 0450 02       		.uleb128 0x2
- 1660 0451 91       		.byte	0x91
- 1661 0452 6C       		.sleb128 -20
- 1662 0453 00       		.byte	0
- 1663 0454 0F       		.uleb128 0xf
- 1664 0455 00000000 		.long	.LASF60
- 1665 0459 01       		.byte	0x1
- 1666 045a 87       		.byte	0x87
- 1667 045b 57000000 		.long	0x57
- 1668 045f 00000000 		.quad	.LFB8
- 1668      00000000 
- 1669 0467 74000000 		.quad	.LFE8-.LFB8
- 1669      00000000 
- 1670 046f 01       		.uleb128 0x1
- 1671 0470 9C       		.byte	0x9c
- 1672 0471 A0040000 		.long	0x4a0
- 1673 0475 0A       		.uleb128 0xa
- 1674 0476 00000000 		.long	.LASF54
- 1675 047a 01       		.byte	0x1
- 1676 047b 87       		.byte	0x87
- 1677 047c 87000000 		.long	0x87
- 1678 0480 02       		.uleb128 0x2
- 1679 0481 91       		.byte	0x91
- 1680 0482 50       		.sleb128 -48
- 1681 0483 0A       		.uleb128 0xa
- 1682 0484 00000000 		.long	.LASF55
-GAS LISTING /tmp/ccuviV50.s 			page 37
+ 1626 0417 91       		.byte	0x91
+ 1627 0418 54       		.sleb128 -44
+ 1628 0419 0E       		.uleb128 0xe
+ 1629 041a 6900     		.string	"i"
+ 1630 041c 01       		.byte	0x1
+ 1631 041d 71       		.byte	0x71
+ 1632 041e 57000000 		.long	0x57
+ 1633 0422 02       		.uleb128 0x2
+ 1634 0423 91       		.byte	0x91
+ 1635 0424 68       		.sleb128 -24
+ 1636 0425 0E       		.uleb128 0xe
+ 1637 0426 6A00     		.string	"j"
+ 1638 0428 01       		.byte	0x1
+ 1639 0429 71       		.byte	0x71
+ 1640 042a 57000000 		.long	0x57
+ 1641 042e 02       		.uleb128 0x2
+ 1642 042f 91       		.byte	0x91
+ 1643 0430 6C       		.sleb128 -20
+ 1644 0431 00       		.byte	0
+ 1645 0432 0F       		.uleb128 0xf
+ 1646 0433 00000000 		.long	.LASF56
+ 1647 0437 01       		.byte	0x1
+ 1648 0438 7B       		.byte	0x7b
+ 1649 0439 00000000 		.quad	.LFB7
+ 1649      00000000 
+ 1650 0441 A2000000 		.quad	.LFE7-.LFB7
+ 1650      00000000 
+ 1651 0449 01       		.uleb128 0x1
+ 1652 044a 9C       		.byte	0x9c
+ 1653 044b 84040000 		.long	0x484
+ 1654 044f 0B       		.uleb128 0xb
+ 1655 0450 00000000 		.long	.LASF42
+ 1656 0454 01       		.byte	0x1
+ 1657 0455 7B       		.byte	0x7b
+ 1658 0456 B5020000 		.long	0x2b5
+ 1659 045a 02       		.uleb128 0x2
+ 1660 045b 91       		.byte	0x91
+ 1661 045c 58       		.sleb128 -40
+ 1662 045d 0B       		.uleb128 0xb
+ 1663 045e 00000000 		.long	.LASF55
+ 1664 0462 01       		.byte	0x1
+ 1665 0463 7B       		.byte	0x7b
+ 1666 0464 57000000 		.long	0x57
+ 1667 0468 02       		.uleb128 0x2
+ 1668 0469 91       		.byte	0x91
+ 1669 046a 54       		.sleb128 -44
+ 1670 046b 0E       		.uleb128 0xe
+ 1671 046c 6900     		.string	"i"
+ 1672 046e 01       		.byte	0x1
+ 1673 046f 7D       		.byte	0x7d
+ 1674 0470 57000000 		.long	0x57
+ 1675 0474 02       		.uleb128 0x2
+ 1676 0475 91       		.byte	0x91
+ 1677 0476 68       		.sleb128 -24
+ 1678 0477 0E       		.uleb128 0xe
+ 1679 0478 6A00     		.string	"j"
+ 1680 047a 01       		.byte	0x1
+GAS LISTING /tmp/cct0um32.s 			page 37
 
 
- 1683 0488 01       		.byte	0x1
- 1684 0489 87       		.byte	0x87
- 1685 048a 87000000 		.long	0x87
- 1686 048e 02       		.uleb128 0x2
- 1687 048f 91       		.byte	0x91
- 1688 0490 40       		.sleb128 -64
- 1689 0491 0B       		.uleb128 0xb
- 1690 0492 00000000 		.long	.LASF56
- 1691 0496 01       		.byte	0x1
- 1692 0497 88       		.byte	0x88
- 1693 0498 57000000 		.long	0x57
- 1694 049c 02       		.uleb128 0x2
- 1695 049d 91       		.byte	0x91
- 1696 049e 6C       		.sleb128 -20
- 1697 049f 00       		.byte	0
- 1698 04a0 09       		.uleb128 0x9
- 1699 04a1 00000000 		.long	.LASF57
- 1700 04a5 01       		.byte	0x1
- 1701 04a6 91       		.byte	0x91
- 1702 04a7 00000000 		.quad	.LFB9
- 1702      00000000 
- 1703 04af 74000000 		.quad	.LFE9-.LFB9
- 1703      00000000 
- 1704 04b7 01       		.uleb128 0x1
- 1705 04b8 9C       		.byte	0x9c
- 1706 04b9 E8040000 		.long	0x4e8
- 1707 04bd 0A       		.uleb128 0xa
- 1708 04be 00000000 		.long	.LASF42
- 1709 04c2 01       		.byte	0x1
- 1710 04c3 91       		.byte	0x91
- 1711 04c4 6C000000 		.long	0x6c
- 1712 04c8 02       		.uleb128 0x2
- 1713 04c9 91       		.byte	0x91
- 1714 04ca 58       		.sleb128 -40
- 1715 04cb 0A       		.uleb128 0xa
- 1716 04cc 00000000 		.long	.LASF58
- 1717 04d0 01       		.byte	0x1
- 1718 04d1 91       		.byte	0x91
- 1719 04d2 91020000 		.long	0x291
- 1720 04d6 02       		.uleb128 0x2
- 1721 04d7 91       		.byte	0x91
- 1722 04d8 50       		.sleb128 -48
- 1723 04d9 0B       		.uleb128 0xb
- 1724 04da 00000000 		.long	.LASF59
- 1725 04de 01       		.byte	0x1
- 1726 04df 92       		.byte	0x92
- 1727 04e0 57000000 		.long	0x57
- 1728 04e4 02       		.uleb128 0x2
- 1729 04e5 91       		.byte	0x91
- 1730 04e6 6C       		.sleb128 -20
- 1731 04e7 00       		.byte	0
- 1732 04e8 10       		.uleb128 0x10
- 1733 04e9 00000000 		.long	.LASF61
- 1734 04ed 01       		.byte	0x1
- 1735 04ee 9D       		.byte	0x9d
- 1736 04ef 6B050000 		.long	0x56b
- 1737 04f3 00000000 		.quad	.LFB10
-GAS LISTING /tmp/ccuviV50.s 			page 38
+ 1681 047b 7D       		.byte	0x7d
+ 1682 047c 57000000 		.long	0x57
+ 1683 0480 02       		.uleb128 0x2
+ 1684 0481 91       		.byte	0x91
+ 1685 0482 6C       		.sleb128 -20
+ 1686 0483 00       		.byte	0
+ 1687 0484 10       		.uleb128 0x10
+ 1688 0485 00000000 		.long	.LASF63
+ 1689 0489 01       		.byte	0x1
+ 1690 048a 87       		.byte	0x87
+ 1691 048b 57000000 		.long	0x57
+ 1692 048f 00000000 		.quad	.LFB8
+ 1692      00000000 
+ 1693 0497 74000000 		.quad	.LFE8-.LFB8
+ 1693      00000000 
+ 1694 049f 01       		.uleb128 0x1
+ 1695 04a0 9C       		.byte	0x9c
+ 1696 04a1 D0040000 		.long	0x4d0
+ 1697 04a5 0B       		.uleb128 0xb
+ 1698 04a6 00000000 		.long	.LASF57
+ 1699 04aa 01       		.byte	0x1
+ 1700 04ab 87       		.byte	0x87
+ 1701 04ac B7000000 		.long	0xb7
+ 1702 04b0 02       		.uleb128 0x2
+ 1703 04b1 91       		.byte	0x91
+ 1704 04b2 50       		.sleb128 -48
+ 1705 04b3 0B       		.uleb128 0xb
+ 1706 04b4 00000000 		.long	.LASF58
+ 1707 04b8 01       		.byte	0x1
+ 1708 04b9 87       		.byte	0x87
+ 1709 04ba B7000000 		.long	0xb7
+ 1710 04be 02       		.uleb128 0x2
+ 1711 04bf 91       		.byte	0x91
+ 1712 04c0 40       		.sleb128 -64
+ 1713 04c1 0C       		.uleb128 0xc
+ 1714 04c2 00000000 		.long	.LASF59
+ 1715 04c6 01       		.byte	0x1
+ 1716 04c7 88       		.byte	0x88
+ 1717 04c8 57000000 		.long	0x57
+ 1718 04cc 02       		.uleb128 0x2
+ 1719 04cd 91       		.byte	0x91
+ 1720 04ce 6C       		.sleb128 -20
+ 1721 04cf 00       		.byte	0
+ 1722 04d0 0A       		.uleb128 0xa
+ 1723 04d1 00000000 		.long	.LASF60
+ 1724 04d5 01       		.byte	0x1
+ 1725 04d6 91       		.byte	0x91
+ 1726 04d7 00000000 		.quad	.LFB9
+ 1726      00000000 
+ 1727 04df 75000000 		.quad	.LFE9-.LFB9
+ 1727      00000000 
+ 1728 04e7 01       		.uleb128 0x1
+ 1729 04e8 9C       		.byte	0x9c
+ 1730 04e9 18050000 		.long	0x518
+ 1731 04ed 0B       		.uleb128 0xb
+ 1732 04ee 00000000 		.long	.LASF45
+ 1733 04f2 01       		.byte	0x1
+GAS LISTING /tmp/cct0um32.s 			page 38
 
 
- 1737      00000000 
- 1738 04fb 50030000 		.quad	.LFE10-.LFB10
- 1738      00000000 
- 1739 0503 01       		.uleb128 0x1
- 1740 0504 9C       		.byte	0x9c
- 1741 0505 6B050000 		.long	0x56b
- 1742 0509 0A       		.uleb128 0xa
- 1743 050a 00000000 		.long	.LASF39
- 1744 050e 01       		.byte	0x1
- 1745 050f 9D       		.byte	0x9d
- 1746 0510 85020000 		.long	0x285
- 1747 0514 03       		.uleb128 0x3
- 1748 0515 91       		.byte	0x91
- 1749 0516 B87F     		.sleb128 -72
- 1750 0518 0D       		.uleb128 0xd
- 1751 0519 63647300 		.string	"cds"
- 1752 051d 01       		.byte	0x1
- 1753 051e 9F       		.byte	0x9f
- 1754 051f 6B050000 		.long	0x56b
- 1755 0523 02       		.uleb128 0x2
- 1756 0524 91       		.byte	0x91
- 1757 0525 48       		.sleb128 -56
- 1758 0526 0D       		.uleb128 0xd
- 1759 0527 61757800 		.string	"aux"
- 1760 052b 01       		.byte	0x1
- 1761 052c A0       		.byte	0xa0
- 1762 052d D6010000 		.long	0x1d6
- 1763 0531 02       		.uleb128 0x2
- 1764 0532 91       		.byte	0x91
- 1765 0533 60       		.sleb128 -32
- 1766 0534 0B       		.uleb128 0xb
- 1767 0535 00000000 		.long	.LASF62
- 1768 0539 01       		.byte	0x1
- 1769 053a A1       		.byte	0xa1
- 1770 053b FB010000 		.long	0x1fb
- 1771 053f 02       		.uleb128 0x2
- 1772 0540 91       		.byte	0x91
- 1773 0541 50       		.sleb128 -48
- 1774 0542 0B       		.uleb128 0xb
- 1775 0543 00000000 		.long	.LASF63
- 1776 0547 01       		.byte	0x1
- 1777 0548 A3       		.byte	0xa3
- 1778 0549 57000000 		.long	0x57
- 1779 054d 02       		.uleb128 0x2
- 1780 054e 91       		.byte	0x91
- 1781 054f 44       		.sleb128 -60
- 1782 0550 0B       		.uleb128 0xb
- 1783 0551 00000000 		.long	.LASF64
- 1784 0555 01       		.byte	0x1
- 1785 0556 A4       		.byte	0xa4
- 1786 0557 FB010000 		.long	0x1fb
- 1787 055b 02       		.uleb128 0x2
- 1788 055c 91       		.byte	0x91
- 1789 055d 58       		.sleb128 -40
- 1790 055e 0D       		.uleb128 0xd
- 1791 055f 6900     		.string	"i"
- 1792 0561 01       		.byte	0x1
-GAS LISTING /tmp/ccuviV50.s 			page 39
+ 1734 04f3 91       		.byte	0x91
+ 1735 04f4 6C000000 		.long	0x6c
+ 1736 04f8 02       		.uleb128 0x2
+ 1737 04f9 91       		.byte	0x91
+ 1738 04fa 58       		.sleb128 -40
+ 1739 04fb 0B       		.uleb128 0xb
+ 1740 04fc 00000000 		.long	.LASF61
+ 1741 0500 01       		.byte	0x1
+ 1742 0501 91       		.byte	0x91
+ 1743 0502 C1020000 		.long	0x2c1
+ 1744 0506 02       		.uleb128 0x2
+ 1745 0507 91       		.byte	0x91
+ 1746 0508 50       		.sleb128 -48
+ 1747 0509 0C       		.uleb128 0xc
+ 1748 050a 00000000 		.long	.LASF62
+ 1749 050e 01       		.byte	0x1
+ 1750 050f 92       		.byte	0x92
+ 1751 0510 57000000 		.long	0x57
+ 1752 0514 02       		.uleb128 0x2
+ 1753 0515 91       		.byte	0x91
+ 1754 0516 6C       		.sleb128 -20
+ 1755 0517 00       		.byte	0
+ 1756 0518 11       		.uleb128 0x11
+ 1757 0519 00000000 		.long	.LASF64
+ 1758 051d 01       		.byte	0x1
+ 1759 051e 9D       		.byte	0x9d
+ 1760 051f 9B050000 		.long	0x59b
+ 1761 0523 00000000 		.quad	.LFB10
+ 1761      00000000 
+ 1762 052b 40030000 		.quad	.LFE10-.LFB10
+ 1762      00000000 
+ 1763 0533 01       		.uleb128 0x1
+ 1764 0534 9C       		.byte	0x9c
+ 1765 0535 9B050000 		.long	0x59b
+ 1766 0539 0B       		.uleb128 0xb
+ 1767 053a 00000000 		.long	.LASF42
+ 1768 053e 01       		.byte	0x1
+ 1769 053f 9D       		.byte	0x9d
+ 1770 0540 B5020000 		.long	0x2b5
+ 1771 0544 03       		.uleb128 0x3
+ 1772 0545 91       		.byte	0x91
+ 1773 0546 B87F     		.sleb128 -72
+ 1774 0548 0E       		.uleb128 0xe
+ 1775 0549 63647300 		.string	"cds"
+ 1776 054d 01       		.byte	0x1
+ 1777 054e 9F       		.byte	0x9f
+ 1778 054f 9B050000 		.long	0x59b
+ 1779 0553 02       		.uleb128 0x2
+ 1780 0554 91       		.byte	0x91
+ 1781 0555 48       		.sleb128 -56
+ 1782 0556 0E       		.uleb128 0xe
+ 1783 0557 61757800 		.string	"aux"
+ 1784 055b 01       		.byte	0x1
+ 1785 055c A0       		.byte	0xa0
+ 1786 055d 06020000 		.long	0x206
+ 1787 0561 02       		.uleb128 0x2
+ 1788 0562 91       		.byte	0x91
+GAS LISTING /tmp/cct0um32.s 			page 39
 
 
- 1793 0562 A5       		.byte	0xa5
- 1794 0563 57000000 		.long	0x57
- 1795 0567 02       		.uleb128 0x2
- 1796 0568 91       		.byte	0x91
- 1797 0569 40       		.sleb128 -64
- 1798 056a 00       		.byte	0
- 1799 056b 04       		.uleb128 0x4
- 1800 056c 08       		.byte	0x8
- 1801 056d 01020000 		.long	0x201
- 1802 0571 11       		.uleb128 0x11
- 1803 0572 00000000 		.long	.LASF68
- 1804 0576 04       		.byte	0x4
- 1805 0577 32       		.byte	0x32
- 1806 0578 57000000 		.long	0x57
- 1807 057c 00       		.byte	0
- 1808              		.section	.debug_abbrev,"",@progbits
- 1809              	.Ldebug_abbrev0:
- 1810 0000 01       		.uleb128 0x1
- 1811 0001 11       		.uleb128 0x11
- 1812 0002 01       		.byte	0x1
- 1813 0003 25       		.uleb128 0x25
- 1814 0004 0E       		.uleb128 0xe
- 1815 0005 13       		.uleb128 0x13
- 1816 0006 0B       		.uleb128 0xb
- 1817 0007 03       		.uleb128 0x3
- 1818 0008 0E       		.uleb128 0xe
- 1819 0009 1B       		.uleb128 0x1b
- 1820 000a 0E       		.uleb128 0xe
- 1821 000b 11       		.uleb128 0x11
- 1822 000c 01       		.uleb128 0x1
- 1823 000d 12       		.uleb128 0x12
- 1824 000e 07       		.uleb128 0x7
- 1825 000f 10       		.uleb128 0x10
- 1826 0010 17       		.uleb128 0x17
- 1827 0011 00       		.byte	0
- 1828 0012 00       		.byte	0
- 1829 0013 02       		.uleb128 0x2
- 1830 0014 24       		.uleb128 0x24
- 1831 0015 00       		.byte	0
- 1832 0016 0B       		.uleb128 0xb
- 1833 0017 0B       		.uleb128 0xb
- 1834 0018 3E       		.uleb128 0x3e
- 1835 0019 0B       		.uleb128 0xb
- 1836 001a 03       		.uleb128 0x3
- 1837 001b 0E       		.uleb128 0xe
- 1838 001c 00       		.byte	0
- 1839 001d 00       		.byte	0
- 1840 001e 03       		.uleb128 0x3
- 1841 001f 24       		.uleb128 0x24
- 1842 0020 00       		.byte	0
- 1843 0021 0B       		.uleb128 0xb
- 1844 0022 0B       		.uleb128 0xb
- 1845 0023 3E       		.uleb128 0x3e
- 1846 0024 0B       		.uleb128 0xb
- 1847 0025 03       		.uleb128 0x3
- 1848 0026 08       		.uleb128 0x8
- 1849 0027 00       		.byte	0
-GAS LISTING /tmp/ccuviV50.s 			page 40
+ 1789 0563 60       		.sleb128 -32
+ 1790 0564 0C       		.uleb128 0xc
+ 1791 0565 00000000 		.long	.LASF65
+ 1792 0569 01       		.byte	0x1
+ 1793 056a A1       		.byte	0xa1
+ 1794 056b 2B020000 		.long	0x22b
+ 1795 056f 02       		.uleb128 0x2
+ 1796 0570 91       		.byte	0x91
+ 1797 0571 50       		.sleb128 -48
+ 1798 0572 0C       		.uleb128 0xc
+ 1799 0573 00000000 		.long	.LASF66
+ 1800 0577 01       		.byte	0x1
+ 1801 0578 A3       		.byte	0xa3
+ 1802 0579 57000000 		.long	0x57
+ 1803 057d 02       		.uleb128 0x2
+ 1804 057e 91       		.byte	0x91
+ 1805 057f 44       		.sleb128 -60
+ 1806 0580 0C       		.uleb128 0xc
+ 1807 0581 00000000 		.long	.LASF67
+ 1808 0585 01       		.byte	0x1
+ 1809 0586 A4       		.byte	0xa4
+ 1810 0587 2B020000 		.long	0x22b
+ 1811 058b 02       		.uleb128 0x2
+ 1812 058c 91       		.byte	0x91
+ 1813 058d 58       		.sleb128 -40
+ 1814 058e 0E       		.uleb128 0xe
+ 1815 058f 6900     		.string	"i"
+ 1816 0591 01       		.byte	0x1
+ 1817 0592 A5       		.byte	0xa5
+ 1818 0593 57000000 		.long	0x57
+ 1819 0597 02       		.uleb128 0x2
+ 1820 0598 91       		.byte	0x91
+ 1821 0599 40       		.sleb128 -64
+ 1822 059a 00       		.byte	0
+ 1823 059b 04       		.uleb128 0x4
+ 1824 059c 08       		.byte	0x8
+ 1825 059d 31020000 		.long	0x231
+ 1826 05a1 12       		.uleb128 0x12
+ 1827 05a2 00000000 		.long	.LASF71
+ 1828 05a6 05       		.byte	0x5
+ 1829 05a7 32       		.byte	0x32
+ 1830 05a8 57000000 		.long	0x57
+ 1831 05ac 00       		.byte	0
+ 1832              		.section	.debug_abbrev,"",@progbits
+ 1833              	.Ldebug_abbrev0:
+ 1834 0000 01       		.uleb128 0x1
+ 1835 0001 11       		.uleb128 0x11
+ 1836 0002 01       		.byte	0x1
+ 1837 0003 25       		.uleb128 0x25
+ 1838 0004 0E       		.uleb128 0xe
+ 1839 0005 13       		.uleb128 0x13
+ 1840 0006 0B       		.uleb128 0xb
+ 1841 0007 03       		.uleb128 0x3
+ 1842 0008 0E       		.uleb128 0xe
+ 1843 0009 1B       		.uleb128 0x1b
+ 1844 000a 0E       		.uleb128 0xe
+ 1845 000b 11       		.uleb128 0x11
+GAS LISTING /tmp/cct0um32.s 			page 40
 
 
- 1850 0028 00       		.byte	0
- 1851 0029 04       		.uleb128 0x4
- 1852 002a 0F       		.uleb128 0xf
- 1853 002b 00       		.byte	0
- 1854 002c 0B       		.uleb128 0xb
- 1855 002d 0B       		.uleb128 0xb
- 1856 002e 49       		.uleb128 0x49
- 1857 002f 13       		.uleb128 0x13
- 1858 0030 00       		.byte	0
- 1859 0031 00       		.byte	0
- 1860 0032 05       		.uleb128 0x5
- 1861 0033 13       		.uleb128 0x13
- 1862 0034 01       		.byte	0x1
- 1863 0035 03       		.uleb128 0x3
- 1864 0036 0E       		.uleb128 0xe
- 1865 0037 0B       		.uleb128 0xb
- 1866 0038 0B       		.uleb128 0xb
- 1867 0039 3A       		.uleb128 0x3a
- 1868 003a 0B       		.uleb128 0xb
- 1869 003b 3B       		.uleb128 0x3b
- 1870 003c 0B       		.uleb128 0xb
- 1871 003d 01       		.uleb128 0x1
- 1872 003e 13       		.uleb128 0x13
- 1873 003f 00       		.byte	0
- 1874 0040 00       		.byte	0
- 1875 0041 06       		.uleb128 0x6
- 1876 0042 0D       		.uleb128 0xd
- 1877 0043 00       		.byte	0
- 1878 0044 03       		.uleb128 0x3
- 1879 0045 0E       		.uleb128 0xe
- 1880 0046 3A       		.uleb128 0x3a
- 1881 0047 0B       		.uleb128 0xb
- 1882 0048 3B       		.uleb128 0x3b
- 1883 0049 0B       		.uleb128 0xb
- 1884 004a 49       		.uleb128 0x49
- 1885 004b 13       		.uleb128 0x13
- 1886 004c 38       		.uleb128 0x38
- 1887 004d 0B       		.uleb128 0xb
- 1888 004e 00       		.byte	0
- 1889 004f 00       		.byte	0
- 1890 0050 07       		.uleb128 0x7
- 1891 0051 0D       		.uleb128 0xd
- 1892 0052 00       		.byte	0
- 1893 0053 03       		.uleb128 0x3
- 1894 0054 08       		.uleb128 0x8
- 1895 0055 3A       		.uleb128 0x3a
- 1896 0056 0B       		.uleb128 0xb
- 1897 0057 3B       		.uleb128 0x3b
- 1898 0058 0B       		.uleb128 0xb
- 1899 0059 49       		.uleb128 0x49
- 1900 005a 13       		.uleb128 0x13
- 1901 005b 38       		.uleb128 0x38
- 1902 005c 0B       		.uleb128 0xb
- 1903 005d 00       		.byte	0
- 1904 005e 00       		.byte	0
- 1905 005f 08       		.uleb128 0x8
- 1906 0060 13       		.uleb128 0x13
-GAS LISTING /tmp/ccuviV50.s 			page 41
+ 1846 000c 01       		.uleb128 0x1
+ 1847 000d 12       		.uleb128 0x12
+ 1848 000e 07       		.uleb128 0x7
+ 1849 000f 10       		.uleb128 0x10
+ 1850 0010 17       		.uleb128 0x17
+ 1851 0011 00       		.byte	0
+ 1852 0012 00       		.byte	0
+ 1853 0013 02       		.uleb128 0x2
+ 1854 0014 24       		.uleb128 0x24
+ 1855 0015 00       		.byte	0
+ 1856 0016 0B       		.uleb128 0xb
+ 1857 0017 0B       		.uleb128 0xb
+ 1858 0018 3E       		.uleb128 0x3e
+ 1859 0019 0B       		.uleb128 0xb
+ 1860 001a 03       		.uleb128 0x3
+ 1861 001b 0E       		.uleb128 0xe
+ 1862 001c 00       		.byte	0
+ 1863 001d 00       		.byte	0
+ 1864 001e 03       		.uleb128 0x3
+ 1865 001f 24       		.uleb128 0x24
+ 1866 0020 00       		.byte	0
+ 1867 0021 0B       		.uleb128 0xb
+ 1868 0022 0B       		.uleb128 0xb
+ 1869 0023 3E       		.uleb128 0x3e
+ 1870 0024 0B       		.uleb128 0xb
+ 1871 0025 03       		.uleb128 0x3
+ 1872 0026 08       		.uleb128 0x8
+ 1873 0027 00       		.byte	0
+ 1874 0028 00       		.byte	0
+ 1875 0029 04       		.uleb128 0x4
+ 1876 002a 0F       		.uleb128 0xf
+ 1877 002b 00       		.byte	0
+ 1878 002c 0B       		.uleb128 0xb
+ 1879 002d 0B       		.uleb128 0xb
+ 1880 002e 49       		.uleb128 0x49
+ 1881 002f 13       		.uleb128 0x13
+ 1882 0030 00       		.byte	0
+ 1883 0031 00       		.byte	0
+ 1884 0032 05       		.uleb128 0x5
+ 1885 0033 13       		.uleb128 0x13
+ 1886 0034 01       		.byte	0x1
+ 1887 0035 03       		.uleb128 0x3
+ 1888 0036 0E       		.uleb128 0xe
+ 1889 0037 0B       		.uleb128 0xb
+ 1890 0038 0B       		.uleb128 0xb
+ 1891 0039 3A       		.uleb128 0x3a
+ 1892 003a 0B       		.uleb128 0xb
+ 1893 003b 3B       		.uleb128 0x3b
+ 1894 003c 0B       		.uleb128 0xb
+ 1895 003d 01       		.uleb128 0x1
+ 1896 003e 13       		.uleb128 0x13
+ 1897 003f 00       		.byte	0
+ 1898 0040 00       		.byte	0
+ 1899 0041 06       		.uleb128 0x6
+ 1900 0042 0D       		.uleb128 0xd
+ 1901 0043 00       		.byte	0
+ 1902 0044 03       		.uleb128 0x3
+GAS LISTING /tmp/cct0um32.s 			page 41
 
 
- 1907 0061 01       		.byte	0x1
- 1908 0062 03       		.uleb128 0x3
- 1909 0063 08       		.uleb128 0x8
- 1910 0064 0B       		.uleb128 0xb
- 1911 0065 0B       		.uleb128 0xb
- 1912 0066 3A       		.uleb128 0x3a
- 1913 0067 0B       		.uleb128 0xb
- 1914 0068 3B       		.uleb128 0x3b
- 1915 0069 0B       		.uleb128 0xb
- 1916 006a 01       		.uleb128 0x1
- 1917 006b 13       		.uleb128 0x13
- 1918 006c 00       		.byte	0
- 1919 006d 00       		.byte	0
- 1920 006e 09       		.uleb128 0x9
- 1921 006f 2E       		.uleb128 0x2e
- 1922 0070 01       		.byte	0x1
- 1923 0071 3F       		.uleb128 0x3f
- 1924 0072 19       		.uleb128 0x19
- 1925 0073 03       		.uleb128 0x3
- 1926 0074 0E       		.uleb128 0xe
- 1927 0075 3A       		.uleb128 0x3a
- 1928 0076 0B       		.uleb128 0xb
- 1929 0077 3B       		.uleb128 0x3b
- 1930 0078 0B       		.uleb128 0xb
- 1931 0079 27       		.uleb128 0x27
- 1932 007a 19       		.uleb128 0x19
- 1933 007b 11       		.uleb128 0x11
- 1934 007c 01       		.uleb128 0x1
- 1935 007d 12       		.uleb128 0x12
- 1936 007e 07       		.uleb128 0x7
- 1937 007f 40       		.uleb128 0x40
- 1938 0080 18       		.uleb128 0x18
- 1939 0081 9642     		.uleb128 0x2116
- 1940 0083 19       		.uleb128 0x19
- 1941 0084 01       		.uleb128 0x1
- 1942 0085 13       		.uleb128 0x13
- 1943 0086 00       		.byte	0
- 1944 0087 00       		.byte	0
- 1945 0088 0A       		.uleb128 0xa
- 1946 0089 05       		.uleb128 0x5
- 1947 008a 00       		.byte	0
- 1948 008b 03       		.uleb128 0x3
- 1949 008c 0E       		.uleb128 0xe
- 1950 008d 3A       		.uleb128 0x3a
- 1951 008e 0B       		.uleb128 0xb
- 1952 008f 3B       		.uleb128 0x3b
- 1953 0090 0B       		.uleb128 0xb
- 1954 0091 49       		.uleb128 0x49
- 1955 0092 13       		.uleb128 0x13
- 1956 0093 02       		.uleb128 0x2
- 1957 0094 18       		.uleb128 0x18
- 1958 0095 00       		.byte	0
- 1959 0096 00       		.byte	0
- 1960 0097 0B       		.uleb128 0xb
- 1961 0098 34       		.uleb128 0x34
- 1962 0099 00       		.byte	0
- 1963 009a 03       		.uleb128 0x3
-GAS LISTING /tmp/ccuviV50.s 			page 42
+ 1903 0045 0E       		.uleb128 0xe
+ 1904 0046 3A       		.uleb128 0x3a
+ 1905 0047 0B       		.uleb128 0xb
+ 1906 0048 3B       		.uleb128 0x3b
+ 1907 0049 0B       		.uleb128 0xb
+ 1908 004a 49       		.uleb128 0x49
+ 1909 004b 13       		.uleb128 0x13
+ 1910 004c 38       		.uleb128 0x38
+ 1911 004d 0B       		.uleb128 0xb
+ 1912 004e 00       		.byte	0
+ 1913 004f 00       		.byte	0
+ 1914 0050 07       		.uleb128 0x7
+ 1915 0051 37       		.uleb128 0x37
+ 1916 0052 00       		.byte	0
+ 1917 0053 49       		.uleb128 0x49
+ 1918 0054 13       		.uleb128 0x13
+ 1919 0055 00       		.byte	0
+ 1920 0056 00       		.byte	0
+ 1921 0057 08       		.uleb128 0x8
+ 1922 0058 0D       		.uleb128 0xd
+ 1923 0059 00       		.byte	0
+ 1924 005a 03       		.uleb128 0x3
+ 1925 005b 08       		.uleb128 0x8
+ 1926 005c 3A       		.uleb128 0x3a
+ 1927 005d 0B       		.uleb128 0xb
+ 1928 005e 3B       		.uleb128 0x3b
+ 1929 005f 0B       		.uleb128 0xb
+ 1930 0060 49       		.uleb128 0x49
+ 1931 0061 13       		.uleb128 0x13
+ 1932 0062 38       		.uleb128 0x38
+ 1933 0063 0B       		.uleb128 0xb
+ 1934 0064 00       		.byte	0
+ 1935 0065 00       		.byte	0
+ 1936 0066 09       		.uleb128 0x9
+ 1937 0067 13       		.uleb128 0x13
+ 1938 0068 01       		.byte	0x1
+ 1939 0069 03       		.uleb128 0x3
+ 1940 006a 08       		.uleb128 0x8
+ 1941 006b 0B       		.uleb128 0xb
+ 1942 006c 0B       		.uleb128 0xb
+ 1943 006d 3A       		.uleb128 0x3a
+ 1944 006e 0B       		.uleb128 0xb
+ 1945 006f 3B       		.uleb128 0x3b
+ 1946 0070 0B       		.uleb128 0xb
+ 1947 0071 01       		.uleb128 0x1
+ 1948 0072 13       		.uleb128 0x13
+ 1949 0073 00       		.byte	0
+ 1950 0074 00       		.byte	0
+ 1951 0075 0A       		.uleb128 0xa
+ 1952 0076 2E       		.uleb128 0x2e
+ 1953 0077 01       		.byte	0x1
+ 1954 0078 3F       		.uleb128 0x3f
+ 1955 0079 19       		.uleb128 0x19
+ 1956 007a 03       		.uleb128 0x3
+ 1957 007b 0E       		.uleb128 0xe
+ 1958 007c 3A       		.uleb128 0x3a
+ 1959 007d 0B       		.uleb128 0xb
+GAS LISTING /tmp/cct0um32.s 			page 42
 
 
- 1964 009b 0E       		.uleb128 0xe
- 1965 009c 3A       		.uleb128 0x3a
- 1966 009d 0B       		.uleb128 0xb
- 1967 009e 3B       		.uleb128 0x3b
- 1968 009f 0B       		.uleb128 0xb
- 1969 00a0 49       		.uleb128 0x49
- 1970 00a1 13       		.uleb128 0x13
- 1971 00a2 02       		.uleb128 0x2
- 1972 00a3 18       		.uleb128 0x18
- 1973 00a4 00       		.byte	0
- 1974 00a5 00       		.byte	0
- 1975 00a6 0C       		.uleb128 0xc
- 1976 00a7 2E       		.uleb128 0x2e
- 1977 00a8 01       		.byte	0x1
- 1978 00a9 3F       		.uleb128 0x3f
- 1979 00aa 19       		.uleb128 0x19
- 1980 00ab 03       		.uleb128 0x3
- 1981 00ac 08       		.uleb128 0x8
- 1982 00ad 3A       		.uleb128 0x3a
- 1983 00ae 0B       		.uleb128 0xb
- 1984 00af 3B       		.uleb128 0x3b
- 1985 00b0 0B       		.uleb128 0xb
- 1986 00b1 27       		.uleb128 0x27
- 1987 00b2 19       		.uleb128 0x19
- 1988 00b3 11       		.uleb128 0x11
- 1989 00b4 01       		.uleb128 0x1
- 1990 00b5 12       		.uleb128 0x12
- 1991 00b6 07       		.uleb128 0x7
- 1992 00b7 40       		.uleb128 0x40
- 1993 00b8 18       		.uleb128 0x18
- 1994 00b9 9642     		.uleb128 0x2116
- 1995 00bb 19       		.uleb128 0x19
- 1996 00bc 01       		.uleb128 0x1
- 1997 00bd 13       		.uleb128 0x13
- 1998 00be 00       		.byte	0
- 1999 00bf 00       		.byte	0
- 2000 00c0 0D       		.uleb128 0xd
- 2001 00c1 34       		.uleb128 0x34
- 2002 00c2 00       		.byte	0
- 2003 00c3 03       		.uleb128 0x3
- 2004 00c4 08       		.uleb128 0x8
- 2005 00c5 3A       		.uleb128 0x3a
- 2006 00c6 0B       		.uleb128 0xb
- 2007 00c7 3B       		.uleb128 0x3b
- 2008 00c8 0B       		.uleb128 0xb
- 2009 00c9 49       		.uleb128 0x49
- 2010 00ca 13       		.uleb128 0x13
- 2011 00cb 02       		.uleb128 0x2
- 2012 00cc 18       		.uleb128 0x18
- 2013 00cd 00       		.byte	0
- 2014 00ce 00       		.byte	0
- 2015 00cf 0E       		.uleb128 0xe
- 2016 00d0 2E       		.uleb128 0x2e
- 2017 00d1 01       		.byte	0x1
- 2018 00d2 3F       		.uleb128 0x3f
- 2019 00d3 19       		.uleb128 0x19
- 2020 00d4 03       		.uleb128 0x3
-GAS LISTING /tmp/ccuviV50.s 			page 43
+ 1960 007e 3B       		.uleb128 0x3b
+ 1961 007f 0B       		.uleb128 0xb
+ 1962 0080 27       		.uleb128 0x27
+ 1963 0081 19       		.uleb128 0x19
+ 1964 0082 11       		.uleb128 0x11
+ 1965 0083 01       		.uleb128 0x1
+ 1966 0084 12       		.uleb128 0x12
+ 1967 0085 07       		.uleb128 0x7
+ 1968 0086 40       		.uleb128 0x40
+ 1969 0087 18       		.uleb128 0x18
+ 1970 0088 9642     		.uleb128 0x2116
+ 1971 008a 19       		.uleb128 0x19
+ 1972 008b 01       		.uleb128 0x1
+ 1973 008c 13       		.uleb128 0x13
+ 1974 008d 00       		.byte	0
+ 1975 008e 00       		.byte	0
+ 1976 008f 0B       		.uleb128 0xb
+ 1977 0090 05       		.uleb128 0x5
+ 1978 0091 00       		.byte	0
+ 1979 0092 03       		.uleb128 0x3
+ 1980 0093 0E       		.uleb128 0xe
+ 1981 0094 3A       		.uleb128 0x3a
+ 1982 0095 0B       		.uleb128 0xb
+ 1983 0096 3B       		.uleb128 0x3b
+ 1984 0097 0B       		.uleb128 0xb
+ 1985 0098 49       		.uleb128 0x49
+ 1986 0099 13       		.uleb128 0x13
+ 1987 009a 02       		.uleb128 0x2
+ 1988 009b 18       		.uleb128 0x18
+ 1989 009c 00       		.byte	0
+ 1990 009d 00       		.byte	0
+ 1991 009e 0C       		.uleb128 0xc
+ 1992 009f 34       		.uleb128 0x34
+ 1993 00a0 00       		.byte	0
+ 1994 00a1 03       		.uleb128 0x3
+ 1995 00a2 0E       		.uleb128 0xe
+ 1996 00a3 3A       		.uleb128 0x3a
+ 1997 00a4 0B       		.uleb128 0xb
+ 1998 00a5 3B       		.uleb128 0x3b
+ 1999 00a6 0B       		.uleb128 0xb
+ 2000 00a7 49       		.uleb128 0x49
+ 2001 00a8 13       		.uleb128 0x13
+ 2002 00a9 02       		.uleb128 0x2
+ 2003 00aa 18       		.uleb128 0x18
+ 2004 00ab 00       		.byte	0
+ 2005 00ac 00       		.byte	0
+ 2006 00ad 0D       		.uleb128 0xd
+ 2007 00ae 2E       		.uleb128 0x2e
+ 2008 00af 01       		.byte	0x1
+ 2009 00b0 3F       		.uleb128 0x3f
+ 2010 00b1 19       		.uleb128 0x19
+ 2011 00b2 03       		.uleb128 0x3
+ 2012 00b3 08       		.uleb128 0x8
+ 2013 00b4 3A       		.uleb128 0x3a
+ 2014 00b5 0B       		.uleb128 0xb
+ 2015 00b6 3B       		.uleb128 0x3b
+ 2016 00b7 0B       		.uleb128 0xb
+GAS LISTING /tmp/cct0um32.s 			page 43
 
 
- 2021 00d5 0E       		.uleb128 0xe
- 2022 00d6 3A       		.uleb128 0x3a
- 2023 00d7 0B       		.uleb128 0xb
- 2024 00d8 3B       		.uleb128 0x3b
- 2025 00d9 0B       		.uleb128 0xb
- 2026 00da 27       		.uleb128 0x27
- 2027 00db 19       		.uleb128 0x19
- 2028 00dc 11       		.uleb128 0x11
- 2029 00dd 01       		.uleb128 0x1
- 2030 00de 12       		.uleb128 0x12
- 2031 00df 07       		.uleb128 0x7
- 2032 00e0 40       		.uleb128 0x40
- 2033 00e1 18       		.uleb128 0x18
- 2034 00e2 9742     		.uleb128 0x2117
- 2035 00e4 19       		.uleb128 0x19
- 2036 00e5 01       		.uleb128 0x1
- 2037 00e6 13       		.uleb128 0x13
- 2038 00e7 00       		.byte	0
- 2039 00e8 00       		.byte	0
- 2040 00e9 0F       		.uleb128 0xf
- 2041 00ea 2E       		.uleb128 0x2e
- 2042 00eb 01       		.byte	0x1
- 2043 00ec 3F       		.uleb128 0x3f
- 2044 00ed 19       		.uleb128 0x19
- 2045 00ee 03       		.uleb128 0x3
- 2046 00ef 0E       		.uleb128 0xe
- 2047 00f0 3A       		.uleb128 0x3a
- 2048 00f1 0B       		.uleb128 0xb
- 2049 00f2 3B       		.uleb128 0x3b
- 2050 00f3 0B       		.uleb128 0xb
- 2051 00f4 27       		.uleb128 0x27
- 2052 00f5 19       		.uleb128 0x19
- 2053 00f6 49       		.uleb128 0x49
- 2054 00f7 13       		.uleb128 0x13
- 2055 00f8 11       		.uleb128 0x11
- 2056 00f9 01       		.uleb128 0x1
- 2057 00fa 12       		.uleb128 0x12
- 2058 00fb 07       		.uleb128 0x7
- 2059 00fc 40       		.uleb128 0x40
- 2060 00fd 18       		.uleb128 0x18
- 2061 00fe 9742     		.uleb128 0x2117
- 2062 0100 19       		.uleb128 0x19
- 2063 0101 01       		.uleb128 0x1
- 2064 0102 13       		.uleb128 0x13
- 2065 0103 00       		.byte	0
- 2066 0104 00       		.byte	0
- 2067 0105 10       		.uleb128 0x10
- 2068 0106 2E       		.uleb128 0x2e
- 2069 0107 01       		.byte	0x1
- 2070 0108 3F       		.uleb128 0x3f
- 2071 0109 19       		.uleb128 0x19
- 2072 010a 03       		.uleb128 0x3
- 2073 010b 0E       		.uleb128 0xe
- 2074 010c 3A       		.uleb128 0x3a
- 2075 010d 0B       		.uleb128 0xb
- 2076 010e 3B       		.uleb128 0x3b
- 2077 010f 0B       		.uleb128 0xb
-GAS LISTING /tmp/ccuviV50.s 			page 44
+ 2017 00b8 27       		.uleb128 0x27
+ 2018 00b9 19       		.uleb128 0x19
+ 2019 00ba 11       		.uleb128 0x11
+ 2020 00bb 01       		.uleb128 0x1
+ 2021 00bc 12       		.uleb128 0x12
+ 2022 00bd 07       		.uleb128 0x7
+ 2023 00be 40       		.uleb128 0x40
+ 2024 00bf 18       		.uleb128 0x18
+ 2025 00c0 9642     		.uleb128 0x2116
+ 2026 00c2 19       		.uleb128 0x19
+ 2027 00c3 01       		.uleb128 0x1
+ 2028 00c4 13       		.uleb128 0x13
+ 2029 00c5 00       		.byte	0
+ 2030 00c6 00       		.byte	0
+ 2031 00c7 0E       		.uleb128 0xe
+ 2032 00c8 34       		.uleb128 0x34
+ 2033 00c9 00       		.byte	0
+ 2034 00ca 03       		.uleb128 0x3
+ 2035 00cb 08       		.uleb128 0x8
+ 2036 00cc 3A       		.uleb128 0x3a
+ 2037 00cd 0B       		.uleb128 0xb
+ 2038 00ce 3B       		.uleb128 0x3b
+ 2039 00cf 0B       		.uleb128 0xb
+ 2040 00d0 49       		.uleb128 0x49
+ 2041 00d1 13       		.uleb128 0x13
+ 2042 00d2 02       		.uleb128 0x2
+ 2043 00d3 18       		.uleb128 0x18
+ 2044 00d4 00       		.byte	0
+ 2045 00d5 00       		.byte	0
+ 2046 00d6 0F       		.uleb128 0xf
+ 2047 00d7 2E       		.uleb128 0x2e
+ 2048 00d8 01       		.byte	0x1
+ 2049 00d9 3F       		.uleb128 0x3f
+ 2050 00da 19       		.uleb128 0x19
+ 2051 00db 03       		.uleb128 0x3
+ 2052 00dc 0E       		.uleb128 0xe
+ 2053 00dd 3A       		.uleb128 0x3a
+ 2054 00de 0B       		.uleb128 0xb
+ 2055 00df 3B       		.uleb128 0x3b
+ 2056 00e0 0B       		.uleb128 0xb
+ 2057 00e1 27       		.uleb128 0x27
+ 2058 00e2 19       		.uleb128 0x19
+ 2059 00e3 11       		.uleb128 0x11
+ 2060 00e4 01       		.uleb128 0x1
+ 2061 00e5 12       		.uleb128 0x12
+ 2062 00e6 07       		.uleb128 0x7
+ 2063 00e7 40       		.uleb128 0x40
+ 2064 00e8 18       		.uleb128 0x18
+ 2065 00e9 9742     		.uleb128 0x2117
+ 2066 00eb 19       		.uleb128 0x19
+ 2067 00ec 01       		.uleb128 0x1
+ 2068 00ed 13       		.uleb128 0x13
+ 2069 00ee 00       		.byte	0
+ 2070 00ef 00       		.byte	0
+ 2071 00f0 10       		.uleb128 0x10
+ 2072 00f1 2E       		.uleb128 0x2e
+ 2073 00f2 01       		.byte	0x1
+GAS LISTING /tmp/cct0um32.s 			page 44
 
 
- 2078 0110 27       		.uleb128 0x27
- 2079 0111 19       		.uleb128 0x19
- 2080 0112 49       		.uleb128 0x49
- 2081 0113 13       		.uleb128 0x13
- 2082 0114 11       		.uleb128 0x11
- 2083 0115 01       		.uleb128 0x1
- 2084 0116 12       		.uleb128 0x12
- 2085 0117 07       		.uleb128 0x7
- 2086 0118 40       		.uleb128 0x40
- 2087 0119 18       		.uleb128 0x18
- 2088 011a 9642     		.uleb128 0x2116
- 2089 011c 19       		.uleb128 0x19
- 2090 011d 01       		.uleb128 0x1
- 2091 011e 13       		.uleb128 0x13
- 2092 011f 00       		.byte	0
- 2093 0120 00       		.byte	0
- 2094 0121 11       		.uleb128 0x11
- 2095 0122 34       		.uleb128 0x34
- 2096 0123 00       		.byte	0
- 2097 0124 03       		.uleb128 0x3
- 2098 0125 0E       		.uleb128 0xe
- 2099 0126 3A       		.uleb128 0x3a
- 2100 0127 0B       		.uleb128 0xb
- 2101 0128 3B       		.uleb128 0x3b
- 2102 0129 0B       		.uleb128 0xb
- 2103 012a 49       		.uleb128 0x49
- 2104 012b 13       		.uleb128 0x13
- 2105 012c 3F       		.uleb128 0x3f
- 2106 012d 19       		.uleb128 0x19
- 2107 012e 3C       		.uleb128 0x3c
- 2108 012f 19       		.uleb128 0x19
- 2109 0130 00       		.byte	0
- 2110 0131 00       		.byte	0
- 2111 0132 00       		.byte	0
- 2112              		.section	.debug_aranges,"",@progbits
- 2113 0000 2C000000 		.long	0x2c
- 2114 0004 0200     		.value	0x2
- 2115 0006 00000000 		.long	.Ldebug_info0
- 2116 000a 08       		.byte	0x8
- 2117 000b 00       		.byte	0
- 2118 000c 0000     		.value	0
- 2119 000e 0000     		.value	0
- 2120 0010 00000000 		.quad	.Ltext0
- 2120      00000000 
- 2121 0018 270B0000 		.quad	.Letext0-.Ltext0
- 2121      00000000 
- 2122 0020 00000000 		.quad	0
- 2122      00000000 
- 2123 0028 00000000 		.quad	0
- 2123      00000000 
- 2124              		.section	.debug_line,"",@progbits
- 2125              	.Ldebug_line0:
- 2126 0000 35020000 		.section	.debug_str,"MS",@progbits,1
- 2126      02006B00 
- 2126      00000101 
- 2126      FB0E0D00 
- 2126      01010101 
-GAS LISTING /tmp/ccuviV50.s 			page 45
+ 2074 00f3 3F       		.uleb128 0x3f
+ 2075 00f4 19       		.uleb128 0x19
+ 2076 00f5 03       		.uleb128 0x3
+ 2077 00f6 0E       		.uleb128 0xe
+ 2078 00f7 3A       		.uleb128 0x3a
+ 2079 00f8 0B       		.uleb128 0xb
+ 2080 00f9 3B       		.uleb128 0x3b
+ 2081 00fa 0B       		.uleb128 0xb
+ 2082 00fb 27       		.uleb128 0x27
+ 2083 00fc 19       		.uleb128 0x19
+ 2084 00fd 49       		.uleb128 0x49
+ 2085 00fe 13       		.uleb128 0x13
+ 2086 00ff 11       		.uleb128 0x11
+ 2087 0100 01       		.uleb128 0x1
+ 2088 0101 12       		.uleb128 0x12
+ 2089 0102 07       		.uleb128 0x7
+ 2090 0103 40       		.uleb128 0x40
+ 2091 0104 18       		.uleb128 0x18
+ 2092 0105 9742     		.uleb128 0x2117
+ 2093 0107 19       		.uleb128 0x19
+ 2094 0108 01       		.uleb128 0x1
+ 2095 0109 13       		.uleb128 0x13
+ 2096 010a 00       		.byte	0
+ 2097 010b 00       		.byte	0
+ 2098 010c 11       		.uleb128 0x11
+ 2099 010d 2E       		.uleb128 0x2e
+ 2100 010e 01       		.byte	0x1
+ 2101 010f 3F       		.uleb128 0x3f
+ 2102 0110 19       		.uleb128 0x19
+ 2103 0111 03       		.uleb128 0x3
+ 2104 0112 0E       		.uleb128 0xe
+ 2105 0113 3A       		.uleb128 0x3a
+ 2106 0114 0B       		.uleb128 0xb
+ 2107 0115 3B       		.uleb128 0x3b
+ 2108 0116 0B       		.uleb128 0xb
+ 2109 0117 27       		.uleb128 0x27
+ 2110 0118 19       		.uleb128 0x19
+ 2111 0119 49       		.uleb128 0x49
+ 2112 011a 13       		.uleb128 0x13
+ 2113 011b 11       		.uleb128 0x11
+ 2114 011c 01       		.uleb128 0x1
+ 2115 011d 12       		.uleb128 0x12
+ 2116 011e 07       		.uleb128 0x7
+ 2117 011f 40       		.uleb128 0x40
+ 2118 0120 18       		.uleb128 0x18
+ 2119 0121 9642     		.uleb128 0x2116
+ 2120 0123 19       		.uleb128 0x19
+ 2121 0124 01       		.uleb128 0x1
+ 2122 0125 13       		.uleb128 0x13
+ 2123 0126 00       		.byte	0
+ 2124 0127 00       		.byte	0
+ 2125 0128 12       		.uleb128 0x12
+ 2126 0129 34       		.uleb128 0x34
+ 2127 012a 00       		.byte	0
+ 2128 012b 03       		.uleb128 0x3
+ 2129 012c 0E       		.uleb128 0xe
+ 2130 012d 3A       		.uleb128 0x3a
+GAS LISTING /tmp/cct0um32.s 			page 45
 
 
- 2127              	.LASF15:
- 2128 0000 70726F78 		.string	"proxcircle"
- 2128      63697263 
- 2128      6C6500
- 2129              	.LASF18:
- 2130 000b 70697865 		.string	"pixel"
- 2130      6C00
- 2131              	.LASF36:
- 2132 0011 636F6F72 		.string	"coordenadas_size"
- 2132      64656E61 
- 2132      6461735F 
- 2132      73697A65 
- 2132      00
- 2133              	.LASF5:
- 2134 0022 73686F72 		.string	"short int"
- 2134      7420696E 
- 2134      7400
- 2135              	.LASF7:
- 2136 002c 73697A65 		.string	"sizetype"
- 2136      74797065 
- 2136      00
- 2137              	.LASF61:
- 2138 0035 7072696E 		.string	"print_ballcoord"
- 2138      745F6261 
- 2138      6C6C636F 
- 2138      6F726400 
- 2139              	.LASF24:
- 2140 0045 696A5F63 		.string	"ij_cb"
- 2140      6200
- 2141              	.LASF28:
- 2142 004b 696A5F63 		.string	"ij_cr"
- 2142      7200
- 2143              	.LASF17:
- 2144 0051 70726F78 		.string	"prox_team"
- 2144      5F746561 
- 2144      6D00
- 2145              	.LASF65:
- 2146 005b 474E5520 		.string	"GNU C 4.9.3 -mtune=generic -march=x86-64 -ggdb -O0 -fstack-protector-strong"
- 2146      4320342E 
- 2146      392E3320 
- 2146      2D6D7475 
- 2146      6E653D67 
- 2147              	.LASF14:
- 2148 00a7 63697263 		.string	"circle"
- 2148      6C6500
- 2149              	.LASF67:
- 2150 00ae 2F686F6D 		.string	"/home/spvk/Desktop/projeto_robotica/introducao_robotica/master"
- 2150      652F7370 
- 2150      766B2F44 
- 2150      65736B74 
- 2150      6F702F70 
- 2151              	.LASF32:
- 2152 00ed 666C6F61 		.string	"float"
- 2152      7400
- 2153              	.LASF9:
- 2154 00f3 6C6F6E67 		.string	"long long int"
- 2154      206C6F6E 
-GAS LISTING /tmp/ccuviV50.s 			page 46
+ 2131 012e 0B       		.uleb128 0xb
+ 2132 012f 3B       		.uleb128 0x3b
+ 2133 0130 0B       		.uleb128 0xb
+ 2134 0131 49       		.uleb128 0x49
+ 2135 0132 13       		.uleb128 0x13
+ 2136 0133 3F       		.uleb128 0x3f
+ 2137 0134 19       		.uleb128 0x19
+ 2138 0135 3C       		.uleb128 0x3c
+ 2139 0136 19       		.uleb128 0x19
+ 2140 0137 00       		.byte	0
+ 2141 0138 00       		.byte	0
+ 2142 0139 00       		.byte	0
+ 2143              		.section	.debug_aranges,"",@progbits
+ 2144 0000 2C000000 		.long	0x2c
+ 2145 0004 0200     		.value	0x2
+ 2146 0006 00000000 		.long	.Ldebug_info0
+ 2147 000a 08       		.byte	0x8
+ 2148 000b 00       		.byte	0
+ 2149 000c 0000     		.value	0
+ 2150 000e 0000     		.value	0
+ 2151 0010 00000000 		.quad	.Ltext0
+ 2151      00000000 
+ 2152 0018 1E0B0000 		.quad	.Letext0-.Ltext0
+ 2152      00000000 
+ 2153 0020 00000000 		.quad	0
+ 2153      00000000 
+ 2154 0028 00000000 		.quad	0
+ 2154      00000000 
+ 2155              		.section	.debug_line,"",@progbits
+ 2156              	.Ldebug_line0:
+ 2157 0000 61020000 		.section	.debug_str,"MS",@progbits,1
+ 2157      02009700 
+ 2157      00000101 
+ 2157      FB0E0D00 
+ 2157      01010101 
+ 2158              	.LASF19:
+ 2159 0000 70726F78 		.string	"proxcircle"
+ 2159      63697263 
+ 2159      6C6500
+ 2160              	.LASF14:
+ 2161 000b 70697865 		.string	"pixel"
+ 2161      6C00
+ 2162              	.LASF39:
+ 2163 0011 636F6F72 		.string	"coordenadas_size"
+ 2163      64656E61 
+ 2163      6461735F 
+ 2163      73697A65 
+ 2163      00
+ 2164              	.LASF68:
+ 2165 0022 474E5520 		.string	"GNU C11 5.4.0 20160609 -mtune=generic -march=x86-64 -ggdb -O0 -fstack-protector-strong"
+ 2165      43313120 
+ 2165      352E342E 
+ 2165      30203230 
+ 2165      31363036 
+ 2166              	.LASF5:
+ 2167 0079 73686F72 		.string	"short int"
+ 2167      7420696E 
+GAS LISTING /tmp/cct0um32.s 			page 46
 
 
- 2154      6720696E 
- 2154      7400
- 2155              	.LASF35:
- 2156 0101 72656769 		.string	"regiao"
- 2156      616F00
- 2157              	.LASF68:
- 2158 0108 6C696D69 		.string	"limiar"
- 2158      617200
- 2159              	.LASF43:
- 2160 010f 74687265 		.string	"threshold"
- 2160      73686F6C 
- 2160      6400
- 2161              	.LASF59:
- 2162 0119 6A706766 		.string	"jpgfile"
- 2162      696C6500 
- 2163              	.LASF6:
- 2164 0121 6C6F6E67 		.string	"long int"
- 2164      20696E74 
- 2164      00
- 2165              	.LASF63:
- 2166 012a 6E626F6C 		.string	"nbolinhas"
- 2166      696E6861 
- 2166      7300
- 2167              	.LASF34:
- 2168 0134 636F6F72 		.string	"coordenadas"
- 2168      64656E61 
- 2168      64617300 
- 2169              	.LASF41:
- 2170 0140 626C6F63 		.string	"block"
- 2170      6B00
- 2171              	.LASF44:
- 2172 0146 70726F74 		.string	"prototipo"
- 2172      6F746970 
- 2172      6F00
- 2173              	.LASF19:
- 2174 0150 626C6F63 		.string	"bloco"
- 2174      6F00
- 2175              	.LASF66:
- 2176 0156 2E2F7064 		.string	"./pdi/source/escrita.c"
- 2176      692F736F 
- 2176      75726365 
- 2176      2F657363 
- 2176      72697461 
- 2177              	.LASF12:
- 2178 016d 67726164 		.string	"grad"
- 2178      00
- 2179              	.LASF48:
- 2180 0172 7465616D 		.string	"team1"
- 2180      3100
- 2181              	.LASF49:
- 2182 0178 7465616D 		.string	"team2"
- 2182      3200
- 2183              	.LASF62:
- 2184 017e 626F6C69 		.string	"bolinhas"
- 2184      6E686173 
- 2184      00
- 2185              	.LASF1:
-GAS LISTING /tmp/ccuviV50.s 			page 47
+ 2167      7400
+ 2168              	.LASF7:
+ 2169 0083 73697A65 		.string	"sizetype"
+ 2169      74797065 
+ 2169      00
+ 2170              	.LASF64:
+ 2171 008c 7072696E 		.string	"print_ballcoord"
+ 2171      745F6261 
+ 2171      6C6C636F 
+ 2171      6F726400 
+ 2172              	.LASF27:
+ 2173 009c 696A5F63 		.string	"ij_cb"
+ 2173      6200
+ 2174              	.LASF31:
+ 2175 00a2 696A5F63 		.string	"ij_cr"
+ 2175      7200
+ 2176              	.LASF21:
+ 2177 00a8 70726F78 		.string	"prox_team"
+ 2177      5F746561 
+ 2177      6D00
+ 2178              	.LASF12:
+ 2179 00b2 747A5F64 		.string	"tz_dsttime"
+ 2179      73747469 
+ 2179      6D6500
+ 2180              	.LASF13:
+ 2181 00bd 74696D65 		.string	"timezone"
+ 2181      7A6F6E65 
+ 2181      00
+ 2182              	.LASF18:
+ 2183 00c6 63697263 		.string	"circle"
+ 2183      6C6500
+ 2184              	.LASF61:
+ 2185 00cd 6D617472 		.string	"matriz_temp"
+ 2185      697A5F74 
+ 2185      656D7000 
+ 2186              	.LASF35:
+ 2187 00d9 666C6F61 		.string	"float"
+ 2187      7400
+ 2188              	.LASF9:
+ 2189 00df 6C6F6E67 		.string	"long long int"
+ 2189      206C6F6E 
+ 2189      6720696E 
+ 2189      7400
+ 2190              	.LASF38:
+ 2191 00ed 72656769 		.string	"regiao"
+ 2191      616F00
+ 2192              	.LASF71:
+ 2193 00f4 6C696D69 		.string	"limiar"
+ 2193      617200
+ 2194              	.LASF46:
+ 2195 00fb 74687265 		.string	"threshold"
+ 2195      73686F6C 
+ 2195      6400
+ 2196              	.LASF62:
+ 2197 0105 6A706766 		.string	"jpgfile"
+ 2197      696C6500 
+ 2198              	.LASF6:
+GAS LISTING /tmp/cct0um32.s 			page 47
 
 
- 2186 0187 756E7369 		.string	"unsigned char"
- 2186      676E6564 
- 2186      20636861 
- 2186      7200
- 2187              	.LASF20:
- 2188 0195 696A5F6C 		.string	"ij_luma"
- 2188      756D6100 
- 2189              	.LASF37:
- 2190 019d 636F6F72 		.string	"coord"
- 2190      6400
- 2191              	.LASF47:
- 2192 01a3 67656E65 		.string	"generate_teams"
- 2192      72617465 
- 2192      5F746561 
- 2192      6D7300
- 2193              	.LASF4:
- 2194 01b2 7369676E 		.string	"signed char"
- 2194      65642063 
- 2194      68617200 
- 2195              	.LASF56:
- 2196 01be 6572726F 		.string	"erro"
- 2196      00
- 2197              	.LASF10:
- 2198 01c3 6C6F6E67 		.string	"long long unsigned int"
- 2198      206C6F6E 
- 2198      6720756E 
- 2198      7369676E 
- 2198      65642069 
- 2199              	.LASF3:
- 2200 01da 756E7369 		.string	"unsigned int"
- 2200      676E6564 
- 2200      20696E74 
- 2200      00
- 2201              	.LASF52:
- 2202 01e7 6E70726F 		.string	"nprox"
- 2202      7800
- 2203              	.LASF26:
- 2204 01ed 69316A5F 		.string	"i1j_cb"
- 2204      636200
- 2205              	.LASF50:
- 2206 01f4 67656E65 		.string	"generate_prox_teams"
- 2206      72617465 
- 2206      5F70726F 
- 2206      785F7465 
- 2206      616D7300 
- 2207              	.LASF42:
- 2208 0208 61727175 		.string	"arquivo"
- 2208      69766F00 
- 2209              	.LASF11:
- 2210 0210 6C756D61 		.string	"luma"
- 2210      00
- 2211              	.LASF13:
- 2212 0215 70726F78 		.string	"prox"
- 2212      00
- 2213              	.LASF51:
- 2214 021a 73687269 		.string	"shrink_teams"
- 2214      6E6B5F74 
-GAS LISTING /tmp/ccuviV50.s 			page 48
+ 2199 010d 6C6F6E67 		.string	"long int"
+ 2199      20696E74 
+ 2199      00
+ 2200              	.LASF66:
+ 2201 0116 6E626F6C 		.string	"nbolinhas"
+ 2201      696E6861 
+ 2201      7300
+ 2202              	.LASF37:
+ 2203 0120 636F6F72 		.string	"coordenadas"
+ 2203      64656E61 
+ 2203      64617300 
+ 2204              	.LASF44:
+ 2205 012c 626C6F63 		.string	"block"
+ 2205      6B00
+ 2206              	.LASF47:
+ 2207 0132 70726F74 		.string	"prototipo"
+ 2207      6F746970 
+ 2207      6F00
+ 2208              	.LASF22:
+ 2209 013c 626C6F63 		.string	"bloco"
+ 2209      6F00
+ 2210              	.LASF69:
+ 2211 0142 2E2F7064 		.string	"./pdi/source/escrita.c"
+ 2211      692F736F 
+ 2211      75726365 
+ 2211      2F657363 
+ 2211      72697461 
+ 2212              	.LASF16:
+ 2213 0159 67726164 		.string	"grad"
+ 2213      00
+ 2214              	.LASF51:
+ 2215 015e 7465616D 		.string	"team1"
+ 2215      3100
+ 2216              	.LASF52:
+ 2217 0164 7465616D 		.string	"team2"
+ 2217      3200
+ 2218              	.LASF65:
+ 2219 016a 626F6C69 		.string	"bolinhas"
+ 2219      6E686173 
+ 2219      00
+ 2220              	.LASF1:
+ 2221 0173 756E7369 		.string	"unsigned char"
+ 2221      676E6564 
+ 2221      20636861 
+ 2221      7200
+ 2222              	.LASF23:
+ 2223 0181 696A5F6C 		.string	"ij_luma"
+ 2223      756D6100 
+ 2224              	.LASF40:
+ 2225 0189 636F6F72 		.string	"coord"
+ 2225      6400
+ 2226              	.LASF50:
+ 2227 018f 67656E65 		.string	"generate_teams"
+ 2227      72617465 
+ 2227      5F746561 
+ 2227      6D7300
+ 2228              	.LASF4:
+GAS LISTING /tmp/cct0um32.s 			page 48
 
 
- 2214      65616D73 
- 2214      00
- 2215              	.LASF8:
- 2216 0227 63686172 		.string	"char"
- 2216      00
- 2217              	.LASF23:
- 2218 022c 69316A31 		.string	"i1j1_luma"
- 2218      5F6C756D 
- 2218      6100
- 2219              	.LASF30:
- 2220 0236 69316A5F 		.string	"i1j_cr"
- 2220      637200
- 2221              	.LASF2:
- 2222 023d 73686F72 		.string	"short unsigned int"
- 2222      7420756E 
- 2222      7369676E 
- 2222      65642069 
- 2222      6E7400
- 2223              	.LASF21:
- 2224 0250 696A315F 		.string	"ij1_luma"
- 2224      6C756D61 
- 2224      00
- 2225              	.LASF53:
- 2226 0259 7377656C 		.string	"swell_teams"
- 2226      6C5F7465 
- 2226      616D7300 
- 2227              	.LASF45:
- 2228 0265 70697874 		.string	"pixteam1"
- 2228      65616D31 
- 2228      00
- 2229              	.LASF46:
- 2230 026e 70697874 		.string	"pixteam2"
- 2230      65616D32 
- 2230      00
- 2231              	.LASF0:
- 2232 0277 6C6F6E67 		.string	"long unsigned int"
- 2232      20756E73 
- 2232      69676E65 
- 2232      6420696E 
- 2232      7400
- 2233              	.LASF33:
- 2234 0289 646F7562 		.string	"double"
- 2234      6C6500
- 2235              	.LASF38:
- 2236 0290 73697A65 		.string	"size"
- 2236      00
- 2237              	.LASF25:
- 2238 0295 696A315F 		.string	"ij1_cb"
- 2238      636200
- 2239              	.LASF55:
- 2240 029c 636F6D70 		.string	"compare"
- 2240      61726500 
- 2241              	.LASF27:
- 2242 02a4 69316A31 		.string	"i1j1_cb"
- 2242      5F636200 
- 2243              	.LASF29:
- 2244 02ac 696A315F 		.string	"ij1_cr"
-GAS LISTING /tmp/ccuviV50.s 			page 49
+ 2229 019e 7369676E 		.string	"signed char"
+ 2229      65642063 
+ 2229      68617200 
+ 2230              	.LASF59:
+ 2231 01aa 6572726F 		.string	"erro"
+ 2231      00
+ 2232              	.LASF10:
+ 2233 01af 6C6F6E67 		.string	"long long unsigned int"
+ 2233      206C6F6E 
+ 2233      6720756E 
+ 2233      7369676E 
+ 2233      65642069 
+ 2234              	.LASF3:
+ 2235 01c6 756E7369 		.string	"unsigned int"
+ 2235      676E6564 
+ 2235      20696E74 
+ 2235      00
+ 2236              	.LASF55:
+ 2237 01d3 6E70726F 		.string	"nprox"
+ 2237      7800
+ 2238              	.LASF29:
+ 2239 01d9 69316A5F 		.string	"i1j_cb"
+ 2239      636200
+ 2240              	.LASF53:
+ 2241 01e0 67656E65 		.string	"generate_prox_teams"
+ 2241      72617465 
+ 2241      5F70726F 
+ 2241      785F7465 
+ 2241      616D7300 
+ 2242              	.LASF45:
+ 2243 01f4 61727175 		.string	"arquivo"
+ 2243      69766F00 
+ 2244              	.LASF15:
+ 2245 01fc 6C756D61 		.string	"luma"
+ 2245      00
+ 2246              	.LASF17:
+ 2247 0201 70726F78 		.string	"prox"
+ 2247      00
+ 2248              	.LASF54:
+ 2249 0206 73687269 		.string	"shrink_teams"
+ 2249      6E6B5F74 
+ 2249      65616D73 
+ 2249      00
+ 2250              	.LASF70:
+ 2251 0213 2F686F6D 		.string	"/home/farofeiro231/Dropbox/Emanoel/UFRN/4\302\272_Per\303\255odo/Introdu\303\247\303\243o
+ 2251      652F6661 
+ 2251      726F6665 
+ 2251      69726F32 
+ 2251      33312F44 
+ 2252              	.LASF8:
+ 2253 0285 63686172 		.string	"char"
+ 2253      00
+ 2254              	.LASF26:
+ 2255 028a 69316A31 		.string	"i1j1_luma"
+ 2255      5F6C756D 
+ 2255      6100
+ 2256              	.LASF33:
+GAS LISTING /tmp/cct0um32.s 			page 49
 
 
- 2244      637200
- 2245              	.LASF22:
- 2246 02b3 69316A5F 		.string	"i1j_luma"
- 2246      6C756D61 
- 2246      00
- 2247              	.LASF16:
- 2248 02bc 7465616D 		.string	"team"
- 2248      00
- 2249              	.LASF54:
- 2250 02c1 6F726967 		.string	"original"
- 2250      696E616C 
- 2250      00
- 2251              	.LASF31:
- 2252 02ca 69316A31 		.string	"i1j1_cr"
- 2252      5F637200 
- 2253              	.LASF39:
- 2254 02d2 6D617472 		.string	"matriz"
- 2254      697A00
- 2255              	.LASF64:
- 2256 02d9 68617368 		.string	"hashtag"
- 2256      74616700 
- 2257              	.LASF58:
- 2258 02e1 6D617472 		.string	"matriz_temp"
- 2258      697A5F74 
- 2258      656D7000 
- 2259              	.LASF40:
- 2260 02ed 6D617061 		.string	"mapa"
- 2260      00
- 2261              	.LASF57:
- 2262 02f2 65736372 		.string	"escrita"
- 2262      69746100 
- 2263              	.LASF60:
- 2264 02fa 7069785F 		.string	"pix_erro"
- 2264      6572726F 
- 2264      00
- 2265              		.ident	"GCC: (Gentoo 4.9.3 p1.5, pie-0.6.4) 4.9.3"
- 2266              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccuviV50.s 			page 50
+ 2257 0294 69316A5F 		.string	"i1j_cr"
+ 2257      637200
+ 2258              	.LASF2:
+ 2259 029b 73686F72 		.string	"short unsigned int"
+ 2259      7420756E 
+ 2259      7369676E 
+ 2259      65642069 
+ 2259      6E7400
+ 2260              	.LASF11:
+ 2261 02ae 747A5F6D 		.string	"tz_minuteswest"
+ 2261      696E7574 
+ 2261      65737765 
+ 2261      737400
+ 2262              	.LASF56:
+ 2263 02bd 7377656C 		.string	"swell_teams"
+ 2263      6C5F7465 
+ 2263      616D7300 
+ 2264              	.LASF48:
+ 2265 02c9 70697874 		.string	"pixteam1"
+ 2265      65616D31 
+ 2265      00
+ 2266              	.LASF49:
+ 2267 02d2 70697874 		.string	"pixteam2"
+ 2267      65616D32 
+ 2267      00
+ 2268              	.LASF0:
+ 2269 02db 6C6F6E67 		.string	"long unsigned int"
+ 2269      20756E73 
+ 2269      69676E65 
+ 2269      6420696E 
+ 2269      7400
+ 2270              	.LASF36:
+ 2271 02ed 646F7562 		.string	"double"
+ 2271      6C6500
+ 2272              	.LASF41:
+ 2273 02f4 73697A65 		.string	"size"
+ 2273      00
+ 2274              	.LASF28:
+ 2275 02f9 696A315F 		.string	"ij1_cb"
+ 2275      636200
+ 2276              	.LASF24:
+ 2277 0300 696A315F 		.string	"ij1_luma"
+ 2277      6C756D61 
+ 2277      00
+ 2278              	.LASF58:
+ 2279 0309 636F6D70 		.string	"compare"
+ 2279      61726500 
+ 2280              	.LASF30:
+ 2281 0311 69316A31 		.string	"i1j1_cb"
+ 2281      5F636200 
+ 2282              	.LASF32:
+ 2283 0319 696A315F 		.string	"ij1_cr"
+ 2283      637200
+ 2284              	.LASF25:
+ 2285 0320 69316A5F 		.string	"i1j_luma"
+ 2285      6C756D61 
+ 2285      00
+GAS LISTING /tmp/cct0um32.s 			page 50
+
+
+ 2286              	.LASF20:
+ 2287 0329 7465616D 		.string	"team"
+ 2287      00
+ 2288              	.LASF57:
+ 2289 032e 6F726967 		.string	"original"
+ 2289      696E616C 
+ 2289      00
+ 2290              	.LASF34:
+ 2291 0337 69316A31 		.string	"i1j1_cr"
+ 2291      5F637200 
+ 2292              	.LASF42:
+ 2293 033f 6D617472 		.string	"matriz"
+ 2293      697A00
+ 2294              	.LASF67:
+ 2295 0346 68617368 		.string	"hashtag"
+ 2295      74616700 
+ 2296              	.LASF43:
+ 2297 034e 6D617061 		.string	"mapa"
+ 2297      00
+ 2298              	.LASF60:
+ 2299 0353 65736372 		.string	"escrita"
+ 2299      69746100 
+ 2300              	.LASF63:
+ 2301 035b 7069785F 		.string	"pix_erro"
+ 2301      6572726F 
+ 2301      00
+ 2302              		.ident	"GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609"
+ 2303              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cct0um32.s 			page 51
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 escrita.c
-     /tmp/ccuviV50.s:10     .text:0000000000000000 threshold
-     /tmp/ccuviV50.s:71     .text:0000000000000095 AI
-     /tmp/ccuviV50.s:754    .text:0000000000000763 escrita
-     /tmp/ccuviV50.s:116    .text:00000000000000e6 generate_teams
-     /tmp/ccuviV50.s:685    .text:00000000000006ef pix_erro
-     /tmp/ccuviV50.s:424    .text:000000000000048b generate_prox_teams
-     /tmp/ccuviV50.s:541    .text:00000000000005ad shrink_teams
-     /tmp/ccuviV50.s:613    .text:000000000000064e swell_teams
-     /tmp/ccuviV50.s:806    .text:00000000000007d7 print_ballcoord
+     /tmp/cct0um32.s:10     .text:0000000000000000 threshold
+     /tmp/cct0um32.s:72     .text:0000000000000096 AI
+     /tmp/cct0um32.s:760    .text:0000000000000769 escrita
+     /tmp/cct0um32.s:118    .text:00000000000000e8 generate_teams
+     /tmp/cct0um32.s:691    .text:00000000000006f5 pix_erro
+     /tmp/cct0um32.s:427    .text:000000000000048e generate_prox_teams
+     /tmp/cct0um32.s:545    .text:00000000000005b1 shrink_teams
+     /tmp/cct0um32.s:618    .text:0000000000000653 swell_teams
+     /tmp/cct0um32.s:813    .text:00000000000007de print_ballcoord
 
 UNDEFINED SYMBOLS
 limiar

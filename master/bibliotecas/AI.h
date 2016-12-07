@@ -38,6 +38,102 @@ int distancia_cds(struct CD cd1, struct CD cd2)
 	return distancia;
 }
 
+struct CD verifica_vertices(struct CD posicao_atual, struct CD posicoes_auxiliares[16], struct CD alvo, struct servo *ptrservo[5], int serial_fd) {
+	int i;
+	int menor_distancia = 100000;
+	struct CD posicao_proxima;
+	/*O for é doidão assim porque ele verifica apenas os vertices das posições auxiliares (3, 7, 11, 15);*/
+	for (i = 3; i <16; i+=4) {
+		if ((distancia_cds(posicao_atual, posicoes_auxiliares[i]) + distancia_cds(alvo, posicoes_auxiliares[i])) < menor_distancia) {
+		menor_distancia = distancia_cds(posicao_atual, posicoes_auxiliares[i]);
+		posicao_proxima = posicoes_auxiliares[i];
+		} 
+	}	
+	
+	if (posicao_proxima.X == posicao_atual.X && posicao_proxima.Y == posicao_atual.Y) return posicao_proxima;
+	
+	usleep(2000000);
+	cinversa(serial_fd, ptrservo, posicao_proxima.X, posicao_proxima.Y, 9, -70);
+		
+	return verifica_vertices(posicao_proxima, posicoes_auxiliares, alvo, ptrservo, serial_fd);
+ 
+
+}
+
+
+
+void decisao_trajetoria_jogada(struct CD posicao_atual_peca, struct CD centros_hashtag_centimetros[9], int hashtag_status[9], struct servo *ptrservo[5], int serial_fd) {
+
+	int i,j;
+	struct CD posicoes_auxiliares_centimetros[16];
+	struct CD *hashtags_alvos;
+	struct CD alvo;
+	int menor_distancia_atual = 100000;
+	int num_hashtag_disp = 0;	//Número de hashtags que podem receber uma peça
+
+	for (i =0; i < 16; i++) {
+		if (distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]) < menor_distancia_atual) {
+			posicao_atual_peca = posicoes_auxiliares_centimetros[i];
+			menor_distancia_atual = distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]);
+		}	
+	}
+
+	/*Manda a peça para a posição auxiliar mais próxima da sua posição inicial */
+
+	usleep(2000000);
+	cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
+	
+	/*Verificação de quantos são os hashtags que podem receber peças */
+
+	for (i = 0; i < 9; i++) {
+		if (hashtag_status[i] == 0) {
+			num_hashtag_disp++;
+		}
+	}
+		
+	hashtags_alvos = malloc (sizeof(struct CD)*num_hashtag_disp);
+	
+	/* Atribui a hashtags_alvos as posições dos hastags livres */
+	j=0;
+	for (i = 0; i < 9; i++) {
+		if (hashtag_status[i] == 0) {
+			hashtags_alvos[j]=centros_hashtag_centimetros[i];
+		}
+	}
+	
+	/*Decide qual dos hashtags livres será o escolhido para a jogada */
+
+	menor_distancia_atual = 100000;
+	for (i = 0; i < num_hashtag_disp; i++) {
+				if (distancia_cds(posicao_atual_peca, hashtags_alvos[i]) < menor_distancia_atual ) {
+					alvo = hashtags_alvos[i];
+				} 
+	}
+			
+	/*Verifica qual dos vertices está mais próximo da peça e do alvo e manda a peça para la até
+	que a nova posição seja igual à atual */
+
+	posicao_atual_peca = verifica_vertices(posicao_atual_peca, posicoes_auxiliares_centimetros, alvo, ptrservo, serial_fd);
+	
+	/*Agora é feita a verificação de qual é a posição auxiliar mais proxima do alvo, e o braço é
+	mandado para la */
+	menor_distancia_atual = 100000;
+	for ( i =0; i < 16 ; i++) {
+		if (distancia_cds(alvo, posicoes_auxiliares_centimetros[i]) < menor_distancia_atual ) {
+			posicao_atual_peca = posicoes_auxiliares_centimetros[i];
+			menor_distancia_atual = distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]);
+		}
+	}
+
+	usleep(2000000);
+        cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
+	usleep(2000000);
+        cinversa(serial_fd, ptrservo, alvo.X, alvo.Y, 9, -70);
+	
+	free(hashtags_alvos);
+}
+
+
 void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 {
 	struct servo *base = ptrservo[0],
@@ -73,16 +169,16 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 		matriz[i] = malloc(largura*sizeof(struct pixel));
 	
 	ia_map_yuv(matriz);
-        generate_teams(matriz, pixteam1, pixteam2);
-	generate_prox_teams(matriz);
-	shrink_teams(matriz, 5); 
+        generate_teams(matriz, pixteam1, pixteam2);	//Classifica em times
+	generate_prox_teams(matriz);	//funciona com a de baixo para limpar "falsos" times.
+	shrink_teams(matriz, 5); 	
 	/*
 	 * caso detecte mais ou menos peças do que deveria, ajustar os valores dos filtros swell e shrink, nao esquecer de dar generate_prox_teams
 	 */
 	//swell_teams(matriz, 4);
-	centros_teams = detect_regiaoteam(matriz);
+	centros_teams = detect_regiaoteam(matriz); //Obtém o centro de cada peça dos dois times;
 	dealocate(matriz, prototipo);
-	escrita("teams.jpg", prototipo);
+	escrita("teams.jpg", prototipo); //tirou o warning do make
 	free(prototipo);
 	
 	struct CD team1[5];
@@ -93,7 +189,7 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
         struct CD centros_hashtag_centimetros[9];
 	int hashtag_status[9];	// status = 0 -> posicao vazia, status = 1 -> posicao ocupada por team1, status = 2 -> posicao ocupada por team2
 	int bolinhas_team1_status[5];
-        struct CD centros_bolinhas_team1_pixels[5];
+        struct CD centros_bolinhas_team1_pixels[5];	//Essa variável contém as posições inicias das bolinhas do time 1
         struct CD centros_bolinhas_team1_centimetros[5];
 	int bolinhas_team2_status[5];
         struct CD centros_bolinhas_team2_pixels[5];
@@ -101,6 +197,17 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 
 	centros_posicoes_vazias_pixels = cdcamera();
 	centros_posicoes_vazias_centimetros = cdworld();
+
+	/*Variavel usada no calculo da trajetoria */
+	struct CD posicao_atual_peca;
+
+	/*Pode usar isso aqui pra saber o tamanho de centros_teams[0] e [1], para não precisar usar 5*/
+	int center_counting_1, center_couunting_2;
+	center_counting_1 = sizeof(centros_teams[0])/sizeof(centros_teams[0][0]);
+	center_counting_1 = sizeof(centros_teams[1])/sizeof(centros_teams[1][0]);
+	
+
+
 
 	for (i = 0; i < 5; i++) {
 		team1[i].X = centros_teams[0][i].X;
@@ -142,6 +249,8 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 				hashtag_status[j] = 0;
 		}
 	}
+	
+	/*Verifica se as peças estão perto o suficiente para ocuparem os hashtags*/
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < 9; j++) {
 			if (distancia_cds(team1[i], centros_hashtag_pixels[j]) < 15) {
@@ -156,6 +265,8 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 		bolinhas_team1_status[i] = 0;
 		bolinhas_team2_status[i] = 0;
 	}
+
+	/*Diz para bolinhas_team_1 e 2 se uma peça de algum dos times está em uma das posições iniciais */
 	
 	for (i = 0; i < 5; i++) {
 		for (j = 0; j < 5; j++) {
@@ -263,16 +374,26 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 		}
 	}
 	enviar_comandoX(main_win->display);
-
+		
+	/*Tranformarei isso em função */
+	
 	for (i = 0; i < 5; i++) {	// Esse laço vai ser o robô procurando uma peça disponível em bolinhas time 1 para pegar e jogar em algum canto
 		if (bolinhas_team1_status[i] == 1) {
 			usleep(2000000);
-			cinversa(serial_fd, ptrservo, centros_bolinhas_team1_centimetros[i].X, centros_bolinhas_team1_centimetros[i].Y, 9, -70);
+			cinversa(serial_fd, ptrservo, centros_bolinhas_team1_centimetros[i].X, centros_bolinhas_team1_centimetros[i].Y, 9, -70);			
+			change_servo(serial_fd, garra, 2000);	//Comando para fechar a garra;	
+			posicao_atual_peca=centros_bolinhas_team1_centimetros[i];
 			break;
 		}
 	}
 
-	//	Parei aqui e fui dormir.
+	decisao_trajetoria_jogada(posicao_atual_peca, centros_hashtag_centimetros, hashtag_status, ptrservo, serial_fd);
+	
+	/*Essas variaveis são usadas no calculo da trajetória simples */
+	/*Struct CD auxiliar para guardar a distância minima
+	entre a posição atual da peça e uma das posições auxiliares*/
+	
+//	Parei aqui e fui dormir.
 
 	for (i = 0; i < altura; i++)
 		free(matriz[i]);
