@@ -84,21 +84,29 @@ void decisao_trajetoria_jogada(struct Mainwin_var *main_win, struct CD posicao_a
 	struct CD *posicoes_auxiliares_centimetros;
 	struct CD *hashtags_alvos;
 	struct CD alvo;
+	struct CD posicao_temporaria;
 	int menor_distancia_atual = 100000;
 	int num_hashtag_disp = 0;	//Número de hashtags que podem receber uma peça
 	posicoes_auxiliares_centimetros = cdworld_auxiliares(); // onde está o free?
+	
+	/*Posicao_temporaria ira armazenar a posicao auxiliar mais proxima do ponto de origem da peça*/
 
 	for (i =0; i < 16; i++) {
 		if (distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]) < menor_distancia_atual) {
 			menor_distancia_atual = distancia_cds(posicao_atual_peca, posicoes_auxiliares_centimetros[i]);
-			posicao_atual_peca = posicoes_auxiliares_centimetros[i];
+			posicao_temporaria = posicoes_auxiliares_centimetros[i];
+			printf("A menor distancia atual é a do hashtag %d\n", i);
 		}	
 	}
+	
+	posicao_atual_peca = posicao_temporaria;
+	
 
 	/*Manda a peça para a posição auxiliar mais próxima da sua posição inicial */
 
 	usleep(3000000);
 	cinversa(serial_fd, ptrservo, posicao_atual_peca.X, posicao_atual_peca.Y, 9, -70);
+	printf("\t !!!!!!!!!!!Primeiro deslocamento depois de pegar a peça!!!!!!!!!!!\n");
 	XDrawArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
 					coordX_pixels(posicao_atual_peca.Y*7, main_win->larg)-5,
 					coordY_pixels((-7)*posicao_atual_peca.X, main_win->altw)-5,
@@ -120,6 +128,7 @@ void decisao_trajetoria_jogada(struct Mainwin_var *main_win, struct CD posicao_a
 	for (i = 0; i < 9; i++) {
 		if (hashtag_status[i] == 0) {
 			hashtags_alvos[j]=centros_hashtag_centimetros[i];
+			j++;
 		}
 	}
 	
@@ -129,10 +138,28 @@ void decisao_trajetoria_jogada(struct Mainwin_var *main_win, struct CD posicao_a
 	for (i = 0; i < num_hashtag_disp; i++) {
 				if (distancia_cds(posicao_atual_peca, hashtags_alvos[i]) < menor_distancia_atual ) {
 					menor_distancia_atual = distancia_cds(posicao_atual_peca, hashtags_alvos[i]);
-					alvo = hashtags_alvos[i];	// não devia ter mudado a menor_distancia_atual depois disso?
+					alvo = hashtags_alvos[i];
 				} 
 	}
-			
+	
+	/*Desenhar o ponto ALVO na tela*/
+	
+	XFillArc(main_win->display, *(main_win->mainwin), *(main_win->gc_preto),
+                                        coordX_pixels(alvo.Y*7, main_win->larg)-5,
+                                        coordY_pixels((-7)*alvo.X, main_win->altw)-5,
+                                        10, 10, 0, 360*64);
+        enviar_comandoX(main_win->display);
+
+
+
+
+
+
+
+
+
+
+
 	/*Verifica qual dos vertices está mais próximo da peça e do alvo e manda a peça para la até
 	que a nova posição seja igual à atual */
 

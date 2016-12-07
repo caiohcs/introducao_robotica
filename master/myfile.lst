@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccvTgxgw.s 			page 1
+GAS LISTING /tmp/ccdUa6Da.s 			page 1
 
 
    1              		.file	"escrita.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   10:./pdi/source/escrita.c **** 	array_bloco(block, matriz);
   11:./pdi/source/escrita.c **** 	generate_grad(matriz, block);	
   12:./pdi/source/escrita.c **** 	generate_prox(matriz);
-GAS LISTING /tmp/ccvTgxgw.s 			page 2
+GAS LISTING /tmp/ccdUa6Da.s 			page 2
 
 
   13:./pdi/source/escrita.c **** 	shrink(matriz, 4);
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   58 0082 89C6     		movl	%eax, %esi
   59 0084 BF000000 		movl	$.LC0, %edi
   59      00
-GAS LISTING /tmp/ccvTgxgw.s 			page 3
+GAS LISTING /tmp/ccdUa6Da.s 			page 3
 
 
   60 0089 B8000000 		movl	$0, %eax
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   96 00ba 488B4DF0 		movq	-16(%rbp), %rcx
   97 00be 0FB67DF8 		movzbl	-8(%rbp), %edi
   98 00c2 488B75E0 		movq	-32(%rbp), %rsi
-GAS LISTING /tmp/ccvTgxgw.s 			page 4
+GAS LISTING /tmp/ccdUa6Da.s 			page 4
 
 
   99 00c6 0FB655E8 		movzbl	-24(%rbp), %edx
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  140 0114 C745EC54 		movl	$340, -20(%rbp)
  140      010000
  141 011b E9EF0000 		jmp	.L5
-GAS LISTING /tmp/ccvTgxgw.s 			page 5
+GAS LISTING /tmp/ccdUa6Da.s 			page 5
 
 
  141      00
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  187 01ad 4889D0   		movq	%rdx, %rax
  188 01b0 48C1E003 		salq	$3, %rax
  189 01b4 4801D0   		addq	%rdx, %rax
-GAS LISTING /tmp/ccvTgxgw.s 			page 6
+GAS LISTING /tmp/ccdUa6Da.s 			page 6
 
 
  190 01b7 4801C8   		addq	%rcx, %rax
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   74:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax; i++) {
  230              		.loc 1 74 0 is_stmt 1
  231 022d C745E86E 		movl	$110, -24(%rbp)
-GAS LISTING /tmp/ccvTgxgw.s 			page 7
+GAS LISTING /tmp/ccdUa6Da.s 			page 7
 
 
  231      000000
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  275 02bd 4889D0   		movq	%rdx, %rax
  276 02c0 48C1E003 		salq	$3, %rax
  277 02c4 4801D0   		addq	%rdx, %rax
-GAS LISTING /tmp/ccvTgxgw.s 			page 8
+GAS LISTING /tmp/ccdUa6Da.s 			page 8
 
 
  278 02c7 4801C8   		addq	%rcx, %rax
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  325 0364 884201   		movb	%al, 1(%rdx)
   82:./pdi/source/escrita.c **** 				matriz[i][j].cr = team1.cr;
  326              		.loc 1 82 0
-GAS LISTING /tmp/ccvTgxgw.s 			page 9
+GAS LISTING /tmp/ccdUa6Da.s 			page 9
 
 
  327 0367 8B45E8   		movl	-24(%rbp), %eax
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   85:./pdi/source/escrita.c **** 				matriz[i][j].cb = team2.cb;
  374              		.loc 1 85 0
  375 0405 8B45E8   		movl	-24(%rbp), %eax
-GAS LISTING /tmp/ccvTgxgw.s 			page 10
+GAS LISTING /tmp/ccdUa6Da.s 			page 10
 
 
  376 0408 4898     		cltq
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
   89:./pdi/source/escrita.c **** 	}
   90:./pdi/source/escrita.c **** }
  417              		.loc 1 90 0 is_stmt 1
-GAS LISTING /tmp/ccvTgxgw.s 			page 11
+GAS LISTING /tmp/ccdUa6Da.s 			page 11
 
 
  418 048b 90       		nop
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  459              		.loc 1 98 0
  460 04dc C745F8FF 		movl	$-1, -8(%rbp)
  460      FFFFFF
-GAS LISTING /tmp/ccvTgxgw.s 			page 12
+GAS LISTING /tmp/ccdUa6Da.s 			page 12
 
 
  461 04e3 E99A0000 		jmp	.L19
@@ -718,7 +718,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  506 0563 4801C8   		addq	%rcx, %rax
  507 0566 0FB65008 		movzbl	8(%rax), %edx
  508 056a 83C201   		addl	$1, %edx
-GAS LISTING /tmp/ccvTgxgw.s 			page 13
+GAS LISTING /tmp/ccdUa6Da.s 			page 13
 
 
  509 056d 885008   		movb	%dl, 8(%rax)
@@ -778,7 +778,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  542              		.size	generate_prox_teams, .-generate_prox_teams
  543              		.globl	shrink_teams
  544              		.type	shrink_teams, @function
-GAS LISTING /tmp/ccvTgxgw.s 			page 14
+GAS LISTING /tmp/ccdUa6Da.s 			page 14
 
 
  545              	shrink_teams:
@@ -838,7 +838,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  587 0618 488B08   		movq	(%rax), %rcx
  588 061b 8B45FC   		movl	-4(%rbp), %eax
  589 061e 4863D0   		movslq	%eax, %rdx
-GAS LISTING /tmp/ccvTgxgw.s 			page 15
+GAS LISTING /tmp/ccdUa6Da.s 			page 15
 
 
  590 0621 4889D0   		movq	%rdx, %rax
@@ -898,7 +898,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  126:./pdi/source/escrita.c **** 	for (i = altmin; i < altmax;i++) {
  629              		.loc 1 126 0
  630 065e C745F86E 		movl	$110, -8(%rbp)
-GAS LISTING /tmp/ccvTgxgw.s 			page 16
+GAS LISTING /tmp/ccdUa6Da.s 			page 16
 
 
  630      000000
@@ -958,7 +958,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  126:./pdi/source/escrita.c **** 	  for (j = largmin; j < largmax; j++) {
  675              		.loc 1 126 0 is_stmt 1 discriminator 2
  676 06e1 8345F801 		addl	$1, -8(%rbp)
-GAS LISTING /tmp/ccvTgxgw.s 			page 17
+GAS LISTING /tmp/ccdUa6Da.s 			page 17
 
 
  677              	.L34:
@@ -1018,7 +1018,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  718 072a 0FB645E1 		movzbl	-31(%rbp), %eax
  719 072e 0FB6C8   		movzbl	%al, %ecx
  720 0731 0FB645D1 		movzbl	-47(%rbp), %eax
-GAS LISTING /tmp/ccvTgxgw.s 			page 18
+GAS LISTING /tmp/ccdUa6Da.s 			page 18
 
 
  721 0735 0FB6C0   		movzbl	%al, %eax
@@ -1078,7 +1078,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  145:./pdi/source/escrita.c **** void escrita(char *arquivo, unsigned char* matriz_temp) {
  762              		.loc 1 145 0
  763              		.cfi_startproc
-GAS LISTING /tmp/ccvTgxgw.s 			page 19
+GAS LISTING /tmp/ccdUa6Da.s 			page 19
 
 
  764 0769 55       		pushq	%rbp
@@ -1138,7 +1138,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  798      00
  154:./pdi/source/escrita.c ****         close(jpgfile);
  799              		.loc 1 154 0
-GAS LISTING /tmp/ccvTgxgw.s 			page 20
+GAS LISTING /tmp/ccdUa6Da.s 			page 20
 
 
  800 07d1 8B45FC   		movl	-4(%rbp), %eax
@@ -1198,7 +1198,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  840 081c 8B45F8   		movl	-8(%rbp), %eax
  841 081f 8945D4   		movl	%eax, -44(%rbp)
  164:./pdi/source/escrita.c ****         struct coordenadas *hashtag = generate_hashtag(bolinhas, nbolinhas);
-GAS LISTING /tmp/ccvTgxgw.s 			page 21
+GAS LISTING /tmp/ccdUa6Da.s 			page 21
 
 
  842              		.loc 1 164 0
@@ -1258,7 +1258,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  888 08b0 83C006   		addl	$6, %eax
  889 08b3 4863D0   		movslq	%eax, %rdx
  890 08b6 4889D0   		movq	%rdx, %rax
-GAS LISTING /tmp/ccvTgxgw.s 			page 22
+GAS LISTING /tmp/ccdUa6Da.s 			page 22
 
 
  891 08b9 4801C0   		addq	%rax, %rax
@@ -1318,7 +1318,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  941 095b 48C1E002 		salq	$2, %rax
  942 095f 4889C2   		movq	%rax, %rdx
  943 0962 488B45E8 		movq	-24(%rbp), %rax
-GAS LISTING /tmp/ccvTgxgw.s 			page 23
+GAS LISTING /tmp/ccdUa6Da.s 			page 23
 
 
  944 0966 4801D0   		addq	%rdx, %rax
@@ -1378,7 +1378,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  994 0a0a F30F1141 		movss	%xmm0, 4(%rcx)
  994      04
  167:./pdi/source/escrita.c ****                 cds[0 + 3*i].X = hashtag[6 + i].X;
-GAS LISTING /tmp/ccvTgxgw.s 			page 24
+GAS LISTING /tmp/ccdUa6Da.s 			page 24
 
 
  995              		.loc 1 167 0 discriminator 3
@@ -1438,7 +1438,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1038 0a97 4889C2   		movq	%rax, %rdx
  1039 0a9a 488B45E0 		movq	-32(%rbp), %rax
  1040 0a9e 4801D0   		addq	%rdx, %rax
-GAS LISTING /tmp/ccvTgxgw.s 			page 25
+GAS LISTING /tmp/ccdUa6Da.s 			page 25
 
 
  1041 0aa1 8B4004   		movl	4(%rax), %eax
@@ -1498,7 +1498,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1073      00
  192:./pdi/source/escrita.c **** 
  193:./pdi/source/escrita.c ****         free(bolinhas);
-GAS LISTING /tmp/ccvTgxgw.s 			page 26
+GAS LISTING /tmp/ccdUa6Da.s 			page 26
 
 
  1074              		.loc 1 193 0
@@ -1558,7 +1558,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1120 003d 07       		.byte	0x7
  1121 003e 00000000 		.long	.LASF2
  1122 0042 02       		.uleb128 0x2
-GAS LISTING /tmp/ccvTgxgw.s 			page 27
+GAS LISTING /tmp/ccdUa6Da.s 			page 27
 
 
  1123 0043 04       		.byte	0x4
@@ -1618,7 +1618,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1177 00a6 57000000 		.long	0x57
  1178 00aa 04       		.byte	0x4
  1179 00ab 00       		.byte	0
-GAS LISTING /tmp/ccvTgxgw.s 			page 28
+GAS LISTING /tmp/ccdUa6Da.s 			page 28
 
 
  1180 00ac 04       		.uleb128 0x4
@@ -1678,7 +1678,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1234 0116 00000000 		.long	.LASF20
  1235 011a 03       		.byte	0x3
  1236 011b 07       		.byte	0x7
-GAS LISTING /tmp/ccvTgxgw.s 			page 29
+GAS LISTING /tmp/ccdUa6Da.s 			page 29
 
 
  1237 011c 34000000 		.long	0x34
@@ -1738,7 +1738,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1291 0188 1D       		.byte	0x1d
  1292 0189 34000000 		.long	0x34
  1293 018d 06       		.byte	0x6
-GAS LISTING /tmp/ccvTgxgw.s 			page 30
+GAS LISTING /tmp/ccdUa6Da.s 			page 30
 
 
  1294 018e 06       		.uleb128 0x6
@@ -1798,7 +1798,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1348 01f3 06       		.byte	0x6
  1349 01f4 57000000 		.long	0x57
  1350 01f8 04       		.byte	0x4
-GAS LISTING /tmp/ccvTgxgw.s 			page 31
+GAS LISTING /tmp/ccdUa6Da.s 			page 31
 
 
  1351 01f9 06       		.uleb128 0x6
@@ -1858,7 +1858,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1404 0260 96000000 		.quad	.LFE2-.LFB2
  1404      00000000 
  1405 0268 01       		.uleb128 0x1
-GAS LISTING /tmp/ccvTgxgw.s 			page 32
+GAS LISTING /tmp/ccdUa6Da.s 			page 32
 
 
  1406 0269 9C       		.byte	0x9c
@@ -1918,7 +1918,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1460 02c9 2E010000 		.long	0x12e
  1461 02cd 0D       		.uleb128 0xd
  1462 02ce 414900   		.string	"AI"
-GAS LISTING /tmp/ccvTgxgw.s 			page 33
+GAS LISTING /tmp/ccdUa6Da.s 			page 33
 
 
  1463 02d1 01       		.byte	0x1
@@ -1978,7 +1978,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1513 0340 00000000 		.long	.LASF51
  1514 0344 01       		.byte	0x1
  1515 0345 3D       		.byte	0x3d
-GAS LISTING /tmp/ccvTgxgw.s 			page 34
+GAS LISTING /tmp/ccdUa6Da.s 			page 34
 
 
  1516 0346 B7000000 		.long	0xb7
@@ -2038,7 +2038,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1568 03ad 91       		.byte	0x91
  1569 03ae 58       		.sleb128 -40
  1570 03af 0E       		.uleb128 0xe
-GAS LISTING /tmp/ccvTgxgw.s 			page 35
+GAS LISTING /tmp/ccdUa6Da.s 			page 35
 
 
  1571 03b0 6900     		.string	"i"
@@ -2098,7 +2098,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1623 0411 6F       		.byte	0x6f
  1624 0412 57000000 		.long	0x57
  1625 0416 02       		.uleb128 0x2
-GAS LISTING /tmp/ccvTgxgw.s 			page 36
+GAS LISTING /tmp/ccdUa6Da.s 			page 36
 
 
  1626 0417 91       		.byte	0x91
@@ -2158,7 +2158,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1678 0477 0E       		.uleb128 0xe
  1679 0478 6A00     		.string	"j"
  1680 047a 01       		.byte	0x1
-GAS LISTING /tmp/ccvTgxgw.s 			page 37
+GAS LISTING /tmp/ccdUa6Da.s 			page 37
 
 
  1681 047b 7D       		.byte	0x7d
@@ -2218,7 +2218,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1731 04ed 0B       		.uleb128 0xb
  1732 04ee 00000000 		.long	.LASF45
  1733 04f2 01       		.byte	0x1
-GAS LISTING /tmp/ccvTgxgw.s 			page 38
+GAS LISTING /tmp/ccdUa6Da.s 			page 38
 
 
  1734 04f3 91       		.byte	0x91
@@ -2278,7 +2278,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1786 055d 06020000 		.long	0x206
  1787 0561 02       		.uleb128 0x2
  1788 0562 91       		.byte	0x91
-GAS LISTING /tmp/ccvTgxgw.s 			page 39
+GAS LISTING /tmp/ccdUa6Da.s 			page 39
 
 
  1789 0563 60       		.sleb128 -32
@@ -2338,7 +2338,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1843 0009 1B       		.uleb128 0x1b
  1844 000a 0E       		.uleb128 0xe
  1845 000b 11       		.uleb128 0x11
-GAS LISTING /tmp/ccvTgxgw.s 			page 40
+GAS LISTING /tmp/ccdUa6Da.s 			page 40
 
 
  1846 000c 01       		.uleb128 0x1
@@ -2398,7 +2398,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1900 0042 0D       		.uleb128 0xd
  1901 0043 00       		.byte	0
  1902 0044 03       		.uleb128 0x3
-GAS LISTING /tmp/ccvTgxgw.s 			page 41
+GAS LISTING /tmp/ccdUa6Da.s 			page 41
 
 
  1903 0045 0E       		.uleb128 0xe
@@ -2458,7 +2458,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  1957 007b 0E       		.uleb128 0xe
  1958 007c 3A       		.uleb128 0x3a
  1959 007d 0B       		.uleb128 0xb
-GAS LISTING /tmp/ccvTgxgw.s 			page 42
+GAS LISTING /tmp/ccdUa6Da.s 			page 42
 
 
  1960 007e 3B       		.uleb128 0x3b
@@ -2518,7 +2518,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2014 00b5 0B       		.uleb128 0xb
  2015 00b6 3B       		.uleb128 0x3b
  2016 00b7 0B       		.uleb128 0xb
-GAS LISTING /tmp/ccvTgxgw.s 			page 43
+GAS LISTING /tmp/ccdUa6Da.s 			page 43
 
 
  2017 00b8 27       		.uleb128 0x27
@@ -2578,7 +2578,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2071 00f0 10       		.uleb128 0x10
  2072 00f1 2E       		.uleb128 0x2e
  2073 00f2 01       		.byte	0x1
-GAS LISTING /tmp/ccvTgxgw.s 			page 44
+GAS LISTING /tmp/ccdUa6Da.s 			page 44
 
 
  2074 00f3 3F       		.uleb128 0x3f
@@ -2638,7 +2638,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2128 012b 03       		.uleb128 0x3
  2129 012c 0E       		.uleb128 0xe
  2130 012d 3A       		.uleb128 0x3a
-GAS LISTING /tmp/ccvTgxgw.s 			page 45
+GAS LISTING /tmp/ccdUa6Da.s 			page 45
 
 
  2131 012e 0B       		.uleb128 0xb
@@ -2698,7 +2698,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2166              	.LASF5:
  2167 0079 73686F72 		.string	"short int"
  2167      7420696E 
-GAS LISTING /tmp/ccvTgxgw.s 			page 46
+GAS LISTING /tmp/ccdUa6Da.s 			page 46
 
 
  2167      7400
@@ -2758,7 +2758,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2197 0105 6A706766 		.string	"jpgfile"
  2197      696C6500 
  2198              	.LASF6:
-GAS LISTING /tmp/ccvTgxgw.s 			page 47
+GAS LISTING /tmp/ccdUa6Da.s 			page 47
 
 
  2199 010d 6C6F6E67 		.string	"long int"
@@ -2818,7 +2818,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2227      5F746561 
  2227      6D7300
  2228              	.LASF4:
-GAS LISTING /tmp/ccvTgxgw.s 			page 48
+GAS LISTING /tmp/ccdUa6Da.s 			page 48
 
 
  2229 019e 7369676E 		.string	"signed char"
@@ -2878,7 +2878,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2255      5F6C756D 
  2255      6100
  2256              	.LASF33:
-GAS LISTING /tmp/ccvTgxgw.s 			page 49
+GAS LISTING /tmp/ccdUa6Da.s 			page 49
 
 
  2257 0294 69316A5F 		.string	"i1j_cr"
@@ -2938,7 +2938,7 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2285 0320 69316A5F 		.string	"i1j_luma"
  2285      6C756D61 
  2285      00
-GAS LISTING /tmp/ccvTgxgw.s 			page 50
+GAS LISTING /tmp/ccdUa6Da.s 			page 50
 
 
  2286              	.LASF20:
@@ -2969,20 +2969,20 @@ GAS LISTING /tmp/ccvTgxgw.s 			page 1
  2301      00
  2302              		.ident	"GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609"
  2303              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccvTgxgw.s 			page 51
+GAS LISTING /tmp/ccdUa6Da.s 			page 51
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 escrita.c
-     /tmp/ccvTgxgw.s:10     .text:0000000000000000 threshold
-     /tmp/ccvTgxgw.s:72     .text:0000000000000096 AI
-     /tmp/ccvTgxgw.s:760    .text:0000000000000769 escrita
-     /tmp/ccvTgxgw.s:118    .text:00000000000000e8 generate_teams
-     /tmp/ccvTgxgw.s:691    .text:00000000000006f5 pix_erro
-     /tmp/ccvTgxgw.s:427    .text:000000000000048e generate_prox_teams
-     /tmp/ccvTgxgw.s:545    .text:00000000000005b1 shrink_teams
-     /tmp/ccvTgxgw.s:618    .text:0000000000000653 swell_teams
-     /tmp/ccvTgxgw.s:813    .text:00000000000007de print_ballcoord
+     /tmp/ccdUa6Da.s:10     .text:0000000000000000 threshold
+     /tmp/ccdUa6Da.s:72     .text:0000000000000096 AI
+     /tmp/ccdUa6Da.s:760    .text:0000000000000769 escrita
+     /tmp/ccdUa6Da.s:118    .text:00000000000000e8 generate_teams
+     /tmp/ccdUa6Da.s:691    .text:00000000000006f5 pix_erro
+     /tmp/ccdUa6Da.s:427    .text:000000000000048e generate_prox_teams
+     /tmp/ccdUa6Da.s:545    .text:00000000000005b1 shrink_teams
+     /tmp/ccdUa6Da.s:618    .text:0000000000000653 swell_teams
+     /tmp/ccdUa6Da.s:813    .text:00000000000007de print_ballcoord
 
 UNDEFINED SYMBOLS
 limiar
