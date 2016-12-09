@@ -224,7 +224,6 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 	unsigned char *prototipo = malloc(largura*altura*2);
 
 	struct pixel **matriz = malloc(altura*sizeof(struct pixel*));
-	struct coordenadas **centros_teams = malloc(sizeof(struct coordenadas*)*2);
 	int i, j;
 	for (i = 0; i < altura; i++)
 		matriz[i] = malloc(largura*sizeof(struct pixel));
@@ -237,7 +236,7 @@ void ia(struct Mainwin_var *main_win, struct servo *ptrservo[5], int serial_fd)
 	 * caso detecte mais ou menos peças do que deveria, ajustar os valores dos filtros swell e shrink, nao esquecer de dar generate_prox_teams
 	 */
 	//swell_teams(matriz, 4);
-	centros_teams = detect_regiaoteam(matriz); //Obtém o centro de cada peça dos dois times;
+	struct coordenadas **centros_teams = detect_regiaoteam(matriz); //Obtém o centro de cada peça dos dois times;
 	dealocate(matriz, prototipo);
 	escrita("teams.jpg", prototipo); //tirou o warning do make
 	free(prototipo);

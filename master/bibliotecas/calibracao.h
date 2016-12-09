@@ -51,7 +51,8 @@ struct CD *cdcamera()
 	prototipo = malloc(altura*largura*2);
 	image_processing(matriz, tijolo); //Ver em processing.c
 	dealocate(matriz, prototipo);
- 
+ 	
+	free(prototipo);
 	free(tijolo);
  	return print_ballcoord(matriz); //Ver em escrita.c
 }
@@ -85,6 +86,7 @@ struct CD *cdworld()
 	}
 */
 	//Não esquecer de desalocar
+	fclose(fp);
 	return cds; 
 }
 
@@ -118,6 +120,7 @@ struct CD *cdworld_auxiliares()
 	}
 */
 	//Não esquecer de desalocar
+	fclose(fp);
 	return cds; 
 }
 

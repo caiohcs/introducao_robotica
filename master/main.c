@@ -150,6 +150,13 @@ int main()
 	printf("Ponto teste -> X: %f Y: %f\n", ponto_teste.X, ponto_teste.Y);
 	printf("Chamando IA\n");
 	
+
+	XFreeGC(display, *mainwin_var.gc_preto);
+	XFreeGC(display, *mainwin_var.gc_branco);
+	XFreeGC(display, *mainwin_var.gc_vermelho);
+	XFreeGC(display, *mainwin_var.gc_team1);
+	XFreeGC(display, *mainwin_var.gc_team2);
+
 	fclose(fp);
 	fechar_porta(serial_fd);
 	XCloseDisplay(display);

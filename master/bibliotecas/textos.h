@@ -9,17 +9,15 @@ void enviar_comandoX(Display *disp);
 
 int rgb_to_xrgb(int cor) {return cor*(65535/255);}
 
-XFontStruct* fonte;
 
 XFontStruct *carregar_fonte(Display *disp)
 {
-
+	XFontStruct *fonte = NULL;
 	int i = 0;
 	int num_fontes_carregadas;
 	int max_fontes = 100;
 	char **nomefontes = XListFonts(disp, "*", max_fontes, &num_fontes_carregadas);
 
-	fonte = NULL;
 	
  	/*Esse laço busca carregar a primeira fonte encontrada em nomefontes na variável fonte. Note que o índice "i" começa em 11 para pular as fontes que causam problemas de visualização. */
 
@@ -31,13 +29,15 @@ XFontStruct *carregar_fonte(Display *disp)
 	if(fonte==NULL){
 		printf("Não foi possível carregar uma fonte\n");
 	}
+
+	XFreeFontNames(nomefontes);
 	return fonte;
 }
 
 void desenha_texto(Display *disp, int tela, Window *janela, char *texto, int verm, int verd, int azul, unsigned int x, unsigned int y)
 {
+	XFontStruct *fonte = carregar_fonte(disp);
 	GC gc = XCreateGC(disp, *janela, 0, NULL);
-	fonte = carregar_fonte(disp);
 	XSetFont(disp, gc, fonte->fid);
 	int largtexto = XTextWidth(fonte, texto, strlen(texto));
 	int alttexto = fonte->ascent + fonte->descent;
@@ -54,7 +54,8 @@ void desenha_texto(Display *disp, int tela, Window *janela, char *texto, int ver
 	XSetForeground(disp, gc, cor.pixel);
 
 	XDrawString(disp, *janela, gc, x, y, texto, strlen(texto)); 
-	free (fonte);
+	XFreeGC(disp, gc);
+	XFreeFont(disp, fonte);
 }
 
 #endif
